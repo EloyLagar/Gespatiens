@@ -1,0 +1,78 @@
+@import url("colors.css");
+
+.content-wrapper {
+    background-color: var(--background-color);
+}
+
+.brand-link {
+    text-align: center;
+    margin: 0;
+    background-color: var(--accent-color);
+}
+
+#ges {
+    color: var(--ges-color);
+    font-size: 24px;
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+}
+
+#patiens {
+    color: var(--light-text-color);
+    font-size: 24px;
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+}
+
+.sidebar-dark-primary, .sidebar{
+    background-color: var(--sidebar-color);
+}
+
+[class*=sidebar-dark-] .nav-sidebar>.nav-item.menu-open>.nav-link, [class*=sidebar-dark-] .nav-sidebar>.nav-item:hover>.nav-link, [class*=sidebar-dark-] .nav-sidebar>.nav-item>.nav-link:focus {
+    background-color: var(--hover-sidebar-color);
+    transition: 0.3s;
+    color: var(--accent-color);
+}
+
+[class*="sidebar-dark-"] .sidebar i,
+[class*="sidebar-dark-"] .nav-header{
+    color: var(--accent-color);
+}
+
+[class*="sidebar-dark-"] .sidebar a{
+    color: var(--dark-text-color);
+}
+
+[class*=sidebar-dark-] .nav-sidebar>.nav-item>.nav-link.active{
+    background-color: var(--accent-color);
+}
+
+
+[class*=sidebar-dark-] .nav-sidebar>.nav-item>.nav-link.active:hover, [class*=sidebar-dark-] .nav-sidebar>.nav-item>.nav-link.active:hover i{
+    color: var(--ges-color);
+    transition: 0.3s;
+}
+
+[class*=sidebar-dark-] .nav-treeview>.nav-item>.nav-link{
+    color: var(--accent-color);
+}
+
+[class*=sidebar-dark-] .nav-treeview>.nav-item>.nav-link:hover ,[class*=sidebar-dark-] .nav-treeview>.nav-item>.nav-link:focus{
+    color: var(--ges-color);
+    background-color: var(--accent-color);
+    transition: 0.3s;
+}
+
+[class*=sidebar-dark-] .nav-treeview>.nav-item>.nav-link:hover i,[class*=sidebar-dark-] .nav-treeview>.nav-item>.nav-link:focus i{
+    color: var(--ges-color);
+    transition: 0.3s;
+}
+
+[class*=sidebar-dark-] .nav-sidebar>.nav-item>.nav-link.active i{
+    color: var(--light-text-color);
+}
+
+.main-header, .navbar-white, .navbar-light, .navbar-light i{
+    background-color: var(--accent-color);
+    color: var(--light-text-color);
+}
