@@ -61,3 +61,12 @@
         </table>
     </div>
 @endsection
+
+<script>
+	$(.clickable).on('click', function (){
+		var el_input = $('[data-id='$(this).attr("data-id")+'][data-fecha='$(this).attr("data-fecha")+']');
+		$(.notas).hide();
+		el_input.show();
+	});
+
+</script>
