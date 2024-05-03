@@ -347,7 +347,7 @@ return [
         ],
         [
             'text' => 'Evaluaciones',
-            'url' => '/users/evaluationsadmin',
+            'url' => '/users/evaluations',
             'icon' => 'fas fa-chart-line fa-fw ',
         ],
         [
