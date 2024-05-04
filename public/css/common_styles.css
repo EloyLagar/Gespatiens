@@ -76,3 +76,7 @@
     background-color: var(--accent-color);
     color: var(--light-text-color);
 }
+
+h1{
+    color: var(--accent-color);
+}

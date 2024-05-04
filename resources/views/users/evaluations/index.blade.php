@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/common_styles.css') }}">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{ asset('css/table.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/common_styles.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/table.css') }}">
 @endsection
 
 @section('content')
-<h1>Evaluaciones</h1>
+    <h1>Evaluaciones</h1>
     <div class="table-container">
-        <table class="table table-striped">
+        <table class="table marks-table">
             <thead class="thead-dark">
                 <tr>
                     <th></th>
@@ -19,54 +19,83 @@
                         $mediasCount = 1;
                     @endphp
                     @foreach ($periodo as $fecha)
-                        @if ($fecha->format('w') == 1)
-                            <th>{{'M'.$mediasCount }}</th>
+                        @if ($fecha->format('w') == 0)
+                            <th>{{ $fecha->format('j') }}</th>
+                            <th>{{ 'M' . $mediasCount }}</th>
                             @php
                                 $mediasCount++;
                             @endphp
+                        @else
+                            <th>{{ $fecha->format('j') }}</th>
                         @endif
-                        <th>{{ $fecha->day }}</th>
                     @endforeach
                 </tr>
                 <tr>
                     <td>Usuario</td>
                     @foreach ($periodo as $fecha)
-                        @if ($fecha->formatLocalized('%d') == 1)
+                        @if ($fecha->format('w') == 0)
+                            <th>{{ $fecha->format('D') }}</th>
                             <th></th>
-                            @php
-                                $mediasCount++;
-                            @endphp
+                        @else
+                            <th>{{ $fecha->format('D') }}</th>
                         @endif
-                        <th>{{ $fecha->format('l') }}</th>
                     @endforeach
                 </tr>
             </thead>
+            @php
+                $cont = 0;
+            @endphp
             @foreach ($residents as $resident)
+                @php
+                    $cont++;
+                @endphp
                 <tr>
                     <td>{{ $resident }}</td>
                     @foreach ($periodo as $fecha)
-                        @if ($fecha->format('w') == 1)
-                            <td></td>
-                            @php
-                                $mediasCount++;
-                            @endphp
-                        @endif
-                        <td>
-                            {{ $resident . '_' . $fecha->day . '_' . $mes . '_' . $ano }}
-                            {{-- id="{{ $resident. '_' . $fecha->day . '_' . $mes . '_' . $año }}"> --}}
-                        </td> <!-- Input para introducir las notas -->
-                    @endforeach
-                </tr>
-            @endforeach
-        </table>
+                        @if ($fecha->format('w') == 0)
     </div>
+    <td title="Pulse para modificar la nota" data-id="{{ $cont }}" data-fecha="{{ $fecha }}"
+        class="clickable">
+        <div>
+            <input type="text" data-id="{{ $cont }}" data-fecha="{{ $fecha }}" class="notas"
+                value="{{ $cont . '_' . $fecha->format('j')}}">
+    </td>
+    <td></td>
+    @php
+        $mediasCount++;
+    @endphp
+@else
+    <td title="Pulse para modificar la nota" data-id="{{ $cont }}" data-fecha="{{ $fecha }}"
+        class="clickable">
+        <div>
+            <input type="text" data-id="{{ $cont }}" data-fecha="{{ $fecha }}" class="notas"
+                value="{{ $cont . '_' . $fecha->format('j') }}">
+        </div>
+    </td>
+    @endif
+    @endforeach
+    </tr>
+    @endforeach
+    </table>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.notas').change(function () {
+                var valor = $(this).val();
+                console.log('El valor ha cambiado a: ' + valor);//Esto se tendrá que pasar por consola
+            });
+        });
+
+        $('.clickable').on('click', function() {
+            var el_input = $('[data-id="' + $(this).attr("data-id") + '"][data-fecha="' + $(this).attr(
+                "data-fecha") + '"]');
+            var el_notas = $('span.notas[data-id="' + $(this).attr("data-id") + '"][data-fecha="' + $(this).attr(
+                "data-fecha") + '"]');
+            el_notas.hide();
+            el_input.show();
+        });
+
+    </script>
 @endsection
-
-<script>
-	$(.clickable).on('click', function (){
-		var el_input = $('[data-id='$(this).attr("data-id")+'][data-fecha='$(this).attr("data-fecha")+']');
-		$(.notas).hide();
-		el_input.show();
-	});
-
-</script>
