@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Activity extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'state',
+        'date',
+    ];
+
+    protected $dates = ['date'];
+
+    protected $casts = [
+        'state' => 'boolean',
+    ];
 }

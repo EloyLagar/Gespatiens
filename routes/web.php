@@ -14,13 +14,13 @@ use App\Http\Controllers\Reports\MidStayReportController;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.app');
-});
+// Route::get('/', function () {
+//     return view('layouts.app');
+// });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/generatePDF', function () {
     return view('reports.mid_stay_report');
 });

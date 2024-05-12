@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Walk extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'activity_id',
+    ];
+
+    public function activity()
+    {
+        return $this->belongsTo(Activity::class);
+    }
 }

@@ -5,26 +5,27 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Intervenction extends Model
+class Reduction extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'date',
-        'intervention',
+        'partial_reduction',
+        'total_reduction',
+        'sport_reduction',
         'patient_id',
-        'user_id',
     ];
 
     protected $dates = ['date'];
 
+    protected $casts = [
+        'total_reduction' => 'boolean',
+        'sport_reduction' => 'boolean',
+    ];
+
     public function patient()
     {
         return $this->belongsTo(Patient::class);
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
     }
 }

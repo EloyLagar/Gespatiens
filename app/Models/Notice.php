@@ -5,26 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Shift extends Model
+class Notice extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'date',
-        'interesting_info',
-        'day_part',
-        'activity',
-        'state',
         'user_id',
+        'date',
+        'text'
+    ];
+
+    protected $cast = [
+        'user_id' => 'integer',
+        'text' => 'string'
     ];
 
     protected $dates = ['date'];
 
-    protected $casts = [
-        'state' => 'boolean',
-    ];
-
-    public function user()
+    public function user_id()
     {
         return $this->belongsTo(User::class);
     }
