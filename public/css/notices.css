@@ -1,0 +1,93 @@
+@import url("colors.css");
+
+.btn-container{
+    padding: 0.6em 0;
+}
+
+.btn{
+    color: var(--light-text-color);
+    background-color: var(--accent-color);
+    padding: 0.2em 0.8em;
+    border: none;
+}
+
+.btn:hover{
+    background-color: var(--hover-accent-color);
+    color: var(--light-text-color);
+}
+
+.container {
+    height: 80vh;
+    overflow-y: auto;
+}
+
+.container::-webkit-scrollbar-track {
+    background-color: var(--accent-color);
+    border-radius: 1em;
+}
+
+.container::-webkit-scrollbar-thumb {
+    background-color: var(--ges-color);
+    border-radius: 1em;
+}
+
+.container::-webkit-scrollbar {
+    width: 0.5em;
+    height: 0.5em;
+}
+
+.notice {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 60%;
+    max-width: 100%;
+    height: fit-content;
+    padding: 0.2em 0.4em;
+    border: 1px solid #000000;
+    border-radius: 0.8em;
+    margin-bottom: 1em;
+}
+
+.notice-external {
+    border-top-left-radius: 0;
+    background-color: var(--light-text-color);
+    color: var(--dark-text-color)
+}
+
+.notice-admin {
+    border-top-left-radius: 0;
+    background-color: var(--notice-admin-bg-color);
+    color: var(--dark-text-color)
+}
+
+.notice-internal {
+    float: right;
+    margin-right: 0;
+    margin-left: auto;
+    border-top-right-radius: 0;
+    background-color: var(--notice-internal-bg-color);
+}
+
+.notice-info {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 0.9em;
+    margin-bottom: 0.2em;
+}
+
+.notice-author {
+    float: left;
+}
+
+.notice-date {
+    float: right;
+    margin-right: 0;
+    margin-left: auto;
+}
+
+.notice-text {
+    font-size: 1em;
+}

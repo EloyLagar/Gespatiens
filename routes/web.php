@@ -20,6 +20,10 @@ use App\Http\Controllers\Reports\MidStayReportController;
 
 Auth::routes();
 
+
+// Route::get('login', [LoginController::class, 'loginForm'])->name('loginForm');
+// Route::post('login', [LoginController::class, 'login'])->name('login');
+
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/generatePDF', function () {
     return view('reports.mid_stay_report');

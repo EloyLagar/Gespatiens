@@ -49,6 +49,7 @@
 
 
 [class*=sidebar-dark-] .nav-sidebar>.nav-item>.nav-link.active:hover, [class*=sidebar-dark-] .nav-sidebar>.nav-item>.nav-link.active:hover i{
+    background-color: var(--hover-accent-color);
     color: var(--ges-color);
     transition: 0.3s;
 }
