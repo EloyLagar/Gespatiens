@@ -77,14 +77,12 @@ input:focus {
 }
 
 .table-container::-webkit-scrollbar-track {
-    background-color: var(--accent-color);
-    border-radius: 1em;
+    background-color: var(--sidebar-color);
+    border-radius: 1em;;
 }
 
 .table-container::-webkit-scrollbar-thumb {
-    background-color: var(
-        --ges-color
-    ); /* Color del pulgar de la barra de desplazamiento */
+    background-color: var(--accent-color);
     border-radius: 1em;
 }
 

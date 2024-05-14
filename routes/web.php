@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Reports\MidStayReportController;
+use App\Http\Controllers\LoginController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,13 +20,16 @@ use App\Http\Controllers\Reports\MidStayReportController;
 //     return view('layouts.app');
 // });
 
-Auth::routes();
-
-
-// Route::get('login', [LoginController::class, 'loginForm'])->name('loginForm');
-// Route::post('login', [LoginController::class, 'login'])->name('login');
+// Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Auth routes-----------------------------------------------------------------
+Route::get('/login', [LoginController::class, 'loginForm'])->name('loginForm');
+Route::post('login', [LoginController::class, 'login'])->name('login');
+
+Route::middleware(['auth'])->group(function (){
+});
+
 Route::get('/generatePDF', function () {
     return view('reports.mid_stay_report');
 });

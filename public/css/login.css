@@ -1,0 +1,51 @@
+@import url("colors.css");
+
+body {
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h1{
+    margin-bottom: 0.6em;
+    text-align: center;
+}
+#ges {
+    color: var(--ges-color);
+    font-size: 36px;
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+}
+
+label{
+    text-align: left;
+    font-size: 0.8em;
+    color: var(--dark-text-color);
+}
+
+#patiens {
+    color: var(--accent-color);
+    font-size: 36px;
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+}
+
+.container {
+    max-width: 400px;
+    width: 90%;
+    padding: 20px;
+    background-color: var(--light-text-color);
+    border-radius: 0.6em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+input{
+    margin-bottom: 0.6em;
+}
+
+.btn{
+    width: fit-content;
+    padding: 0.2em 2em;
+}

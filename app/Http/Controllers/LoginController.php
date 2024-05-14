@@ -34,7 +34,7 @@ class LoginController extends Controller
         if (Auth::viaRemember()) {
             return 'Bienvenido de nuevo';
         } else if (Auth::check()) {
-            return redirect()->route('users.account');
+            return redirect()->route('home');
         } else {
             return view('auth.login');
         }

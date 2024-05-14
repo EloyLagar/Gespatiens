@@ -1,33 +1,17 @@
 @import url("colors.css");
 
-.btn-container{
-    padding: 0.6em 0;
-}
-
-.btn{
-    color: var(--light-text-color);
-    background-color: var(--accent-color);
-    padding: 0.2em 0.8em;
-    border: none;
-}
-
-.btn:hover{
-    background-color: var(--hover-accent-color);
-    color: var(--light-text-color);
-}
-
 .container {
     height: 70vh;
     overflow-y: auto;
 }
 
 .container::-webkit-scrollbar-track {
-    background-color: var(--accent-color);
+    background-color: var(--sidebar-color);
     border-radius: 1em;
 }
 
 .container::-webkit-scrollbar-thumb {
-    background-color: var(--ges-color);
+    background-color: var(--accent-color);
     border-radius: 1em;
 }
 

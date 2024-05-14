@@ -81,3 +81,21 @@
 h1{
     color: var(--accent-color);
 }
+
+.btn-container{
+    padding: 0.6em 0;
+}
+
+.btn{
+    color: var(--light-text-color);
+    background-color: var(--accent-color);
+    padding: 0.2em 0.8em;
+    border: none;
+}
+
+.btn:hover{
+    background-color: var(--hover-accent-color);
+    color: var(--light-text-color);
+}
+
+
