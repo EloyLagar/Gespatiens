@@ -91,6 +91,7 @@ h1{
     background-color: var(--accent-color);
     padding: 0.2em 0.8em;
     border: none;
+    border-radius: 4px !important;
 }
 
 .btn:hover{
@@ -98,4 +99,20 @@ h1{
     color: var(--light-text-color);
 }
 
+.navbar-nav>.user-menu>.dropdown-menu>.user-footer .btn-default {
+    color: var(--light-text-color);
+}
+
+.navbar-nav>.user-menu>.dropdown-menu>.user-footer .btn-default:hover{
+    background-color: var(--hover-accent-color);
+}
+
+#span-user-name{
+    color: var(--light-text-color) !important;
+}
+
+#span-user-name:hover{
+    color: var(--ges-color) !important;
+    transition: 0.2s;
+}
 

@@ -18,16 +18,7 @@ class LoginController extends Controller
 
     public function signup(SignupRequest $request)
     {
-        $user = new User();
-        $user->name = $request->get('name');
-        $user->birthday = $request->get('birthday');
-        $user->email = $request->get('email');
-        $user->password = Hash::make($request->get('password'));
-        $user->save();
-
-        Auth::login($user);
-
-        return redirect()->route('users.account');
+        //
     }
     public function loginForm()
     {
@@ -51,5 +42,13 @@ class LoginController extends Controller
             $error = 'Los datos introducidos no son correctos, vuelva a intentarlo.';
             return view('auth.login', compact('error'));
         }
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::guard('web')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('home');
     }
 }

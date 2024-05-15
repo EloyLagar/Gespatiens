@@ -134,8 +134,8 @@ return [
     */
 
     'usermenu_enabled' => true,
-    'usermenu_header' => true,
-    'usermenu_header_class' => 'bg-dark',
+    'usermenu_header' => false,
+    'usermenu_header_class' => '',
     'usermenu_image' => false,
     'usermenu_desc' => false,
     'usermenu_profile_url' => false,
@@ -258,7 +258,7 @@ return [
 
     'use_route_url' => false,
     'dashboard_url' => 'home',
-    'logout_url' => 'logout',
+    'logout_url' => false,
     'login_url' => 'login',
     'register_url' => 'register',
     'password_reset_url' => 'password/reset',
@@ -318,7 +318,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Empleados',
-                    'url' => '#',
+                    'url' => '/users',
                     'icon' => 'fas fa-fw fa-user-tie',
                 ],
             ],

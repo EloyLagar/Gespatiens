@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Reports\MidStayReportController;
 use App\Http\Controllers\LoginController;
+
+
 
 
 /*
@@ -23,11 +26,18 @@ use App\Http\Controllers\LoginController;
 // Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-//Auth routes-----------------------------------------------------------------
+
 Route::get('/login', [LoginController::class, 'loginForm'])->name('loginForm');
 Route::post('login', [LoginController::class, 'login'])->name('login');
+Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
+//Auth routes-----------------------------------------------------------------
 Route::middleware(['auth'])->group(function (){
+    Route::resource('users', UserController::class)->only('edit');
+});
+
+Route::middleware(['admin'])->group(function (){
+    Route::resource('users', UserController::class)->only('create', 'store', 'index');
 });
 
 Route::get('/generatePDF', function () {

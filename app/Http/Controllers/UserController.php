@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateUserRequest;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
+
 
 class UserController extends Controller
 {
@@ -11,7 +17,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        return view('employees.index', compact('users'));
     }
 
     /**
@@ -19,15 +26,24 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('employees.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateUserRequest $request)
     {
-        //
+        $user = new User();
+        $user->name = $request->get('name');
+        $user->birthday = $request->get('birthday');
+        $user->email = $request->get('email');
+        $user->password = Hash::make($request->get('name') . '.Gespatiens');
+        $user->save();
+
+        Auth::login($user);
+
+        return redirect()->route('users.index');
     }
 
     /**

@@ -22,7 +22,9 @@
         <form class="form-signin" action="{{route ('login')}}" method="post">
             @csrf
             <h1><span id="ges">ges</span><span id="patiens">patiens</span></h1>
-            <h2></h2>
+            @isset($error)
+                <small>{{$error}}</small>
+            @endisset
             <div class="form-group">
                 <label for="inputEmail">Email address:</label>
                 <input type="email" name="email" id="email" class="form-control" placeholder="Email address" required

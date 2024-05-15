@@ -13,7 +13,7 @@ h1{
     text-align: center;
 }
 #ges {
-    color: var(--ges-color);
+    color: var(--ges-dark-color);
     font-size: 36px;
     font-family: "Outfit", sans-serif;
     font-optical-sizing: auto;
@@ -35,7 +35,9 @@ label{
 .container {
     max-width: 400px;
     width: 90%;
-    padding: 20px;
+    padding: 0 1.4em;
+    padding-top: 1.2em;
+    padding-bottom: 0.6em;
     background-color: var(--light-text-color);
     border-radius: 0.6em;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -47,5 +49,5 @@ input{
 
 .btn{
     width: fit-content;
-    padding: 0.2em 2em;
+    padding: 0.4em 2em;
 }
