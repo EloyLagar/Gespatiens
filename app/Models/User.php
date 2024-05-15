@@ -36,6 +36,10 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    protected $enums = [
+        'speciality' => SpecialityEnum::class,
+    ];
+
     /**
      * The attributes that should be cast to native types.
      *

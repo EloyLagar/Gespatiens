@@ -26,7 +26,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('employees.create');
+        $enum = ['educator', 'worker', 'medical', 'psychologist', 'admin' ];
+        return view('employees.create', compact('enum'));
     }
 
     /**

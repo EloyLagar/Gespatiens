@@ -1,5 +1,10 @@
 @import url("colors.css");
 
+html,
+body {
+    font-family: "Montserrat", sans-serif;
+}
+
 .content-wrapper {
     background-color: var(--background-color);
 }
@@ -24,69 +29,73 @@
     font-optical-sizing: auto;
 }
 
-.sidebar-dark-primary, .sidebar{
+.sidebar-dark-primary,
+.sidebar {
     background-color: var(--sidebar-color);
 }
 
-[class*=sidebar-dark-] .nav-sidebar>.nav-item.menu-open>.nav-link, [class*=sidebar-dark-] .nav-sidebar>.nav-item:hover>.nav-link, [class*=sidebar-dark-] .nav-sidebar>.nav-item>.nav-link:focus {
+[class*="sidebar-dark-"] .nav-sidebar > .nav-item.menu-open > .nav-link,
+[class*="sidebar-dark-"] .nav-sidebar > .nav-item:hover > .nav-link {
     background-color: var(--hover-sidebar-color);
     transition: 0.3s;
     color: var(--accent-color);
 }
 
 [class*="sidebar-dark-"] .sidebar i,
-[class*="sidebar-dark-"] .nav-header{
+[class*="sidebar-dark-"] .nav-header {
     color: var(--accent-color);
 }
 
-[class*="sidebar-dark-"] .sidebar a{
+[class*="sidebar-dark-"] .sidebar a {
     color: var(--dark-text-color);
 }
 
-[class*=sidebar-dark-] .nav-sidebar>.nav-item>.nav-link.active{
+[class*="sidebar-dark-"] .nav-sidebar > .nav-item > .nav-link.active {
     background-color: var(--accent-color);
 }
 
-
-[class*=sidebar-dark-] .nav-sidebar>.nav-item>.nav-link.active:hover, [class*=sidebar-dark-] .nav-sidebar>.nav-item>.nav-link.active:hover i{
+[class*="sidebar-dark-"] .nav-sidebar > .nav-item > .nav-link.active:hover,
+[class*="sidebar-dark-"] .nav-sidebar > .nav-item > .nav-link.active:hover i {
     background-color: var(--hover-accent-color);
     color: var(--ges-color);
     transition: 0.3s;
 }
 
-[class*=sidebar-dark-] .nav-treeview>.nav-item>.nav-link{
+[class*="sidebar-dark-"] .nav-treeview > .nav-item > .nav-link {
     color: var(--accent-color);
 }
 
-[class*=sidebar-dark-] .nav-treeview>.nav-item>.nav-link:hover ,[class*=sidebar-dark-] .nav-treeview>.nav-item>.nav-link:focus{
+[class*="sidebar-dark-"] .nav-treeview > .nav-item > .nav-link:hover,
+[class*="sidebar-dark-"] .nav-treeview > .nav-item > .nav-link:focus {
     color: var(--ges-color);
     background-color: var(--accent-color);
     transition: 0.3s;
 }
 
-[class*=sidebar-dark-] .nav-treeview>.nav-item>.nav-link:hover i,[class*=sidebar-dark-] .nav-treeview>.nav-item>.nav-link:focus i{
+[class*="sidebar-dark-"] .nav-treeview > .nav-item > .nav-link:hover i,
+[class*="sidebar-dark-"] .nav-treeview > .nav-item > .nav-link:focus i {
     color: var(--ges-color);
     transition: 0.3s;
 }
 
-[class*=sidebar-dark-] .nav-sidebar>.nav-item>.nav-link.active i{
+[class*="sidebar-dark-"] .nav-sidebar > .nav-item > .nav-link.active,
+[class*="sidebar-dark-"] .nav-sidebar > .nav-item > .nav-link.active i {
     color: var(--light-text-color);
 }
 
-.main-header, .navbar-white, .navbar-light, .navbar-light i{
+.main-header,
+.navbar-white,
+.navbar-light,
+.navbar-light i {
     background-color: var(--accent-color);
     color: var(--light-text-color);
 }
 
-h1{
+h1 {
     color: var(--accent-color);
 }
 
-.btn-container{
-    padding: 0.6em 0;
-}
-
-.btn{
+.btn {
     color: var(--light-text-color);
     background-color: var(--accent-color);
     padding: 0.2em 0.8em;
@@ -94,25 +103,59 @@ h1{
     border-radius: 4px !important;
 }
 
-.btn:hover{
+.btn:hover {
     background-color: var(--hover-accent-color);
     color: var(--light-text-color);
 }
 
-.navbar-nav>.user-menu>.dropdown-menu>.user-footer .btn-default {
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-default {
     color: var(--light-text-color);
 }
 
-.navbar-nav>.user-menu>.dropdown-menu>.user-footer .btn-default:hover{
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-default:hover {
     background-color: var(--hover-accent-color);
 }
 
-#span-user-name{
+#span-user-name {
     color: var(--light-text-color) !important;
 }
 
-#span-user-name:hover{
+#span-user-name:hover {
     color: var(--ges-color) !important;
     transition: 0.2s;
 }
 
+[class*="sidebar-dark-"] .nav-treeview > .nav-item > .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: var(--accent-color);
+}
+
+[class*="sidebar-dark-"] .nav-sidebar > .nav-item > .nav-link:focus {
+    color: var(--light-text-color) !important;
+}
+
+[class*="sidebar-dark-"] .nav-treeview > .nav-item > .nav-link.active:hover i {
+    color: var(--accent-color);
+}
+
+.nav-treeview>.nav-item>.nav-link.active:hover{
+    color: var(--accent-color) !important;
+}
+
+.navbar-light .navbar-nav .show>.nav-link {
+    color: var(--light-text-color);
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: var(--light-text-color);
+
+}
+
+[class*=sidebar-dark-] .nav-sidebar>.nav-item.menu-open>.nav-link, [class*=sidebar-dark-] .nav-sidebar>.nav-item:hover>.nav-link, [class*=sidebar-dark-] .nav-sidebar>.nav-item>.nav-link:focus {
+    background-color: var(--hover-sidebar-color);
+    color: #fff;
+}
+
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+    color: var(--ges-color);
+}
