@@ -5,6 +5,9 @@
 @endsection
 @section('content')
     <h1>Avisos</h1>
+    @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+    @endforeach
     <div class="btn-container"><a href="#" class="btn">Crear aviso</a></div>
     <div class="container">
         <div class="notice notice-external">

@@ -36,13 +36,13 @@
 .notice-external {
     border-top-left-radius: 0;
     background-color: var(--light-text-color);
-    color: var(--dark-text-color)
+    color: var(--dark-text-color);
 }
 
 .notice-admin {
     border-top-left-radius: 0;
     background-color: var(--notice-admin-bg-color);
-    color: var(--dark-text-color)
+    color: var(--dark-text-color);
 }
 
 .notice-internal {
@@ -76,8 +76,9 @@
     font-size: 1em;
 }
 
-
 .btn-container {
     padding: 1em 0;
     margin-bottom: 0.2em;
 }
+
+

@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'create' => 'Crear',
-    'edit' => 'Editar',
-    'index' => 'Lista',
-    'show' => 'Mostrar',
-    'destroy' => 'Eliminar',
+    'create' => 'Create',
+    'edit' => 'Edit',
+    'index' => 'List',
+    'show' => 'Show',
+    'destroy' => 'Delete',
 ];

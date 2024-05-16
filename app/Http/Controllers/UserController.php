@@ -37,12 +37,11 @@ class UserController extends Controller
     {
         $user = new User();
         $user->name = $request->get('name');
-        $user->birthday = $request->get('birthday');
+        $user->phone_number = $request->get('phone_number');
         $user->email = $request->get('email');
+        $user->speciality = $request->get('speciality');
         $user->password = Hash::make($request->get('name') . '.Gespatiens');
         $user->save();
-
-        Auth::login($user);
 
         return redirect()->route('users.index');
     }

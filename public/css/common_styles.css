@@ -47,7 +47,8 @@ body {
 }
 
 [class*="sidebar-dark-"] .sidebar a {
-    color: var(--dark-text-color);
+    color: var(--accent-color);
+    font-weight: 500;
 }
 
 [class*="sidebar-dark-"] .nav-sidebar > .nav-item > .nav-link.active {
@@ -67,14 +68,14 @@ body {
 
 [class*="sidebar-dark-"] .nav-treeview > .nav-item > .nav-link:hover,
 [class*="sidebar-dark-"] .nav-treeview > .nav-item > .nav-link:focus {
-    color: var(--ges-color);
-    background-color: var(--accent-color);
+    color: var(--accent-color);
+    background-color: var(--hover-sidebar-color);
     transition: 0.3s;
 }
 
 [class*="sidebar-dark-"] .nav-treeview > .nav-item > .nav-link:hover i,
 [class*="sidebar-dark-"] .nav-treeview > .nav-item > .nav-link:focus i {
-    color: var(--ges-color);
+    color: var(--accent-color);
     transition: 0.3s;
 }
 
@@ -85,8 +86,7 @@ body {
 
 .main-header,
 .navbar-white,
-.navbar-light,
-.navbar-light i {
+.navbar-light{
     background-color: var(--accent-color);
     color: var(--light-text-color);
 }
@@ -96,6 +96,7 @@ h1 {
 }
 
 .btn {
+    text-transform: capitalize;
     color: var(--light-text-color);
     background-color: var(--accent-color);
     padding: 0.2em 0.8em;
@@ -114,15 +115,6 @@ h1 {
 
 .navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-default:hover {
     background-color: var(--hover-accent-color);
-}
-
-#span-user-name {
-    color: var(--light-text-color) !important;
-}
-
-#span-user-name:hover {
-    color: var(--ges-color) !important;
-    transition: 0.2s;
 }
 
 [class*="sidebar-dark-"] .nav-treeview > .nav-item > .nav-link.active {
@@ -158,4 +150,12 @@ h1 {
 
 .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
     color: var(--ges-color);
+}
+
+.text-red {
+    color: var(--ges-color) !important;
+}
+
+label{
+    font-weight: 300;
 }

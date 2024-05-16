@@ -23,11 +23,10 @@ class CreateUserRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:50',
-            'email' => 'required|string|email|max:256|unique:employees,email,' . $this->employee,
-            'password' => 'required|string|min:8|max:256',
-            'speciality' => 'required|string|in:educador social,trabajador social,médico,psicólogo,admin',
+            'email' => 'required|string|email|max:256|unique:users,email,' . $this->user,
+            'speciality' => 'required|string|in:educator,worker,medical,psychologist,admin',
             'signature' => 'nullable',
-            'phone_number' => 'required|integer|unique:employees,phone_number,' . $this->employee,
+            'phone_number' => 'required|integer|unique:users,phone_number,' . $this->user,
         ];
     }
 
@@ -47,10 +46,6 @@ class CreateUserRequest extends FormRequest
             'email.email' => 'El formato del correo electrónico no es válido.',
             'email.max' => 'El correo electrónico no puede exceder los 256 caracteres.',
             'email.unique' => 'El correo electrónico ya está siendo utilizado por otro empleado.',
-            'password.required' => 'La contraseña es obligatoria.',
-            'password.string' => 'La contraseña debe ser una cadena de texto.',
-            'password.min' => 'La contraseña debe tener al menos 8 caracteres.',
-            'password.max' => 'La contraseña no puede exceder los 256 caracteres.',
             'speciality.required' => 'La especialidad es obligatoria.',
             'speciality.string' => 'La especialidad debe ser una cadena de texto.',
             'speciality.in' => 'La especialidad seleccionada no es válida.',
