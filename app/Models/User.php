@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
@@ -50,4 +51,32 @@ class User extends Authenticatable
         'password' => 'hashed',
         'name' => 'string',
     ];
+
+    public function patients()
+    {
+        return $this->belongsToMany(Patient::class, 'tutors')
+                    ->withTimestamps();
+    }
+
+    public function reports()
+    {
+        return $this->belongsToMany(Report::class, 'writes_about')
+                    ->withPivot('user_id')
+                    ->withTimestamps();
+    }
+
+    public function notices()
+    {
+        return $this->hasMany(Notice::class);
+    }
+
+    public function interventions()
+    {
+        return $this->belongsToMany(Patient::class, 'interventions')
+                    ->withPivot('intervention')
+                    ->withTimestamps();
+        //$patient->interventions()->attach($user->id, ['intervention' => $intervencion]);
+    }
+
+
 }

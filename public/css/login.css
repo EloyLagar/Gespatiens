@@ -51,3 +51,8 @@ input{
     width: fit-content;
     padding: 0.4em 2em;
 }
+
+.form-info{
+    width: 100%;
+    text-align: center;
+}

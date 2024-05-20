@@ -159,3 +159,11 @@ h1 {
 label{
     font-weight: 300;
 }
+
+.span-error{
+    font-size: 0.8em;
+}
+
+.btn-container{
+    margin-bottom: 0.6em;
+}

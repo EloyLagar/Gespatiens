@@ -6,4 +6,6 @@ return [
     'index' => 'List',
     'show' => 'Show',
     'destroy' => 'Delete',
+    'repeat' => 'Repeat',
+    'create_own' => 'Create your own'
 ];

@@ -1,7 +1,8 @@
-@component('mail::message')
-# {{__('register.welcome')}}
+@extends('mail::message')
+@section('content')
+<h4>{{__('register.welcome')}}</h4>
 
-{{__('register.link')}}
+<span>{{__('register.link')}}</span>
 
 @component('mail::button', ['url' => route('verify', ['token' => $token])])
 {{__('register.login')}}
@@ -11,5 +12,5 @@
 {{ config('app.name') }}
 <br><br>
 {{__('register.error')}},<br>
-@endcomponent
+@endsection
 

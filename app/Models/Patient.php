@@ -31,4 +31,50 @@ class Patient extends Model
         'number' => 'integer',
         'phone_number' => 'integer',
     ];
+
+    public function activities()
+    {
+        return $this->belongsToMany(Activity::class, 'attendances')
+            ->withPivot('justified', 'reducted', 'assists')
+            ->withTimestamps();
+    }
+
+    public function reports()
+    {
+        return $this->belongsToMany(Report::class, 'writes_about')
+            ->withPivot('user_id')
+            ->withTimestamps();
+    }
+
+    public function tutors()
+    {
+        return $this->belongsToMany(User::class, 'tutors')
+            ->withTimestamps();
+        //$patient->tutors()->attach($user->id); Asignación de tutor
+    }
+
+    public function interventions()
+    {
+        return $this->belongsToMany(User::class, 'interventions')
+            ->withPivot('intervention')
+            ->withTimestamps();
+
+        //$patient->interventions()->attach($user->id, ['intervention' => $intervencion]);
+    }
+
+    public function reductions()
+    {
+        return $this->hasMany(Reduction::class);
+    }
+
+    public function evaluations()
+    {
+        return $this->hasMany(Evaluation::class);
+    }
+
+    public function visitors()
+    {
+        return $this->hasMany(Visitor::class);
+    }
+
 }

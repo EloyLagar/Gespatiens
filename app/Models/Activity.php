@@ -19,4 +19,11 @@ class Activity extends Model
     protected $casts = [
         'state' => 'boolean',
     ];
+
+    public function patients()
+    {
+        return $this->belongsToMany(Patient::class, 'attendances')
+                    ->withPivot('justified', 'reducted', 'assists')
+                    ->withTimestamps();
+    }
 }

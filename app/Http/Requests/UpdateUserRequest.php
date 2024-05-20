@@ -14,6 +14,17 @@ class UpdateUserRequest extends FormRequest
         return true;
     }
 
+    public function rules()
+    {
+        return [
+            'name' => 'sometimes|string|max:50',
+            'speciality' => 'sometimes|string|in:educator,worker,medical,psychologist,admin',
+            'signature' => 'nullable',
+            'phone_number' => 'sometimes|integer|unique:users,phone_number,' . $this->user,
+            'password' => ['sometimes', 'string', 'confirmed', 'min : 8']
+        ];
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -22,15 +33,19 @@ class UpdateUserRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'El nombre es obligatorio.',
-            'name.string' => 'El nombre debe ser una cadena de texto.',
-            'name.max' => 'El nombre no puede exceder los 50 caracteres.',
-            'phone_number.required' => 'El número de teléfono es obligatorio.',
-            'phone_number.integer' => 'El número de teléfono debe ser un número entero.',
-            'phone_number.unique' => 'El número de teléfono ya está siendo utilizado por otro empleado.',
-            'speciality.required' => 'La especialidad es obligatoria.',
-            'speciality.string' => 'La especialidad debe ser una cadena de texto.',
-            'speciality.in' => 'La especialidad seleccionada no es válida.',
+            'name.required' => 'name.required',
+            'name.string' => 'name.string',
+            'name.max' => 'name.max',
+            'phone_number.required' => 'phone_number.required',
+            'phone_number.integer' => 'phone_number.integer',
+            'phone_number.unique' => 'phone_number.unique',
+            'speciality.required' => 'speciality.required',
+            'speciality.string' => 'speciality.string',
+            'speciality.in' => 'speciality.in',
+            'password.required' => 'password.required',
+            'password.string' => 'password.string',
+            'password.confirmed' => 'password.confirmed',
+            'password.min' => 'password.min',
         ];
     }
 

@@ -35,6 +35,7 @@ Route::get('/verify', [LoginController::class, 'verify'])->name('verify');
 
 //Auth routes-----------------------------------------------------------------
 Route::middleware(['auth'])->group(function (){
+    Route::post('/users/create-password', [LoginController::class, 'updatePassword'])->name('updatePassword');
     Route::resource('users', UserController::class)->only('edit');
 });
 

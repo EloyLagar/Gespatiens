@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests\SignupRequest;
 use Illuminate\Support\Facades\Hash;
@@ -53,31 +54,37 @@ class LoginController extends Controller
     }
 
     public function verify(Request $request)
-{
-    $token = $request->query('token');
+    {
+        $token = $request->query('token');
 
-    if (!$token) {
-        return redirect('/')->withErrors(['message' => 'Token no proporcionado.']);
+        if (!$token) {
+            return redirect('/')->withErrors(['message' => 'Token no proporcionado.']);
+        }
+
+        $user = User::where('token', $token)->first();
+
+        if (!$user) {
+            return redirect('/')->withErrors(['message' => 'Token inválido.']);
+        }
+
+        $credentials = [
+            'email' => $user->email,
+            'password' => $user->name . '.Gespatiens',
+        ];
+
+        if (Auth::guard('web')->attempt($credentials)) {
+            $request->session()->regenerate();
+            return view('auth.createPassword');
+        } else {
+            return redirect('/')->withErrors(['message' => 'Credenciales inválidas.']);
+        }
     }
 
-    $user = User::where('token', $token)->first();
-
-    if (!$user) {
-        return redirect('/')->withErrors(['message' => 'Token inválido.']);
-    }
-
-    $credentials = [
-        'email' => $user->email,
-        'password' => $user->name . '.Gespatiens',
-    ];
-
-    if (Auth::guard('web')->attempt($credentials)) {
-        $request->session()->regenerate();
+    public function updatePassword(UpdateUserRequest $request)
+    {
+        $user = Auth::user();
+        $user->password = Hash::make($request->password);
+        $user->save();
         return redirect()->route('home');
-    } else {
-        dd($user->password);
-        return redirect('/')->withErrors(['message' => 'Credenciales inválidas.']);
     }
-}
-
 }
