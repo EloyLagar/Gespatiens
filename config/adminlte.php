@@ -314,6 +314,7 @@ return [
         [
             'text' => 'Administración',
             'url' => '#',
+            'can' => 'admin',
             'icon' => 'fas fa-fw fa-user-shield',
             'submenu' => [
                 [
