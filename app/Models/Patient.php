@@ -77,4 +77,10 @@ class Patient extends Model
         return $this->hasMany(Visitor::class);
     }
 
+    public function getFullNameAttribute()
+    {
+        return $this->getAttribute('name') . ' ' . $this->getAttribute('surname');
+    }
+
+
 }

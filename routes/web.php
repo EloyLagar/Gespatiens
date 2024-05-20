@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Reports\MidStayReportController;
 use App\Http\Controllers\LoginController;
@@ -36,11 +37,15 @@ Route::get('/verify', [LoginController::class, 'verify'])->name('verify');
 //Auth routes-----------------------------------------------------------------
 Route::middleware(['auth'])->group(function (){
     Route::post('/users/create-password', [LoginController::class, 'updatePassword'])->name('updatePassword');
-    Route::resource('users', UserController::class)->only('edit');
+    Route::resource('users', UserController::class)->only('edit', 'update');
+    Route::get('/residents', [PatientController::class, 'indexResidents'])->name('indexResidents');
+    Route::resource('patients', PatientController::class)->only('index');
 });
 
 Route::middleware(['admin'])->group(function (){
     Route::resource('users', UserController::class)->only('create', 'store', 'index');
+    Route::resource('patients', PatientController::class)->only('create', 'store', 'edit', 'update');
+
 });
 
 Route::get('/generatePDF', function () {

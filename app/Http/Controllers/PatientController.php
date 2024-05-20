@@ -12,7 +12,19 @@ class PatientController extends Controller
      */
     public function index()
     {
-        //
+        $patients = Patient::paginate(5);
+        return view('patients.index', compact('patients'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function indexResidents()
+    {
+        $residents = Patient::whereNotNull('number')
+            ->orderBy('number')
+            ->get();
+        return view('patients.residents', compact('residents'));
     }
 
     /**
@@ -44,7 +56,7 @@ class PatientController extends Controller
      */
     public function edit(Patient $patient)
     {
-        //
+        return view('patients.edit', compact('patient'));
     }
 
     /**

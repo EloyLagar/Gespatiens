@@ -30,8 +30,8 @@ return [
     |
     */
 
-    'use_ico_only' => true,
-    'use_full_favicon' => false,
+    'use_ico_only' => false,
+    'use_full_favicon' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -331,12 +331,12 @@ return [
             'submenu' => [
                 [
                     'text' => 'Residentes',
-                    'url' => '#',
+                    'url' => '/residents',
                     'icon' => 'fas fa-fw fa-bed',
                 ],
                 [
                     'text' => 'Listado',
-                    'url' => '#',
+                    'url' => '/patients',
                     'icon' => 'fas fa-fw fa-clipboard-list',
                 ],
             ]

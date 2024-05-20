@@ -1,12 +1,12 @@
 @extends('layouts.app')
 @section('css')
     @parent
-        <link rel="stylesheet" href="{{ asset('css/notices.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/notices.css') }}">
 @endsection
 @section('content')
     <h1>Avisos</h1>
     @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+        <li>{{ $error }}</li>
     @endforeach
     <div class="btn-container"><a href="#" class="btn">Crear aviso</a></div>
     <div class="container">

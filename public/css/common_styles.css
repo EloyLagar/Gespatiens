@@ -86,7 +86,7 @@ body {
 
 .main-header,
 .navbar-white,
-.navbar-light{
+.navbar-light {
     background-color: var(--accent-color);
     color: var(--light-text-color);
 }
@@ -130,25 +130,27 @@ h1 {
     color: var(--accent-color);
 }
 
-.nav-treeview>.nav-item>.nav-link.active:hover{
+.nav-treeview > .nav-item > .nav-link.active:hover {
     color: var(--accent-color) !important;
 }
 
-.navbar-light .navbar-nav .show>.nav-link {
+.navbar-light .navbar-nav .show > .nav-link {
     color: var(--light-text-color);
 }
 
 .navbar-light .navbar-nav .nav-link {
     color: var(--light-text-color);
-
 }
 
-[class*=sidebar-dark-] .nav-sidebar>.nav-item.menu-open>.nav-link, [class*=sidebar-dark-] .nav-sidebar>.nav-item:hover>.nav-link, [class*=sidebar-dark-] .nav-sidebar>.nav-item>.nav-link:focus {
+[class*="sidebar-dark-"] .nav-sidebar > .nav-item.menu-open > .nav-link,
+[class*="sidebar-dark-"] .nav-sidebar > .nav-item:hover > .nav-link,
+[class*="sidebar-dark-"] .nav-sidebar > .nav-item > .nav-link:focus {
     background-color: var(--hover-sidebar-color);
     color: #fff;
 }
 
-.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+.navbar-light .navbar-nav .nav-link:focus,
+.navbar-light .navbar-nav .nav-link:hover {
     color: var(--ges-color);
 }
 
@@ -156,14 +158,83 @@ h1 {
     color: var(--ges-color) !important;
 }
 
-label{
+label {
     font-weight: 300;
 }
 
-.span-error{
+.span-error {
     font-size: 0.8em;
 }
 
-.btn-container{
+.container{
+    padding-top: 0.8em;
+}
+
+.btn-container {
     margin-bottom: 0.6em;
+}
+
+.card-header {
+    background-color: var(--accent-color);
+    color: var(--light-text-color);
+}
+
+.form-container {
+    max-height: 70vh;
+    overflow-y: auto;
+    padding-right: 1em;
+}
+
+.form-container::-webkit-scrollbar {
+    width: 4.8px;
+    height: 0.5em;
+}
+
+.form-container::-webkit-scrollbar-track {
+    background-color: var(--sidebar-color);
+    border-radius: 1em;
+}
+
+.form-container::-webkit-scrollbar-thumb {
+    background-color: var(--accent-color);
+    border-radius: 1em;
+}
+
+
+.model-info{
+    max-height: 80vh;
+    overflow-y: auto;
+    font-size: 0.8em;
+    font-weight: 600;
+}
+
+.model-info::-webkit-scrollbar {
+    font-size: 1em;
+    width: 4.8px;
+    height: 0.5em;
+}
+
+.model-info::-webkit-scrollbar-track {
+    background-color: var(--sidebar-color);
+    border-radius: 1em;
+}
+
+.model-info::-webkit-scrollbar-thumb {
+    background-color: var(--accent-color);
+    border-radius: 1em;
+}
+
+.patient-administration>.btn{
+    padding: 0.2em 0.4em;
+    font-size: inherit;
+    margin-right: 1em;
+}
+
+.goBackBtn{
+    margin-bottom: 1em;
+}
+
+.goBackBtn>.btn{
+    font-size: 0.8em;
+    margin-right: 1em;
 }
