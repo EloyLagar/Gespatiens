@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateUserRequest;
 use Illuminate\Support\Facades\Hash;
@@ -26,7 +27,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $enum = ['educator', 'worker', 'medical', 'psychologist', 'admin' ];
+        $enum = ['educator', 'worker', 'medical', 'psychologist', 'admin'];
         return view('employees.create', compact('enum'));
     }
 
@@ -60,15 +61,48 @@ class UserController extends Controller
     public function edit(string $id)
     {
         $user = User::findOrFail($id);
-        return view('employees.edit', ['employee' => $user]);
+        $enum = ['educator', 'worker', 'medical', 'psychologist', 'admin'];
+        return view('employees.edit', ['employee' => $user, 'enum' => $enum]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateUserRequest $request, string $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        //Se comprueba si esta lleno para cambiarlo en todos
+        if ($request->filled('name')) {
+            $user->name = $request->name;
+        }
+
+        if ($request->filled('speciality')) {
+            $user->speciality = $request->speciality;
+        }
+
+        if ($request->filled('phone_number')) {
+            $user->phone_number = $request->phone_number;
+        }
+
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
+
+        //Para la firma se comprueba primero si existe la imágen
+        if ($request->hasFile('signature')) {
+
+            //getClientOriginalExtension sirve para saber si la extension es PNG o JPEG por ejemplo. /signatures/ es la carpeta de public donde se guardará y se buscara con {{asset()
+            $signatureName = '/signatures/' . $user->id . '.' . $request->signature->getClientOriginalExtension();
+            $user->signature = $signatureName;
+            //Guardado
+            $signature = $request->file('signature');
+            $signature->storeAs('public/signatures', $signatureName); //Aquó se almacena en el storage, se necesita hacer link con php artisan storage:link
+        }
+
+        $user->update();
+
+        return redirect()->route('users.edit', $user->id)->with('success', 'User updated successfully');
     }
 
     /**
@@ -79,7 +113,8 @@ class UserController extends Controller
         //
     }
 
-    public function redirecToEdit(){
+    public function redirecToEdit()
+    {
         $user_id = Auth::user()->id;
         return redirect()->route('users.edit', ['user' => $user_id]);
     }

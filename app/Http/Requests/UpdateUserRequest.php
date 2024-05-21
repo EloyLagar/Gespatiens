@@ -19,9 +19,9 @@ class UpdateUserRequest extends FormRequest
         return [
             'name' => 'sometimes|string|max:50',
             'speciality' => 'sometimes|string|in:educator,worker,medical,psychologist,admin',
-            'signature' => 'nullable',
+            'signature' => 'nullable|image|mimes:jpeg,png,jpg',
             'phone_number' => 'sometimes|integer|unique:users,phone_number,' . $this->user,
-            'password' => ['sometimes', 'string', 'confirmed', 'min : 8']
+            'password' => 'sometimes|string|confirmed|min:8|nullable'
         ];
     }
 
