@@ -47,7 +47,15 @@
                         {{ __('crud.edit') }} {{ __('crud.info') }}
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('patients.update', $patient->id) }}" method="POST">
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                        <form action="{{ route('patients.update', $patient) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="form-container">

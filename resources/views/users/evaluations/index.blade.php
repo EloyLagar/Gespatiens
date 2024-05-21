@@ -50,7 +50,7 @@
                     $cont++;
                 @endphp
                 <tr>
-                    <td>{{ $resident }}</td>
+                    <td>{{ $resident->full_name }}</td>
                     @foreach ($periodo as $fecha)
                         @if ($fecha->format('w') == 0)
     </div>

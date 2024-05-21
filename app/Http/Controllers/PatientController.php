@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdatePatientRequest;
 use App\Models\Patient;
 use Illuminate\Http\Request;
 
@@ -62,9 +63,52 @@ class PatientController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Patient $patient)
+    public function update(UpdatePatientRequest $request, Patient $patient)
     {
-        //
+        if ($request->filled('dni')) {
+            $patient->dni = $request->dni;
+        }
+
+        if ($request->filled('visit_code')) {
+            $patient->visit_code = $request->visit_code;
+        }
+
+        if ($request->filled('birth_date')) {
+            $patient->birth_date = $request->birth_date;
+        }
+
+        if ($request->filled('address')) {
+            $patient->address = $request->address;
+        }
+
+        if ($request->filled('belongings')) {
+            $patient->belongings = $request->belongings;
+        }
+
+        if ($request->filled('phone_number')) {
+            $patient->phone_number = $request->phone_number;
+        }
+
+        if ($request->filled('extra_info')) {
+            $patient->extra_info = $request->extra_info;
+        }
+
+        if ($request->filled('abuse_substances')) {
+            $patient->abuse_substances = $request->abuse_substances;
+        }
+
+        if ($request->filled('name')) {
+            $patient->name = $request->name;
+        }
+
+        if ($request->filled('surname')) {
+            $patient->surname = $request->surname;
+        }
+
+        $patient->update();
+
+        return redirect()->route('patients.edit', $patient)->with('success', 'User updated successfully');
+
     }
 
     /**

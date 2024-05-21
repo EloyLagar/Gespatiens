@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\EvaluationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Reports\MidStayReportController;
 use App\Http\Controllers\LoginController;
@@ -36,6 +37,7 @@ Route::get('/verify', [LoginController::class, 'verify'])->name('verify');
 
 //Auth routes-----------------------------------------------------------------
 Route::middleware(['auth'])->group(function (){
+    Route::get('/evaluations', [EvaluationController::class, 'index'])->name('evaluations');
     Route::post('/users/create-password', [LoginController::class, 'updatePassword'])->name('updatePassword');
     Route::get('/residents', [PatientController::class, 'indexResidents'])->name('indexResidents');
     Route::resource('patients', PatientController::class)->only('index');

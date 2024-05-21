@@ -51,6 +51,7 @@
                                     <input type="password" class="form-control" id="password_confirmation"
                                         name="password_confirmation" value="">
                                 </div>
+                                @if(Auth::user()->speciality == 'admin')
                                 <div class="form-group">
                                     <label for="speciality">{{ __('user.speciality.label') }}</label>
                                     <select name="speciality" id="specialty" class="form-control">
@@ -62,6 +63,7 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                @endif
                                 <div class="form-group">
                                     <label for="signature">{{ __('user.signature') }}</label>
                                     <input type="file" class="form-control-file" id="signature" name="signature">
