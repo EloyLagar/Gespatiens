@@ -8,8 +8,8 @@ return [
     'email' => 'Email',
     'phone' => 'Phone number',
     'signature' => 'Signature',
-    'label' => 'Speciality',
     'speciality' => [
+        'label' => 'Speciality',
         'educator' => 'Social Educator',
         'worker' => 'Social Worker',
         'medical' => 'Medical staff',

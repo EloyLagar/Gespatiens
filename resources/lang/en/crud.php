@@ -7,5 +7,6 @@ return [
     'show' => 'Show',
     'destroy' => 'Delete',
     'repeat' => 'Repeat',
-    'create_own' => 'Create your own'
+    'create_own' => 'Create your own',
+    'update' => 'Update',
 ];

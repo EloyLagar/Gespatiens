@@ -59,7 +59,8 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('employees.edit', ['employee' => $user]);
     }
 
     /**
@@ -76,5 +77,10 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function redirecToEdit(){
+        $user_id = Auth::user()->id;
+        return redirect()->route('users.edit', ['user' => $user_id]);
     }
 }

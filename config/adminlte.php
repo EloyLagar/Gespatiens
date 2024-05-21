@@ -356,6 +356,11 @@ return [
             'url' => '#',
             'icon' => 'fas fa-book fa-fw ',
         ],
+        [
+            'text' => 'Perfil',
+            'url' => '/profile',
+            'icon' => 'fas fa-user fa-fw ',
+        ],
     ],
 
     /*

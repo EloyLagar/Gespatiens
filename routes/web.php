@@ -37,16 +37,17 @@ Route::get('/verify', [LoginController::class, 'verify'])->name('verify');
 //Auth routes-----------------------------------------------------------------
 Route::middleware(['auth'])->group(function (){
     Route::post('/users/create-password', [LoginController::class, 'updatePassword'])->name('updatePassword');
-    Route::resource('users', UserController::class)->only('edit', 'update');
     Route::get('/residents', [PatientController::class, 'indexResidents'])->name('indexResidents');
     Route::resource('patients', PatientController::class)->only('index');
+    Route::get('/profile', [UserController::class, 'redirecToEdit'])->name('redirecToEdit');
+    Route::resource('users', UserController::class)->only('edit', 'update');
 });
 
 Route::middleware(['admin'])->group(function (){
     Route::resource('users', UserController::class)->only('create', 'store', 'index');
     Route::resource('patients', PatientController::class)->only('create', 'store', 'edit', 'update');
-
 });
+
 
 Route::get('/generatePDF', function () {
     return view('reports.mid_stay_report');
