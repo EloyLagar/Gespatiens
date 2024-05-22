@@ -59,15 +59,6 @@ h1, h2, h3, h4, h5, h6, p {
     margin-bottom: 1em;
 }
 
-.goBackBtn{
-    margin-bottom: 1em;
-}
-
-.goBackBtn>.btn, .form-group>.btn{
-    font-size: 0.8em;
-    margin-right: 1em;
-}
-
 .visitors{
     font-size: 0.6rem;
     font-weight: 500;
@@ -104,6 +95,7 @@ label{
 }
 
 .signature-img{
+    min-height: 50px;
     max-height: 100px;
     width: auto;
     max-width: 400px;
@@ -111,4 +103,18 @@ label{
     border-radius: 1em;
     padding: 0.4em;
     background-color: var(--light-text-color);
+    margin-bottom: 2em;
+}
+
+.flags-form{
+    display: flex;
+    flex-direction: row;
+}
+
+.flag{
+    float: right;
+    margin-right: 0;
+    margin-left: auto;
+    max-height: 2em;
+    max-width: 4em;
 }

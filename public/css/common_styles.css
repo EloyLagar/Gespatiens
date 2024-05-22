@@ -174,3 +174,15 @@ label {
     margin-bottom: 0.6em;
 }
 
+.goBackBtn{
+    margin-bottom: 1em;
+}
+
+.goBackBtn>.btn, .form-group>.btn{
+    font-size: 0.8em;
+    margin-right: 1em;
+}
+
+h1, h2, h3, h4, h5, h6{
+    color: var(--dark-text-color);
+}

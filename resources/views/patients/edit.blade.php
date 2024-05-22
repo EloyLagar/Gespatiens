@@ -9,7 +9,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <a href="" class="goBackBtn btn">{{ __('crud.goBack') }}</a>
+                <a href="{{route('patients.index')}}" class="goBackBtn btn">{{ __('crud.goBack') }}</a>
                 <h6>
                     @if ($patient->number != null)
                         {{ $patient->number . ' - ' }}

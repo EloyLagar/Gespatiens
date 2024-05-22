@@ -348,7 +348,7 @@ return [
         ],
         [
             'text' => 'Evaluaciones',
-            'url' => '/evaluations',
+            'route' => 'evaluations.indexForm',
             'icon' => 'fas fa-chart-line fa-fw ',
         ],
         [

@@ -13,4 +13,5 @@ return [
     'info' => 'Information',
     'select' => 'Select',
     'change' => 'Change',
+    'submit' => 'Submit',
 ];

@@ -13,28 +13,43 @@ class EvaluationController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $residents = Patient::select('id', 'name', 'number')
-            ->whereNotNull('number')
-            ->get();
+        // dd($request->all());
+        $lesson_type = $request->lesson_type;
+        $request->validate([
+            'mes' => 'required|integer|min:1|max:12',
+            'ano' => 'required|integer|min:1900|max:' . date('Y'),
+        ]);
 
-        //Prueba con fechas
-        $ano = 2024;
-        $mes = 5;
+        $ano = $request->ano;
+        $mes = $request->mes;
 
         // Crear el primer día del mes y el último día del mes
         $primerDiaMes = Carbon::create($ano, $mes, 1);
         $ultimoDiaMes = Carbon::create($ano, $mes, 1)->endOfMonth();
-        // dd($primerDiaMes, $ultimoDiaMes);
 
-        // Crear el período de tiempo
+
+        //Se obitenen los residentes que en caso de no ser nula la fecha de salida han estado residiendo durante ese mes
+        $residents = Patient::where(function ($query) use ($primerDiaMes, $ultimoDiaMes) {
+            $query->whereNull('exit_date')
+                ->orWhere('exit_date', '>=', $primerDiaMes)
+                ->orWhere('exit_date', '<=', $ultimoDiaMes);
+        })
+            ->with([
+                'evaluations' => function ($query) use ($primerDiaMes, $ultimoDiaMes) { //Se recogen los pacientes con las evaluaciones de ese mes.
+                    $query->whereBetween('date', [$primerDiaMes, $ultimoDiaMes]);
+                }
+            ])
+            ->select('id', 'name', 'number')
+            ->orderBy('number', 'asc')
+            ->get();
+
+        // Crear el período con las dos fechas
         $periodo = CarbonPeriod::create($primerDiaMes, $ultimoDiaMes);
 
-        return view('users.evaluations.index', compact('residents', 'periodo', 'mes', 'ano'));
-
+        return view('patients.evaluations.index', compact('residents', 'periodo', 'mes', 'ano', 'lesson_type'));
     }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -82,4 +97,22 @@ class EvaluationController extends Controller
     {
         //
     }
+
+    public function indexForm()
+    {
+        $enum = ['therapeutic_groups', 'life_skills', 'health_education', 'carrer_help', 'occupational_workshop', 'video_forum', 'maintenance'];
+        return view('patients.evaluations.indexForm', compact('enum'));
+    }
+
+    public function save_evaluation(Request $request)
+{
+    $evaluation = new Evaluation();
+    $evaluation->patient_id = $request->patient_id;
+    $evaluation->mark = $request->mark;
+    $evaluation->date = $request->date;
+    $evaluation->save();
+
+    return response()->json(['status' => 'success']);
+}
+
 }
