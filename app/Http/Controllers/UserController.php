@@ -72,7 +72,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        //Se comprueba si esta lleno para cambiarlo en todos
+        //Comprueba si esta lleno para cambiarlo
         if ($request->filled('name')) {
             $user->name = $request->name;
         }

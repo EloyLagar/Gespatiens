@@ -75,7 +75,7 @@ class User extends Authenticatable
         return $this->belongsToMany(Patient::class, 'interventions')
                     ->withPivot('intervention')
                     ->withTimestamps();
-        //$patient->interventions()->attach($user->id, ['intervention' => $intervencion]);
+        //$patient->interventions()->attach($user->id, ['intervention' => $intervencion]); Para relacionar al paciente con la intervencion
     }
 
 

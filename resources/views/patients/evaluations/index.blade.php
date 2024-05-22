@@ -63,11 +63,10 @@
                                 {{ $resident->name }}</td>
                             @foreach ($periodo as $fecha)
                                 @php
-                                    $nota = 0; // Inicializamos la nota como 0 por defecto
-                                    // Buscamos si hay una evaluación para este residente en esta fecha
-                                    $evaluation = $resident->evaluations->firstWhere('date', $fecha->format('Y-m-d'));
+                                    $nota = 0;
+                                    $evaluation = $resident->evaluations->firstWhere('date', $fecha->format('Y-m-d'));//Formato de la bdd
                                     if ($evaluation) {
-                                        $nota = $evaluation->nota; // Si hay una evaluación, obtenemos su nota
+                                        $nota = $evaluation->mark;
                                     }
                                 @endphp
                                 @if ($fecha->format('w') == 0)
