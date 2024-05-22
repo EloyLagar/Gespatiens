@@ -77,7 +77,7 @@ class UserController extends Controller
             $user->name = $request->name;
         }
 
-        if ($request->filled('speciality')) {
+        if ($request->filled('speciality') && $request->speciality!=='none') {
             $user->speciality = $request->speciality;
         }
 

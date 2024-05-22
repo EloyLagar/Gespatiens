@@ -12,5 +12,4 @@ return [
     'goBack' => 'Go back',
     'info' => 'Information',
     'select' => 'Select',
-    'change' => 'Change',
 ];
