@@ -22,29 +22,31 @@
                             alt="{{ __('user.signature') }}">
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-header">
-                        {{ __('crud.change') }} {{ __('user.language') }}
-                    </div>
-                    <div class="card-body">
-                        <div class="form-container">
-                            <form action="{{ route('language.change') }}" method="POST">
-                                @csrf
-                                <div class="flags-form form-group">
-                                    <select name="locale" class="form-control col-9" onchange="this.form.submit()">
-                                        <option value="en" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>
-                                            English
-                                        </option>
-                                        <option value="es" {{ app()->getLocale() == 'es' ? 'selected' : '' }}>
-                                            Español
-                                        </option>
-                                    </select>
-                                    <img src="{{asset('/img/flag-' . app()->getLocale() . '.png')}}" class="flag col-2" alt="">
-                                </div>
-                            </form>
+                @if($employee->id === Auth::user()->id)
+                    <div class="card">
+                        <div class="card-header">
+                            {{ __('crud.change') }} {{ __('user.language') }}
+                        </div>
+                        <div class="card-body">
+                            <div class="form-container">
+                                <form action="{{ route('language.change') }}" method="POST">
+                                    @csrf
+                                    <div class="flags-form form-group">
+                                        <select name="locale" class="form-control col-9" onchange="this.form.submit()">
+                                            <option value="en" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>
+                                                English
+                                            </option>
+                                            <option value="es" {{ app()->getLocale() == 'es' ? 'selected' : '' }}>
+                                                Español
+                                            </option>
+                                        </select>
+                                        <img src="{{asset('/img/flag-' . app()->getLocale() . '.png')}}" class="flag col-2" alt="">
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endif
             </div>
             <div class="col-md-6">
                 <div class="card">
