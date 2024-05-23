@@ -7,6 +7,7 @@
 
 @section('content')
     <div class="container">
+        <a href="{{route('patients.index')}}" class="goBackBtn btn">{{ __('crud.goBack') }}</a>
         <div class="card">
             <div class="card-header">
                 {{ __('crud.create') }} {{ __('crud.info') }}
@@ -54,14 +55,14 @@
                             <input type="text" class="form-control" id="belongings" name="belongings" required>
                         </div>
                         <div class="form-group">
-                            <label for="extra_info">{{ __('patients.extra_info') }}</label>
-                            <textarea class="form-control" id="extra_info" name="extra_info" rows="3" required></textarea>
-                        </div>
-                        <div class="form-group">
                             <label for="abuse_substances">{{ __('patients.abuse_substances') }}</label>
                             <input type="text" class="form-control" id="abuse_substances" name="abuse_substances">
                         </div>
-                        <button type="submit" class="btn btn-primary">{{ __('crud.create') }}</button>
+                        <div class="form-group">
+                            <label for="extra_info">{{ __('patients.extra_info') }}</label>
+                            <textarea class="form-control" id="extra_info" name="extra_info" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn float-right">{{ __('crud.create') }}</button>
                     </div>
                 </form>
             </div>

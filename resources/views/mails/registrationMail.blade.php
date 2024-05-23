@@ -1,16 +1,13 @@
-@extends('mail::message')
-@section('content')
-<h4>{{__('register.welcome')}}</h4>
+@component('mail::message')
+# Comunidad Terapéutica Los Vientos
 
-<span>{{__('register.link')}}</span>
+Buenas, ahora eres empleado de nuestra comunidad, por favor cree su propia contraseña para poder acceder.
 
 @component('mail::button', ['url' => route('verify', ['token' => $token])])
-{{__('register.login')}}
+Ir a Crear contraseña
 @endcomponent
 
-{{__('register.thanks')}},<br>
-{{ config('app.name') }}
-<br><br>
-{{__('register.error')}},<br>
-@endsection
+<p style="font-size: 0.7rem">Si no esperabas este mail, ponte en contacto con nosotros lo antes posible,</p>
+El equipo de{{ config('app.name') }}
 
+@endcomponent

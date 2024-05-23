@@ -104,15 +104,16 @@ class EvaluationController extends Controller
         return view('patients.evaluations.indexForm', compact('enum'));
     }
 
-    public function save_evaluation(Request $request)
-{
-    $evaluation = new Evaluation();
-    $evaluation->patient_id = $request->patient_id;
-    $evaluation->mark = $request->mark;
-    $evaluation->date = $request->date;
-    $evaluation->save();
 
-    return response()->json(['status' => 'success']);
-}
+    public function save_evaluation(Request $request)
+    {
+        $evaluation = new Evaluation();
+        $evaluation->patient_id = $request->patient_id;
+        $evaluation->mark = $request->mark;
+        $evaluation->date = $request->date;
+        $evaluation->save();
+
+        return response()->json(['status' => 'success']);
+    }
 
 }

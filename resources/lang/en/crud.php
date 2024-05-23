@@ -14,4 +14,5 @@ return [
     'select' => 'Select',
     'change' => 'Change',
     'submit' => 'Submit',
+    'none' => 'No',
 ];

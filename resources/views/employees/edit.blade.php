@@ -17,8 +17,10 @@
                     <p>{{ __('user.phone') }}: {{ $employee->phone_number }}</p>
                     <p>{{ __('user.speciality.label') }}: {{ $employee->speciality }}</p>
                     <p>{{ __('user.signature') }}:</p>
-                    <img class="signature-img" src="{{ asset('/storage/signatures/' . $employee->signature) }}"
-                        alt="{{ __('user.signature') }}">
+                    <div class="signature-img d-flex justify-content-center align-items-center">
+                        <img src="{{ asset('/storage/signatures/' . $employee->signature) }}"
+                            alt="{{ __('user.signature') }}">
+                    </div>
                 </div>
                 <div class="card">
                     <div class="card-header">
@@ -29,7 +31,7 @@
                             <form action="{{ route('language.change') }}" method="POST">
                                 @csrf
                                 <div class="flags-form form-group">
-                                    <select name="locale" class="form-control col-10" onchange="this.form.submit()">
+                                    <select name="locale" class="form-control col-9" onchange="this.form.submit()">
                                         <option value="en" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>
                                             English
                                         </option>

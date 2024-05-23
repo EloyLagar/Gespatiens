@@ -22,7 +22,7 @@ class Notice extends Model
 
     protected $dates = ['date'];
 
-    public function user_id()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

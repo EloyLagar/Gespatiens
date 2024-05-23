@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\Notice;
 
 class HomeController extends Controller
 {
@@ -24,7 +25,8 @@ class HomeController extends Controller
     public function index()
     {
         if(Auth::check()){
-            return view('home');
+            $notices = Notice::orderBy('created_at', 'asc')->get();
+            return view('home', compact('notices'));
         }else{
             return redirect()->route('loginForm');
         }

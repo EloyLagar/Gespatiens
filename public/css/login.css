@@ -6,6 +6,8 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
 }
 
 h1{
@@ -21,8 +23,9 @@ h1{
 
 label{
     text-align: left;
-    font-size: 0.8em;
+    font-family: "Montserrat", sans-serif;
     color: var(--dark-text-color);
+    font-weight: 500;
 }
 
 #patiens {
@@ -43,21 +46,36 @@ label{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
+.form-container{
+    padding-top: 0.2em;
+    font-size: 0.8rem;
+}
+
+.form-group{
+    font-size: 0.8rem;
+}
+
 input{
     margin-bottom: 0.6em;
 }
 
 .btn{
     width: fit-content;
-    padding: 0.4em 2em;
+    padding: 0.4rem 2em;
+    font-size: 0.8rem !important;
 }
 
 .form-info{
     width: 100%;
     text-align: center;
+    font-size: 1.1rem;
 }
 
 .form-group textarea{
     height: 200px;
     resize: none;
+}
+
+.user-name{
+    text-transform: capitalize;
 }

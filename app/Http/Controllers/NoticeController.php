@@ -20,7 +20,7 @@ class NoticeController extends Controller
      */
     public function create()
     {
-        //
+        return view('notices.create');
     }
 
     /**
@@ -28,7 +28,12 @@ class NoticeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $notice = new Notice();
+        $notice->user_id = $request->user_id;
+        $notice->text = $request->text;
+        $notice->save();
+
+        return redirect()->route('home');
     }
 
     /**

@@ -257,7 +257,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => '/',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -343,13 +343,13 @@ return [
         ],
         [
             'text' => 'Informes',
-            'url' => '#',
+            'url' => '/generatePDF',
             'icon' => 'fas fa-fw fa-file',
         ],
         [
             'text' => 'Evaluaciones',
-            'route' => 'evaluations.indexForm',
-            'icon' => 'fas fa-chart-line fa-fw ',
+            'url'  => '/evaluations/form',
+            'icon' => 'fas fa-chart-line fa-fw',
         ],
         [
             'text' => 'Diario',
