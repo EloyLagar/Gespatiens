@@ -216,13 +216,13 @@ return [
 
     'sidebar_mini' => 'lg',
     'sidebar_collapse' => false,
-    'sidebar_collapse_auto_size' => false,
+    'sidebar_collapse_auto_size' => true,
     'sidebar_collapse_remember' => false,
-    'sidebar_collapse_remember_no_transition' => true,
-    'sidebar_scrollbar_theme' => 'os-theme-light',
+    'sidebar_collapse_remember_no_transition' => false,
+    'sidebar_scrollbar_theme' => 'os-theme-dark',
     'sidebar_scrollbar_auto_hide' => 'l',
-    'sidebar_nav_accordion' => true,
-    'sidebar_nav_animation_speed' => 300,
+    'sidebar_nav_accordion' => false,
+    'sidebar_nav_animation_speed' => 230,
 
     /*
     |--------------------------------------------------------------------------
@@ -307,57 +307,57 @@ return [
 
         // Sidebar items:
         [
-            'text' => 'Inicio',
+            'text' => 'home',
             'url' => '/',
             'icon' => 'fas fa-home fa-fw',
         ],
         [
-            'text' => 'Administración',
+            'text' => 'admin',
             'url' => '#',
             'can' => 'admin',
             'icon' => 'fas fa-fw fa-user-shield',
             'submenu' => [
                 [
-                    'text' => 'Empleados',
+                    'text' => 'employees',
                     'url' => '/users',
                     'icon' => 'fas fa-fw fa-user-tie',
                 ],
             ],
         ],
         [
-            'text' => 'Usuarios',
+            'text' => 'users',
             'url' => '#',
             'icon' => 'fas fa-fw fa-users',
             'submenu' => [
                 [
-                    'text' => 'Residentes',
+                    'text' => 'residents',
                     'url' => '/residents',
                     'icon' => 'fas fa-fw fa-bed',
                 ],
                 [
-                    'text' => 'Listado',
+                    'text' => 'all_patients',
                     'url' => '/patients',
                     'icon' => 'fas fa-fw fa-clipboard-list',
                 ],
             ]
         ],
         [
-            'text' => 'Informes',
+            'text' => 'reports',
             'url' => '/generatePDF',
             'icon' => 'fas fa-fw fa-file',
         ],
         [
-            'text' => 'Evaluaciones',
+            'text' => 'evaluations',
             'url'  => '/evaluations/form',
             'icon' => 'fas fa-chart-line fa-fw',
         ],
         [
-            'text' => 'Diario',
+            'text' => 'diary',
             'url' => '#',
             'icon' => 'fas fa-book fa-fw ',
         ],
         [
-            'text' => 'Perfil',
+            'text' => 'profile',
             'url' => '/profile',
             'icon' => 'fas fa-user fa-fw ',
         ],
