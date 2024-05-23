@@ -25,7 +25,7 @@ class HomeController extends Controller
     public function index()
     {
         if(Auth::check()){
-            $notices = Notice::orderBy('created_at', 'asc')->get();
+            $notices = Notice::orderBy('created_at', 'desc')->get();
             return view('home', compact('notices'));
         }else{
             return redirect()->route('loginForm');
