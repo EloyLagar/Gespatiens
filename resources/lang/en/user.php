@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'singular' => 'User',
-    'plural' => 'Users',
+    'singular' => 'Employee',
+    'plural' => 'Employees',
     'name' => 'Name',
     'password' => 'Password',
     'email' => 'Email',

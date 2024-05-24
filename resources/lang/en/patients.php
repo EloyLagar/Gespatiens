@@ -1,5 +1,7 @@
 <?php
 return [
+    'singular' => 'Patient',
+    'plural' => 'Patients',
     'dni' => 'DNI',
     'visit_code' => 'Visit Code',
     'number' => 'Number',

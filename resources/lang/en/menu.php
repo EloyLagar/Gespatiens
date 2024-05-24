@@ -11,4 +11,5 @@ return [
     'evaluations' => 'Evaluations',
     'diary' => 'Diary',
     'profile' => 'Profile',
+    'activities' => 'Activities',
 ];
