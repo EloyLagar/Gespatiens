@@ -1,7 +1,7 @@
 <?php
 return [
-    'singular' => 'Patient',
-    'plural' => 'Patients',
+    'singular' => 'User',
+    'plural' => 'Users',
     'dni' => 'DNI',
     'visit_code' => 'Visit Code',
     'number' => 'Number',
@@ -20,5 +20,8 @@ return [
     'authorized_visitors' => 'Authorised persons',
     'noAuthPersons' => 'No authorised persons',
     'full_name' => 'Full name',
-
+    'resident' => [
+        'singular' => 'Resident',
+        'plural' => 'Residents',
+    ]
 ];

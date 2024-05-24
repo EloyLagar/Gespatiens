@@ -106,8 +106,9 @@ class EvaluationController extends Controller
     }
 
 
-    public function save_evaluation(Request $request)
+    public function saveEvaluation(Request $request)
     {
+        // return response()->json(['data' => $request->all()]);
         $evaluation = new Evaluation();
         $evaluation->patient_id = $request->patient_id;
         $evaluation->mark = $request->mark;

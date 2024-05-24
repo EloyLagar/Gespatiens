@@ -49,7 +49,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('patients', PatientController::class)->only('index');
     //Evaluaciones
     Route::get('/evaluations/form', 'App\Http\Controllers\EvaluationController@indexForm')->name('evaluations.indexForm');
-    Route::post('/evaluations/save', 'App\Http\Controllers\EvaluationController@saveEvaluation')->name('evaluations.save_evaluation');
+    Route::post('/evaluations/save_mark', 'App\Http\Controllers\EvaluationController@saveEvaluation')->name('evaluations.save_evaluation');
     Route::post('/evaluations', 'App\Http\Controllers\EvaluationController@index')->name('evaluations.index');
     //Como no entra el Auth::user() en adminlte.php para ir al perfil pues se hace así ->
     Route::get('/profile', [UserController::class, 'redirecToEdit'])->name('redirecToEdit');

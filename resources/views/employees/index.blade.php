@@ -4,12 +4,12 @@
 @endsection
 @section('content')
     <div class="wrapper  d-flex flex-column">
-        <h1>Employees</h1>
-        <div class="btn-container"><a href="{{ route('users.create') }}" class="btn">Create employee</a></div>
-        <div class="container col-md-8">
+        <h1 class="mt-3 mb-3">Employees</h1>
+        <div class="btn-container mb-3"><a href="{{ route('users.create') }}" class="btn py-2">Create employee</a></div>
+        <div class="container">
             <div class="row">
                 @forelse ($users as $user)
-                    <div class="col-md-12">
+                    <div class="col-md-4">
                         <a href="{{ route('users.edit', $user) }}" class="text-decoration-none">
                             <div class="card employee-card">
                                 <div class="card-body d-flex justify-content-between align-items-center">
@@ -25,6 +25,6 @@
                     </div>
                 @endforelse
             </div>
-            {{ $users->links() }}
+            <div class="">{{ $users->links() }}</div>
         </div>
     @endsection

@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     <div class="wrapper d-flex flex-column">
-        <h1>Users</h1>
+        <h1  class="mt-3 mb-3">{{__('patients.plural')}}</h1>
         @if (Auth::user()->speciality === 'admin')
             <div class="btn-container"><a href="{{ route('patients.create') }}" class="btn">Create Patient</a></div>
         @endif

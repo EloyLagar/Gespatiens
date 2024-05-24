@@ -11,4 +11,5 @@ return [
     'evaluations' => 'Evaluaciones',
     'diary' => 'Diario',
     'profile' => 'Perfil',
+    'activities' => 'Actividades',
 ];
