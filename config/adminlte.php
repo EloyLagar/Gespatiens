@@ -154,8 +154,8 @@ return [
 
     'layout_topnav' => null,
     'layout_boxed' => null,
-    'layout_fixed_sidebar' => null,
-    'layout_fixed_navbar' => null,
+    'layout_fixed_sidebar' => true,
+    'layout_fixed_navbar' => true,
     'layout_fixed_footer' => null,
     'layout_dark_mode' => null,
 
@@ -214,7 +214,7 @@ return [
     |
     */
 
-    'sidebar_mini' => 'lg',
+    'sidebar_mini' => false,
     'sidebar_collapse' => false,
     'sidebar_collapse_auto_size' => false,
     'sidebar_collapse_remember' => false,
@@ -339,22 +339,27 @@ return [
                     'url' => '/patients',
                     'icon' => 'fas fa-fw fa-clipboard-list',
                 ],
+                [
+                    'text' => 'evaluations',
+                    'url' => '/evaluations/form',
+                    'icon' => 'fas fa-chart-line fa-fw',
+                ],
+                [
+                    'text' => 'reports',
+                    'url' => '/generatePDF',
+                    'icon' => 'fas fa-fw fa-file',
+                ],
             ]
-        ],
-        [
-            'text' => 'reports',
-            'url' => '/generatePDF',
-            'icon' => 'fas fa-fw fa-file',
-        ],
-        [
-            'text' => 'evaluations',
-            'url'  => '/evaluations/form',
-            'icon' => 'fas fa-chart-line fa-fw',
         ],
         [
             'text' => 'diary',
             'url' => '#',
             'icon' => 'fas fa-book fa-fw ',
+        ],
+        [
+            'text' => 'activities',
+            'url' => '#',
+            'icon' => 'fas fa-walking fa-fw ',
         ],
         [
             'text' => 'profile',
