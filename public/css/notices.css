@@ -68,8 +68,8 @@
     flex-direction: row;
     width: 100%;
     box-sizing: border-box;
-    font-size: 0.9em;
-    margin-bottom: 4;
+    font-size: 0.8rem;
+    margin-bottom: .4rem;
 }
 
 .notice-author {

@@ -6,16 +6,31 @@ body {
     background-color: var(--background-color);
 }
 
+
+/* Contenedores principales */
 .content-wrapper {
     background-color: var(--background-color);
 }
 
+.wrapper{
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.container{
+    width: 100%;
+    padding-top: 0.8em;
+}
+
+/* Sidebar y navbar */
 .brand-link {
     text-align: center;
     /* margin: 0; */
     font-size: 1.63rem;
     padding: .5rem .5rem;
-    background-color: var(--hover-accent-color);
+    background-color: var(--hover-accent-color) !important;
 }
 
 #ges {
@@ -90,6 +105,11 @@ body {
     color: var(--light-text-color);
 }
 
+.fa-walking{
+    font-size: 1.1rem;
+    padding-right: -0.rem;
+}
+
 .main-header,
 .navbar-white,
 .navbar-light {
@@ -97,10 +117,19 @@ body {
     color: var(--light-text-color);
 }
 
+/* Títulos */
+
+h1, h2, h3, h4, h5, h6{
+    color: var(--dark-text-color);
+}
+
+
 h1 {
     color: var(--accent-color);
 }
 
+
+/* Botones */
 .btn {
     text-transform: capitalize;
     color: var(--light-text-color);
@@ -173,16 +202,18 @@ label {
     font-size: 0.8em;
 }
 
-.container{
-    padding-top: 0.8em;
-}
-
 .btn-container {
     margin-bottom: 0.6em;
 }
 
 .goBackBtn{
-    margin-bottom: 1em;
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    text-align: center;
+    font-size: 1.5rem !important;
+    padding: 0 0.8em;
+    margin-bottom: 0.4em;
 }
 
 .goBackBtn>.btn, .form-group>.btn{
@@ -190,6 +221,3 @@ label {
     margin-right: 1em;
 }
 
-h1, h2, h3, h4, h5, h6{
-    color: var(--dark-text-color);
-}

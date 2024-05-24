@@ -8,9 +8,7 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .form-container {
-    max-height: 72vh;
-    overflow-y: auto;
-    padding-right: 1em;
+    max-height: 75vh;
 }
 
 .form-container::-webkit-scrollbar {
@@ -65,7 +63,7 @@ h1, h2, h3, h4, h5, h6{
 }
 
 label, input{
-    font-size: 0.8rem;
+    font-size: 0.83rem;
 }
 
 .form-group{
@@ -85,7 +83,7 @@ input, select, option{
 }
 
 .form-group textarea{
-    height: 6em;
+    height: 2.7em;
     resize: none;
     color: var(--dark-text-color);
 }
@@ -125,4 +123,12 @@ label{
     margin-left: auto;
     max-height: 2em;
     max-width: 4em;
+}
+
+.heavy-span{
+    font-weight: 700;
+}
+
+.info-span{
+    font-weight: 500;
 }
