@@ -3,11 +3,12 @@
 @section('css')
 @parent
 <link rel="stylesheet" href="{{ asset('css/edit.css') }}">
+<link rel="stylesheet" href="{{ asset('css/notices.css') }}">
 @endsection
 
 @section('content')
 <div class="container">
-    <a href="{{route('home')}}" class="goBackBtn btn">{{ __('crud.goBack') }}</a>
+    <a href="{{route('home')}}" class="goBackBtn btn"><i class='bx bx-left-arrow-alt'></i></a>
     <div class="card">
         <div class="card-header">
             {{ __('crud.create') }} {{ __('notices.singular') }}
@@ -17,7 +18,7 @@
                 @csrf
                 <div class="form-container">
                     <div class="form-group">
-                        <label for="text">{{ __('notices.text') }}</label>
+                        <label for="text">{{ __('notices.text') }}:</label>
                         <textarea row="4" class="form-control" id="text" name="text" required></textarea>
                     </div>
                     <input type="hidden" name="user_id" value="{{Auth::user()->id}}">

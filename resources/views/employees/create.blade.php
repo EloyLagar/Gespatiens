@@ -62,7 +62,6 @@
                         </div>
 
                         <button class="btn float-right " type="submit">{{ __('create') }}</button>
-
                     </form>
                 </div>
             </div>

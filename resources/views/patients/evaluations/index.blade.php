@@ -1,16 +1,13 @@
 @extends('layouts.app')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/common_styles.css') }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    @parent
     <link rel="stylesheet" href="{{ asset('css/table.css') }}">
 @endsection
 
 @section('content')
     <div class="container">
-        <a href="{{ route('evaluations.indexForm') }}" class="goBackBtn btn">{{ __('crud.goBack') }}</a>
+        <a href="{{ route('evaluations.indexForm') }}" class="goBackBtn btn"><i class='bx bx-left-arrow-alt'></i></a>
         <h6>Evaluaciones</h6>
         <div class="table-container">
             <table class="table marks-table">
@@ -36,10 +33,10 @@
                         <td>Usuario</td>
                         @foreach ($periodo as $fecha)
                             @if ($fecha->format('w') == 0)
-                                <th>{{ $fecha->format('D') }}</th>
+                                <th>{{ __('days.' . $fecha->format('w')) }}</th>
                                 <th></th>
                             @else
-                                <th>{{ $fecha->format('D') }}</th>
+                                <th>{{ __('days.' . $fecha->format('w')) }}</th>
                             @endif
                         @endforeach
                     </tr>

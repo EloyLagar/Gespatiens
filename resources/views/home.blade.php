@@ -21,7 +21,7 @@
                                     <span>({{ __('notices.you') }})</span>
                                 </div>
                                 <div class="notice-date float-right">
-                                    {{ $notice->created_at }}
+                                    {{ $notice->created_at->format('H:i') }}
                                 </div>
                             </div>
                             <div class="notice-text">
@@ -36,7 +36,7 @@
                                         <span>{{ $notice->user->name }}</span>
                                     </div>
                                     <div class="notice-date float-right">
-                                        {{ $notice->created_at }}
+                                        {{ $notice->created_at->format('H:i') }}
                                     </div>
                                 </div>
                                 <div class="notice-text">
@@ -50,7 +50,7 @@
                                         <span>{{ $notice->user->name }}</span>
                                     </div>
                                     <div class="notice-date float-right">
-                                        {{ $notice->created_at }}
+                                        {{ $notice->created_at->format('H:i') }}
                                     </div>
                                 </div>
                                 <div class="notice-text">

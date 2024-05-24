@@ -15,15 +15,16 @@ class EvaluationController extends Controller
      */
     public function index(Request $request)
     {
-        // dd($request->all());
-        $lesson_type = $request->lesson_type;
-        $request->validate([
-            'mes' => 'required|integer|min:1|max:12',
-            'ano' => 'required|integer|min:1900|max:' . date('Y'),
+        $data = $request->validate([
+            'mes_ano' => 'required|date_format:Y-m',
+            'lesson_type' => 'required|string',
         ]);
 
-        $ano = $request->ano;
-        $mes = $request->mes;
+        // Extraer el tipo de lección
+        $lesson_type = $request->lesson_type;
+
+        // Extraer el año y el mes del campo mes_ano
+        list($ano, $mes) = explode('-', $data['mes_ano']);
 
         // Crear el primer día del mes y el último día del mes
         $primerDiaMes = Carbon::create($ano, $mes, 1);

@@ -11,7 +11,7 @@
             <a href="{{ route('patients.index') }}" class="goBackBtn btn"><span class="material-symbols-outlined">
                     arrow_back
                 </span></a>
-            <div class="card">
+            <div class="card mb-2">
                 <div class="card-header">
                     {{ __('crud.create') }} {{ __('patients.singular') }}
                 </div>

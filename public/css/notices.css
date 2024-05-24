@@ -1,17 +1,18 @@
 @import url("colors.css");
 
 .container {
-    height: 70vh;
+    height: 70vh; /* Optional: Adjust as needed */
+    overflow-y: auto;
 }
 
 .notices-container {
     width: 100%;
-    height: 100%;
+    height: fit-content;
+    max-height: 100%;
     box-sizing: border-box;
     display: flex;
     flex-direction: column-reverse;
     padding: 1.5em;
-    padding-right: 1em;
     overflow-y: auto;
 }
 
@@ -27,7 +28,6 @@
 .notices-container::-webkit-scrollbar {
     width: 0.5em;
     height: 10px !important;
-
 }
 
 .notice {
@@ -40,19 +40,23 @@
     padding: 0.2em 0.4em;
     border: 1px solid #000000;
     border-radius: 0.8em;
-    margin-bottom: 1em;
+    margin-top: 1em;
 }
 
 .notice-external {
     border-top-left-radius: 0;
     background-color: var(--light-text-color);
     color: var(--dark-text-color);
+    margin-right: 2em;
+    max-width: 85%;
 }
 
 .notice-admin {
     border-top-left-radius: 0;
     background-color: var(--notice-admin-bg-color);
     color: var(--dark-text-color);
+    margin-right: 2em;
+    max-width: 85%;
 }
 
 .notice-internal {
@@ -61,6 +65,7 @@
     margin-left: auto;
     border-top-right-radius: 0;
     background-color: var(--notice-internal-bg-color);
+    max-width: 85%;
 }
 
 .notice-info {
@@ -83,9 +88,48 @@
 
 .notice-text {
     font-size: 1em;
+    word-wrap:break-word; /* Permite dividir palabras largas */
+    overflow-wrap: break-word; /* Permite dividir palabras largas */
+    word-break: normal;
 }
 
 .btn-container {
     padding: 1em 0;
     margin-bottom: 0.2em;
 }
+
+.form-group > textarea {
+    height: 80px;
+}
+
+@media only screen and (max-width: 768px) {
+    .container{
+        height: 80vh;
+        max-height: fit-content;
+    }
+
+    .notices-container {
+        display: flex;
+        flex-direction: column-reverse;
+        max-height: 100%;
+        height: fit-content;
+        width: 100%;
+        padding: 0;
+        padding-right: 0.4em;
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    /* .notice-external, .notice-admin, .notice-internal {
+        max-width: 100%;
+
+    } */
+}
+
+@media only screen and (max-width: 480px) {
+    .container{
+        /* height: 80vh; */
+        max-width: fit-content;
+    }
+}
+

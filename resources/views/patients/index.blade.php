@@ -5,7 +5,9 @@
 @section('content')
     <div class="wrapper d-flex flex-column">
         <h1>Users</h1>
-        <div class="btn-container"><a href="{{ route('patients.create') }}" class="btn">Create Patient</a></div>
+        @if (Auth::user()->speciality === 'admin')
+            <div class="btn-container"><a href="{{ route('patients.create') }}" class="btn">Create Patient</a></div>
+        @endif
         <div class="container">
             <div class="row">
                 @forelse ($patients as $patient)
