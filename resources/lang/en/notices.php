@@ -7,4 +7,5 @@ return [
     'center' => 'Therapeutic center',
     'text' => 'Text',
     'you' => 'You',
+    'today' => 'Today',
 ];
