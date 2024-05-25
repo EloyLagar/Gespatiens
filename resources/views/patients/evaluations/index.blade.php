@@ -43,13 +43,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @php
-                            $cont = 0;
-                        @endphp
                         @foreach ($residents as $resident)
-                            @php
-                                $cont++;
-                            @endphp
                             <tr>
                                 <td
                                     class="td-name
@@ -61,22 +55,17 @@
                                     {{ $resident->name }}</td>
                                 @foreach ($periodo as $fecha)
                                     @php
-                                        $nota = 0;
-                                        $evaluation = $resident->evaluations->firstWhere(
-                                            'date',
-                                            $fecha->format('Y-m-d'),
-                                        ); //Formato de la bdd
-                                        if ($evaluation) {
-                                            $nota = $evaluation->mark;
-                                        }
+                                        $residentId = $resident->id; // Obtener el ID del residente actual
+                                        $evaluationsByDate = $evaluationsMap[$residentId]; // Obtener el mapa de evaluaciones del residente
+                                        $mark = $evaluationsByDate[$fecha->format('Y-m-d H:i:s')] ?? ' '; // Obtener la nota para la fecha actual
                                     @endphp
                                     @if ($fecha->format('w') == 0)
-                                        <td title="Pulse para modificar la nota" data-id="{{ $cont }}"
-                                            data-fecha="{{ $fecha }}" class="clickable">
+                                        <td title="Pulse para modificar la nota" data-id="{{ $resident->id }}"
+                                            data-fecha="{{ $mark }}" class="clickable">
                                             <div>
-                                                <input type="text" data-id="{{ $cont }}"
+                                                <input type="text" data-id="{{ $resident->id }}"
                                                     data-fecha="{{ $fecha }}" class="notas cell-input"
-                                                    value="{{ $nota }}">
+                                                    value="{{ $mark }}">
                                             </div>
                                         </td>
                                         <td></td>
@@ -84,12 +73,12 @@
                                             $mediasCount++;
                                         @endphp
                                     @else
-                                        <td title="Pulse para modificar la nota" data-id="{{ $cont }}"
+                                        <td title="Pulse para modificar la nota" data-id="{{ $resident->id }}"
                                             data-fecha="{{ $fecha }}" class="clickable">
                                             <div>
-                                                <input type="text" data-id="{{ $cont }}"
+                                                <input type="text" data-id="{{ $resident->id }}"
                                                     data-fecha="{{ $fecha }}" class="notas cell-input"
-                                                    value="{{ $nota }}">
+                                                    value="{{ $mark }}">
                                             </div>
                                         </td>
                                     @endif

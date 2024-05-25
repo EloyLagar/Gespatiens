@@ -27,29 +27,42 @@ class EvaluationController extends Controller
         list($ano, $mes) = explode('-', $data['mes_ano']);
 
         // Crear el primer día del mes y el último día del mes
-        $primerDiaMes = Carbon::create($ano, $mes, 1);
-        $ultimoDiaMes = Carbon::create($ano, $mes, 1)->endOfMonth();
-
+        $primerDiaMes = Carbon::create($ano, $mes, 1)->startOfDay();
+        $ultimoDiaMes = Carbon::create($ano, $mes, 1)->endOfMonth()->endOfDay();
 
         //Se obitenen los residentes que en caso de no ser nula la fecha de salida han estado residiendo durante ese mes
         $residents = Patient::where(function ($query) use ($primerDiaMes, $ultimoDiaMes) {
-            $query->whereNull('exit_date')
-                ->orWhere('exit_date', '>=', $primerDiaMes)
-                ->orWhere('exit_date', '<=', $ultimoDiaMes);
+            $query->where(function ($q) use ($primerDiaMes, $ultimoDiaMes) {
+                $q->whereNull('exit_date')
+                    ->orWhereBetween('exit_date', [$primerDiaMes, $ultimoDiaMes]);
+            })->where(function ($q) use ($primerDiaMes, $ultimoDiaMes) {
+                $q->where('entry_date', '<=', $ultimoDiaMes);
+            });
         })
             ->with([
-                'evaluations' => function ($query) use ($primerDiaMes, $ultimoDiaMes) { //Se recogen los pacientes con las evaluaciones de ese mes.
-                    $query->whereBetween('date', [$primerDiaMes, $ultimoDiaMes]);
+                'evaluations' => function ($query) use ($primerDiaMes, $ultimoDiaMes, $lesson_type) {
+                    $query->whereBetween('date', [$primerDiaMes, $ultimoDiaMes])
+                        ->where('lesson_type', $lesson_type)
+                        ->select('patient_id', 'mark', 'date');
                 }
             ])
-            ->select('id', 'name', 'number')
+            ->select('id', 'name', 'number', 'entry_date', 'exit_date')
             ->orderBy('number', 'asc')
             ->get();
 
+        // Mapear las evaluaciones por fecha para cada residente
+        $evaluationsMap = [];
+        foreach ($residents as $resident) {
+            $evaluationsByDate = $resident->evaluations->groupBy('date')->mapWithKeys(function ($evaluations, $date) {
+                return [$date => $evaluations->first()->mark];
+            });
+            $evaluationsMap[$resident->id] = $evaluationsByDate;
+        }
+
         // Crear el período con las dos fechas
         $periodo = CarbonPeriod::create($primerDiaMes, $ultimoDiaMes);
-
-        return view('patients.evaluations.index', compact('residents', 'periodo', 'mes', 'ano', 'lesson_type'));
+        // dd($residents->toArray());
+        return view('patients.evaluations.index', compact('residents', 'periodo', 'mes', 'ano', 'lesson_type', 'evaluationsMap'));
     }
     /**
      * Show the form for creating a new resource.
@@ -108,14 +121,25 @@ class EvaluationController extends Controller
 
     public function saveEvaluation(Request $request)
     {
-        // return response()->json(['data' => $request->all()]);
-        $evaluation = new Evaluation();
-        $evaluation->patient_id = $request->patient_id;
-        $evaluation->mark = $request->mark;
-        $evaluation->date = $request->date;
-        $evaluation->save();
+        //En caso de exista se recoge una evaluacion
+        $evaluation = Evaluation::where('patient_id', $request->patient_id)
+            ->where('date', $request->date)
+            ->first();
+
+        //Si existe esta evaluación se modifica la nota, sino, se crea una nueva evaluacion
+        if ($evaluation) {
+            $evaluation->mark = $request->mark;
+            $evaluation->save();
+        } else {
+            $evaluation = new Evaluation();
+            $evaluation->patient_id = $request->patient_id;
+            $evaluation->mark = $request->mark;
+            $evaluation->date = $request->date;
+            $evaluation->save();
+        }
 
         return response()->json(['status' => 'success']);
     }
+
 
 }
