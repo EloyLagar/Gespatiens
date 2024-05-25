@@ -9,7 +9,7 @@
     <div class="wrapper d-flex flex-column">
         <div class="container">
             <a href="{{ route('evaluations.indexForm') }}" class="goBackBtn btn"><i class='bx bx-left-arrow-alt'></i></a>
-            <h1 class="mt-3 mb-3">{{ __('evaluations.plural') }} {{ $lesson_type }}</h1>
+            <h1 class="mt-3 mb-3">{{ $lesson_type }}</h1>
             <div class="table-container">
                 <table class="table marks-table">
                     <thead class="thead-dark">
@@ -29,6 +29,7 @@
                                     <th>{{ $fecha->format('j') }}</th>
                                 @endif
                             @endforeach
+                            <th>MT</th>
                         </tr>
                         <tr>
                             <td>{{ __('patients.singular') }}</td>
@@ -40,10 +41,15 @@
                                     <th>{{ __('days.' . $fecha->format('w')) }}</th>
                                 @endif
                             @endforeach
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($residents as $resident)
+                            @php
+                                $contClases = 0;
+                                $weeklyAverage = 0;
+                            @endphp
                             <tr>
                                 <td
                                     class="td-name
@@ -55,34 +61,67 @@
                                     {{ $resident->name }}</td>
                                 @foreach ($periodo as $fecha)
                                     @php
-                                        $residentId = $resident->id; // Obtener el ID del residente actual
-                                        $evaluationsByDate = $evaluationsMap[$residentId]; // Obtener el mapa de evaluaciones del residente
-                                        $mark = $evaluationsByDate[$fecha->format('Y-m-d H:i:s')] ?? ' '; // Obtener la nota para la fecha actual
+                                        $formattedFecha = date('Y-m-d', strtotime($fecha));
                                     @endphp
-                                    @if ($fecha->format('w') == 0)
-                                        <td title="Pulse para modificar la nota" data-id="{{ $resident->id }}"
-                                            data-fecha="{{ $mark }}" class="clickable">
-                                            <div>
-                                                <input type="text" data-id="{{ $resident->id }}"
-                                                    data-fecha="{{ $fecha }}" class="notas cell-input"
-                                                    value="{{ $mark }}">
-                                            </div>
-                                        </td>
-                                        <td></td>
+                                    @if (
+                                        ($formattedFecha >= $resident->entry_date && $formattedFecha <= $resident->exit_date) ||
+                                            $resident->exit_date == null)
                                         @php
-                                            $mediasCount++;
+                                            //Del mapa de evaluaciones se saca referenciando al paciente y despues la fecha
+                                            $mark = $evaluationsMap[$resident->id][$fecha->format('Y-m-d H:i:s')] ?? '';
+                                            if ($mark !== '') {
+                                                $contClases++;
+                                                $weeklyAverage += $mark;
+                                                //Para sacar las medias
+                                            }
                                         @endphp
+                                        @if ($fecha->format('w') == 0)
+                                            <td title="Pulse para modificar la nota" data-id="{{ $resident->id }}"
+                                                data-fecha="{{ $mark }}" class="clickable">
+                                                <div>
+                                                    <input type="text" data-id="{{ $resident->id }}"
+                                                        data-fecha="{{ $fecha }}" class="notas cell-input"
+                                                        value="{{ $mark }}">
+                                                </div>
+                                            </td>
+                                            <td  class="average">
+                                                @if ($contClases !== 0)
+                                                    {{ number_format($weeklyAverage / $contClases, 2) }}
+                                                @endif
+                                            </td>
+                                            @php
+                                                $weeklyAverage = 0;
+                                                $mediasCount++;
+                                            @endphp
+                                        @else
+                                            <td title="Pulse para modificar la nota" data-id="{{ $resident->id }}"
+                                                data-fecha="{{ $fecha }}" class="clickable">
+                                                <div>
+                                                    <input type="text" data-id="{{ $resident->id }}"
+                                                        data-fecha="{{ $fecha }}" class="notas cell-input"
+                                                        value="{{ $mark }}">
+                                                </div>
+                                            </td>
+                                        @endif
                                     @else
-                                        <td title="Pulse para modificar la nota" data-id="{{ $resident->id }}"
-                                            data-fecha="{{ $fecha }}" class="clickable">
-                                            <div>
-                                                <input type="text" data-id="{{ $resident->id }}"
-                                                    data-fecha="{{ $fecha }}" class="notas cell-input"
-                                                    value="{{ $mark }}">
-                                            </div>
-                                        </td>
+                                        @if ($fecha->format('w') == 0)
+                                            <td></td>
+                                            <td class="average">
+                                                @if ($contClases !== 0)
+                                                    {{ number_format($weeklyAverage / $contClases, 2) }}
+                                                @endif
+                                            </td>
+                                            @php
+                                                $weeklyAverage = 0;
+                                                $mediasCount++;
+                                            @endphp
+                                        @else
+                                            <td></td>
+                                        @endif
                                     @endif
+                                    {{-- s{{dd($resident->entry_date, $resident->exit_date, $fecha, $formattedFecha, $formattedFecha > $resident->entry_date,  $formattedFecha < $resident->exit_date)}} --}}
                                 @endforeach
+                                <td class="average"></td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -97,6 +136,7 @@
         $(document).ready(function() {
             $('.notas').change(function() {
                 let valor = $(this).val();
+                valor = valor.replace(/,/g, '.'); //Se cambia por un punto para que no de problemas
                 if (valor >= 0 && valor <= 10) {
                     valor = parseFloat(valor);
                     let id = $(this).data('id');

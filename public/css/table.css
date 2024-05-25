@@ -9,6 +9,12 @@
     box-sizing: border-box;
 }
 
+h1 {
+    text-align: center;
+    max-width: 80%;
+    overflow-wrap: break-word;
+}
+
 td,
 th {
     text-align: center;
@@ -17,6 +23,7 @@ th {
     font-size: 0.8em;
     padding: 0.5em 0.8em !important;
     margin: 0 !important;
+    min-width: 12px;
 }
 
 td {
@@ -25,11 +32,14 @@ td {
     height: 1.1em;
     width: 1.5em;
     text-align: center;
-    background-color: var(--hover-sidebar-color);
+    background-color: var(--sidebar-color);
+    font-weight: 600;
 }
 
 .clickable {
-    background-color: var(--sidebar-color);
+    background-color: var(--ligth-text-color);
+    cursor: pointer;
+    position: relative;
 }
 
 .table-container td:first-child {
@@ -50,11 +60,11 @@ td {
 
 .table .thead-dark th {
     background-color: var(--accent-color);
-    border: 1px solid black;
+    border: 1px solid var(--dark-text-color);
 }
 
 input {
-    background-color: rgba(0, 0, 0, 0);
+    background-color: var(--light-text-color);
     border: none;
     width: 100%;
     height: 100%;
@@ -62,6 +72,7 @@ input {
     margin: 0;
     text-align: center;
     outline: none;
+    font-weight: 500;
 }
 
 input::selection {
@@ -70,16 +81,16 @@ input::selection {
 }
 
 input:focus {
-    background-color: var(--hover-sidebar-color);
+    background-color: var(--background-color);
 }
 
 .clickable:focus-within {
-    background-color: var(--hover-sidebar-color);
+    background-color: var(--background-color);
 }
 
 .table-container::-webkit-scrollbar-track {
     background-color: var(--sidebar-color);
-    border-radius: 1em;;
+    border-radius: 1em;
 }
 
 .table-container::-webkit-scrollbar-thumb {
@@ -92,7 +103,7 @@ input:focus {
     height: 0.5em;
 }
 
-.td-name{
+.td-name {
     width: 100%;
     margin: 0;
     box-sizing: border-box;
@@ -101,11 +112,11 @@ input:focus {
     vertical-align: middle;
 }
 
-.no-resident{
-    background-color: var(--hover-sidebar-color) !important;
+.no-resident {
+    background-color: var(--sidebar-color) !important;
 }
 
-.cell-input{
+.cell-input {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
@@ -117,7 +128,7 @@ input:focus {
     border: none;
 }
 
-.clickable {
-    cursor: pointer;
-    position: relative;
+.average{
+    background-color: var(--accent-color);
+    color: var(--light-text-color);
 }

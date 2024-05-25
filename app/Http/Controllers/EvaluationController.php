@@ -46,13 +46,14 @@ class EvaluationController extends Controller
                         ->select('patient_id', 'mark', 'date');
                 }
             ])
-            ->select('id', 'name', 'number', 'entry_date', 'exit_date')
+            ->select('id', 'name', 'number', 'exit_date', 'entry_date')
             ->orderBy('number', 'asc')
             ->get();
 
         // Mapear las evaluaciones por fecha para cada residente
         $evaluationsMap = [];
         foreach ($residents as $resident) {
+            //Formato (Y-m-d H:i:s)
             $evaluationsByDate = $resident->evaluations->groupBy('date')->mapWithKeys(function ($evaluations, $date) {
                 return [$date => $evaluations->first()->mark];
             });
