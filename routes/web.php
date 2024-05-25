@@ -55,7 +55,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [UserController::class, 'redirecToEdit'])->name('redirecToEdit');
     Route::resource('users', UserController::class)->only('edit', 'update');
     //Avisos
-    Route::resource('notices', NoticeController::class)->only('edit', 'update', 'create', 'store');
+    Route::resource('notices', NoticeController::class)->only('edit', 'update', 'create', 'store', 'destroy');
 });
 
 Route::middleware(['admin'])->group(function () {

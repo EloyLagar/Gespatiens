@@ -49,7 +49,7 @@ class NoticeController extends Controller
      */
     public function edit(Notice $notice)
     {
-        //
+        return view('notices.edit', compact('notice'));
     }
 
     /**
@@ -57,7 +57,9 @@ class NoticeController extends Controller
      */
     public function update(Request $request, Notice $notice)
     {
-        //
+        $notice->text = $request->text;
+        $notice->update();
+        return redirect()->route('home');
     }
 
     /**
@@ -65,6 +67,7 @@ class NoticeController extends Controller
      */
     public function destroy(Notice $notice)
     {
-        //
+        $notice->delete();
+        return redirect()->route('home');
     }
 }

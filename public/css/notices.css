@@ -38,7 +38,6 @@
     max-width: 100%;
     height: fit-content;
     padding: 0.4em 0.6em;
-    /* border: 1px solid #000000; */
     border-radius: 0.8em;
     margin-top: 1em;
     font-weight: 400;
@@ -114,6 +113,14 @@
         max-height: fit-content;
     }
 
+    .card-body{
+        height: fit-content;
+    }
+
+    .form-group > textarea {
+        height:fit-content;
+    }
+
     .notices-container {
         display: flex;
         flex-direction: column-reverse;
@@ -137,6 +144,8 @@
     font-size: 1.2rem;
     margin-top: 0.3rem;
     color: var(--dark-text-color);
+    transition: 0.2s;
+
 }
 
 .date-container{
@@ -163,5 +172,16 @@
         height: 70vh;
         max-width: fit-content;
     }
+
+    .form-group > textarea {
+        min-height: 80px;
+        height:fit-content;
+        max-height: 70vh;
+    }
+
+    .card-body{
+        height: fit-content;
+    }
+
 }
 

@@ -13,21 +13,17 @@
         <div class="col-12 col-md-8 col-lg-6">
             <div class="card">
                 <div class="card-header">
-                    {{ __('crud.create') }} {{ __('notices.singular') }}
+                    {{ __('crud.update') }} {{ __('notices.singular') }}
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('notices.store') }}" method="POST">
+                    <form action="{{ route('notices.update', $notice) }}" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="text">{{ __('notices.text') }}:</label>
-                            <textarea class="form-control" id="text" name="text" required></textarea>
+                            <textarea rows="4" class="form-control" id="text" name="text" required>{{ old('text', $notice->text) }}</textarea>
                         </div>
-                        @error('text')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-
                         <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                        <button type="submit" class="btn mt-2 float-right">{{ __('crud.create') }}</button>
+                        <button type="submit" class="btn mt-2 float-right">{{ __('crud.update') }}</button>
                     </form>
                 </div>
             </div>

@@ -46,8 +46,15 @@
                                         data-bs-toggle="dropdown" aria-expanded="false">
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <li><a class="dropdown-item" href="#">{{ __('crud.edit') }}</a></li>
-                                        <li><a class="dropdown-item" href="#">{{ __('crud.destroy') }}</a>
+                                        <li><a class="dropdown-item"
+                                                href="{{ route('notices.edit', $notice) }}">{{ __('crud.edit') }}</a></li>
+                                        <li>
+                                            <form action="{{ route('notices.destroy', $notice) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                    class="dropdown-item">{{ __('crud.destroy') }}</button>
+                                            </form>
                                         </li>
                                     </ul>
                                 </div>
@@ -66,6 +73,23 @@
                                     <div class="notice-date float-right">
                                         {{ $notice->created_at->format('d-m-Y H:i') }}
                                     </div>
+                                    @if (Auth::user()->speciality === 'admin')
+                                        <div class="dropdown">
+                                            <a class="btn-link dropdown-toggle" href="#" role="button"
+                                                id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                            </a>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                <li>
+                                                    <form action="{{ route('notices.destroy', $notice) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit"
+                                                            class="dropdown-item">{{ __('crud.destroy') }}</button>
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    @endif
                                 </div>
                                 <div class="notice-text">
                                     {{ $notice->text }}
@@ -80,6 +104,18 @@
                                     <div class="notice-date float-right">
                                         {{ $notice->created_at->format('d-m-Y H:i') }}
                                     </div>
+                                    @if (Auth::user()->speciality === 'admin')
+                                        <div class="dropdown">
+                                            <a class="btn-link dropdown-toggle" href="#" role="button"
+                                                id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                            </a>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                <li><a class="dropdown-item"
+                                                        href="{{ route('notices.destroy', $notice) }}">{{ __('crud.destroy') }}</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    @endif
                                 </div>
                                 <div class="notice-text">
                                     {{ $notice->text }}
