@@ -45,17 +45,9 @@ td {
 .table-container td:first-child {
     position: sticky;
     left: 0;
-    background-color: #fff;
+    background-color: var(--hover-sidebar-color);
     z-index: 1;
     font-weight: 600;
-}
-
-.table-container th:first-child {
-    position: sticky;
-    left: 0;
-    background-color: #fff;
-    color: white;
-    z-index: 1;
 }
 
 .table .thead-dark th {
@@ -112,9 +104,7 @@ input:focus {
     vertical-align: middle;
 }
 
-.no-resident {
-    background-color: var(--sidebar-color) !important;
-}
+
 
 .cell-input {
     width: 100%;

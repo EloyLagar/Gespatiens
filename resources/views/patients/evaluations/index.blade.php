@@ -32,7 +32,7 @@
                             <th>MT</th>
                         </tr>
                         <tr>
-                            <td>{{ __('patients.singular') }}</td>
+                            <th>{{ __('patients.singular') }}</th>
                             @foreach ($periodo as $fecha)
                                 @if ($fecha->format('w') == 0)
                                     <th>{{ __('days.' . $fecha->format('w')) }}</th>
@@ -49,11 +49,11 @@
                             @php
                                 $contClases = 0;
                                 $weeklyAverage = 0;
+                                $totalWeeklyAverage = 0;
+                                $weeks = 0;
                             @endphp
                             <tr>
-                                <td
-                                    class="td-name
-                            @if (!isset($resident->number)) no-resident @endif
+                                <td class="td-name
                             ">
                                     @isset($resident->number)
                                         {{ $resident->number }} -
@@ -77,15 +77,19 @@
                                         @endphp
                                         @if ($fecha->format('w') == 0)
                                             <td title="Pulse para modificar la nota" data-id="{{ $resident->id }}"
-                                                data-fecha="{{ $mark }}" class="clickable">
+                                                data-fecha="{{ $fecha }}" class="clickable">
                                                 <div>
                                                     <input type="text" data-id="{{ $resident->id }}"
                                                         data-fecha="{{ $fecha }}" class="notas cell-input"
                                                         value="{{ $mark }}">
                                                 </div>
                                             </td>
-                                            <td  class="average">
+                                            <td class="average">
                                                 @if ($contClases !== 0)
+                                                    @php
+                                                        $totalWeeklyAverage += $weeklyAverage / $contClases;
+                                                        $weeks++;
+                                                    @endphp
                                                     {{ number_format($weeklyAverage / $contClases, 2) }}
                                                 @endif
                                             </td>
@@ -108,6 +112,10 @@
                                             <td></td>
                                             <td class="average">
                                                 @if ($contClases !== 0)
+                                                    @php
+                                                        $totalWeeklyAverage += $weeklyAverage / $contClases;
+                                                        $weeks++;
+                                                    @endphp
                                                     {{ number_format($weeklyAverage / $contClases, 2) }}
                                                 @endif
                                             </td>
@@ -121,7 +129,11 @@
                                     @endif
                                     {{-- s{{dd($resident->entry_date, $resident->exit_date, $fecha, $formattedFecha, $formattedFecha > $resident->entry_date,  $formattedFecha < $resident->exit_date)}} --}}
                                 @endforeach
-                                <td class="average"></td>
+                                <td class="average total-average">
+                                    @if ($weeks !== 0)
+                                        {{ number_format($totalWeeklyAverage / $weeks, 2) }}
+                                    @endif
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
