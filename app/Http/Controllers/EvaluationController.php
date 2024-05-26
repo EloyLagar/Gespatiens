@@ -20,10 +20,9 @@ class EvaluationController extends Controller
             'lesson_type' => 'required|string',
         ]);
 
-        // Extraer el tipo de lección
         $lesson_type = $request->lesson_type;
 
-        // Extraer el año y el mes del campo mes_ano
+        // Recoger tanto el año como el mes del campo mes_ano
         list($ano, $mes) = explode('-', $data['mes_ano']);
 
         // Crear el primer día del mes y el último día del mes

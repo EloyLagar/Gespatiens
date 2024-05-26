@@ -30,7 +30,7 @@ use App\Http\Controllers\LoginController;
 Route::get('/pruebapdf', function() {
     $pdf = \App::make('dompdf.wrapper');
 
-    $pdf->loadView('reports.mid_stay_report');
+    $pdf->loadView('reports.final_report');
 
     return $pdf->stream();
 });

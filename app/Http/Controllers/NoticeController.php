@@ -57,7 +57,12 @@ class NoticeController extends Controller
      */
     public function update(Request $request, Notice $notice)
     {
-        $notice->text = $request->text;
+
+        $data = $request->validate([
+            'text' => 'required'
+        ]);
+
+        $notice->text = $data['text'];
         $notice->update();
         return redirect()->route('home');
     }
