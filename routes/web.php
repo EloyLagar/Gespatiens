@@ -27,6 +27,14 @@ use App\Http\Controllers\LoginController;
 //     return view('layouts.app');
 // });
 
+Route::get('/pruebapdf', function() {
+    $pdf = \App::make('dompdf.wrapper');
+
+    $pdf->loadView('reports.mid_stay_report');
+
+    return $pdf->stream();
+});
+
 // Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

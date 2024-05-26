@@ -23,5 +23,7 @@ return [
     'resident' => [
         'singular' => 'Resident',
         'plural' => 'Residents',
-    ]
+    ],
+    'surnameAndName' => 'Surname and name',
+
 ];
