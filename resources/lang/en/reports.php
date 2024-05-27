@@ -1,7 +1,11 @@
 <?php
 
 return [
+    'final_report' => 'final programme report',
+    'mid_stay_report' => 'Mid-stay report',
+
     'social_intervention_area' => 'Social Intervention Area',
+    'social_area' => 'Social Area',
     'social_familiar_situation' => 'Social and Family Situation',
     'professional_situation' => 'Professional and Training Situation',
     'jury_situation' => 'Judicial Situation',

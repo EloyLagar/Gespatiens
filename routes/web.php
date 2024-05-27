@@ -3,6 +3,7 @@
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\EvaluationController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\LanguageController;
 use Illuminate\Support\Facades\Route;
@@ -27,10 +28,10 @@ use App\Http\Controllers\LoginController;
 //     return view('layouts.app');
 // });
 
-Route::get('/pruebapdf', function() {
+Route::get('/pruebapdf', function () {
     $pdf = \App::make('dompdf.wrapper');
 
-    $pdf->loadView('reports.final_report');
+    $pdf->loadView('reports.mid_report');
 
     return $pdf->stream();
 });
@@ -48,6 +49,11 @@ Route::get('/verify', [LoginController::class, 'verify'])->name('verify');
 
 //Auth routes-----------------------------------------------------------------
 Route::middleware(['auth'])->group(function () {
+    //Reportes
+    Route::get('final_report_form/{patient}', 'App\Http\Controllers\ReportController@final_report_form')->name('reports.final_report_form');
+    Route::get('mid_stay_form/{patient}', 'App\Http\Controllers\ReportController@mid_stay_report_form')->name('reports.mid_stay_report_form');
+    Route::resource('reports', ReportController::class)->only('update');
+
     //Idioma
     Route::post('language', [LanguageController::class, 'change'])->name('language.change');
     //Ruta de cración de contraeña por parte del empleado

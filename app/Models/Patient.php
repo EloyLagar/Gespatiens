@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Patient extends Model
 {
     use HasFactory;
@@ -80,6 +81,12 @@ class Patient extends Model
     public function getFullNameAttribute()
     {
         return $this->getAttribute('name') . ' ' . $this->getAttribute('surname');
+    }
+
+    public function getFinalReports()
+    {
+        //Se accede a los reportes finales a través de reports (Patients-> 1:N Reports -> 1:1 Final_reports)
+        return $this->hasManyThrough(Final_report::class, Report::class);
     }
 
 

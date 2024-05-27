@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Report;
+use App\Models\Patient;
+use App\Models\Final_report;
 use Illuminate\Http\Request;
 
 class ReportController extends Controller
@@ -61,5 +63,28 @@ class ReportController extends Controller
     public function destroy(Report $report)
     {
         //
+    }
+
+    public function final_report_form(Patient $patient)
+    {
+        $finalReport = $patient->getFinalReports()->latest()->first();
+
+        if (!$finalReport) {
+
+            $report = new Report(['patient_id' => $patient->id]);
+            $report->save();
+
+            $finalReport = new Final_report();
+            $finalReport->report()->associate($report);
+            $finalReport->save();
+        } elseif (!$finalReport->report->state == true) {
+            return back()->with('error', __('error.already_in_use'));
+        }
+
+        $report = $finalReport->report;
+
+        $report->state = true;
+
+        return view('reports.final_report_form', compact('patient', 'finalReport', 'report'));
     }
 }

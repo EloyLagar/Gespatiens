@@ -42,4 +42,14 @@ class Report extends Model
     {
         return $this->belongsTo(Patient::class);
     }
+
+    public function finalReport()
+    {
+        return $this->hasOne(Final_report::class, 'report_id', 'id');
+    }
+
+    public function midStayReport()
+    {
+        return $this->hasOne(Mid_stay_report::class, 'report_id', 'id');
+    }
 }

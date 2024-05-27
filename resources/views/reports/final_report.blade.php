@@ -93,7 +93,7 @@
         </div>
     </div>
     <div class="container">
-        <h1 class="report-title">INFORME FINAL DE PROGRAMA</h1>
+        <h1 class="report-title">{{__('reports.final_report')}}</h1>
         <div class="user-info">
             <span>{{ __('patients.surnameAndName') }}:</span> <span style="font-weight: 400"></span><br>
             <span>{{ __('patients.birth_date') }}: </span><span style="font-weight: 400"></span>
@@ -107,7 +107,7 @@
         </div>
 
         <div class="area-container">
-            <h3>{{ __('reports.social_intervention_area') }}</h3>
+            <h3>{{ __('reports.social_area') }}</h3>
             <ul>
                 <li>{{ __('reports.social_familiar_situation') }}:</li>
                 <p></p>
@@ -122,7 +122,7 @@
             </ul>
         </div>
         <div class="area-container">
-            <h3>{{ __('reports.social_intervention_area') }}</h3>
+            <h3>{{ __('reports.health_intervention_area') }}</h3>
             <ul>
                 <li>{{ __('reports.toxic_summary') }}:</li>
                 <p></p>

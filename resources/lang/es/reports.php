@@ -11,19 +11,24 @@ return [
     'toxic_summary' => 'Resumen historia toxicológica',
     'health_situation_at_entry' => 'Situación sanitaria al ingreso',
     'phisical_health_evo' => 'Evolución del estado físico-sanitario durante el programa',
+    'phisical_health_evo_and_valoration' => 'Valoración de la evolución del estado físico-sanitario. Atenciones sanitarias',
     'toxic_control_and_analysis' => 'Analíticas y controles toxicológicos durante el programa',
+    'analytics' => 'Analíticas y controles toxicológicos',
     'other_health_atentions' => 'Otras atenciones médico-sanitarias en programa',
+    'toxic_control_and_analysis_at_entry' => 'Controles toxicológicos y estado de desintoxicación al ingreso',
     'diagnosis_third_axis' => 'Diagnóstico (Eje III en DSM IV)',
     'treatment_at_discharge' => 'Situación y tratamiento al alta',
 
     'psycho_area' => 'Área psicológica',
     'start_valoration' => 'Valoración inicial',
+    'motivation_valoration' => 'Valoración inicial (hacia el programa, hacia la abstinencia y al cambio de estilo de vida)',
     'psycho_valoration' => 'Evaluación psicológica: instrumentos, pruebas exploratorias, diagnóstico dual. Conclusiones de la evaluación',
     'diagnosis_first_and_second_axis' => 'Diagnóstico (Eje I y II en DSM-IV)',
     'psycho_intervention_objectives' => 'Intervención y objetivos: evolución',
     'motivation' => 'Motivación (hacia la abstinencia y al cambio de estilo de vida)',
     'develop_and_therapeutic_outgoings_valoration' => 'Desarrollo y valoración de las Salidas Terapéuticas',
     'situation_at_discharge' => 'Situación al alta',
+    'individual_intervention_needed' => 'Intervención psicológica individual requerida',
 
     'educative_area' => 'Área educativa',
     'center_adaptation_and_implication' => 'Grado de adaptación al centro y de implicación en los diferentes componentes de esta área',
@@ -45,6 +50,6 @@ return [
 
     'direction_date_signature' => 'Fecha y firma de la Dirección del recurso:',
     'employees_name_role_signature' => 'El presente informe ha sido elaborado por los siguientes profesionales:',
-
+    'according_to_the_user' => '(según el propio usuario)',
 
 ];
