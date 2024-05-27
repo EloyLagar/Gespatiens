@@ -39,7 +39,7 @@
                                     <span>({{ __('notices.you') }})</span>
                                 </div>
                                 <div class="notice-date float-right">
-                                    {{ $notice->created_at->format('d-m-Y H:i') }}
+                                    {{ $notice->created_at->format('H:i') }}
                                 </div>
                                 <div class="dropdown">
                                     <a class="btn-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
@@ -71,7 +71,7 @@
                                         <span>{{ $notice->user->name }}</span>
                                     </div>
                                     <div class="notice-date float-right">
-                                        {{ $notice->created_at->format('d-m-Y H:i') }}
+                                        {{ $notice->created_at->format('H:i') }}
                                     </div>
                                     @if (Auth::user()->speciality === 'admin')
                                         <div class="dropdown">
@@ -102,7 +102,7 @@
                                         <span>{{ $notice->user->name }}</span>
                                     </div>
                                     <div class="notice-date float-right">
-                                        {{ $notice->created_at->format('d-m-Y H:i') }}
+                                        {{ $notice->created_at->format('H:i') }}
                                     </div>
                                     @if (Auth::user()->speciality === 'admin')
                                         <div class="dropdown">
