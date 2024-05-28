@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Final_report;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class Final_reportController extends Controller
 {
@@ -53,6 +55,10 @@ class Final_reportController extends Controller
     public function update(Request $request, Final_report $final_report)
     {
 
+
+        $patient_id = $final_report->report->patient->id;
+        $employee_id = Auth::user()->id;
+        $final_report->report->users()->attach($employee_id, ['patient_id' => $patient_id]);
     }
 
     /**
