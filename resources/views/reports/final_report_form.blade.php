@@ -21,20 +21,27 @@
                 </div>
                 <div id="collapse-info-area" class="collapse hide">
                     <div class="card-body">
-                        <label class="label-title" for="jury_situation">{{ __('reports.jury_situation') }}:</label>
-                            <p>{{ $report->jury_situation ?: __('reports.no_available_data') }}</p>
-                        <label class="label-title" for="jury_situation">{{ __('reports.jury_situation') }}:</label>
-                            <p>{{ $report->jury_situation ?: __('reports.no_available_data') }}</p>
-                        <label class="label-title" for="jury_situation">{{ __('reports.jury_situation') }}:</label>
-                            <p>{{ $report->jury_situation ?: __('reports.no_available_data') }}</p>
-                        <label class="label-title" for="jury_situation">{{ __('reports.jury_situation') }}:</label>
-                            <p>{{ $report->jury_situation ?: __('reports.no_available_data') }}</p>
-                        <label class="label-title" for="jury_situation">{{ __('reports.jury_situation') }}:</label>
-                            <p>{{ $report->jury_situation ?: __('reports.no_available_data') }}</p>
-                        <label class="label-title" for="jury_situation">{{ __('reports.jury_situation') }}:</label>
-                            <p>{{ $report->jury_situation ?: __('reports.no_available_data') }}</p>
-                        <label class="label-title" for="jury_situation">{{ __('reports.jury_situation') }}:</label>
-                            <p>{{ $report->jury_situation ?: __('reports.no_available_data') }}</p>
+                        <label class="label-title" for="full_name">{{ __('patient.full_name') }}:</label>
+                        <p>{{ $patient->full_name ?: __('reports.no_available_data') }}</p>
+
+                        <label class="label-title" for="birth_date">{{ __('patient.birth_date') }}:</label>
+                        <p>{{ $patient->birth_date ?: __('reports.no_available_data') }}</p>
+
+                        <label class="label-title" for="reference_center">{{ __('patient.reference_center') }}:</label>
+                        <p>Comunidad terapéutica Los Vientos</p>
+
+                        <label class="label-title" for="entry_date">{{ __('patient.entry_date') }}:</label>
+                        <p>{{ $patient->entry_date ?: __('reports.no_available_data') }}</p>
+
+                        <label class="label-title" for="exit_date">{{ __('patient.exit_date') }}:</label>
+                        <p>{{ $patient->exit_date ?: __('reports.no_available_data') }}</p>
+
+                        <label class="label-title" for="dni">{{ __('patient.dni') }}:</label>
+                        <p>{{ $patient->dni ?: __('reports.no_available_data') }}</p>
+
+                        <label class="label-title" for="sip">{{ __('patient.sip') }}:</label>
+                        <p>{{ $patient->sip ?: __('reports.no_available_data') }}</p>
+
                         @if(Auth::user()->speciality === 'admin')
                         <form action="{{ route('reports.update', $report) }}">
                             @csrf
