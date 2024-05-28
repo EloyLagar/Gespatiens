@@ -3,6 +3,7 @@ return [
     'singular' => 'User',
     'plural' => 'Users',
     'dni' => 'DNI',
+    'sip' => 'SIP',
     'visit_code' => 'Visit Code',
     'number' => 'Number',
     'birth_date' => 'Birth Date',

@@ -16,4 +16,5 @@ return [
     'submit' => 'Submit',
     'none' => 'No',
     'save' => 'Save',
+    'general_info' => 'General Information',
 ];

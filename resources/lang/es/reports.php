@@ -4,6 +4,8 @@ return [
     'request_number' => 'Nº de solicitud',
     'exit_reason' => 'Motivo de salida',
 
+    'reference_center' => 'Centro de referencia',
+
     'final_report' => 'Informe final del programa',
     'mid_stay_report' => 'Informe de mitad de estancia',
 
@@ -67,5 +69,7 @@ return [
     'auth_admin' => 'Sólo el personal administrativo puede modificar esta información',
     'auth_medical' => 'Sólo el personal médico puede modificar esta información',
     'no_available_data' => 'No hay datos disponibles',
+
+
 
 ];

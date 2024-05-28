@@ -13,7 +13,7 @@
         <div class="col-10 col-md-8 col-lg-8">
 
             <div class="card mb-3">
-                <div class="card-header">{{__('crud_info')}}
+                <div class="card-header">{{__('crud.general_info')}}
                     <button class="btn-down  float-right" data-toggle="collapse" data-target="#collapse-info-area"
                         aria-expanded="true" aria-controls="collapse-info-area">
                         <i class='bx bxs-down-arrow collapse-icon'></i>
@@ -21,26 +21,34 @@
                 </div>
                 <div id="collapse-info-area" class="collapse hide">
                     <div class="card-body">
-                        <label class="label-title" for="full_name">{{ __('patient.full_name') }}:</label>
-                        <p>{{ $patient->full_name ?: __('reports.no_available_data') }}</p>
+                        <div class="row">
+                            <div class="column">
+                                <label class="label-title" for="full_name">{{ __('patients.full_name') }}:</label>
+                                <p>{{ $patient->full_name ?: __('reports.no_available_data') }}</p>
 
-                        <label class="label-title" for="birth_date">{{ __('patient.birth_date') }}:</label>
-                        <p>{{ $patient->birth_date ?: __('reports.no_available_data') }}</p>
+                                <label class="label-title" for="birth_date">{{ __('patients.birth_date') }}:</label>
+                                <p>{{ $patient->birth_date ?: __('reports.no_available_data') }}</p>
+                            </div>
+                            <div class="column">
+                                <label class="label-title" for="sip">{{ __('patients.sip') }}:</label>
+                                <p>{{ $patient->sip ?: __('reports.no_available_data') }}</p>
+                                <label class="label-title" for="entry_date">{{ __('patients.entry_date') }}:</label>
+                                <p>{{ $patient->entry_date ?: __('reports.no_available_data') }}</p>
+                            </div>
+                        </div>
 
-                        <label class="label-title" for="reference_center">{{ __('patient.reference_center') }}:</label>
-                        <p>Comunidad terapéutica Los Vientos</p>
-
-                        <label class="label-title" for="entry_date">{{ __('patient.entry_date') }}:</label>
-                        <p>{{ $patient->entry_date ?: __('reports.no_available_data') }}</p>
-
-                        <label class="label-title" for="exit_date">{{ __('patient.exit_date') }}:</label>
-                        <p>{{ $patient->exit_date ?: __('reports.no_available_data') }}</p>
-
-                        <label class="label-title" for="dni">{{ __('patient.dni') }}:</label>
-                        <p>{{ $patient->dni ?: __('reports.no_available_data') }}</p>
-
-                        <label class="label-title" for="sip">{{ __('patient.sip') }}:</label>
-                        <p>{{ $patient->sip ?: __('reports.no_available_data') }}</p>
+                        <div class="row">
+                            <div class="column">
+                                <label class="label-title" for="exit_date">{{ __('patients.exit_date') }}:</label>
+                                <p>{{ $patient->exit_date ?: __('reports.no_available_data') }}</p>
+                                <label class="label-title" for="reference_center">{{__('reports.reference_center')}}:</label>
+                                <p>Comunidad terapéutica Los Vientos</p>
+                            </div>
+                            <div class="column">
+                                <label class="label-title" for="dni">{{ __('patients.dni') }}:</label>
+                                <p>{{ $patient->dni ?: __('reports.no_available_data') }}</p>
+                            </div>
+                        </div>
 
                         @if(Auth::user()->speciality === 'admin')
                         <form action="{{ route('reports.update', $report) }}">
@@ -58,6 +66,7 @@
                                 <textarea class="form-control" id="exit_reason"
                                     name="exit_reason">{{ old('exit_reason', $report->exit_reason) }}</textarea>
                             </div>
+                            <button type="submit" class="btn float-right">{{__('crud.save')}}</button>
                         </form>
                         @else
                         <div>

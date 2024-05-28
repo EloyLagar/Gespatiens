@@ -22,3 +22,14 @@
     transition: 0.2s;
     background-color: var(--hover-accent-color);
 }
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 0.4em ;
+}
+
+.column {
+    flex: 1;
+    min-width: 200px;
+}

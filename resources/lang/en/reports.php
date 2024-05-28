@@ -1,8 +1,10 @@
-{{ __('reports.health_situation_at_entry') }}<?php
+<?php
 
 return [
     'request_number' => 'Request number',
-    'exit_reason' => 'reason for departure',
+    'exit_reason' => 'Reason for departure',
+
+    'reference_center' => 'Reference Center',
 
     'final_report' => 'final programme report',
     'mid_stay_report' => 'Mid-stay report',
