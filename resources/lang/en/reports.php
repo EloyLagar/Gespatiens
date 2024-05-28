@@ -1,6 +1,9 @@
-<?php
+{{ __('reports.health_situation_at_entry') }}<?php
 
 return [
+    'request_number' => 'Request number',
+    'exit_reason' => 'reason for departure',
+
     'final_report' => 'final programme report',
     'mid_stay_report' => 'Mid-stay report',
 
@@ -50,4 +53,11 @@ return [
 
     'direction_date_signature' => 'Date and signature of the Directorate of the resource',
     'employees_name_role_signature' => 'This report has been prepared by the following professionals:',
+
+    'auth_psycho' => 'Only psychologists can modify this information',
+    'auth_educator' => 'Only social educators can modify this information',
+    'auth_worker' => 'Only social workers can modify this information',
+    'auth_admin' => 'Only administrative staff can modify this information',
+    'auth_medical' => 'Only medical staff can modify this information',
+    'no_available_data' => 'No available data',
 ];

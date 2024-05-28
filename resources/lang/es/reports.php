@@ -1,6 +1,12 @@
 <?php
 
 return [
+    'request_number' => 'Nº de solicitud',
+    'exit_reason' => 'Motivo de salida',
+
+    'final_report' => 'Informe final del programa',
+    'mid_stay_report' => 'Informe de mitad de estancia',
+
     'social_intervention_area' => 'Área de intervención social',
     'social_familiar_situation' => 'Situación socio-familiar',
     'professional_situation' => 'Situación laboral, formativa',
@@ -8,27 +14,23 @@ return [
     'evo_and_objectives' => 'Evolución y objetivos alcanzados',
     'social_diagnosis' => 'Diagnóstico social (Eje IV en DSM IV-R)',
 
+    'health_area' => 'Área de intervención sanitaria',
     'toxic_summary' => 'Resumen historia toxicológica',
     'health_situation_at_entry' => 'Situación sanitaria al ingreso',
     'phisical_health_evo' => 'Evolución del estado físico-sanitario durante el programa',
-    'phisical_health_evo_and_valoration' => 'Valoración de la evolución del estado físico-sanitario. Atenciones sanitarias',
     'toxic_control_and_analysis' => 'Analíticas y controles toxicológicos durante el programa',
-    'analytics' => 'Analíticas y controles toxicológicos',
     'other_health_atentions' => 'Otras atenciones médico-sanitarias en programa',
-    'toxic_control_and_analysis_at_entry' => 'Controles toxicológicos y estado de desintoxicación al ingreso',
     'diagnosis_third_axis' => 'Diagnóstico (Eje III en DSM IV)',
     'treatment_at_discharge' => 'Situación y tratamiento al alta',
 
     'psycho_area' => 'Área psicológica',
     'start_valoration' => 'Valoración inicial',
-    'motivation_valoration' => 'Valoración inicial (hacia el programa, hacia la abstinencia y al cambio de estilo de vida)',
     'psycho_valoration' => 'Evaluación psicológica: instrumentos, pruebas exploratorias, diagnóstico dual. Conclusiones de la evaluación',
     'diagnosis_first_and_second_axis' => 'Diagnóstico (Eje I y II en DSM-IV)',
     'psycho_intervention_objectives' => 'Intervención y objetivos: evolución',
     'motivation' => 'Motivación (hacia la abstinencia y al cambio de estilo de vida)',
     'develop_and_therapeutic_outgoings_valoration' => 'Desarrollo y valoración de las Salidas Terapéuticas',
     'situation_at_discharge' => 'Situación al alta',
-    'individual_intervention_needed' => 'Intervención psicológica individual requerida',
 
     'educative_area' => 'Área educativa',
     'center_adaptation_and_implication' => 'Grado de adaptación al centro y de implicación en los diferentes componentes de esta área',
@@ -51,5 +53,19 @@ return [
     'direction_date_signature' => 'Fecha y firma de la Dirección del recurso:',
     'employees_name_role_signature' => 'El presente informe ha sido elaborado por los siguientes profesionales:',
     'according_to_the_user' => '(según el propio usuario)',
+
+
+    'phisical_health_evo_and_valoration' => 'Valoración de la evolución del estado físico-sanitario. Atenciones sanitarias',
+    'analytics' => 'Analíticas y controles toxicológicos',
+    'toxic_control_and_analysis_at_entry' => 'Controles toxicológicos y estado de desintoxicación al ingreso',
+    'motivation_valoration' => 'Valoración inicial (hacia el programa, hacia la abstinencia y al cambio de estilo de vida)',
+    'individual_intervention_needed' => 'Intervención psicológica individual requerida',
+
+    'auth_psycho' => 'Sólo los psicólogos pueden modificar esta información',
+    'auth_educator' => 'Sólo educadores sociales pueden modificar esta información',
+    'auth_worker' => 'Sólo trabajadores sociales pueden modificar esta información',
+    'auth_admin' => 'Sólo el personal administrativo puede modificar esta información',
+    'auth_medical' => 'Sólo el personal médico puede modificar esta información',
+    'no_available_data' => 'No hay datos disponibles',
 
 ];

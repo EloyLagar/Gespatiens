@@ -1,0 +1,24 @@
+@import url("colors.css");
+
+
+.rotate-180 {
+    transition: 0.3s ease;
+    transform: rotate(180deg);
+}
+
+.collapse-icon {
+    transition: 0.3s ease;
+}
+
+.btn-down{
+    font-size: 1rem;
+    color: var(--light-text-color);
+    background:none ;
+    border: none;
+    border-radius: 4px;
+    transition: 0.2s;
+}
+.btn-down:hover{
+    transition: 0.2s;
+    background-color: var(--hover-accent-color);
+}

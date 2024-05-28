@@ -15,4 +15,5 @@ return [
     'change' => 'Change',
     'submit' => 'Submit',
     'none' => 'No',
+    'save' => 'Save',
 ];
