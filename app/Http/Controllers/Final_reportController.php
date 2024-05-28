@@ -52,7 +52,7 @@ class Final_reportController extends Controller
      */
     public function update(Request $request, Final_report $final_report)
     {
-        //
+
     }
 
     /**

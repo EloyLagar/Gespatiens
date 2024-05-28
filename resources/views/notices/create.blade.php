@@ -9,7 +9,7 @@
 @section('content')
 <div class="container-fluid pt-3">
     <a href="{{ route('home') }}" class="goBackBtn btn"><i class='bx bx-left-arrow-alt'></i></a>
-    <div class="row justify-content-center" style="height: 100vh;">
+    <div class="row justify-content-center">
         <div class="col-12 col-md-8 col-lg-6">
             <div class="card">
                 <div class="card-header">

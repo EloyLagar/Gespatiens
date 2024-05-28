@@ -75,6 +75,29 @@ class ReportController extends Controller
             $report->save();
 
             $finalReport = new Final_report();
+            $finalReport->report_id = $report->id;
+            $finalReport->save();
+        } elseif (!$finalReport->report->state == true) {
+            return back()->with('error', __('error.already_in_use'));
+        }
+
+        $report = $finalReport->report;
+
+        $report->state = true;
+
+        return view('reports.final_report_form', compact('patient', 'finalReport', 'report'));
+    }
+
+    public function mid_stay_report_form(Patient $patient)
+    {
+        $finalReport = $patient->getFinalReports()->latest()->first();
+
+        if (!$finalReport) {
+
+            $report = new Report(['patient_id' => $patient->id]);
+            $report->save();
+
+            $finalReport = new Final_report();
             $finalReport->report()->associate($report);
             $finalReport->save();
         } elseif (!$finalReport->report->state == true) {
