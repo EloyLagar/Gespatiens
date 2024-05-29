@@ -49,7 +49,7 @@
         text-decoration: underline;
         }
 
-        h3{
+        h3 {
             margin-left: 1cm
         }
 
@@ -76,11 +76,12 @@
             font-size: 24px;
         }
 
-        .area-container{
-            margin-top:1cm
+        .area-container {
+            margin-top: 1cm
         }
 
-        li, p{
+        li,
+        p {
             font-size: 16px;
         }
     </style>
@@ -93,68 +94,80 @@
         </div>
     </div>
     <div class="container">
-        <h1 class="report-title">{{__('reports.final_report')}}</h1>
+        <h1 class="report-title">{{ __('reports.final_report') }}</h1>
         <div class="user-info">
-            <span>{{ __('patients.surnameAndName') }}:</span> <span style="font-weight: 400"></span><br>
-            <span>{{ __('patients.birth_date') }}: </span><span style="font-weight: 400"></span>
-            <span style="float:right; margin.left: auto; margin-right: 4cm">DNI: <span style="font-weight: 400"></span></span><br>
-            <span>{{ __('patients.center') }}: </span><span style="font-weight: 400"></span><br>
-            <span>{{ __('patients.request_number') }}: </span><span style="font-weight: 400"></span><br>
-            <span>{{ __('patients.entry_date') }}: </span><span style="font-weight: 400"></span>
-            <span style="float:right; margin.left: auto; margin-right: 4cm">SIP: <span style="font-weight: 400"></span></span><br>
-            <span>{{ __('patients.exit_date') }}: </span><span style="font-weight: 400"></span><br>
-            <span>{{ __('patients.exit_reason') }}: </span><span style="font-weight: 400"></span><br>
+            <span>{{ __('patients.surnameAndName') }}:</span> <span
+                style="font-weight: 400">{{ $finalReport->report->patient->full_name ?? '' }}</span><br>
+            <span>{{ __('patients.birth_date') }}: </span><span
+                style="font-weight: 400">{{ $finalReport->report->patient->birth_date ?? '' }}</span>
+            <span style="float:right; margin.left: auto; margin-right: 4cm">DNI: <span
+                    style="font-weight: 400">{{ $finalReport->report->patient->dni }}</span></span><br>
+            <span>{{ __('patients.center') }}: </span><span style="font-weight: 400">Comunidad Terapéutica Los
+                Vientos</span><br>
+            <span>{{ __('patients.request_number') }}: </span><span
+                style="font-weight: 400">{{ $finalReport->report->request_number ?? '' }}</span><br>
+            <span>{{ __('patients.entry_date') }}: </span><span
+                style="font-weight: 400">{{ $finalReport->report->patient->entry_date ?? '' }}</span>
+            <span style="float:right; margin.left: auto; margin-right: 4cm">SIP: <span
+                    style="font-weight: 400">{{ $finalReport->report->patient->sip ?? '' }}</span></span><br>
+            <span>{{ __('patients.exit_date') }}: </span><span
+                style="font-weight: 400">{{ $finalReport->report->patient->exit_date ?? '' }}</span><br>
+            <span>{{ __('patients.exit_reason') }}: </span><span
+                style="font-weight: 400">{{ $finalReport->discharge_fundamentals ?? '' }}</span><br>
         </div>
 
         <div class="area-container">
             <h3>{{ __('reports.social_area') }}</h3>
             <ul>
                 <li>{{ __('reports.social_familiar_situation') }}:</li>
-                <p></p>
+                <p>{{ $finalReport->report->social_familiar_situations }}</p>
                 <li>{{ __('reports.professional_situation') }}:</li>
-                <p></p>
+                <p>{{ $finalReport->report->laboral_educative_economical_situation ?? '' }}</p>
                 <li>{{ __('reports.jury_situation') }}:</li>
-                <p></p>
+                <p>{{ $finalReport->report->judicial_situation ?? '' }}</p>
                 <li>{{ __('reports.evo_and_objectives') }}:</li>
-                <p></p>
+                <p>{{ $finalReport->report->social_evo_and_objectives ?? '' }}</p>
                 <li>{{ __('reports.social_diagnosis') }}:</li>
-                <p></p>
+                <p>{{ $finalReport->report->social_diagnosis ?? '' }}</p>
             </ul>
         </div>
+
         <div class="area-container">
             <h3>{{ __('reports.health_intervention_area') }}</h3>
             <ul>
                 <li>{{ __('reports.toxic_summary') }}:</li>
-                <p></p>
+                <p>{{ $finalReport->report->about_toxicology ?? '' }}</p>
                 <li>{{ __('reports.health_situation_at_entry') }}:</li>
-                <p></p>
+                <p>{{ $finalReport->report->health_at_entry }}</p>
                 <li>{{ __('reports.phisical_health_evo') }}:</li>
-                <p></p>
+                <p>{{ $finalReport->report->physical_health_condition ?? '' }}</p>
                 <li>{{ __('reports.toxic_control_and_analysis') }}:</li>
-                <p></p>
+                <p>{{ $finalReport->report->toxicological_controls ?? '' }}</p>
                 <li>{{ __('reports.other_health_atentions') }}:</li>
-                <p></p>
+                <p>{{ $finalReport->other_medical_attention ?? '' }}</p>
                 <li>{{ __('reports.diagnosis_third_axis') }}:</li>
-                <p></p>
+                <p>{{ $finalReport->report->health_diagnosis ?? '' }}</p>
+                <li>{{ __('reports.health_situation_at_discharge') }}:</li>
+                <p>{{ $finalReport->health_situation_at_discharge ?? '' }}</p>
             </ul>
         </div>
         <div class="area-container">
             <h3>{{ __('reports.psycho_area') }}</h3>
             <ul>
                 <li>{{ __('reports.start_valoration') }}:</li>
-                <p></p>
+                <p>{{ $finalReport->report->psycho_entry_valoration ?? '' }}</p>
                 <li>{{ __('reports.psycho_valoration') }}:</li>
-                <p></p>
+                <p>{{ $finalReport->report->psycho_evaluation_with_instruments ?? '' }}</p>
                 <li>{{ __('reports.diagnosis_first_and_second_axis') }}:</li>
-                <p></p>
+                <p>{{ $finalReport->report->psycho_diagnosis ?? '' }}</p>
                 <li>{{ __('reports.psycho_intervention_objectives') }}:</li>
-                <p></p>
+                <p>{{ $finalReport->report->psycho_interventions ?? '' }}</p>
                 <li>{{ __('reports.motivation') }}:</li>
-                <p></p>
+                <p>{{ $finalReport->report->about_motivation ?? '' }}</p>
                 <li>{{ __('reports.develop_and_therapeutic_outgoings_valoration') }}:</li>
-                <p></p>
+                <p>{{ $finalReport->$finalReport->psycho_outgoings_value ?? '' }}</p>
                 <li>{{ __('reports.situation_at_discharge') }}:</li>
-                <p></p>
+                <p>{{ $finalReport->report->psycho_situation_at_discharge ?? '' }}</p>
             </ul>
         </div>
         <div class="area-container">
@@ -163,42 +176,43 @@
                 <li>{{ __('reports.center_adaptation_and_implication') }}:</li>
                 <ul>
                     <li>{{ __('reports.at_habits') }}</li>
-                    <p></p>
+                    <p>{{ $finalReport->report->habit_adaptation ?? '' }}</p>
                     <li>{{ __('reports.at_activities') }}</li>
-                    <p></p>
+                    <p>{{ $finalReport->report->activities_adaptation ?? '' }}</p>
                     <li>{{ __('reports.at_regulations') }}</li>
-                    <p></p>
+                    <p>{{ $finalReport->report->normativity_adaptation ?? '' }}</p>
                     <li>{{ __('reports.at_workouts_or_formation') }}</li>
-                    <p></p>
+                    <p>{{ $finalReport->report->workout_adaptation ?? '' }}</p>
                     <li>{{ __('reports.at_leisure_and_free_time') }}</li>
-                    <p></p>
+                    <p>{{ $finalReport->report->leisure_adaptation ?? '' }}</p>
                 </ul>
                 <li>{{ __('reports.mates_relation') }}:</li>
-                <p></p>
+                <p>{{ $finalReport->report->partners_relationship ?? '' }}</p>
                 <li>{{ __('reports.employees_relation') }}:</li>
-                <p></p>
+                <p>{{ $finalReport->report->therapeutic_crew_relationship ?? '' }}</p>
                 <li>{{ __('reports.develop_and_therapeutic_outgoings_valoration') }}:</li>
-                <p></p>
+                <p>{{ $finalReport->report->educative_outgoings_value ?? '' }}</p>
             </ul>
         </div>
         <div class="area-container">
             <h3>{{ __('reports.familiar_intervention_area') }}</h3>
             <ul>
                 <li>{{ __('reports.reference_familiars_and_impication_degree') }}:</li>
-                <p></p>
+                <p>{{ $finalReport->report->reference_familiars ?? '' }}</p>
                 <li>{{ __('reports.familiar_relation_and_evo') }}:</li>
-                <p></p>
-                <li>{{ __('reports.situation_at_discharge') }}:</li>
-                <p></p>
+                <p>{{ $finalReport->report->familiar_evo_and_realtionship ?? '' }}</p>
+                <li>{{ __('reports.familiar_situation_at_discharge') }}:</li>
+                <p>{{ $finalReport->familiar_situation_at_discharge ?? '' }}</p>
+
             </ul>
         </div>
         <div class="area-container">
             <h3>{{ __('reports.guidance_for_follow_up') }}</h3>
             <ul>
                 <li>{{ __('reports.rationale_for_departure') }}:</li>
-                <p></p>
+                <p>{{ $finalReport->discharge_fundamentals ?? '' }}</p>
                 <li>{{ __('reports.intervention_objectives_after_the_end') }}:</li>
-                <p></p>
+                <p>{{ $finalReport->familiar_situation_at_discharge ?? '' }}</p>
             </ul>
         </div>
 
@@ -224,4 +238,5 @@
         }
     </script>
 </body>
+
 </html>

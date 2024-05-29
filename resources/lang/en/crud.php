@@ -18,4 +18,6 @@ return [
     'save' => 'Save',
     'general_info' => 'General Information',
     'updated_report' => 'Updated report',
+    'preview' => 'Preview',
+    'download' => 'Download',
 ];

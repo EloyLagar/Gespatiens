@@ -49,6 +49,7 @@ return [
     'familiar_intervention_area' => 'Family Intervention Area',
     'reference_familiars_and_impication_degree' => 'Reference Family Members in the Program and Their Degree of Involvement',
     'familiar_relation_and_evo' => 'Relationship with Family and Evolution',
+    'familiar_situation_at_discharge' => 'Familiar situation at discharge',
 
     'guidance_for_follow_up' => 'Monitoring Guidelines for the Reference',
     'rationale_for_departure' => 'Reason for Departure',

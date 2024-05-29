@@ -7,6 +7,7 @@ use App\Models\Final_report;
 use App\Models\Report;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use \Barryvdh\DomPDF\Facade\Pdf as PDF;
 
 
 class Final_reportController extends Controller
@@ -72,5 +73,17 @@ class Final_reportController extends Controller
     public function destroy(Final_report $final_report)
     {
         //
+    }
+
+    public function preview(Final_report $finalReport)
+    {
+        $pdf = PDF::loadView('reports.final_report', compact('finalReport'));
+        return $pdf->stream($finalReport->report->patient->name . '_' . $finalReport->report->patient->surname . '-Informe_final_estancia-' . date('d-m-Y'));
+    }
+
+    public function download(Final_report $finalReport)
+    {
+        $pdf = PDF::loadView('reports.final_report', compact('finalReport'));
+        return $pdf->download($finalReport->report->patient->name . '_' . $finalReport->report->patient->surname . '-Informe_final_-' . date('d-m-Y') . '.pdf');
     }
 }

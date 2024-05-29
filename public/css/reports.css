@@ -33,3 +33,17 @@
     flex: 1;
     min-width: 200px;
 }
+
+.action-buttons {
+    display: flex;
+    align-items: center;
+    padding-bottom: 1em;
+    text-align: center;
+}
+
+.pdf-options {
+    position: fixed;
+    top: 80px;
+    right: 16px;
+    z-index: 999;
+}

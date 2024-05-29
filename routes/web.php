@@ -29,13 +29,7 @@ use App\Http\Controllers\LoginController;
 //     return view('layouts.app');
 // });
 
-Route::get('/pruebapdf', function () {
-    $pdf = \App::make('dompdf.wrapper');
 
-    $pdf->loadView('reports.mid_report');
-
-    return $pdf->stream();
-});
 
 // Auth::routes();
 
@@ -56,6 +50,15 @@ Route::middleware(['auth'])->group(function () {
     Route::post('final_reports', 'App\Http\Controllers\ReportController@mid_stay_report_form')->name('reports.mid_stay_report_form');
     Route::put('/final_reports/{report}', 'App\Http\Controllers\Final_reportController@update')->name('final_reports.update');
     Route::resource('reports', MidStayReportController::class)->only('update');
+    Route::get('/report/preview/{finalReport}', [Final_reportController::class, 'preview'])->name('reports.finalReport_preview');
+    Route::get('/report/download/{finalReport}', [Final_reportController::class, 'download'])->name('reports.finalReport_download');
+    // Route::get('/pruebapdf', function () {
+    //     $pdf = \App::make('dompdf.wrapper');
+
+    //     $pdf->loadView('reports.final');
+
+    //     return $pdf->stream();
+    // });
     //Idioma
     Route::post('language', [LanguageController::class, 'change'])->name('language.change');
     //Ruta de cración de contraeña por parte del empleado
