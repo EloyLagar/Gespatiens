@@ -36,10 +36,10 @@
                                 <span clas="visitors info-span">{{ __('patients.noAuthPersons') }}</span>
                             @endforelse
                         </ul>
-                        <div class="patient-administration">
-                            <a href="patients.adminAuth" class="btn">{{ __('patients.adminAuth') }}</a>
-                            <a href="{{ route('reports.final_report_form', $patient) }}" class="btn">{{ __('reports.final_report') }}</a>
-                            <a href="{{ route('reports.mid_stay_report_form', $patient) }}" class="btn">{{ __('reports.mid_stay_report') }}</a>
+                        <div class="patient-administration mb-5 clearfix">
+                            <a href="patients.adminAuth" class="btn btn-block">{{ __('patients.adminAuth') }}</a>
+                            <a href="{{ route('reports.final_report_form', $patient) }}" class="btn btn-block">{{ __('reports.final_report') }}</a>
+                            <a href="{{ route('reports.mid_stay_report_form', $patient) }}" class="btn btn-block mb-3">{{ __('reports.mid_stay_report') }}</a>
                         </div>
                     </div>
                 </div>
