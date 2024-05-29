@@ -113,7 +113,7 @@ class UserController extends Controller
         //
     }
 
-    public function redirecToEdit()
+    public function redirectToEdit()
     {
         $user_id = Auth::user()->id;
         return redirect()->route('users.edit', ['user' => $user_id]);

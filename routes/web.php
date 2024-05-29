@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Final_reportController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\EvaluationController;
@@ -43,7 +44,6 @@ Route::get('/login', [LoginController::class, 'loginForm'])->name('loginForm');
 Route::post('login', [LoginController::class, 'login'])->name('login');
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
-
 Route::get('/verify', [LoginController::class, 'verify'])->name('verify');
 
 
@@ -52,8 +52,10 @@ Route::middleware(['auth'])->group(function () {
     //Reportes
     Route::get('final_report_form/{patient}', 'App\Http\Controllers\ReportController@final_report_form')->name('reports.final_report_form');
     Route::get('mid_stay_form/{patient}', 'App\Http\Controllers\ReportController@mid_stay_report_form')->name('reports.mid_stay_report_form');
-    Route::resource('reports', ReportController::class)->only('update');
-
+    // Route::resource('final_reports', Final_reportController::class)->only('update');
+    Route::post('final_reports', 'App\Http\Controllers\ReportController@mid_stay_report_form')->name('reports.mid_stay_report_form');
+    Route::put('/final_reports/{report}', 'App\Http\Controllers\Final_reportController@update')->name('final_reports.update');
+    Route::resource('reports', MidStayReportController::class)->only('update');
     //Idioma
     Route::post('language', [LanguageController::class, 'change'])->name('language.change');
     //Ruta de cración de contraeña por parte del empleado
@@ -66,7 +68,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/evaluations/save_mark', 'App\Http\Controllers\EvaluationController@saveEvaluation')->name('evaluations.save_evaluation');
     Route::post('/evaluations', 'App\Http\Controllers\EvaluationController@index')->name('evaluations.index');
     //Como no entra el Auth::user() en adminlte.php para ir al perfil pues se hace así ->
-    Route::get('/profile', [UserController::class, 'redirecToEdit'])->name('redirecToEdit');
+    Route::get('/profile', [UserController::class, 'redirectToEdit'])->name('redirectToEdit');
     Route::resource('users', UserController::class)->only('edit', 'update');
     //Avisos
     Route::resource('notices', NoticeController::class)->only('edit', 'update', 'create', 'store', 'destroy');
