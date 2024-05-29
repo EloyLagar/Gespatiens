@@ -64,7 +64,10 @@ class Final_reportController extends Controller
         $report->fill($request->all());
         $report->update();
 
-        return redirect()-> route('reports.final_report_form', $report->patient_id)->with('success', __('crud.updated_report'));
+        $employee = auth()->user();
+        $employee->reports()->syncWithoutDetaching([$report->id]);//Si no existe la relacion se agrega, en caso de que exista se omite
+
+        return redirect()->route('reports.final_report_form', $report->patient_id)->with('success', __('crud.updated_report'));
     }
 
     /**
