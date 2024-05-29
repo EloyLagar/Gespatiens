@@ -13,20 +13,20 @@ return new class extends Migration {
         Schema::create('final_reports', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('report_id')->unique();
-            $table->text('educational_therapeutic_outgoings')->nullable()->nullable();
-            $table->date('leaving_date')->nullable();
-            $table->text('leaving_reason')->nullable();
-            $table->text('psycho_therapeutic_outgoings')->nullable();
-            $table->text('psycho_intervention_objectives')->nullable();
-            $table->text('discharge_psycho_situation')->nullable();
-            $table->text('health_evolution')->nullable();
-            $table->text('evolution_and_objectives_achieved')->nullable();
-            $table->text('discharge_medical_situation')->nullable();
-            $table->text('other_medical_care')->nullable();
-            $table->text('after_program_objectives')->nullable();
-            $table->text('toxicological_summary')->nullable();
-            $table->text('discharge_family_situation')->nullable();
-            $table->foreign('report_id')->references('id')->on('reports');
+            $table->foreign('report_id')->references('id')->on('reports')->onDelete('cascade');
+            $table->text('health_situation_at_discharge')->nullable();
+            $table->text('other_medical_attention')->nullable();
+
+            $table->text('psycho_situation_at_discharge')->nullable();
+            $table->text('psycho_outgoings_value')->nullable();
+
+            $table->text('educative_outgoings_value')->nullable();
+
+            $table->text('familiar_situation_at_discharge')->nullable();
+
+            $table->text('discharge_fundamentals')->nullable();
+            $table->text('after_discharge_objectives')->nullable();
+
             $table->timestamps();
         });
     }

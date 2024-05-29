@@ -38,8 +38,8 @@
                         </ul>
                         <div class="patient-administration">
                             <a href="patients.adminAuth" class="btn">{{ __('patients.adminAuth') }}</a>
-                            <a href="{{ route('reports.final_report_form', $patient) }}" class="btn">{{ __('patients.reports') }}</a>
-                            <a href="{{ route('reports.mid_stay_report_form', $patient) }}" class="btn">{{ __('patients.reports') }}</a>
+                            <a href="{{ route('reports.final_report_form', $patient) }}" class="btn">{{ __('reports.final_report') }}</a>
+                            <a href="{{ route('reports.mid_stay_report_form', $patient) }}" class="btn">{{ __('reports.mid_stay_report') }}</a>
                         </div>
                     </div>
                 </div>

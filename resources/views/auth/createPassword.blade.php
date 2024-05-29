@@ -23,14 +23,14 @@
             <form class="form-signin" action="{{ route('updatePassword') }}" method="post">
                 @csrf
                 <h6 class="form-info"><span class="user-name">{{Auth::user()->name}}</span>, {{__('crud.create_own')}} {{__('user.password')}}</h6>
-                @if ($errors->any())
-                @foreach ($errors->all() as $error)
-                <span class="span-error">{{__('form.'. $error)}}</span><br>
-                @endforeach
-                @endif
                 <div class="form-group">
                     <label for="password">{{__('user.password')}}:</label>
                     <input type="password" name="password" id="password" class="form-control" required autofocus>
+                    @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                    <span class="span-error">{{__('form.'. $error)}}</span><br>
+                    @endforeach
+                    @endif
                 </div>
                 <div class="form-group">
                     <label for="password_confirmation">{{__('crud.repeat')}} {{__('user.password')}}:</label>

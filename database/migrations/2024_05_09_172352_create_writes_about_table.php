@@ -16,9 +16,9 @@ return new class extends Migration {
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('report_id');
             $table->unique(['patient_id', 'user_id', 'report_id']);
-            $table->foreign('patient_id')->references('id')->on('patients');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('report_id')->references('id')->on('reports');
+            $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('report_id')->references('id')->on('reports')->onDelete('cascade');
             $table->timestamps();
         });
     }

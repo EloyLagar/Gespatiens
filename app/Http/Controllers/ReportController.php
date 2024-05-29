@@ -71,7 +71,8 @@ class ReportController extends Controller
 
         if (!$finalReport) {
 
-            $report = new Report(['patient_id' => $patient->id]);
+            $report = new Report();
+            $report->patient_id = $patient->id;
             $report->save();
 
             $finalReport = new Final_report();

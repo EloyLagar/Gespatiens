@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->enum('speciality', ['educador social', 'trabajador social', 'médico', 'psicólogo', 'admin' ])->change();
+        Schema::table('reports', function (Blueprint $table) {
+            $table->unsignedBigInteger('patient_id');
+            $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
         });
     }
 
@@ -21,8 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->enum('speciality', ['educador social', 'trabajador social', 'médico', 'psicólogo'])->change();
+        Schema::table('reports', function (Blueprint $table) {
+            $table->dropForeign(['patient_id']);
         });
     }
 };

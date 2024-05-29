@@ -6,7 +6,7 @@ return [
 
     'reference_center' => 'Reference Center',
 
-    'final_report' => 'final programme report',
+    'final_report' => 'Final report',
     'mid_stay_report' => 'Mid-stay report',
 
     'social_intervention_area' => 'Social Intervention Area',

@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('therapeutic_groups', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('activity_id')->unique();
+            $table->foreign('activity_id')->references('id')->on('activities')->onDelete('cascade');
             $table->string('group');
-            $table->foreign('activity_id')->references('id')->on('activities');
             $table->timestamps();
         });
     }

@@ -26,6 +26,7 @@ return new class extends Migration
             $table->date('entry_date');
             $table->string('name');
             $table->string('surname');
+            $table->string('sip')->nullable();
             $table->timestamps();
         });
     }

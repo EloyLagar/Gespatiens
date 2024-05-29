@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->float('mark')->nullable();
             $table->date('date')->nullable(false);
             $table->enum('lesson_type', ['Grupos terapéuticos', 'Habilidades para la vida', 'Escuela de salud', 'Orientación e inserción laboral', 'Taller ocupacional', 'Vídeo fórum', 'Mantenimiento']);
-            $table->foreign('patient_id')->references('id')->on('patients');
+            $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
             $table->timestamps();
         });
     }

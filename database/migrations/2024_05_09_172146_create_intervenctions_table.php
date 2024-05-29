@@ -18,8 +18,8 @@ return new class extends Migration
             $table->date('date');
             $table->string('intervention');
             $table->timestamps();
-            $table->foreign('patient_id')->references('id')->on('patients');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

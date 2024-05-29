@@ -13,15 +13,13 @@ return new class extends Migration {
         Schema::create('mid_stay_reports', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('report_id')->unique();
-            $table->text('estimated_duration')->nullable();
-            $table->text('educational_objectives')->nullable();
-            $table->text('start_toxicological_state')->nullable();
-            $table->text('psycho_intervention')->nullable();
-            $table->text('medical_evolution_valoration')->nullable();
-            $table->text('social_objectives')->nullable();
-            $table->text('psycho_objectives')->nullable();
+            $table->foreign('report_id')->references('id')->on('reports')->onDelete('cascade');
+
+            $table->text('program_duration_forecast')->nullable();
+            $table->string('nip')->nullable();
+
             $table->text('health_objectives')->nullable();
-            $table->foreign('report_id')->references('id')->on('reports');
+            $table->text('psycho_objectives')->nullable();
             $table->timestamps();
         });
     }

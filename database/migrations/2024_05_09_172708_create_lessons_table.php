@@ -12,11 +12,11 @@ return new class extends Migration {
     {
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
-            $table->enum('type', ['Grupos terapéuticos', 'Habilidades para la vida', 'Escuela de salud', 'Orientación e inserción laboral', 'Taller ocupacional', 'Vídeo fórum', 'Mantenimiento']);
+            $table->enum('type', ['life_skills', 'health_education', 'carrer_help', 'occupational_workshop', 'video_forum', 'maintenance' ])->change();
             $table->unsignedBigInteger('activity_id');
+            $table->foreign('activity_id')->references('id')->on('activities')->onDelete('cascade');
             $table->float('utility');
             $table->float('satisfaction');
-            $table->foreign('activity_id')->references('id')->on('activities');
             $table->timestamps();
         });
     }

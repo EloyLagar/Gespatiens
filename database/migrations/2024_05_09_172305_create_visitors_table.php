@@ -17,7 +17,7 @@ return new class extends Migration
             $table->bigInteger('phone_number');
             $table->string('name', 50);
             $table->string('relationship', 50);
-            $table->foreign('patient_id')->references('id')->on('patients');
+            $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
             $table->timestamps();
         });
     }

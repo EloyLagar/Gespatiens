@@ -12,25 +12,37 @@ return new class extends Migration {
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
-            $table->text('psycho_diagnosis')->nullable();
-            $table->integer('nip')->nullable();
-            $table->text('psycho_evaluation')->nullable();
-            $table->text('partners_relationships')->nullable();
-            $table->text('family_relationship')->nullable();
-            $table->text('about_families')->nullable();
-            $table->text('dealing_with_employees')->nullable();
-            $table->text('social_diagnosis')->nullable();
-            $table->text('social_familiar_situation')->nullable();
-            $table->text('judicial_situation')->nullable();
-            $table->text('toxicological_controls')->nullable();
-            $table->text('adaptation_and_implication')->nullable();
-            $table->text('life_general_situation')->nullable();
-            $table->text('motivation')->nullable();
+            $table->boolean('state')->default(false);
             $table->string('request_number')->nullable();
-            $table->date('date')->nullable();
-            $table->text('initial_health')->nullable();
-            $table->text('psychological')->nullable();
-            $table->text('evaluation')->nullable();
+
+            $table->text('social_familiar_situation')->nullable();
+            $table->text('laboral_educative_economical_situation')->nullable();
+            $table->text('judicial_situation')->nullable();
+            $table->text('social_evo_and_objectives')->nullable();
+            $table->text('social_diagnosis')->nullable();
+
+            $table->text('health_at_entry')->nullable();
+            $table->text('about_toxicology')->nullable();
+            $table->text('toxicological_controls')->nullable();
+            $table->text('health_diagnosis')->nullable();
+            $table->text('physical_health_condition')->nullable();
+
+            $table->text('psycho_entry_valoration')->nullable();
+            $table->text('psycho_evaluation_with_instruments')->nullable();
+            $table->string('about_motivation')->nullable();
+            $table->date('psycho_interventions')->nullable();
+            $table->text('pyscho_diagnosis')->nullable();
+
+            $table->text('habit_adaptation')->nullable();
+            $table->text('activities_adaptation')->nullable();
+            $table->text('normativity_adaptation')->nullable();
+            $table->text('workout_adaptation')->nullable();
+            $table->text('leisure_adaptation')->nullable();
+            $table->text('partners_relationship')->nullable();
+            $table->text('therapeutic_crew_relationship')->nullable();
+
+            $table->text('reference_familiars')->nullable();
+            $table->text('familiar_evo_and_realtionship')->nullable();
             $table->timestamps();
         });
     }
