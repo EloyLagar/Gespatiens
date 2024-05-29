@@ -353,7 +353,7 @@ return [
         ],
         [
             'text' => 'diary',
-            'url' => '#',
+            'url' => '/diary/form',
             'icon' => 'fas fa-book fa-fw ',
         ],
         [

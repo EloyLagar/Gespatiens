@@ -52,13 +52,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('reports', MidStayReportController::class)->only('update');
     Route::get('/report/preview/{finalReport}', [Final_reportController::class, 'preview'])->name('reports.finalReport_preview');
     Route::get('/report/download/{finalReport}', [Final_reportController::class, 'download'])->name('reports.finalReport_download');
-    // Route::get('/pruebapdf', function () {
-    //     $pdf = \App::make('dompdf.wrapper');
-
-    //     $pdf->loadView('reports.final');
-
-    //     return $pdf->stream();
-    // });
+    //Diario
+    Route::get('/diary/form', 'App\Http\Controllers\DiaryController@diaryForm')->name('diary.diaryForm');
     //Idioma
     Route::post('language', [LanguageController::class, 'change'])->name('language.change');
     //Ruta de cración de contraeña por parte del empleado
