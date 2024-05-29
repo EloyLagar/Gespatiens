@@ -49,11 +49,30 @@ h1, h2, h3, h4, h5, h6{
     border-radius: 1em;
 }
 
+.patient-administration {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
 .patient-administration>.btn{
     padding: 0.2em 0.4em;
     font-size: inherit;
     margin-right: 1em;
     margin-bottom: 1em;
+}
+
+@media (max-width: 768px) {
+    .patient-administration {
+        flex-direction: column;
+        padding: 1em;
+        margin-bottom: 1em;
+    }
+
+    .patient-administration>.btn{
+        width: 100%;
+    }
 }
 
 .visitors{
