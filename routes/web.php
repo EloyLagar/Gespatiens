@@ -50,8 +50,8 @@ Route::get('/verify', [LoginController::class, 'verify'])->name('verify');
 //Auth routes-----------------------------------------------------------------
 Route::middleware(['auth'])->group(function () {
     //Reportes
-    Route::get('final_report_form/{patient}', 'App\Http\Controllers\ReportController@final_report_form')->name('reports.final_report_form');
     Route::get('mid_stay_form/{patient}', 'App\Http\Controllers\ReportController@mid_stay_report_form')->name('reports.mid_stay_report_form');
+    Route::get('final_report_form/{patient}', 'App\Http\Controllers\ReportController@final_report_form')->name('reports.final_report_form');
     // Route::resource('final_reports', Final_reportController::class)->only('update');
     Route::post('final_reports', 'App\Http\Controllers\ReportController@mid_stay_report_form')->name('reports.mid_stay_report_form');
     Route::put('/final_reports/{report}', 'App\Http\Controllers\Final_reportController@update')->name('final_reports.update');

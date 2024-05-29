@@ -43,11 +43,8 @@
 
                     <ul>
                         @forelse ($patient->visitors as $visitor)
+
                         @empty
-                        <span clas="visitors info-span">{{ __('patients.noAuthPersons') }}</span>
-                        <span clas="visitors info-span">{{ __('patients.noAuthPersons') }}</span>
-                        <span clas="visitors info-span">{{ __('patients.noAuthPersons') }}</span>
-                        <span clas="visitors info-span">{{ __('patients.noAuthPersons') }}</span>
                         <span clas="visitors info-span">{{ __('patients.noAuthPersons') }}</span>
                         @endforelse
                     </ul>

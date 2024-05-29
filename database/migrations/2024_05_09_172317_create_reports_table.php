@@ -30,7 +30,7 @@ return new class extends Migration {
             $table->text('psycho_entry_valoration')->nullable();
             $table->text('psycho_evaluation_with_instruments')->nullable();
             $table->string('about_motivation')->nullable();
-            $table->date('psycho_interventions')->nullable();
+            $table->text('psycho_interventions')->nullable();
             $table->text('pyscho_diagnosis')->nullable();
 
             $table->text('habit_adaptation')->nullable();

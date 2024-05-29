@@ -22,4 +22,6 @@ return [
         'confirmed' => 'The passwords do not match.',
         'min' => 'The password field must be at least 8 characters long.',
     ],
+    'string' => 'The field must be a string',
+    'number' => 'The field must be a number',
 ];

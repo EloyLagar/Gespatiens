@@ -70,7 +70,6 @@ class ReportController extends Controller
         $finalReport = $patient->getFinalReports()->latest()->first();
 
         if (!$finalReport) {
-
             $report = new Report();
             $report->patient_id = $patient->id;
             $report->save();
@@ -78,37 +77,36 @@ class ReportController extends Controller
             $finalReport = new Final_report();
             $finalReport->report_id = $report->id;
             $finalReport->save();
-        } elseif (!$finalReport->report->state == true) {
+        } elseif ($finalReport->report->state == true) {
             return back()->with('error', __('error.already_in_use'));
         }
 
-        $report = $finalReport->report;
+        $finalReport->report->state = true;
 
-        $report->state = true;
-
-        return view('reports.final_report_form', compact('patient', 'finalReport', 'report'));
+        return view('reports.final_report_form', compact('patient', 'finalReport'));
     }
+
 
     public function mid_stay_report_form(Patient $patient)
     {
-        $finalReport = $patient->getFinalReports()->latest()->first();
 
-        if (!$finalReport) {
+        $final_report = null;
+
+        $final_report = $patient->getFinalReports()->latest()->first();
+
+        if (!$final_report || $final_report == null) {
 
             $report = new Report(['patient_id' => $patient->id]);
             $report->save();
 
             $finalReport = new Final_report();
-            $finalReport->report()->associate($report);
+            $finalReport->report_id = $report->id;
             $finalReport->save();
-        } elseif (!$finalReport->report->state == true) {
+        } elseif (!$final_report->report->state == true) {
             return back()->with('error', __('error.already_in_use'));
         }
+        $final_report->report->state = true;
 
-        $report = $finalReport->report;
-
-        $report->state = true;
-
-        return view('reports.final_report_form', compact('patient', 'finalReport', 'report'));
+        return view('reports.final_report_form', compact('patient', 'mid_stay_report'));
     }
 }

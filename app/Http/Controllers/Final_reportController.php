@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateFinalReportRequest;
 use App\Models\Final_report;
+use App\Models\Report;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -52,13 +54,16 @@ class Final_reportController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Final_report $final_report)
+    public function update(UpdateFinalReportRequest $request, $final_report_id)
     {
+        $finalReport = Final_report::find($final_report_id);
+        $report = Report::find($finalReport->report_id);
+        $finalReport->fill($request->all());
+        $finalReport->update();
+        $report->fill($request->all());
+        $report->update();
 
-
-        $patient_id = $final_report->report->patient->id;
-        $employee_id = Auth::user()->id;
-        $final_report->report->users()->attach($employee_id, ['patient_id' => $patient_id]);
+        return redirect()-> route('reports.final_report_form', $report->patient_id)->with('success', __('crud.updated_report'));
     }
 
     /**

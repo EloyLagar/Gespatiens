@@ -33,6 +33,7 @@ return [
     'psycho_intervention_objectives' => 'Intervention and Objectives: Evolution',
     'motivation' => 'Motivation (Towards Abstinence and Lifestyle Change)',
     'develop_and_therapeutic_outgoings_valoration' => 'Development and Assessment of Therapeutic Outings',
+    'pyscho_outgoings_value' => 'Development and Assessment of Therapeutic Outings',
     'situation_at_discharge' => 'Situation at Discharge',
 
     'educative_area' => 'Educational Area',

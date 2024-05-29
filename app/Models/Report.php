@@ -10,32 +10,36 @@ class Report extends Model
     use HasFactory;
 
     protected $fillable = [
+        'reference_familiars',
+        'familiar_evo_and_realtionship',
+        'habit_adaptation',
+        'activities_adaptation',
+        'normativity_adaptation',
+        'workout_adaptation',
+        'leisure_adaptation',
+        'partners_relationship',
+        'therapeutic_crew_relationship',
+        'psycho_entry_valoration',
+        'psycho_evaluation_with_instruments',
+        'about_motivation',
+        'psycho_interventions',
         'psycho_diagnosis',
-        'NIP',
-        'psycho_evaluation',
-        'partners_relationships',
-        'family_relationship',
-        'about_families',
-        'dealing_with_employees',
-        'social_diagnosis',
         'social_familiar_situation',
+        'laboral_educative_economical_situation',
         'judicial_situation',
+        'social_evo_and_objectives',
+        'social_diagnosis',
+        'health_at_entry',
+        'about_toxicology',
         'toxicological_controls',
-        'adaptation_and_implication',
-        'life_general_situation',
-        'motivation',
-        'date',
+        'health_diagnosis',
+        'physical_health_condition',
+        'state',
         'request_number',
-        'initial_health',
-        'psychological',
-        'evaluation',
     ];
-
     public function users()
     {
-        return $this->belongsToMany(User::class, 'writes_about')
-                    ->withPivot('patient_id')
-                    ->withTimestamps();
+        return $this->belongsToMany(User::class, 'writes_about');
     }
 
     public function patient()

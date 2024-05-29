@@ -10,19 +10,14 @@ class Mid_stay_report extends Model
     use HasFactory;
 
     protected $fillable = [
-        'report_id',
-        'estimated_duration',
-        'educational_objectives',
-        'start_toxicological_state',
-        'psycho_intervention',
-        'medical_evolution_valoration',
-        'social_objectives',
+        'program_duration_forecast',
         'psycho_objectives',
         'health_objectives',
+        'nip',
     ];
 
     public function report()
     {
-        return $this->belongsTo(Report::class, 'report_id', 'id');
+        return $this->hasOne(Report::class, 'id', 'report_id');
     }
 }

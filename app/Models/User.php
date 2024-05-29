@@ -60,9 +60,7 @@ class User extends Authenticatable
 
     public function reports()
     {
-        return $this->belongsToMany(Report::class, 'writes_about')
-                    ->withPivot('user_id')
-                    ->withTimestamps();
+        return $this->belongsToMany(Report::class, 'writes_about');
     }
 
     public function notices()
