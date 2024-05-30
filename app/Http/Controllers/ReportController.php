@@ -79,7 +79,7 @@ class ReportController extends Controller
             $finalReport->report_id = $report->id;
             $finalReport->save();
         } elseif ($finalReport->report->state == true) {
-            return redirect()->route('patients.edit', $patient)->with('error', __('error.already_in_use'));
+            return redirect()->back()->with('error', __('error.already_in_use'));
         }
         $report = $finalReport->report;
         $report->state = true;

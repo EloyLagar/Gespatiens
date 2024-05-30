@@ -14,7 +14,7 @@
         <a class="btn" href="{{ route('reports.finalReport_download', $finalReport) }}">{{ __('crud.download') }}</a>
     </div>
     <div class="action-buttons">
-        <a href="{{ route('patients.edit', $patient) }}" class="goBackBtn btn"><i class='bx bx-left-arrow-alt'></i></a>
+        <a href="" class="goBackBtn btn"><i class='bx bx-left-arrow-alt'></i></a>
     </div>
     <h3 class="text-center">{{__('reports.final_report')}} - {{ $finalReport->report->patient->name}}</h3>
     <div class="row justify-content-center">
@@ -782,10 +782,8 @@
 
                 setReportStateFalse();
 
-                var href = $(this).attr('href');
-
                 setTimeout(function() {
-                    window.location.href = href;
+                    window.history.back();
                 }, 1000);
             });
 
