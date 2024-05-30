@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'singular' => 'Report',
+    'plural' => 'Reports',
+
     'request_number' => 'Request number',
     'exit_reason' => 'Reason for departure',
 
@@ -64,4 +67,6 @@ return [
     'auth_admin' => 'Only administrative staff can modify this information',
     'auth_medical' => 'Only medical staff can modify this information',
     'no_available_data' => 'No available data',
+
+    'no_reports' => 'No reports',
 ];
