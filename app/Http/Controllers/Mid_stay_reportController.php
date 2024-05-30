@@ -54,9 +54,9 @@ class Mid_stay_reportController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $mid_stay_report_id)
+    public function update(Request $request, $mid_stay_report)
     {
-        $midStayReport = Mid_stay_report::find($mid_stay_report_id);
+        $midStayReport = Mid_stay_report::find($mid_stay_report);
         $report = Report::find($midStayReport->report_id);
         $midStayReport->fill($request->all());
         $midStayReport->update();
@@ -68,7 +68,7 @@ class Mid_stay_reportController extends Controller
         $employee->reports()->syncWithoutDetaching([$report->id]);//Si no existe la relacion se agrega, en caso de que exista se omite
 
         $patient = Patient::findOrFail($report->patient_id);
-        return view('reports.mid_stay_report_form', compact('patient', 'midStayReport'))    ->with('success', __('crud.updated_report'));
+        return view('reports.mid_stay_report_form', compact('patient', 'midStayReport'))->with('success', __('crud.updated_report'));
     }
 
     /**

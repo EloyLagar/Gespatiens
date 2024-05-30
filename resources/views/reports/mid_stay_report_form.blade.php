@@ -68,13 +68,13 @@
                         </div>
 
                         @if (Auth::user()->speciality === 'admin')
-                        <form action="{{ route('mid_stay_reports.update', $midStayReport->id) }}" method="POST">
+                        <form action="{{ route('mid_stay_reports.update', $midStayReport) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="form-group">
                                 <label for="request_number">{{ __('reports.request_number') }}:</label>
-                                <textarea class="form-control" id="request_number"
-                                    name="request_number">{{ old('request_number', $midStayReport->report->request_number) }}</textarea>
+                                <input type="text" class="form-control" id="request_number"
+                                    name="request_number" value="{{ old('request_number', $midStayReport->report->request_number)}}" >
                                 @error('request_number')
                                 <span class="span-error" role="alert">
                                     <span>{{ __('form.' . $message) }}</span>
@@ -83,8 +83,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="nip">NIP:</label>
-                                <textarea class="form-control" id="nip"
-                                    name="discharge_fundamentals">{{ old('discharge_fundamentals', $midStayReport->nip) }}</textarea>
+                                <input type="text" class="form-control" id="nip"
+                                    name="nip" value="{{ old('discharge_fundamentals', $midStayReport->nip) }}">
                                 @error('nip')
                                 <span class="span-error" role="alert">
                                     <span>{{ __('form.' . $message) }}</span>
@@ -119,7 +119,7 @@
                 <div id="collapse-social-area" class="collapse hide">
                     <div class="card-body">
                         @if (Auth::user()->speciality === 'admin' || Auth::user()->speciality === 'worker')
-                        <form action="{{ route('mid_stay_reports.update', $midStayReport->id) }}" method="POST">
+                        <form action="{{ route('mid_stay_reports.update', $midStayReport) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="form-group">
@@ -221,7 +221,7 @@
                 <div id="collapse-health-area" class="collapse hide">
                     <div class="card-body">
                         @if (Auth::user()->speciality === 'admin' || Auth::user()->speciality === 'medical')
-                        <form action="{{ route('mid_stay_reports.update', $midStayReport->id) }}" method="POST">
+                        <form action="{{ route('mid_stay_reports.update', $midStayReport) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="form-group">
@@ -337,7 +337,7 @@
                 <div id="collapse-psycho-area" class="collapse hide">
                     <div class="card-body">
                         @if (Auth::user()->speciality === 'admin' || Auth::user()->speciality === 'psychologist')
-                        <form action="{{ route('mid_stay_reports.update', $midStayReport->id) }}" method="POST">
+                        <form action="{{ route('mid_stay_reports.update', $midStayReport) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="form-group">
@@ -457,7 +457,7 @@
                 <div id="collapse-educative-area" class="collapse hide">
                     <div class="card-body">
                         @if (Auth::user()->speciality === 'admin' || Auth::user()->speciality === 'educator')
-                        <form action="{{ route('mid_stay_reports.update', $midStayReport->id) }}" method="POST">
+                        <form action="{{ route('mid_stay_reports.update', $midStayReport) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="form-group">
@@ -588,7 +588,7 @@
                 <div id="collapse-familiar-area" class="collapse hide">
                     <div class="card-body">
                         @if (Auth::user()->speciality === 'admin'|| Auth::user()->speciality === 'worker')
-                        <form action="{{ route('mid_stay_reports.update', $midStayReport->id) }}" method="POST">
+                        <form action="{{ route('mid_stay_reports.update', $midStayReport) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="form-group">
@@ -645,7 +645,7 @@
                 <div id="collapse-follow-up-area" class="collapse hide">
                     <div class="card-body">
                         @if (Auth::user()->speciality === 'admin')
-                        <form action="{{ route('mid_stay_reports.update', $midStayReport->id) }}" method="POST">
+                        <form action="{{ route('mid_stay_reports.update', $midStayReport) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="form-group">

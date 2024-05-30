@@ -683,7 +683,7 @@
 
                         <label class="label-title" for="familiar_situation_at_discharge">{{
                             __('reports.familiar_situation_at_discharge') }}:</label>
-                        <p>{{ $finalReport-familiar_situation_at_discharge ?: 'No hay datos disponibles' }}</p>
+                        <p>{{ $finalReport->familiar_situation_at_discharge ?: 'No hay datos disponibles' }}</p>
                         @endif
                     </div>
                 </div>
