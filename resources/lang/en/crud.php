@@ -20,4 +20,5 @@ return [
     'updated_report' => 'Updated report',
     'preview' => 'Preview',
     'download' => 'Download',
+    'modify' => 'Modify',
 ];

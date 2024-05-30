@@ -8,9 +8,14 @@
         <h1 class="mt-3 mb-3">{{ __('diary.diary_page') }} ({{ $date->format('d/m/Y') }})</h1>
         <div class="container">
             <div class="card">
-                <div class="card-header">
-                    {{ __('diary.dayparts.morning') }}
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <span>{{ __('diary.dayparts.morning') }}</span>
+                    <div class="ml-auto">
+                        <a href="{{ route('home', $morning_shift) }}" class="btn"><i class='bx bx-pencil'></i> <span
+                                class="modify-button">{{ __('crud.modify') }}</span></a>
+                    </div>
                 </div>
+
                 <div class="card-body">
                     <div class="shift-container">
                         <div class="educators-container">
@@ -33,7 +38,7 @@
 
             {{-- Actividades --}}
             <div class="card">
-                <div class="card-header">{{ __('diary.activities.label') }}</div>
+                <div class="card-header  d-flex justify-content-between align-items-center">{{ __('diary.activities.label') }}</div>
                 <div class="card-body">
                     <div class="activities-container">
                         @if (!empty($acitivities))
@@ -45,6 +50,7 @@
                                         <th>{{ __('diary.reducted') }}</th>
                                         <th>{{ __('diary.justified') }}</th>
                                         <th>{{ __('diary.no_justified') }}</th>
+                                        <th>{{__('crud.edit')}}</th>
                                     </tr>
                                 </thead>
                         @endif
@@ -78,7 +84,7 @@
 
             {{-- Rebajas --}}
             <div class="card">
-                <div class="card-header">{{ __('diary.reductions') }}</div>
+                <div class="card-header  d-flex justify-content-between align-items-center">{{ __('diary.reductions') }}</div>
                 <div class="card-body">
                     @if (!empty($reductions))
                         <table class="table table-striped">
@@ -105,7 +111,7 @@
 
             {{-- Intervenciones --}}
             <div class="card">
-                <div class="card-header">{{ __('diary.interventions') }}</div>
+                <div class="card-header  d-flex justify-content-between align-items-center">{{ __('diary.interventions') }}</div>
                 <div class="card-body">
                     @if (!empty($interventions))
                         <table class="table table-striped">
@@ -132,7 +138,7 @@
 
             {{-- Tarde --}}
             <div class="card">
-                <div class="card-header">{{ __('diary.dayparts.afternoon') }}</div>
+                <div class="card-header  d-flex justify-content-between align-items-center">{{ __('diary.dayparts.afternoon') }}</div>
                 <div class="card-body">
                     <div class="shift-container">
                         <div class="educators-container">
@@ -151,7 +157,7 @@
             </div>
             {{-- Noche --}}
             <div class="card">
-                <div class="card-header">{{ __('diary.dayparts.night') }}</div>
+                <div class="card-header  d-flex justify-content-between align-items-center">{{ __('diary.dayparts.night') }}</div>
                 <div class="card-body">
                     <div class="shift-container">
                         <div class="educators-container">

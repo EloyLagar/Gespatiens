@@ -30,8 +30,6 @@ class DiaryController extends Controller
         $intervenctions = Intervenction::whereDate('date', $request->date)->get();
         $reductions = Reduction::whereDate('date', $request->date)->get();
 
-        dd($request->date, $morning_shift, $afternoon_shift, $night_shift, $activities, $intervenctions, $reductions);
-
         $date = \Carbon\Carbon::parse($request->date);
 
         return view('diary.page', [
