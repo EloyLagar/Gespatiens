@@ -15,7 +15,6 @@ class Shift extends Model
         'day_part',
         'activity',
         'state',
-        'user_id',
     ];
 
     protected $dates = ['date'];

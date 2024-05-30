@@ -8,6 +8,7 @@ return [
     'pages' => 'Pages',
     'diary_page' => 'Diary page',
 
+    'no_activities' => 'No activities',
     'activities' => [
         'label' => 'Activities',
         'type' => 'Type',
@@ -19,12 +20,22 @@ return [
 
     'intervention' => 'Intervention',
     'interventions' => 'Interventions',
+    'no_interventions' => 'No Interventions',
 
+    'educators' => 'Educators',
     'shift' => 'Shift',
     'shifts' => 'Shifts',
+    'interesting_info' => 'Interesting info',
     'dayparts' => [
         'morning' => 'Morning',
         'afternoon' => 'Afternoon',
         'night' => 'Night',
+    ],
+
+    'reductions' => 'Reductions',
+    'reduction' => [
+        'total' => 'TOTALLY Reducted',
+        'partial' => 'Partialy Reducted (can do...)',
+        'sport' => 'Only sport reducted',
     ],
 ];

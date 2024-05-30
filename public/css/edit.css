@@ -5,6 +5,7 @@ h1, h2, h3, h4, h5, h6{
 .card-header {
     background-color: var(--accent-color);
     color: var(--light-text-color);
+    font-weight: 500;
 }
 
 .form-container {
@@ -150,3 +151,10 @@ label{
 .info-span{
     font-weight: 500;
 }
+
+.table .thead-dark th {
+    background-color: var(--accent-color);
+    border: 2px solid var(--light-text-color);
+    font-weight: 400;
+}
+

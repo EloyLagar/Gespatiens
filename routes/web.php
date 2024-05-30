@@ -42,6 +42,7 @@ Route::get('/verify', [LoginController::class, 'verify'])->name('verify');
 
 
 //Auth routes-----------------------------------------------------------------
+
 Route::middleware(['auth'])->group(function () {
 Route::get('mid_stay_form/{patient}', 'App\Http\Controllers\ReportController@mid_stay_report_form')->name('reports.mid_stay_report_form');
 Route::get('final_report_form/{patient}', 'App\Http\Controllers\ReportController@final_report_form')->name('reports.final_report_form');
@@ -57,13 +58,13 @@ Route::get('/final_report/download/{finalReport}', 'App\Http\Controllers\Final_r
 Route::get('/mid_report/preview/{midStayReport}', 'App\Http\Controllers\Mid_stay_reportController@preview')->name('reports.midStayReport_preview');
 Route::get('/mid_report/download/{midStayReport}', 'App\Http\Controllers\Mid_stay_reportController@download')->name('reports.midStayReport_download');
 
-// Other routes
 Route::post('/report/close', 'App\Http\Controllers\ReportController@setStateFalse')->name('report.close');
 
 
 
     //Diario
     Route::get('/diary/form', 'App\Http\Controllers\DiaryController@diaryForm')->name('diary.diaryForm');
+    Route::post('/diary', 'App\Http\Controllers\DiaryController@showPage')->name('diary.showPage');
 
     //Idioma
     Route::post('language', [LanguageController::class, 'change'])->name('language.change');

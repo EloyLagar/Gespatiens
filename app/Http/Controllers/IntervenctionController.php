@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Intervenction;
 use Illuminate\Http\Request;
 
-class IntervenctionController extends Controller
+class InterventionController extends Controller
 {
     /**
      * Display a listing of the resource.
