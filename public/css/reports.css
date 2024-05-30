@@ -43,7 +43,10 @@
 
 .pdf-options {
     position: fixed;
-    top: 80px;
-    right: 16px;
+    top: 80px; /* a mano porque no se puede de otra forma*/
+    right: 10px;
     z-index: 999;
+    display: flex;
+    flex-direction: column;
 }
+

@@ -8,7 +8,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\LanguageController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Reports\MidStayReportController;
+use App\Http\Controllers\Mid_stay_reportController;
 use App\Http\Controllers\LoginController;
 
 
@@ -47,11 +47,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('mid_stay_form/{patient}', 'App\Http\Controllers\ReportController@mid_stay_report_form')->name('reports.mid_stay_report_form');
     Route::get('final_report_form/{patient}', 'App\Http\Controllers\ReportController@final_report_form')->name('reports.final_report_form');
     // Route::resource('final_reports', Final_reportController::class)->only('update');
-    Route::post('final_reports', 'App\Http\Controllers\ReportController@mid_stay_report_form')->name('reports.mid_stay_report_form');
+    // Route::post('final_reports', 'App\Http\Controllers\ReportController@mid_stay_report_form')->name('reports.mid_stay_report_form');
+    Route::get('/mid_report/download/{midStayReport}', [Mid_stay_reportController::class, 'download'])->name('reports.midStayReport_download');
+    Route::get('/final_report/download/{finalReport}', [Final_reportController::class, 'download'])->name('reports.finalReport_download');
+    Route::get('/mid_report/preview/{midStayReport}', [Mid_stay_reportController::class, 'preview'])->name('reports.midStayReport_preview');
+    Route::put('/mid_stay_reports/{report}', 'App\Http\Controllers\Mid_stay_reportController@update')->name('mid_stay_reports.update');
+    Route::get('/final_report/preview/{finalReport}', [Final_reportController::class, 'preview'])->name('reports.finalReport_preview');
     Route::put('/final_reports/{report}', 'App\Http\Controllers\Final_reportController@update')->name('final_reports.update');
-    Route::resource('reports', MidStayReportController::class)->only('update');
-    Route::get('/report/preview/{finalReport}', [Final_reportController::class, 'preview'])->name('reports.finalReport_preview');
-    Route::get('/report/download/{finalReport}', [Final_reportController::class, 'download'])->name('reports.finalReport_download');
     Route::post('/report/close', 'App\Http\Controllers\ReportController@setStateFalse')->name('report.close');
     Route::resource('/reports', ReportController::class)->only('index','edit');
 

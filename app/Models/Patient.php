@@ -88,6 +88,11 @@ class Patient extends Model
         //Se accede a los reportes finales a través de reports (Patients-> 1:N Reports -> 1:1 Final_reports)
         return $this->hasManyThrough(Final_report::class, Report::class);
     }
+    public function getMidStayReports()
+    {
+        //Se accede a los reportes de media estancia a través de reports (Patients-> 1:N Reports -> 1:1 Mid_stay_reports)
+        return $this->hasManyThrough(Mid_stay_report::class, Report::class);
+    }
 
 
 }

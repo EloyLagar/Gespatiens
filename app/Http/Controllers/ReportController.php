@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mid_stay_report;
 use App\Models\Report;
 use App\Models\Patient;
 use App\Models\Final_report;
@@ -91,24 +92,24 @@ class ReportController extends Controller
 
     public function mid_stay_report_form(Patient $patient)
     {
+        $midStayReport = $patient->getMidStayReports()->latest()->first();
 
-        $final_report = null;
+        if (!$midStayReport) {
+            $report = new Report();
+            $report->patient_id = $patient->id;
+            $report->save();
 
-        $final_report = $patient->getFinalReports()->latest()->first();
-
-        if (!$final_report || $final_report == null) {
-
-            $report = new Report(['patient_id' => $patient->id]);
-
-            $finalReport = new Final_report();
-            $finalReport->report_id = $report->id;
-            $finalReport->save();
-        } elseif (!$final_report->report->state == true) {
-            return back()->with('error', __('error.already_in_use'));
+            $midStayReport = new Mid_stay_report();
+            $midStayReport->report_id = $report->id;
+            $midStayReport->save();
+        } elseif ($midStayReport->report->state == true) {
+            return redirect()->back()->with('error', __('error.already_in_use'));
         }
-        $final_report->report->state = true;
+        $report = $midStayReport->report;
+        $report->state = true;
+        $report->save();
 
-        return view('reports.final_report_form', compact('patient', 'mid_stay_report'));
+        return view('reports.mid_stay_report_form', compact('patient', 'midStayReport'));
     }
     public function setStateFalse(Request $request){
         $report = Report::find($request->report_id);

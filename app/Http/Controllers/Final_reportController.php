@@ -81,13 +81,15 @@ class Final_reportController extends Controller
 
     public function preview(Final_report $finalReport)
     {
-        $pdf = PDF::loadView('reports.final_report', compact('finalReport'));
+        $employees = $finalReport->report->users()->select('name', 'speciality', 'signature')->get();
+        $pdf = PDF::loadView('reports.final_report', compact('finalReport', 'employees'));
         return $pdf->stream($finalReport->report->patient->name . '_' . $finalReport->report->patient->surname . '-Informe_final_estancia-' . date('d-m-Y'));
     }
 
     public function download(Final_report $finalReport)
     {
-        $pdf = PDF::loadView('reports.final_report', compact('finalReport'));
+        $employees = $finalReport->report->users()->select('name', 'speciality', 'signature')->get();
+        $pdf = PDF::loadView('reports.final_report', compact('finalReport', 'employees'));
         return $pdf->download($finalReport->report->patient->name . '_' . $finalReport->report->patient->surname . '-Informe_final_-' . date('d-m-Y') . '.pdf');
     }
 }

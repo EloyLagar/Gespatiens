@@ -69,4 +69,6 @@ return [
     'no_available_data' => 'No available data',
 
     'no_reports' => 'No reports',
+    'program_duration_forecast' => 'Program duration forecast',
+    'estimated_program_duration' => 'Estimated program duration (in months)',
 ];

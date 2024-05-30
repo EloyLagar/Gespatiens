@@ -24,27 +24,32 @@
             background-color: #004F84;
             text-align: center;
             color: #fff;
+            font-size: 16px
         }
 
         .error {
-            font-size: 4rem;
             font-family: "Outfit", sans-serif;
         }
 
         .number {
-            font-size: 6rem;
+            font-size: 4em;
             color: #fff;
             font-optical-sizing: auto;
         }
 
+        span{
+            font-size: 2em;
+            margin-top: 2em;
+        }
         #ges {
             color: #33fdd4;
         }
 
         a{
+            margin-top: 2em;
             padding: 0.2em 0.4em;
             border-radius: 2em;
-            font-size: 2rem;
+            font-size: 2em;
             color: #fff;
             text-decoration: none;
             border: 4px solid #003f69;
@@ -64,7 +69,7 @@
 <body>
     <div class="error">
         <span id="ges">ges</span><span id="patiens">patiens</span><br>
-        <span class="number">Upsss...  {{__('error.found')}}</span><br>
+        <span class="number">Upsss...  {{__('error.found')}}</span><br><br><br>
         <a href="/">{{__('crud.goBack')}}</a>
     </div>
 </body>

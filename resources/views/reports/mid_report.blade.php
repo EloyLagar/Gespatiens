@@ -49,7 +49,7 @@
         text-decoration: underline;
         }
 
-        h3{
+        h3 {
             margin-left: 1cm
         }
 
@@ -76,12 +76,24 @@
             font-size: 24px;
         }
 
-        .area-container{
-            margin-top:1cm
+        .area-container {
+            margin-top: 1cm
         }
 
-        li, p{
+        li,
+        p {
             font-size: 16px;
+        }
+
+        .employees-container p {
+            margin-bottom: 0;
+            padding-bottom: .1cm;
+        }
+
+        .employees-container img {
+            max-width: 140px;
+            height: auto;
+            margin-bottom: 0.5cm;
         }
     </style>
 </head>
@@ -97,10 +109,12 @@
         <div class="user-info">
             <span>{{ __('patients.surnameAndName') }}:</span> <span style="font-weight: 400"></span><br>
             <span>{{ __('patients.birth_date') }}: </span><span style="font-weight: 400"></span>
-            <span style="float:right; margin.left: auto; margin-right: 4cm">DNI: <span style="font-weight: 400"></span></span><br>
+            <span style="float:right; margin.left: auto; margin-right: 4cm">DNI: <span
+                    style="font-weight: 400"></span></span><br>
             <span>{{ __('patients.center') }}: </span><span style="font-weight: 400"></span><br>
             <span>{{ __('patients.request_number') }}: </span><span style="font-weight: 400"></span>
-            <span style="float:right; margin.left: auto; margin-right: 4cm">NIP: <span style="font-weight: 400"></span></span><br>
+            <span style="float:right; margin.left: auto; margin-right: 4cm">NIP: <span
+                    style="font-weight: 400"></span></span><br>
             <span>{{ __('patients.entry_date') }}: </span><span style="font-weight: 400"></span>
             </span>
         </div>
@@ -195,11 +209,15 @@
 
         <div class="employees-container">
             <p>{{ __('reports.employees_name_role_signature') }}</p>
-            {{-- @foreach ($employees as $employee)
-                <p>{{ $employee->name }}, {{ $employee->speciality }}</p><br>
-                <img src="{{ asset('/storage/signatures/' . $employee->signature) }}"
-                    alt="{{ __('user.signature') }}">
-            @endforeach --}}
+            @forelse ($employees as $employee)
+
+            <p>- {{ $employee->name }}, {{ __('user.speciality.' .$employee->speciality) }}</p><br>
+            <img src="{{ public_path('/storage/signatures/' . $employee->signature) }}"
+                alt="{{ __('user.signature') }}">
+
+            @empty
+
+            @endforelse
         </div>
 
         <div class="direction-container">
@@ -215,4 +233,5 @@
         }
     </script>
 </body>
+
 </html>
