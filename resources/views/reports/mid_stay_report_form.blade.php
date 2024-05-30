@@ -277,7 +277,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="health_objectives">{{ __('reports.health_objectives') }}:</label>
+                                <label for="health_objectives">{{ __('reports.stated_objectives') }}:</label>
                                 <textarea class="form-control" id="health_objectives"
                                     name="health_objectives">{{ old('health_objectives', $midStayReport->health_objectives) }}</textarea>
                                 @error('health_objectives')
@@ -315,7 +315,7 @@
                                 }}:</label>
                             <p>{{ $midStayReport->report->health_diagnosis ?: __('reports.no_available_data') }}</p>
 
-                            <label class="label-title" for="health_objectives">{{
+                            <label class="label-title" for="stated_objectives">{{
                                 __('reports.health_objectives') }}:</label>
                             <p>{{ $midStayReport->health_objectives ?: __('reports.no_available_data') }}
                             </p>
@@ -393,7 +393,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="psycho_objectives">{{ __('reports.psycho_objectives') }}:</label>
+                                <label for="psycho_objectives">{{ __('reports.stated_objectives') }}:</label>
                                 <textarea class="form-control" id="psycho_objectives"
                                     name="psycho_objectives">{{ old('psycho_objectives', $midStayReport->psycho_objectives) }}</textarea>
                                 @error('psycho_objectives')
@@ -434,7 +434,7 @@
                             <p>{{ $midStayReport->report->psycho_interventions ?: __('reports.no_available_data') }}
                             </p>
                             <label class="label-title" for="psycho_objectives">{{
-                                __('reports.psycho_objectives') }}:</label>
+                                __('reports.stated_objectives') }}:</label>
                             <p>{{ $midStayReport->report->psycho_objectives ?: __('reports.no_available_data') }}
                             </p>
 

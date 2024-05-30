@@ -53,7 +53,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/mid_report/preview/{midStayReport}', [Mid_stay_reportController::class, 'preview'])->name('reports.midStayReport_preview');
     Route::put('/mid_stay_reports/{report}', 'App\Http\Controllers\Mid_stay_reportController@update')->name('mid_stay_reports.update');
     Route::get('/final_report/preview/{finalReport}', [Final_reportController::class, 'preview'])->name('reports.finalReport_preview');
-    Route::put('/final_reports/{report}', 'App\Http\Controllers\Final_reportController@update')->name('final_reports.update');
+    Route::put('/final_reports/{final_report_id}', 'App\Http\Controllers\Final_reportController@update')->name('final_reports.update');
     Route::post('/report/close', 'App\Http\Controllers\ReportController@setStateFalse')->name('report.close');
     Route::resource('/reports', ReportController::class)->only('index','edit');
 

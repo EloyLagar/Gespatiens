@@ -57,6 +57,7 @@ class Final_reportController extends Controller
      */
     public function update(UpdateFinalReportRequest $request, $final_report_id)
     {
+        dd($request->all());
         $finalReport = Final_report::find($final_report_id);
         $report = Report::find($finalReport->report_id);
         $finalReport->fill($request->all());

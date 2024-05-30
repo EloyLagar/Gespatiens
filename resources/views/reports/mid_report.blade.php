@@ -128,9 +128,9 @@
                 <p></p>
                 <li>{{ __('reports.jury_situation') }}:</li>
                 <p></p>
-                <li>{{ __('reports.diagnosis_IV_axis') }}:</li>
+                <li>{{ __('reports.social_diagnosis') }}:</li>
                 <p></p>
-                <li>{{ __('reports.planned_objectives') }}:</li>
+                <li>{{ __('reports.stated_objectives') }}:</li>
                 <p></p>
             </ul>
         </div>
@@ -145,7 +145,7 @@
                 <p></p>
                 <li>{{ __('reports.phisical_health_evo_and_valoration') }}:</li>
                 <p></p>
-                <li>{{ __('reports.planned_objectives') }}:</li>
+                <li>{{ __('reports.stated_objectives') }}:</li>
                 <p></p>
             </ul>
         </div>
@@ -160,7 +160,7 @@
                 <p></p>
                 <li>{{ __('reports.individual_intervention_needed') }}:</li>
                 <p></p>
-                <li>{{ __('reports.planned_objectives') }}:</li>
+                <li>{{ __('reports.stated_objectives') }}:</li>
                 <p></p>
             </ul>
         </div>
@@ -183,8 +183,6 @@
                 <li>{{ __('reports.mates_relation') }}:</li>
                 <p></p>
                 <li>{{ __('reports.employees_relation') }}:</li>
-                <p></p>
-                <li>{{ __('reports.planned_objectives') }}:</li>
                 <p></p>
             </ul>
         </div>

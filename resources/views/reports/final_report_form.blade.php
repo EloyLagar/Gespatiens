@@ -222,7 +222,7 @@
                 <div id="collapse-health-area" class="collapse hide">
                     <div class="card-body">
                         @if (Auth::user()->speciality === 'admin' || Auth::user()->speciality === 'medical')
-                        <form action="{{ route('final_reports.update', $finalReport->report->id) }}" method="POST">
+                        <form action="{{ route('final_reports.update', $finalReport->id) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="form-group">

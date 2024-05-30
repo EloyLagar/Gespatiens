@@ -104,8 +104,8 @@
                     style="font-weight: 400">{{ $finalReport->report->patient->dni }}</span></span><br>
             <span>{{ __('patients.center') }}: </span><span style="font-weight: 400">Comunidad Terapéutica Los
                 Vientos</span><br>
-            <span>{{ __('patients.request_number') }}: </span><span
-                style="font-weight: 400">{{ $finalReport->report->request_number ?? '' }}</span><br>
+            <span>{{ __('reports.request_number') }}: </span><span
+                style="font-weight: 400">{{ $finalReport->request_number ?? '' }}</span><br>
             <span>{{ __('patients.entry_date') }}: </span><span
                 style="font-weight: 400">{{ $finalReport->report->patient->entry_date ?? '' }}</span>
             <span style="float:right; margin.left: auto; margin-right: 4cm">SIP: <span
@@ -218,13 +218,16 @@
 
         <div class="employees-container">
             <p>{{ __('reports.employees_name_role_signature') }}</p>
-            {{-- @foreach ($employees as $employee)
-                <p>{{ $employee->name }}, {{ $employee->speciality }}</p><br>
-                <img src="{{ asset('/storage/signatures/' . $employee->signature) }}"
-                    alt="{{ __('user.signature') }}">
-            @endforeach --}}
-        </div>
+            @forelse ($employees as $employee)
 
+            <p>- {{ $employee->name }}, {{ __('user.speciality.' .$employee->speciality) }}</p><br>
+            <img src="{{ public_path('/storage/signatures/' . $employee->signature) }}"
+                alt="{{ __('user.signature') }}">
+
+            @empty
+
+            @endforelse
+        </div>
         <div class="direction-container">
             <p>{{ __('reports.direction_date_signature') }}</p>
         </div>
