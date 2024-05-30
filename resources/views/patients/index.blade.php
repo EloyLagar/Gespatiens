@@ -6,7 +6,7 @@
     <div class="wrapper d-flex flex-column">
         <h1  class="mt-3 mb-3">{{__('patients.plural')}}</h1>
         @if (Auth::user()->speciality === 'admin')
-            <div class="btn-container"><a href="{{ route('patients.create') }}" class="btn">Create Patient</a></div>
+            <div class="btn-container"><a href="{{ route('patients.create') }}" class="btn py-2">Create Patient</a></div>
         @endif
         <div class="container">
             <div class="row">
