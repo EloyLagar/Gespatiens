@@ -14,7 +14,8 @@ class ReportController extends Controller
      */
     public function index()
     {
-        //
+        $reports = Report::simplePaginate(15);
+        return view('reports.index', compact('reports'));
     }
 
     /**
@@ -78,10 +79,11 @@ class ReportController extends Controller
             $finalReport->report_id = $report->id;
             $finalReport->save();
         } elseif ($finalReport->report->state == true) {
-            return back()->with('error', __('error.already_in_use'));
+            return redirect()->route('patients.edit', $patient)->with('error', __('error.already_in_use'));
         }
-
-        $finalReport->report->state = true;
+        $report = $finalReport->report;
+        $report->state = true;
+        $report->save();
 
         return view('reports.final_report_form', compact('patient', 'finalReport'));
     }
@@ -97,7 +99,6 @@ class ReportController extends Controller
         if (!$final_report || $final_report == null) {
 
             $report = new Report(['patient_id' => $patient->id]);
-            $report->save();
 
             $finalReport = new Final_report();
             $finalReport->report_id = $report->id;
@@ -108,5 +109,17 @@ class ReportController extends Controller
         $final_report->report->state = true;
 
         return view('reports.final_report_form', compact('patient', 'mid_stay_report'));
+    }
+    public function setStateFalse(Request $request){
+        $report = Report::find($request->report_id);
+
+        if ($report) {
+            $report->state = false;
+            $report->save();
+            return response()->json(['success' => true, 'message' => 'Report state false now']);
+        }else{
+            return response()->json(['success' => false, 'message' => 'No report found']);
+
+        }
     }
 }

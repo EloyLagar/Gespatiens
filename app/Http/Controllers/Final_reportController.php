@@ -62,6 +62,7 @@ class Final_reportController extends Controller
         $finalReport->fill($request->all());
         $finalReport->update();
         $report->fill($request->all());
+        $report->state=false;
         $report->update();
 
         $employee = auth()->user();
