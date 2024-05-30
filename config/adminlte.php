@@ -346,7 +346,7 @@ return [
                 ],
                 [
                     'text' => 'reports',
-                    'url' => '/generatePDF',
+                    'url' => '/reports',
                     'icon' => 'fas fa-fw fa-file',
                 ],
             ]
