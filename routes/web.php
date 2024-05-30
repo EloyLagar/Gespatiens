@@ -52,32 +52,37 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('reports', MidStayReportController::class)->only('update');
     Route::get('/report/preview/{finalReport}', [Final_reportController::class, 'preview'])->name('reports.finalReport_preview');
     Route::get('/report/download/{finalReport}', [Final_reportController::class, 'download'])->name('reports.finalReport_download');
+    Route::post('/report/close', 'App\Http\Controllers\ReportController@setStateFalse')->name('report.close');
+    Route::resource('/reports', ReportController::class)->only('index','edit');
+
+
     //Diario
     Route::get('/diary/form', 'App\Http\Controllers\DiaryController@diaryForm')->name('diary.diaryForm');
+
     //Idioma
     Route::post('language', [LanguageController::class, 'change'])->name('language.change');
+
     //Ruta de cración de contraeña por parte del empleado
     Route::post('/users/create-password', [LoginController::class, 'updatePassword'])->name('updatePassword');
+
     //Index solo de residents
     Route::get('/residents', [PatientController::class, 'indexResidents'])->name('indexResidents');
-    Route::resource('patients', PatientController::class)->only('index');
+    Route::resource('patients', PatientController::class)->only('index', 'edit');
+
     //Evaluaciones
     Route::get('/evaluations/form', 'App\Http\Controllers\EvaluationController@indexForm')->name('evaluations.indexForm');
     Route::post('/evaluations/save_mark', 'App\Http\Controllers\EvaluationController@saveEvaluation')->name('evaluations.save_evaluation');
     Route::post('/evaluations', 'App\Http\Controllers\EvaluationController@index')->name('evaluations.index');
+
     //Como no entra el Auth::user() en adminlte.php para ir al perfil pues se hace así ->
     Route::get('/profile', [UserController::class, 'redirectToEdit'])->name('redirectToEdit');
     Route::resource('users', UserController::class)->only('edit', 'update');
+
     //Avisos
     Route::resource('notices', NoticeController::class)->only('edit', 'update', 'create', 'store', 'destroy');
 });
 
 Route::middleware(['admin'])->group(function () {
     Route::resource('users', UserController::class)->only('create', 'store', 'index');
-    Route::resource('patients', PatientController::class)->only('create', 'store', 'edit', 'update');
+    Route::resource('patients', PatientController::class)->only('create', 'store', 'update');
 });
-
-Route::get('/generatePDF', function () {
-    return view('reports.mid_stay_report');
-});
-Route::post('/reports/mid-stay-report', [MidStayReportController::class, 'createPDF'])->name('prueba.pdf');
