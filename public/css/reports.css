@@ -50,3 +50,6 @@
     flex-direction: column;
 }
 
+.form-control{
+    font-weight: 500;
+}

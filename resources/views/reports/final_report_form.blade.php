@@ -67,7 +67,7 @@
                         </div>
 
                         @if (Auth::user()->speciality === 'admin')
-                        <form action="{{ route('final_reports.update', $finalReport->id) }}" method="POST">
+                        <form action="{{ route('final_reports.update', $finalReport) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="form-group">
@@ -121,7 +121,7 @@
                 <div id="collapse-social-area" class="collapse hide">
                     <div class="card-body">
                         @if (Auth::user()->speciality === 'admin' || Auth::user()->speciality === 'worker')
-                        <form action="{{ route('final_reports.update', $finalReport->id) }}" method="POST">
+                        <form action="{{ route('final_reports.update', $finalReport) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="form-group">
@@ -222,7 +222,7 @@
                 <div id="collapse-health-area" class="collapse hide">
                     <div class="card-body">
                         @if (Auth::user()->speciality === 'admin' || Auth::user()->speciality === 'medical')
-                        <form action="{{ route('final_reports.update', $finalReport->id) }}" method="POST">
+                        <form action="{{ route('final_reports.update', $finalReport) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="form-group">
@@ -347,7 +347,7 @@
                 <div id="collapse-psycho-area" class="collapse hide">
                     <div class="card-body">
                         @if (Auth::user()->speciality === 'admin' || Auth::user()->speciality === 'psychologist')
-                        <form action="{{ route('final_reports.update', $finalReport->id) }}" method="POST">
+                        <form action="{{ route('final_reports.update', $finalReport) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="form-group">
@@ -482,9 +482,10 @@
                 <div id="collapse-educative-area" class="collapse hide">
                     <div class="card-body">
                         @if (Auth::user()->speciality === 'admin' || Auth::user()->speciality === 'educator')
-                        <form action="{{ route('final_reports.update', $finalReport->id) }}" method="POST">
+                        <form action="{{ route('final_reports.update', $finalReport) }}" method="POST">
                             @csrf
                             @method('PUT')
+                            <label>{{__('reports.center_adaptation_and_implication')}}</label >
                             <div class="form-group">
                                 <label for="at_habits">{{ __('reports.at_habits') }}:</label>
                                 <textarea class="form-control" id="at_habits"
@@ -558,7 +559,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="educative_outgoings_value">{{ __('reports.educative_outgoings_value')
+                                <label for="educative_outgoings_value">{{ __('reports.develop_and_therapeutic_outgoings_valoration')
                                     }}:</label>
                                 <textarea class="form-control" id="educative_outgoings_value"
                                     name="educative_outgoings_value">{{ old('educative_outgoings_value', $finalReport->educative_outgoings_value) }}</textarea>
@@ -575,6 +576,7 @@
                             <div class="text-center">
                                 <p>{{ __('reports.auth_educator') }}.</p>
                             </div>
+                            <p>{{__('reports.center_adaptation_and_implication')}}</p>
                             <label class="label-title" for="at_habits">{{ __('reports.at_habits') }}:</label>
                             <p>{{ $finalReport->report->habit_adaptation ?: __('reports.no_available_data') }}</p>
 
@@ -606,7 +608,7 @@
                                 }}
                             </p>
                             <label class="label-title" for="educative_outgoings_value">{{
-                                __('reports.educative_outgoings_value') }}:</label>
+                                __('reports.develop_and_therapeutic_outgoings_valoration') }}:</label>
                             <p>{{ $finalReport->report->educative_outgoings_value ?: __('reports.no_available_data') }}
                             </p>
                         </div>
@@ -627,7 +629,7 @@
                 <div id="collapse-familiar-area" class="collapse hide">
                     <div class="card-body">
                         @if (Auth::user()->speciality === 'admin'|| Auth::user()->speciality === 'worker')
-                        <form action="{{ route('final_reports.update', $finalReport->id) }}" method="POST">
+                        <form action="{{ route('final_reports.update', $finalReport) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="form-group">
@@ -699,7 +701,7 @@
                 <div id="collapse-follow-up-area" class="collapse hide">
                     <div class="card-body">
                         @if (Auth::user()->speciality === 'admin')
-                        <form action="{{ route('final_reports.update', $finalReport->id) }}" method="POST">
+                        <form action="{{ route('final_reports.update', $finalReport) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="form-group">

@@ -43,19 +43,23 @@ Route::get('/verify', [LoginController::class, 'verify'])->name('verify');
 
 //Auth routes-----------------------------------------------------------------
 Route::middleware(['auth'])->group(function () {
-    //Reportes
-    Route::get('mid_stay_form/{patient}', 'App\Http\Controllers\ReportController@mid_stay_report_form')->name('reports.mid_stay_report_form');
-    Route::get('final_report_form/{patient}', 'App\Http\Controllers\ReportController@final_report_form')->name('reports.final_report_form');
-    // Route::resource('final_reports', Final_reportController::class)->only('update');
-    // Route::post('final_reports', 'App\Http\Controllers\ReportController@mid_stay_report_form')->name('reports.mid_stay_report_form');
-    Route::get('/mid_report/download/{midStayReport}', [Mid_stay_reportController::class, 'download'])->name('reports.midStayReport_download');
-    Route::get('/final_report/download/{finalReport}', [Final_reportController::class, 'download'])->name('reports.finalReport_download');
-    Route::get('/mid_report/preview/{midStayReport}', [Mid_stay_reportController::class, 'preview'])->name('reports.midStayReport_preview');
-    Route::put('/mid_stay_reports/{report}', 'App\Http\Controllers\Mid_stay_reportController@update')->name('mid_stay_reports.update');
-    Route::get('/final_report/preview/{finalReport}', [Final_reportController::class, 'preview'])->name('reports.finalReport_preview');
-    Route::put('/final_reports/{final_report_id}', 'App\Http\Controllers\Final_reportController@update')->name('final_reports.update');
-    Route::post('/report/close', 'App\Http\Controllers\ReportController@setStateFalse')->name('report.close');
-    Route::resource('/reports', ReportController::class)->only('index','edit');
+Route::get('mid_stay_form/{patient}', 'App\Http\Controllers\ReportController@mid_stay_report_form')->name('reports.mid_stay_report_form');
+Route::get('final_report_form/{patient}', 'App\Http\Controllers\ReportController@final_report_form')->name('reports.final_report_form');
+
+// Route::put('/mid_stay_reports/{report}', 'App\Http\Controllers\Mid_stay_reportController@update')->name('mid_stay_reports.update');
+// Route::put('/final_reports/{report}', 'App\Http\Controllers\Final_reportController@update')->name('final_reports.update');
+Route::resource('/reports', 'App\Http\Controllers\ReportController')->only('index', 'edit');
+Route::resource('final_reports', 'App\Http\Controllers\Final_reportController')->only('update');
+Route::resource('mid_stay_reports', 'App\Http\Controllers\Mid_stay_reportController')->only('update');
+
+Route::get('/final_report/preview/{finalReport}', 'App\Http\Controllers\Final_reportController@preview')->name('reports.finalReport_preview');
+Route::get('/final_report/download/{finalReport}', 'App\Http\Controllers\Final_reportController@download')->name('reports.finalReport_download');
+Route::get('/mid_report/preview/{midStayReport}', 'App\Http\Controllers\Mid_stay_reportController@preview')->name('reports.midStayReport_preview');
+Route::get('/mid_report/download/{midStayReport}', 'App\Http\Controllers\Mid_stay_reportController@download')->name('reports.midStayReport_download');
+
+// Other routes
+Route::post('/report/close', 'App\Http\Controllers\ReportController@setStateFalse')->name('report.close');
+
 
 
     //Diario

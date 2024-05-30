@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Mid_stay_report;
 use Illuminate\Http\Request;
 use App\Models\Report;
+use App\Models\Patient;
 use Illuminate\Support\Facades\Auth;
 use \Barryvdh\DomPDF\Facade\Pdf as PDF;
 
@@ -66,7 +67,8 @@ class Mid_stay_reportController extends Controller
         $employee = auth()->user();
         $employee->reports()->syncWithoutDetaching([$report->id]);//Si no existe la relacion se agrega, en caso de que exista se omite
 
-        return redirect()->route('reports.mid_stay_report_form', $report->patient_id)->with('success', __('crud.updated_report'));
+        $patient = Patient::findOrFail($report->patient_id);
+        return view('reports.mid_stay_report_form', compact('patient', 'midStayReport'))    ->with('success', __('crud.updated_report'));
     }
 
     /**

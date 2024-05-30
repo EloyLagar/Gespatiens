@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UpdateFinalReportRequest;
 use App\Models\Final_report;
 use App\Models\Report;
+use App\Models\Patient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use \Barryvdh\DomPDF\Facade\Pdf as PDF;
@@ -55,10 +56,9 @@ class Final_reportController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateFinalReportRequest $request, $final_report_id)
+    public function update(Request $request, $final_report)
     {
-        dd($request->all());
-        $finalReport = Final_report::find($final_report_id);
+        $finalReport = Final_report::find($final_report);
         $report = Report::find($finalReport->report_id);
         $finalReport->fill($request->all());
         $finalReport->update();
@@ -69,7 +69,9 @@ class Final_reportController extends Controller
         $employee = auth()->user();
         $employee->reports()->syncWithoutDetaching([$report->id]);//Si no existe la relacion se agrega, en caso de que exista se omite
 
-        return redirect()->route('reports.final_report_form', $report->patient_id)->with('success', __('crud.updated_report'));
+        $patient = Patient::findOrFail($report->patient_id);
+
+        return view('reports.final_report_form', compact('patient', 'finalReport'))->with('success', __('crud.updated_report'));
     }
 
     /**
