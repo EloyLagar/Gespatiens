@@ -11,7 +11,7 @@
                     {{ __('diary.form_help') }}
                 </div>
                 <div class="card-body">
-                    <form action="#" method="POST">
+                    <form action="{{route('diary.index')}}" method="POST">
                         @csrf
                         <div class="form-row d-flex">
                             <div class="form-group col-md-12">

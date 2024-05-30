@@ -28,4 +28,7 @@ return [
     'surnameAndName' => 'Surname and name',
     'center' => 'Reference centre',
     'exit_reason' => 'Reason for exit',
+
+    'tutors' => 'Tutors',
+    'tutor' => 'Tutor',
 ];

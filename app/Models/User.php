@@ -52,7 +52,7 @@ class User extends Authenticatable
         'name' => 'string',
     ];
 
-    public function patients()
+    public function tutors()
     {
         return $this->belongsToMany(Patient::class, 'tutors')
                     ->withTimestamps();
@@ -74,6 +74,10 @@ class User extends Authenticatable
                     ->withPivot('intervention')
                     ->withTimestamps();
         //$patient->interventions()->attach($user->id, ['intervention' => $intervencion]); Para relacionar al paciente con la intervencion
+    }
+
+    public function shifts(){
+        return $this->belongsToMany(Shift::class, 'works_in');
     }
 
 

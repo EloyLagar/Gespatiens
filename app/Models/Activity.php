@@ -22,8 +22,28 @@ class Activity extends Model
 
     public function patients()
     {
-        return $this->belongsToMany(Patient::class, 'attendances')
-                    ->withPivot('justified', 'reducted', 'assists')
-                    ->withTimestamps();
+        return $this->belongsToMany(Patient::class, 'attend')->withPivot('reducted', 'assists', 'justified');
+    }
+
+    public function assistants()
+    {
+        return $this->alumnos()->wherePivot('assists', true);
+    }
+
+    public function reducteds()
+    {
+        return $this->alumnos()->wherePivot('reducted', true);
+    }
+
+    public function justifieds()
+    {
+        return $this->alumnos()->wherePivot('justified', true);
+    }
+
+    public function no_justifieds()
+    {
+        return $this->alumnos()->wherePivot('reducted', false)
+                               ->wherePivot('assists', false)
+                               ->wherePivot('justified', false);
     }
 }

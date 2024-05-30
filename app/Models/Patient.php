@@ -35,9 +35,7 @@ class Patient extends Model
 
     public function activities()
     {
-        return $this->belongsToMany(Activity::class, 'attendances')
-            ->withPivot('justified', 'reducted', 'assists')
-            ->withTimestamps();
+        return $this->belongsToMany(Activity::class, 'attend')->withPivot('reducted', 'assists', 'justified');
     }
 
     public function reports()
@@ -47,10 +45,10 @@ class Patient extends Model
             ->withTimestamps();
     }
 
-    public function tutors()
+    public function is_tutored()
     {
         return $this->belongsToMany(User::class, 'tutors')
-            ->withTimestamps();
+            ->withTimestamps();//
         //$patient->tutors()->attach($user->id); Asignación de tutor
     }
 
