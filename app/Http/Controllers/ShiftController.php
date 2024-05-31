@@ -46,7 +46,15 @@ class ShiftController extends Controller
     public function edit(Shift $shift)
     {
         $educators = User::where('speciality', 'educator')->get();
-        return view('diary.shifts.edit', compact('shift', 'educators'));
+
+        //Se recogen los educadores que no estan relacionados con el turno
+        $noWorkers = User::where('speciality', 'educator')
+            ->whereDoesntHave('shifts', function ($query) use ($shift) {
+                $query->where('shift_id', $shift->id);
+            })
+            ->get();
+
+        return view('diary.shifts.edit', compact('shift', 'educators', 'noWorkers'));
     }
 
     /**
@@ -62,8 +70,9 @@ class ShiftController extends Controller
         $shift->users()->detach();
         $shift->users()->sync($request->educators);
 
-        $shift->users()->sync($request->educators);//Se guarda la relacón entre los educadores y el turno
-        return redirect()->route('diary.showPage',$shift->date)->with('success', 'Shift updated successfully.');
+
+        return redirect()->route('diary.showPage', ['date' => $shift->date])
+            ->withMethod('GET');
     }
 
     /**

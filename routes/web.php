@@ -63,7 +63,7 @@ Route::middleware(['auth'])->group(function () {
 
     //Diario
     Route::get('/diary/form', 'App\Http\Controllers\DiaryController@diaryForm')->name('diary.diaryForm');
-    Route::match(['get', 'post'], '/diary/{date?}', [DiaryController::class, 'showPage'])->name('diary.showPage');
+    Route::match(['get', 'post'], '/diary/{date?}', 'App\Http\Controllers\DiaryController@showPage')->name('diary.showPage');
 
     //Turnos
     Route::resource('shifts', ShiftController::class)->only(['edit', 'update']);

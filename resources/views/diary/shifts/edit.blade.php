@@ -8,7 +8,8 @@
 @section('content')
     <div class="wrapper  d-flex flex-column">
         <div class="container-fluid  pt-3">
-            <a href="{{ route('diary.showPage', $shift->date) }}" class="goBackBtn btn"><i class='bx bx-left-arrow-alt'></i></a>
+            <a href="{{ route('diary.showPage', $shift->date) }}" class="goBackBtn btn"><i
+                    class='bx bx-left-arrow-alt'></i></a>
             <div class="row justify-content-center">
                 <div class="col-12 col-md-8 col-lg-6">
                     <div class="card">
@@ -69,36 +70,38 @@
     </div>
 
     <script>
+        // Se cargan los educadores que ya trabajan en ese turno
+        $(document).ready(function() {
+            @foreach ($shift->users as $educator)
+                addEducatorItem('{{ $educator->name }}', {{ $educator->id }});
+            @endforeach
+        });
+
+        //Se llama al darle a añadir y recoge los datos del educador
         function addEducator() {
-            var select = document.getElementById('selectedEducator');
-            var selectedItem = select.options[select.selectedIndex];
-            var list = document.getElementById('selectedEducatorsList');
+            var select = $('#selectedEducator');
+            var selectedValue = select.val();
+            // Control para que no entre otra vez el trabajador si está en la lista
+            if ($('#selectedEducatorsList').find("input[value='" + selectedValue + "']").length > 0) {
+                return;
+            }
+            var educatorName = select.find(':selected').text();
+            addEducatorItem(educatorName, selectedValue);
+        }
 
-            var listItem = document.createElement('li');
-            listItem.className = 'list-group-item';
-            listItem.textContent = selectedItem.text;
+        //Añade a la vista la tarjeta del educador
+        function addEducatorItem(name, id) {
+            var listItem = $('<li>').addClass('list-group-item').text(name);
+            var removeButton = $('<button>').addClass('btn btn-sm float-right').text('{{ __('crud.destroy') }}');
 
-            var removeButton = document.createElement('button');
-            removeButton.className = 'btn btn-danger btn-sm float-right';
-            removeButton.textContent = 'Quitar';
-            removeButton.onclick = function() {
+            removeButton.click(function() {
                 listItem.remove();
-            };
-            listItem.appendChild(removeButton);
+            });
 
-            list.appendChild(listItem);
+            listItem.append(removeButton);
+            listItem.append($('<input>').attr('type', 'hidden').attr('name', 'educators[]').val(id));
 
-            var hiddenInput = document.createElement('input');
-            hiddenInput.type = 'hidden';
-            hiddenInput.name = 'educators[]';
-            hiddenInput.value = selectedItem.value;
-            listItem.appendChild(hiddenInput);
-
-            list.appendChild(listItem);
-
-            $('#addEducatorsModal').modal('hide');
-
-            $('#addEducatorsModal').modal('hide');
+            $('#selectedEducatorsList').append(listItem);
         }
     </script>
 @endsection

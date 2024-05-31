@@ -15,11 +15,14 @@ class DiaryController extends Controller
         return view('diary.diaryForm');
     }
 
-    public function showPage(Request $request)
+    public function showPage(Request $request, $date = null)
     {
-        $request->validate([
-            'date' => 'required|date',
-        ]);
+
+        //Control por si entra por get
+        if ($date) {
+            $date = \Carbon\Carbon::parse($date);
+            $request->date = $date;
+        }
 
         $morning_shift = Shift::whereDate('date', $request->date)->where('day_part', 'morning')->with('users')->first();
         if (!$morning_shift) {
@@ -55,7 +58,6 @@ class DiaryController extends Controller
         $reductions = Reduction::whereDate('date', $request->date)->get();
 
         $date = \Carbon\Carbon::parse($request->date);
-
         return view('diary.page', [
             'date' => $date,
             'morning_shift' => $morning_shift,
