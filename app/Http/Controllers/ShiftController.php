@@ -54,11 +54,16 @@ class ShiftController extends Controller
      */
     public function update(Request $request, Shift $shift)
     {
+        // dd($request->all());
         $shift->interesting_info = $request->interesting_info;
         $shift->save();
 
+        //Se crea la relacion
+        $shift->users()->detach();
+        $shift->users()->sync($request->educators);
+
         $shift->users()->sync($request->educators);//Se guarda la relacón entre los educadores y el turno
-        return redirect()->route('diary.showPage', ['date' => $shift->date])->with('success', 'Shift updated successfully.');
+        return redirect()->route('diary.showPage',$shift->date)->with('success', 'Shift updated successfully.');
     }
 
     /**

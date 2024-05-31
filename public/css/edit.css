@@ -185,6 +185,23 @@ label{
     height: 6em !important;
 }
 
-.multiselect-group select, .multiselect-group option {
-height: auto !important;
+.multiselect-group select {
+    padding: 0.2em 0 !important;
+    height: initial !important;
+    color: initial !important;
 }
+
+.multiselect-group option {
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.multiselect-group select option:checked {
+    background-color: lightblue !important;
+}
+
+.bxs-user-plus{
+    font-size: 1.2rem;
+}
+

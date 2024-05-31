@@ -8,6 +8,8 @@
     <div class="wrapper d-flex flex-column">
         <h1 class="mt-3 mb-3 text-center">{{ __('diary.diary_page') }} ({{ $date->format('d/m/Y') }})</h1>
         <div class="container">
+
+            {{-- Mañana --}}
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <span>{{ __('diary.dayparts.morning') }}</span>
@@ -23,14 +25,16 @@
                 <div id="collapse-morning" class="collapse hide">
                     <div class="card-body">
                         <div class="shift-container">
-                            <div class="educators-container">
+                            <div class="educators-container mb-2">
                                 <label for="">{{ __('diary.educators') }}:</label><br>
-                                @if ($morning_shift && $morning_shift->users()->count() > 0)
-                                    @forelse ($morning_shift->users() as $employee)
-                                        <p class="card-text">{{ $employee->name }}</p>
+                                @if ($morning_shift && $morning_shift->users())
+                                <ul class="list-group">
+                                    @forelse ($morning_shift->users as $employee)
+                                        <li class="list-group-item">{{ $employee->name ?? ''}}</li>
                                     @empty
                                     @endforelse
                                 @endif
+                            </ul>
                             </div>
                             <div class="interseting-info">
                                 <label>{{ __('diary.interesting_info') }}:</label><br>
@@ -188,9 +192,9 @@
                             <div class="educators-container">
                                 <div class="educators-container">
                                     <label for="">{{ __('diary.educators') }}:</label><br>
-                                    @if ($afternoon_shift && $morning_shift->users()->count() > 0)
-                                        @forelse ($afternoon_shift->users() as $employee)
-                                            {{ $employee->name }}
+                                    @if ($afternoon_shift && $afternoon_shift->users()->count() > 0)
+                                        @forelse ($afternoon_shift->users as $employee)
+                                            {{ $employee->name ?? ''}}
                                         @empty
                                         @endforelse
                                     @endif
@@ -224,10 +228,10 @@
 
                             <div class="educators-container">
                                 <label for="">{{ __('diary.educators') }}:</label><br>
-                                @if ($night_shift && $morning_shift->users()->count() > 0)
+                                @if ($night_shift && $night_shift->users->count() > 0)
                                     <p>
                                         @forelse ($night_shift->users() as $employee)
-                                            {{ $employee->name }}
+                                            {{ $employee->name ?? ''}}
                                         @empty
                                         @endforelse
                                     </p>

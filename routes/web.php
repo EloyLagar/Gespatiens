@@ -5,6 +5,7 @@ use App\Http\Controllers\ShiftController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\EvaluationController;
+use App\Http\Controllers\DiaryController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\LanguageController;
@@ -45,28 +46,24 @@ Route::get('/verify', [LoginController::class, 'verify'])->name('verify');
 //Auth routes-----------------------------------------------------------------
 
 Route::middleware(['auth'])->group(function () {
-Route::get('mid_stay_form/{patient}', 'App\Http\Controllers\ReportController@mid_stay_report_form')->name('reports.mid_stay_report_form');
-Route::get('final_report_form/{patient}', 'App\Http\Controllers\ReportController@final_report_form')->name('reports.final_report_form');
 
-// Route::put('/mid_stay_reports/{report}', 'App\Http\Controllers\Mid_stay_reportController@update')->name('mid_stay_reports.update');
-// Route::put('/final_reports/{report}', 'App\Http\Controllers\Final_reportController@update')->name('final_reports.update');
-Route::resource('/reports', 'App\Http\Controllers\ReportController')->only('index', 'edit');
-Route::resource('final_reports', 'App\Http\Controllers\Final_reportController')->only('update');
-Route::resource('mid_stay_reports', 'App\Http\Controllers\Mid_stay_reportController')->only('update');
+    //Reportes
+    Route::get('mid_stay_form/{patient}', 'App\Http\Controllers\ReportController@mid_stay_report_form')->name('reports.mid_stay_report_form');
+    Route::get('final_report_form/{patient}', 'App\Http\Controllers\ReportController@final_report_form')->name('reports.final_report_form');
 
-Route::get('/final_report/preview/{finalReport}', 'App\Http\Controllers\Final_reportController@preview')->name('reports.finalReport_preview');
-Route::get('/final_report/download/{finalReport}', 'App\Http\Controllers\Final_reportController@download')->name('reports.finalReport_download');
-Route::get('/mid_report/preview/{midStayReport}', 'App\Http\Controllers\Mid_stay_reportController@preview')->name('reports.midStayReport_preview');
-Route::get('/mid_report/download/{midStayReport}', 'App\Http\Controllers\Mid_stay_reportController@download')->name('reports.midStayReport_download');
+    Route::resource('/reports', 'App\Http\Controllers\ReportController')->only('index', 'edit');
+    Route::resource('final_reports', 'App\Http\Controllers\Final_reportController')->only('update');
+    Route::resource('mid_stay_reports', 'App\Http\Controllers\Mid_stay_reportController')->only('update');
 
-Route::post('/report/close', 'App\Http\Controllers\ReportController@setStateFalse')->name('report.close');
-
-
+    Route::get('/final_report/preview/{finalReport}', 'App\Http\Controllers\Final_reportController@preview')->name('reports.finalReport_preview');
+    Route::get('/final_report/download/{finalReport}', 'App\Http\Controllers\Final_reportController@download')->name('reports.finalReport_download');
+    Route::get('/mid_report/preview/{midStayReport}', 'App\Http\Controllers\Mid_stay_reportController@preview')->name('reports.midStayReport_preview');
+    Route::get('/mid_report/download/{midStayReport}', 'App\Http\Controllers\Mid_stay_reportController@download')->name('reports.midStayReport_download');
+    Route::post('/report/close', 'App\Http\Controllers\ReportController@setStateFalse')->name('report.close');
 
     //Diario
     Route::get('/diary/form', 'App\Http\Controllers\DiaryController@diaryForm')->name('diary.diaryForm');
-    Route::get('/diary/{date}', 'App\Http\Controllers\DiaryController@showPage')->name('diary.showPage');
-    Route::post('/diary', 'App\Http\Controllers\DiaryController@showPage')->name('diary.showPage');
+    Route::match(['get', 'post'], '/diary/{date?}', [DiaryController::class, 'showPage'])->name('diary.showPage');
 
     //Turnos
     Route::resource('shifts', ShiftController::class)->only(['edit', 'update']);
