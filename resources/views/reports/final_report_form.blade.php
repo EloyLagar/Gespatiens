@@ -23,7 +23,7 @@
     <div class="action-buttons">
         <a href="{{route('patients.edit', $finalReport->report->patient)}}" class="goBackBtn btn"><i class='bx bx-left-arrow-alt'></i></a>
     </div>
-    <h3 class="text-center mb-3">{{__('reports.final_report')}} - {{ $finalReport->report->patient->name}}</h3>
+    <h1 class="text-center mb-3">{{__('reports.final_report')}} - {{ $finalReport->report->patient->name}}</h1>
     <div class="row justify-content-center">
         <div class="col-10 col-md-8 col-lg-8">
 
