@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreatePatientRequest;
 use App\Http\Requests\UpdatePatientRequest;
 use App\Models\Patient;
 use Illuminate\Http\Request;
@@ -13,8 +14,11 @@ class PatientController extends Controller
      */
     public function index()
     {
-        $patients = Patient::simplePaginate(18);
+        $patients = Patient::where('exit_date', '<', now())
+            ->whereNull('number')
+            ->simplePaginate(15);
         return view('patients.index', compact('patients'));
+
     }
 
     /**
@@ -24,7 +28,7 @@ class PatientController extends Controller
     {
         $residents = Patient::whereNotNull('number')
             ->orderBy('number')
-            ->get();
+            ->simplePaginate(15);
         return view('patients.residents', compact('residents'));
     }
 
@@ -41,7 +45,24 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $patientsWithNumber = Patient::whereNotNull('number')->get();
+        if ($patientsWithNumber->count() < 32) {
+            $patient = new Patient();
+            $patient->entry_date = now();
+            $patient->fill($request->all());
+            $assignedNumbers = $patientsWithNumber->pluck('number')->toArray();
+            for ($i=0; $i <= 32; $i++) {
+                if (!in_array($i, $assignedNumbers)) {
+                    $patient->number = $i;
+                    break;
+                }
+            }
+            $patient->save();
+            return redirect()->route('patients.index')->with('success', 'saved');
+        }else{
+            return redirect()->route('patients.index')->with('error', 'fullPatients');
+        }
+
     }
 
     /**
@@ -105,6 +126,10 @@ class PatientController extends Controller
             $patient->surname = $request->surname;
         }
 
+        if ($request->filled('sip')) {
+            $patient->sip = $request->sip;
+        }
+
         $patient->update();
 
         return redirect()->route('patients.edit', $patient)->with('success', 'User updated successfully');
@@ -117,5 +142,31 @@ class PatientController extends Controller
     public function destroy(Patient $patient)
     {
         //
+    }
+
+    public function unsuscribe(Patient $patient)
+    {
+        $patient->exit_date = now();
+        $patient->number = null;
+        $patient->save();
+    }
+
+    public function register(Patient $patient)
+    {
+        $patientsWithNumber = Patient::whereNotNull('number')->get();
+        if ($patientsWithNumber->count() < 32) {
+            $patient->entry_date = now();
+            $assignedNumbers = $patientsWithNumber->pluck('number')->toArray();
+            for ($i=0; $i <= 32; $i++) {
+                if (!in_array($i, $assignedNumbers)) {
+                    $patient->number = $i;
+                    break;
+                }
+            }
+            $patient->save();
+            return redirect()->route('patients.index')->with('success', 'saved');
+        }else{
+            return redirect()->route('patients.index')->with('error', 'fullPatients');
+        }
     }
 }

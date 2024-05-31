@@ -6,7 +6,7 @@ return [
     'users' => 'Users',
     'employees' => 'Employees',
     'residents' => 'Residents',
-    'all_patients' => 'All users',
+    'all_patients' => 'Former residents',
     'reports' => 'Reports',
     'evaluations' => 'Evaluations',
     'diary' => 'Diary',
