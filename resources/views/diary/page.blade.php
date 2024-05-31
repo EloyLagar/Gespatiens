@@ -6,6 +6,8 @@
 @endsection
 @section('content')
     <div class="wrapper d-flex flex-column">
+        <a href="{{ route('diary.diaryForm') }}" class="goBackBtn btn mr-auto mt-2 float-left"><i
+            class='bx bx-left-arrow-alt'></i></a>
         <h1 class="mt-3 mb-3 text-center">{{ __('diary.diary_page') }} ({{ $date->format('d/m/Y') }})</h1>
         <div class="container">
 

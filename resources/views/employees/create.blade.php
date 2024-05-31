@@ -7,10 +7,9 @@
 
 @section('content')
     <div class="wrapper  d-flex flex-column">
+        <a href="{{ route('users.index') }}" class="goBackBtn btn mt-2 mr-auto float-left"><i
+            class='bx bx-left-arrow-alt'></i></a>
         <div class="container col-md-6">
-            <a href="{{ route('users.index') }}" class="goBackBtn btn"><span class="material-symbols-outlined">
-                    arrow_back
-                </span></a>
             <div class="card">
                 <div class="card-header">
                     {{ __('crud.create') }} {{ __('user.singular') }}

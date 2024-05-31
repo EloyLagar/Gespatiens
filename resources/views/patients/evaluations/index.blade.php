@@ -9,7 +9,7 @@
     <div class="wrapper d-flex flex-column">
         <div class="container">
             <a href="{{ route('evaluations.indexForm') }}" class="goBackBtn btn"><i class='bx bx-left-arrow-alt'></i></a>
-            <h1 class="mt-3 mb-3">{{ $lesson_type }}</h1>
+            <h1 class="mt-3 mb-3"> {{ __('evaluations.lesson_type.' . $lesson_type) }}</h1>
             <div class="table-container">
                 <table class="table marks-table">
                     <thead class="thead-dark">

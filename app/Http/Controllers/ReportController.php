@@ -92,24 +92,24 @@ class ReportController extends Controller
 
     public function mid_stay_report_form(Patient $patient)
     {
-        $mid_stay_report = $patient->getMidStayReports()->latest()->first();
+        $midStayReport = $patient->getMidStayReports()->latest()->first();
 
-        if (!$mid_stay_report) {
+        if (!$midStayReport) {
             $report = new Report();
             $report->patient_id = $patient->id;
             $report->save();
 
-            $mid_stay_report = new Mid_stay_report();
-            $mid_stay_report->report_id = $report->id;
-            $mid_stay_report->save();
-        } elseif ($mid_stay_report->report->state == true) {
+            $midStayReport = new Mid_stay_report();
+            $midStayReport->report_id = $report->id;
+            $midStayReport->save();
+        } elseif ($midStayReport->report->state == true) {
             return redirect()->back()->with('error', __('error.already_in_use'));
         }
-        $report = $mid_stay_report->report;
+        $report = $midStayReport->report;
         $report->state = true;
         $report->save();
 
-        return view('reports.mid_stay_report_form', compact('patient', 'mid_stay_report'));
+        return view('reports.mid_stay_report_form', compact('patient', 'midStayReport'));
     }
     public function setStateFalse(Request $request){
         $report = Report::find($request->report_id);

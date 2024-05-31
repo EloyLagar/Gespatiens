@@ -6,55 +6,62 @@
 @endsection
 
 @section('content')
-    <div class="wrapper  d-flex flex-column">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <a href="{{ route('users.index') }}" class="goBackBtn btn"><i class='bx bx-left-arrow-alt'></i></i></a>
-                    <h6>{{ $employee->name }}</h6>
-                    <div class="model-info">
-                        <p>{{ __('user.name') }}: {{ $employee->name }}</p>
-                        <p>{{ __('user.email') }}: {{ $employee->email }}</p>
-                        <p>{{ __('user.phone') }}: {{ $employee->phone_number }}</p>
-                        <p>{{ __('user.speciality.label') }}: {{ $employee->speciality }}</p>
-                        <p>{{ __('user.signature') }}:</p>
-                        <div class="signature-img d-flex justify-content-center align-items-center">
-                            <img src="{{ asset('/storage/signatures/' . $employee->signature) }}"
-                                alt="{{ __('user.signature') }}">
-                        </div>
-                    </div>
-                    @if ($employee->id === Auth::user()->id)
-                        <div class="card">
+    <div class="wrapper d-flex justify-content-center flex-column">
+        <a href="{{ route('users.index') }}" class="goBackBtn btn btn-secondary mr-auto mt-2"><i
+                class='bx bx-left-arrow-alt'></i></a>
+        @if (Auth::user()->id !== $employee->id && Auth::user()->speciality != 'admin')
+            @include('employees.show')
+        @else
+            <div class="container mb-0">
+                <div class="row">
+                    <div class="col-md-4 pb-0 mb-0">
+                        <div class="card mb-3">
                             <div class="card-header">
-                                {{ __('crud.change') }} {{ __('user.language') }}
+                                {{ $employee->name }}
                             </div>
                             <div class="card-body">
-                                <div class="form-container">
+                                <div class="mb-3">
+                                    <label for="">{{ __('user.name') }}:</label>
+                                    <p>{{ $employee->name }}</p>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="">{{ __('user.email') }}:</label>
+                                    <p>{{ $employee->email }}</p>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="">{{ __('user.phone') }}:</label>
+                                    <p>{{ $employee->phone_number }}</p>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="">{{ __('user.speciality.label') }}:</label>
+                                    <p>{{ $employee->speciality }}</p>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="">{{ __('user.signature') }}:</label>
+                                    <div class="signature-img d-flex justify-content-center align-items-center">
+                                        <img src="{{ asset('/storage/signatures/' . $employee->signature) }}"
+                                            alt="{{ __('user.signature') }}">
+                                    </div>
+                                </div>
+                                @if ($employee->id === Auth::user()->id)
                                     <form action="{{ route('language.change') }}" method="POST">
                                         @csrf
-                                        <div class="flags-form form-group">
-                                            <select name="locale" class="form-control col-9" onchange="this.form.submit()">
+                                        <div class="form-group d-flex align-items-center">
+                                            <select name="locale" class="form-control" onchange="this.form.submit()">
                                                 <option value="en" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>
-                                                    English
-                                                </option>
+                                                    English</option>
                                                 <option value="es" {{ app()->getLocale() == 'es' ? 'selected' : '' }}>
-                                                    Español
-                                                </option>
+                                                    Español</option>
                                             </select>
                                             <img src="{{ asset('/img/flag-' . app()->getLocale() . '.png') }}"
-                                                class="flag col-2" alt="">
+                                                class="flag ml-2" alt="">
                                         </div>
                                     </form>
-                                </div>
+                                @endif
                             </div>
                         </div>
-                    @endif
-                </div>
-                @if ($employee->id === Auth::user()->id)
-
-
-                    <div class="col-md-2"></div>
-                    <div class="col-md-7">
+                    </div>
+                    <div class="col-md-8">
                         <div class="card">
                             <div class="card-header">
                                 {{ __('crud.edit') }} {{ __('crud.info') }}
@@ -64,56 +71,59 @@
                                     enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
-                                    <div class="form-container">
-                                        <div class="form-group">
-                                            <label for="name">{{ __('user.name') }}</label>
-                                            <input type="text" class="form-control" id="name" name="name"
-                                                value="{{ $employee->name }}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="password">{{ __('user.password') }}</label>
-                                            <input type="password" class="form-control" id="password" name="password">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="password_confirmation">{{ __('crud.repeat') }}
-                                                {{ __('user.password') }}:</label>
-                                            <input type="password" class="form-control" id="password_confirmation"
-                                                name="password_confirmation" value="">
-                                        </div>
-                                        @if (Auth::user()->speciality == 'admin')
-                                            <div class="form-group">
-                                                <label for="speciality">{{ __('user.speciality.label') }}</label>
-                                                <select name="speciality" id="specialty" class="form-control">
-                                                    <option value="none">{{ __('crud.select') }}</option>
-                                                    @foreach ($enum as $speciality)
-                                                        <option value="{{ $speciality }}">
-                                                            {{ __('user.speciality.' . $speciality) }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
+                                    <div class="form-group">
+                                        <label for="name">{{ __('user.name') }}:</label>
+                                        <input type="text" class="form-control" id="name" name="name"
+                                            value="{{ $employee->name }}">
+                                    </div>
+                                    @if (Auth::user()->id === $employee->id)
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="password">{{ __('user.password') }}:</label>
+                                                <input type="password" class="form-control" id="password" name="password">
                                             </div>
-                                        @endif
+                                            <div class="form-group col-md-6">
+                                                <label for="password_confirmation">{{ __('crud.repeat') }}
+                                                    {{ __('user.password') }}:</label>
+                                                <input type="password" class="form-control" id="password_confirmation"
+                                                    name="password_confirmation">
+                                            </div>
+                                        </div>
+                                    @endif
+                                    @if (Auth::user()->speciality == 'admin')
                                         <div class="form-group">
-                                            <label for="signature">{{ __('user.signature') }}</label>
+                                            <label for="speciality">{{ __('user.speciality.label') }}:</label>
+                                            <select name="speciality" id="speciality" class="form-control">
+                                                <option value="none">{{ __('crud.select') }}</option>
+                                                @foreach ($enum as $speciality)
+                                                    <option value="{{ $speciality }}">
+                                                        {{ __('user.speciality.' . $speciality) }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    @endif
+
+                                    @if (Auth::user()->id === $employee->id)
+                                        <div class="form-group">
+                                            <label for="signature">{{ __('user.signature') }}:</label>
                                             <input type="file" class="form-control-file" id="signature" name="signature">
                                         </div>
-                                        <div class="form-group">
-                                            <label for="phone_number">{{ __('user.phone') }}</label>
-                                            <input type="text" class="form-control" id="phone_number" name="phone_number"
-                                                value="{{ $employee->phone_number }}">
-                                        </div>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                        <button type="submit" class="btn btn-primary">{{ __('crud.update') }}</button>
+                                    @endif
+                                    <div class="form-group">
+                                        <label for="phone_number">{{ __('user.phone') }}:</label>
+                                        <input type="text" class="form-control" id="phone_number" name="phone_number"
+                                            value="{{ $employee->phone_number }}">
                                     </div>
+                                    @foreach ($errors->all() as $error)
+                                        <div class="alert alert-danger">{{ $error }}</div>
+                                    @endforeach
+                                    <button type="submit" class="btn float-right">{{ __('crud.update') }}</button>
                                 </form>
-
                             </div>
                         </div>
                     </div>
-                @endif
+                </div>
             </div>
-        </div>
+        @endif
     </div>
 @endsection

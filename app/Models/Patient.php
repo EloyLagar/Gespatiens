@@ -24,6 +24,7 @@ class Patient extends Model
         'entry_date',
         'name',
         'surname',
+        'sip',
     ];
 
     protected $dates = ['birth_date', 'exit_date', 'entry_date']; //Campos tratados por Carbon directamente
@@ -31,6 +32,7 @@ class Patient extends Model
     protected $casts = [
         'number' => 'integer',
         'phone_number' => 'integer',
+        'birth_date' => 'date',
     ];
 
     public function activities()
