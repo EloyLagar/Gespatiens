@@ -752,6 +752,8 @@
             const reportId = '{{ $finalReport->report->id }}';
             console.log("id del reporte " + reportId);
         </script>
+
+        {{-- Boton collapse --}}
         <script>
             $(document).ready(function() {
                 $('[data-toggle="collapse"]').on('click', function() {
@@ -797,7 +799,5 @@
                     window.location.href = href;
                 }, 1000);
             });
-
-
         </script>
-        @endsection
+@endsection

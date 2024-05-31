@@ -21,4 +21,5 @@ return [
     'preview' => 'Preview',
     'download' => 'Download',
     'modify' => 'Modify',
+    'add' => 'Add',
 ];

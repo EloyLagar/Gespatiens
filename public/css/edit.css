@@ -1,4 +1,4 @@
-h1, h2, h3, h4, h5, h6{
+h2, h3, h4, h5, h6{
     color: var(--dark-text-color);
 }
 
@@ -172,6 +172,7 @@ label{
     animation: shake 1s ease-in-out infinite;
 }
 
+
 @keyframes shake {
     0% { transform: rotate(0); }
     25% { transform: rotate(10deg); }
@@ -180,3 +181,10 @@ label{
     100% { transform: rotate(0); }
 }
 
+.intervention-text{
+    height: 6em !important;
+}
+
+.multiselect-group select, .multiselect-group option {
+height: auto !important;
+}

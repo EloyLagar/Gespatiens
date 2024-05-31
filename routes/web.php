@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Final_reportController;
+use App\Http\Controllers\ShiftController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\EvaluationController;
@@ -64,7 +65,11 @@ Route::post('/report/close', 'App\Http\Controllers\ReportController@setStateFals
 
     //Diario
     Route::get('/diary/form', 'App\Http\Controllers\DiaryController@diaryForm')->name('diary.diaryForm');
+    Route::get('/diary/{date}', 'App\Http\Controllers\DiaryController@showPage')->name('diary.showPage');
     Route::post('/diary', 'App\Http\Controllers\DiaryController@showPage')->name('diary.showPage');
+
+    //Turnos
+    Route::resource('shifts', ShiftController::class)->only(['edit', 'update']);
 
     //Idioma
     Route::post('language', [LanguageController::class, 'change'])->name('language.change');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Shift;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ShiftController extends Controller
@@ -44,7 +45,8 @@ class ShiftController extends Controller
      */
     public function edit(Shift $shift)
     {
-        //
+        $educators = User::where('speciality', 'educator')->get();
+        return view('diary.shifts.edit', compact('shift', 'educators'));
     }
 
     /**
@@ -52,7 +54,11 @@ class ShiftController extends Controller
      */
     public function update(Request $request, Shift $shift)
     {
-        //
+        $shift->interesting_info = $request->interesting_info;
+        $shift->save();
+
+        $shift->users()->sync($request->educators);//Se guarda la relacón entre los educadores y el turno
+        return redirect()->route('diary.showPage', ['date' => $shift->date])->with('success', 'Shift updated successfully.');
     }
 
     /**

@@ -3,6 +3,7 @@
 return [
     'singular' => 'Diary',
     'plural' => 'Diaries',
+    'date' => 'Date',
     'form_help' => 'Select a date to display a diary page',
     'page' => 'Page',
     'pages' => 'Pages',

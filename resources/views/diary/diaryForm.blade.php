@@ -5,7 +5,7 @@
 @endsection
 @section('content')
     <div class="wrapper d-flex flex-column">
-        <div class="container col-md-4">
+        <div class="container col-md-6 col-lg-4 my-3">
             <div class="card">
                 <div class="card-header">
                     {{ __('diary.form_help') }}
@@ -16,7 +16,7 @@
                         <div class="form-row d-flex">
                             <div class="form-group col-md-12">
                                 <label for="date-input">{{ __('diary.date') }}</label>
-                                <input type="date" id="date-input" max="{{ date('Y-m-d') }}" name="date" class="form-control" required>
+                                <input type="date" id="date-input" value="{{ date('Y-m-d') }}" max="{{ date('Y-m-d') }}" name="date" class="form-control" required>
                             </div>
                         </div>
                         <button type="submit" class="btn float-right">{{ __('crud.submit') }}</button>

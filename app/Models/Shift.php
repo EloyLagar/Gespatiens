@@ -13,7 +13,6 @@ class Shift extends Model
         'date',
         'interesting_info',
         'day_part',
-        'activity',
         'state',
     ];
 

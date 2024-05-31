@@ -22,8 +22,32 @@ class DiaryController extends Controller
         ]);
 
         $morning_shift = Shift::whereDate('date', $request->date)->where('day_part', 'morning')->with('users')->first();
+        if (!$morning_shift) {
+            $morning_shift = Shift::create([
+                'date' => $request->date,
+                'day_part' => 'morning',
+                'state' => false,
+            ]);
+        }
+
         $afternoon_shift = Shift::whereDate('date', $request->date)->where('day_part', 'afternoon')->with('users')->first();
+        if (!$afternoon_shift) {
+            $afternoon_shift = Shift::create([
+                'date' => $request->date,
+                'day_part' => 'afternoon',
+                'state' => false,
+            ]);
+        }
+
         $night_shift = Shift::whereDate('date', $request->date)->where('day_part', 'night')->with('users')->first();
+        if (!$night_shift) {
+            $night_shift = Shift::create([
+                'date' => $request->date,
+                'day_part' => 'night',
+                'state' => false,
+            ]);
+        }
+
         $activities = Activity::with(['assistants', 'reducteds', 'justifieds', 'no_justifieds'])
             ->whereDate('date', $request->date)
             ->get();
