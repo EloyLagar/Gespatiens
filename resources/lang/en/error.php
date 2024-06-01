@@ -6,4 +6,5 @@ return [
 'required' => 'This field is necessary',
 'unique' => 'The data entered is already in use',
 'in' => 'The field must be one of the select values',
+'fullPatients' => 'The center is currently full.'
 ];
