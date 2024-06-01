@@ -21,7 +21,7 @@ class ActivityController extends Controller
      */
     public function create()
     {
-        $psychologists = $
+        // $psychologists;
         $lesson_types = ['life_skills', 'health_education', 'carrer_help', 'occupational_workshop', 'video_forum', 'maintenance' ];
         return view('diary.activities.create', compact('lesson_types'));
     }
