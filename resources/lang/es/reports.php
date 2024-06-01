@@ -7,7 +7,9 @@ return [
     'reference_center' => 'Centro de referencia',
 
     'final_report' => 'Informe final del programa',
-    'mid_stay_report' => 'Informe de mitad de estancia',
+    'mid_stay_report' => 'Informe de media estancia',
+    'final' => 'Inf. Final Estancia',
+    'mid_stay' => 'Inf. Media Estancia',
 
     'social_intervention_area' => 'Área de intervención social',
     'social_familiar_situation' => 'Situación socio-familiar',
