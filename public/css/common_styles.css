@@ -222,3 +222,16 @@ label {
     margin-right: 1em;
 }
 
+.pagination a, .pagination span {
+    background-color: var(--accent-color) !important;
+    color: var(--light-text-color) !important;
+}
+
+.pagination span{
+    color: #cdcdcd !important;
+
+}
+
+.pagination a:hover {
+    background-color: var(--hover-accent-color);
+}
