@@ -1,5 +1,8 @@
 <?php
 return [
+    'singular' => 'Activity',
+    'plural' => 'Activities',
+    'date'=> 'Date',
     'type' => 'Type',
     'satisfaction' => 'Satisfaction',
     'utility' => 'Utility',

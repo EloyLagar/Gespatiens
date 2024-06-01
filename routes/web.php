@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\Final_reportController;
+use App\Http\Controllers\LessonController;
 use App\Http\Controllers\ShiftController;
+use App\Http\Controllers\SportController;
+use App\Http\Controllers\Therapeutic_groupController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\EvaluationController;
@@ -10,6 +13,8 @@ use App\Http\Controllers\DiaryController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\WalkController;
+use App\Models\Therapeutic_group;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Mid_stay_reportController;
 use App\Http\Controllers\LoginController;
@@ -77,6 +82,10 @@ Route::middleware(['auth'])->group(function () {
 
     //Actividades
     Route::resource('activities', ActivityController::class);
+    Route::resource('lessons', LessonController::class)->only(['store', 'edit', 'update']);
+    Route::resource('sports', SportController::class)->only(['store', 'edit', 'update']);
+    Route::resource('therapeutic_groups', Therapeutic_groupController::class)->only(['store', 'edit', 'update']);
+    Route::resource('walks', WalkController::class)->only(['store', 'edit', 'update']);
 
     //Patients
     Route::get('/residents', [PatientController::class, 'indexResidents'])->name('indexResidents');

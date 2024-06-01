@@ -127,7 +127,6 @@
             @endif
             @endif
             @empty
-            <h4 class="text-center">{{ __('crud.none') }} {{ __('notices.plural') }}</h4>
             @endforelse
             @if (!empty($notices))
                 @if ($currentDate == $noticeDate)
