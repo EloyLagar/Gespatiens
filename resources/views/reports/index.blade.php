@@ -31,8 +31,11 @@
                                     @if(isset($report->finalReport))
                                     <span>{{ __('reports.final_report') }}</span>
                                     @elseif(isset($report->midStayReport))
-                                    <span>{{ __('reports.mid_stay_reports') }}</span>
+                                    <span>{{ __('reports.mid_stay_report') }}</span>
                                     @endif
+                                </div>
+                                <div class="report-date">
+                                    {{$report->created_at->format('d/m/Y')}}
                                 </div>
                             </div>
                         </div>

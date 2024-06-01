@@ -22,17 +22,15 @@ class CreatePatientRequest extends FormRequest
     public function rules()
     {
         return [
-            'dni' => 'required|string|size:9|unique:patients,dni',
+            'dni' => 'required|string|unique:patients,dni',
             'visit_code' => 'required|string|max:25|unique:patients,visit_code',
             'number' => 'integer|unique:patients,number',
             'birth_date' => 'required|date',
             'address' => 'required|string|max:500',
             'belongings' => 'nullable|string',
-            'phone_number' => 'required|text|unique:patients,phone_number',
+            'phone_number' => 'required|string|unique:patients,phone_number',
             'extra_info' => 'nullable|string',
             'abuse_substances' => 'nullable|string|max:100',
-            'exit_date' => 'nullable|date',
-            'entry_date' => 'required|date',
             'name' => 'required|string|max:50',
             'surname' => 'required|string|max:100',
             'sip' => 'nullable|string|max:25',

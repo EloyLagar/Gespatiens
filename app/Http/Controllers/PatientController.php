@@ -27,7 +27,7 @@ class PatientController extends Controller
     public function indexResidents()
     {
         $residents = Patient::whereNotNull('number')
-            ->orderBy('number')
+            ->orderBy('number', 'asc')
             ->simplePaginate(15);
         return view('patients.residents', compact('residents'));
     }
@@ -43,7 +43,7 @@ class PatientController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreatePatientRequest $request)
     {
         $patientsWithNumber = Patient::whereNotNull('number')->get();
         if ($patientsWithNumber->count() < 32) {
@@ -51,16 +51,16 @@ class PatientController extends Controller
             $patient->entry_date = now();
             $patient->fill($request->all());
             $assignedNumbers = $patientsWithNumber->pluck('number')->toArray();
-            for ($i=0; $i <= 32; $i++) {
+            for ($i=1; $i <= 32; $i++) {
                 if (!in_array($i, $assignedNumbers)) {
                     $patient->number = $i;
                     break;
                 }
             }
             $patient->save();
-            return redirect()->route('patients.index')->with('success', 'saved');
+            return redirect()->route('indexResidents')->with('success', 'saved');
         }else{
-            return redirect()->route('patients.index')->with('error', 'fullPatients');
+            return redirect()->route('indexResidents')->with('error', 'fullPatients');
         }
 
     }

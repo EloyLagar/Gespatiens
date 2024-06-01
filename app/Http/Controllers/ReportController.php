@@ -15,7 +15,7 @@ class ReportController extends Controller
      */
     public function index()
     {
-        $reports = Report::simplePaginate(15);
+        $reports = Report::orderBy('created_at', 'desc')->simplePaginate(15);
         return view('reports.index', compact('reports'));
     }
 

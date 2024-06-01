@@ -22,7 +22,6 @@ class CreateActivityRequest extends FormRequest
     public function rules()
     {
         return [
-            'state' => 'required|boolean',
             'date' => 'required|date',
         ];
     }

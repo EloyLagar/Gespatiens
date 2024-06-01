@@ -30,4 +30,6 @@ return [
 
     'tutors' => 'Tutores',
     'tutor' => 'Tutores',
+
+    'former_residents' => 'Former Residents'
 ];

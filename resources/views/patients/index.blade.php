@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     <div class="wrapper d-flex flex-column">
-        <h1  class="mt-3 mb-3">{{__('patients.plural')}}</h1>
+        <h1  class="mt-3 mb-3">{{__('patients.former_residents')}}</h1>
         @if (Auth::user()->speciality === 'admin')
             <div class="btn-container"><a href="{{ route('patients.create') }}" class="btn py-2">Create Patient</a></div>
         @endif
@@ -26,9 +26,6 @@
                         </a>
                     </div>
                 @empty
-                    <div class="col">
-                        <span>There are no Patients</span>
-                    </div>
                 @endforelse
             </div>
             {{ $patients->links() }}

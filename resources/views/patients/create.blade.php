@@ -15,6 +15,11 @@
                     {{ __('crud.create') }} {{ __('patients.singular') }}
                 </div>
                 <div class="card-body">
+                    @if ($errors->any())
+                        @foreach ($errors->all() as $error)
+                            {{ $error }} <br>
+                        @endforeach
+                    @endif
                     <form action="{{ route('patients.store') }}" method="POST">
                         @csrf
                         @method('POST')
@@ -115,7 +120,7 @@
                             <div class="form-group">
                                 <label for="extra_info">{{ __('patients.extra_info') }}:</label>
                                 <textarea class="form-control @error('extra_info') is-invalid @enderror" id="extra_info" name="extra_info"
-                                    rows="2" required>{{ old('extra_info') }}</textarea>
+                                    rows="2">{{ old('extra_info') }}</textarea>
                                 @error('extra_info')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
