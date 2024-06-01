@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('dni');
             $table->string('visit_code')->nullable();
-            $table->string('number')->nullable();
+            $table->integer('number')->nullable();
             $table->date('birth_date');
             $table->string('address');
             $table->string('belongings')->nullable();

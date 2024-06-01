@@ -13,11 +13,10 @@ return new class extends Migration {
         Schema::create('shifts', function (Blueprint $table) {
             $table->id();
             $table->string('interesting_info')->nullable();
+            $table->date('date');
             $table->enum('day_part', ['morning', 'afternoon', 'night']);
+            $table->unique(['date', 'day_part']);
             $table->boolean('state');
-            $table->string('activity');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
