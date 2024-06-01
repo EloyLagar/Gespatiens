@@ -46,4 +46,28 @@ class Activity extends Model
                                ->wherePivot('assists', false)
                                ->wherePivot('justified', false);
     }
+
+
+    //Relaciones con los tipos de actividad
+    public function sport()
+    {
+        return $this->hasOne(Sport::class, 'activity_id', 'id');
+    }
+
+    public function walk()
+    {
+        return $this->hasOne(Walk::class, 'activity_id', 'id');
+    }
+
+    public function therapeuticGroup()
+    {
+        return $this->hasOne(Therapeutic_group::class, 'activity_id', 'id');
+    }
+
+    public function lesson()
+    {
+        return $this->hasOne(Lesson::class, 'activity_id', 'id');
+    }
+
+
 }
