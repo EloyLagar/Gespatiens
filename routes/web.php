@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\Final_reportController;
 use App\Http\Controllers\ShiftController;
 use App\Http\Controllers\UserController;
@@ -73,6 +74,10 @@ Route::middleware(['auth'])->group(function () {
 
     //Ruta de cración de contraeña por parte del empleado
     Route::post('/users/create-password', [LoginController::class, 'updatePassword'])->name('updatePassword');
+
+    //Actividades
+    Route::resource('patients', ActivityController::class)->only('index', 'create', 'store', 'edit', 'update', 'destroy');
+
 
     //Patients
     Route::get('/residents', [PatientController::class, 'indexResidents'])->name('indexResidents');
