@@ -31,5 +31,8 @@
                     </div>
                 @endforelse
             </div>
+            <div class="pagination justify-content-center mb-3">
+                {{ $residents->links() }}
+            </div>
         </div>
     @endsection
