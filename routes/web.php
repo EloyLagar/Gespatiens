@@ -74,8 +74,11 @@ Route::middleware(['auth'])->group(function () {
     //Ruta de cración de contraeña por parte del empleado
     Route::post('/users/create-password', [LoginController::class, 'updatePassword'])->name('updatePassword');
 
-    //Index solo de residents
+    //Patients
     Route::get('/residents', [PatientController::class, 'indexResidents'])->name('indexResidents');
+    Route::get('/patients/unsuscribe/{patient}', [PatientController::class, 'unsuscribe'])->name('patients.unsuscribe');
+    Route::get('/patients/register/{patient}', [PatientController::class, 'register'])->name('patients.register');
+    Route::post('/patients/update_tutors/{patient}', [PatientController::class, 'updateTutors'])->name('patients.updateTutors');
     Route::resource('patients', PatientController::class)->only('index', 'edit');
 
     //Evaluaciones
