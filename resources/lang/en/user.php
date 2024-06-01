@@ -17,4 +17,5 @@ return [
         'admin' => 'Administrator',
         'psychologist' => 'Psychologist',
     ],
+    'no_employees' => 'No employees',
 ];
