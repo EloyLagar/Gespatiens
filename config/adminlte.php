@@ -358,7 +358,7 @@ return [
         ],
         [
             'text' => 'activities',
-            'url' => '#',
+            'url' => '/activities',
             'icon' => 'fas fa-walking fa-fw ',
         ],
         [

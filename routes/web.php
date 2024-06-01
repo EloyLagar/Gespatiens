@@ -76,8 +76,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/users/create-password', [LoginController::class, 'updatePassword'])->name('updatePassword');
 
     //Actividades
-    Route::resource('patients', ActivityController::class)->only('index', 'create', 'store', 'edit', 'update', 'destroy');
-
+    Route::resource('activities', ActivityController::class);
 
     //Patients
     Route::get('/residents', [PatientController::class, 'indexResidents'])->name('indexResidents');
