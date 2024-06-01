@@ -20,9 +20,9 @@
             <div class="float-right d-flex flex-md-row ml-auto mt-2 mb-1 col-sm-12 col-md-6 col-lg-4">
 
                 <a href="{{ route('reports.final_report_form', $patient) }}"
-                    class="btn col-md-6 mr-2 col-lg-6">{{ __('reports.final_report') }}</a>
+                    class="btn col-md-6 mr-2 col-lg-6">{{ __('reports.final') }}</a>
                 <a href="{{ route('reports.mid_stay_report_form', $patient) }}"
-                    class="btn col-md-6 col-lg-6">{{ __('reports.mid_stay_report') }}</a>
+                    class="btn col-md-6 col-lg-6">{{ __('reports.mid_stay') }}</a>
             </div>
         </div>
         <div class="container">
@@ -31,7 +31,7 @@
                     <div class="card">
                         <div class="card-header  d-flex align-items-center">
                             @if ($patient->number != null)
-                                {{ $patient->number }} - {{ $patient->full_name }}
+                                {{ $patient->number }} - {{ $patient->name }}
                                 <a class="btn ml-auto float-right d-flex align-items-center"
                                     href="{{ route('patients.unsuscribe', ['patient' => $patient->id]) }}"><i
                                         class='bx bxs-user-minus'></i>&nbsp;{{ __('patients.unsuscribe') }}</a>
