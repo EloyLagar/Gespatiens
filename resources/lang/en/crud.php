@@ -22,4 +22,5 @@ return [
     'download' => 'Download',
     'modify' => 'Modify',
     'add' => 'Add',
+    'select_a' => 'Select a',
 ];

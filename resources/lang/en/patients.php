@@ -31,4 +31,9 @@ return [
 
     'tutors' => 'Tutors',
     'tutor' => 'Tutor',
+
+    'unsuscribe' => 'Unsuscribe',
+    'register' => 'Register',
+
+
 ];

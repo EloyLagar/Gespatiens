@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreatePatientRequest;
 use App\Http\Requests\UpdatePatientRequest;
 use App\Models\Patient;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PatientController extends Controller
@@ -51,7 +52,7 @@ class PatientController extends Controller
             $patient->entry_date = now();
             $patient->fill($request->all());
             $assignedNumbers = $patientsWithNumber->pluck('number')->toArray();
-            for ($i=1; $i <= 32; $i++) {
+            for ($i = 1; $i <= 32; $i++) {
                 if (!in_array($i, $assignedNumbers)) {
                     $patient->number = $i;
                     break;
@@ -59,7 +60,7 @@ class PatientController extends Controller
             }
             $patient->save();
             return redirect()->route('indexResidents')->with('success', 'saved');
-        }else{
+        } else {
             return redirect()->route('indexResidents')->with('error', 'fullPatients');
         }
 
@@ -78,7 +79,9 @@ class PatientController extends Controller
      */
     public function edit(Patient $patient)
     {
-        return view('patients.edit', compact('patient'));
+        $educators = User::where('speciality', 'educator')->get();
+        $psychologists = User::where('speciality', 'psychologist')->get();
+        return view('patients.edit', compact('patient', 'educators', 'psychologists'));
     }
 
     /**
@@ -132,7 +135,7 @@ class PatientController extends Controller
 
         $patient->update();
 
-        return redirect()->route('patients.edit', $patient)->with('success', 'User updated successfully');
+        return redirect()->route('patients.edit', $patient)->with('success', 'updated');
 
     }
 
@@ -149,24 +152,38 @@ class PatientController extends Controller
         $patient->exit_date = now();
         $patient->number = null;
         $patient->save();
+        return redirect()->route('patients.edit', $patient)->with('success', 'unsuscribed');
     }
 
     public function register(Patient $patient)
     {
-        $patientsWithNumber = Patient::whereNotNull('number')->get();
+        $patientsWithNumber = Patient::whereNotNull('number')->orderByDesc('number')->get();
         if ($patientsWithNumber->count() < 32) {
             $patient->entry_date = now();
+            $patient->exit_date = null;
             $assignedNumbers = $patientsWithNumber->pluck('number')->toArray();
-            for ($i=0; $i <= 32; $i++) {
+            for ($i = 0; $i <= 32; $i++) {
                 if (!in_array($i, $assignedNumbers)) {
                     $patient->number = $i;
-                    break;
+                    $patient->save();
+
+
                 }
             }
-            $patient->save();
-            return redirect()->route('patients.index')->with('success', 'saved');
-        }else{
-            return redirect()->route('patients.index')->with('error', 'fullPatients');
+            return redirect()->route('patients.edit', $patient)->with('success', 'registered');
+        } else {
+            return redirect()->route('home')->with('error', 'fullPatients');
         }
+    }
+
+    public function updateTutors(Request $request, Patient $patient)
+    {
+        //Comprobación para que no entre nulo
+        $tutors = array_filter([$request->tutor_psycho, $request->tutor_educator]);
+
+        //Crea la relacion y Elimina cualquier relacion anterior
+        $patient->is_tutored()->sync($tutors, true);
+
+        return redirect()->route('patients.edit', $patient)->with('success', 'updated');
     }
 }
