@@ -25,6 +25,9 @@
                     </div>
                 @endforelse
             </div>
-            <div class="">{{ $users->links() }}</div>
+            <div class="pagination ml-auto justify-content-center float-md-right mb-3">
+                {{ $users->links() }}
+            </div>
         </div>
-    @endsection
+    </div>
+@endsection

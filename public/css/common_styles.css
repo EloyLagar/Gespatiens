@@ -6,20 +6,19 @@ body {
     background-color: var(--background-color);
 }
 
-
 /* Contenedores principales */
 .content-wrapper {
     background-color: var(--background-color);
 }
 
-.wrapper{
+.wrapper {
     align-items: center;
     justify-content: center;
     width: 100%;
     box-sizing: border-box;
 }
 
-.container{
+.container {
     width: 100%;
     padding-top: 0.8em;
 }
@@ -29,7 +28,7 @@ body {
     text-align: center;
     /* margin: 0; */
     font-size: 1.63rem;
-    padding: .5rem .5rem;
+    padding: 0.5rem 0.5rem;
     background-color: var(--hover-accent-color) !important;
 }
 
@@ -105,9 +104,9 @@ body {
     color: var(--light-text-color);
 }
 
-.fa-walking{
+.fa-walking {
     font-size: 1.1rem;
-    padding-right: -0.rem;
+    padding-right: -0rem;
 }
 
 .main-header,
@@ -119,15 +118,18 @@ body {
 
 /* Títulos */
 
-h1, h2, h3, h4, h5, h6{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     color: var(--dark-text-color);
 }
-
 
 h1 {
     color: var(--accent-color);
 }
-
 
 /* Botones */
 .btn {
@@ -207,7 +209,7 @@ label {
     margin-bottom: 0.6em;
 }
 
-.goBackBtn{
+.goBackBtn {
     display: flex;
     width: fit-content;
     align-items: center;
@@ -217,21 +219,27 @@ label {
     margin-bottom: 0.4em;
 }
 
-.goBackBtn>.btn, .form-group>.btn{
+.goBackBtn > .btn,
+.form-group > .btn {
     font-size: 0.8em;
     margin-right: 1em;
 }
 
-.pagination a, .pagination span {
+.pagination a,
+.pagination span {
     background-color: var(--accent-color) !important;
     color: var(--light-text-color) !important;
 }
 
-.pagination span{
-    color: #cdcdcd !important;
-
+.pagination a:hover {
+    background-color: var(--hover-accent-color) !important;
 }
 
-.pagination a:hover {
-    background-color: var(--hover-accent-color);
+.pagination span {
+    color: #cdcdcd !important;
+}
+
+.pagination span:hover {
+    color: #cdcdcd !important;
+    cursor: not-allowed;
 }
