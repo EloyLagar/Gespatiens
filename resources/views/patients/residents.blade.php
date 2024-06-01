@@ -26,9 +26,6 @@
                         </a>
                     </div>
                 @empty
-                    <div class="col">
-                        <span>There are no residents</span>
-                    </div>
                 @endforelse
             </div>
             <div class="pagination ml-auto justify-content-center float-md-right mb-3">

@@ -4,8 +4,8 @@
 @endsection
 @section('content')
     <div class="wrapper  d-flex flex-column">
-        <h1 class="mt-3 mb-3">Employees</h1>
-        <div class="btn-container mb-3"><a href="{{ route('users.create') }}" class="btn py-2">Create employee</a></div>
+        <h1 class="mt-3 mb-3">{{__('user.plural')}}</h1>
+        <div class="btn-container mb-3"><a href="{{ route('users.create') }}" class="btn py-2">{{__('crud.create')}} {{__('user.singular')}}</a></div>
         <div class="container">
             <div class="row">
                 @forelse ($users as $user)
@@ -20,9 +20,6 @@
                         </a>
                     </div>
                 @empty
-                    <div class="col">
-                        <span>There are no employees</span>
-                    </div>
                 @endforelse
             </div>
             <div class="pagination ml-auto justify-content-center float-md-right mb-3">
