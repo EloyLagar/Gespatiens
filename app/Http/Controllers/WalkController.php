@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Walk;
+use App\Models\Activity;
 use Illuminate\Http\Request;
 
 class WalkController extends Controller
@@ -28,7 +29,15 @@ class WalkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $activity = new Activity();
+        $activity->date = $request->date;
+        $activity->save();
+        $walk = new Walk();
+        $walk->fill($request->all());
+        $walk->activity_id = $activity->id;
+        $walk->save();
+
+        return redirect()->route('activities.index');
     }
 
     /**
@@ -44,7 +53,7 @@ class WalkController extends Controller
      */
     public function edit(Walk $walk)
     {
-        //
+        return view('walks.edit');
     }
 
     /**

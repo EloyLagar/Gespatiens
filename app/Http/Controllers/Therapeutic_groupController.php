@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Therapeutic_group;
+use App\Models\Activity;
 use Illuminate\Http\Request;
 
 class Therapeutic_groupController extends Controller
@@ -28,7 +29,13 @@ class Therapeutic_groupController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $activity = new Activity();
+        $activity->date = $request->date;
+        $activity->save();
+        $sport = new Sport();
+        $sport->fill($request->all());
+        $sport->activity_id = $activity->id;
+        $sport->save();
     }
 
     /**

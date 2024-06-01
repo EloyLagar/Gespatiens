@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Activity;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ActivityController extends Controller
@@ -21,9 +22,9 @@ class ActivityController extends Controller
      */
     public function create()
     {
-        // $psychologists;
+        $psychologists = User::where('speciality', 'psychologist')->get();
         $lesson_types = ['life_skills', 'health_education', 'carrer_help', 'occupational_workshop', 'video_forum', 'maintenance' ];
-        return view('diary.activities.create', compact('lesson_types'));
+        return view('diary.activities.create', compact('lesson_types', 'psychologists'));
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activity;
 use App\Models\Sport;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,15 @@ class SportController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $activity = new Activity();
+        $activity->date = $request->date;
+        $activity->save();
+        $sport = new Sport();
+        $sport->fill($request->all());
+        $sport->activity_id = $activity->id;
+        $sport->save();
+
+        return redirect()->route('activities.index');
     }
 
     /**
@@ -44,7 +53,7 @@ class SportController extends Controller
      */
     public function edit(Sport $sport)
     {
-        //
+        return view('sports.edit');
     }
 
     /**
@@ -52,7 +61,8 @@ class SportController extends Controller
      */
     public function update(Request $request, Sport $sport)
     {
-        //
+        $sport->fill($request->all());
+        $sport->update();
     }
 
     /**

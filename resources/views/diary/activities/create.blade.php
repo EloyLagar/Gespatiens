@@ -36,7 +36,7 @@
                             <form action="{{ route('lessons.store') }}" method="POST">
                                 @csrf
                                 <div class="form-row">
-                                    <div class="form-group col-md-5">
+                                    <div class="form-group col-md-8">
                                         <label for="type">{{ __('activities.lesson_type.label') }}:</label>
                                         <select name="type" class="form-control" id="lesson_type">
                                             <option disabled selected value="">{{ __('crud.select_a') }}
@@ -48,17 +48,18 @@
                                             @endforelse
                                         </select>
                                     </div>
-                                    <div class="form-group col-md-2">
+                                    <div class="form-group col-md-4">
                                         <label for="date">{{ __('activities.date') }}:</label>
-                                        <input type="number" class="form-control" id="lesson_utility" name="utility"
-                                            max="10" min="0">
+                                        <input type="date" class="form-control" id="lesson_utility" name="utility">
                                     </div>
-                                    <div class="form-group col-md-2">
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-3">
                                         <label for="lesson_utility">{{ __('activities.utility') }}:</label>
                                         <input type="number" class="form-control" id="lesson_utility" name="utility"
                                             max="10" min="0">
                                     </div>
-                                    <div class="form-group col-md-2">
+                                    <div class="form-group col-md-3">
                                         <label for="lesson_satisfaction">{{ __('activities.satisfaction') }}:</label>
                                         <input type="number" class="form-control" id="lesson_satisfaction"
                                             name="satisfaction" max="10" min="0">
@@ -72,24 +73,32 @@
                             <form action="{{ route('activities.store') }}" method="POST">
                                 @csrf
                                 <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="type">{{ __('activities.lesson_type.label') }}:</label>
-                                        <select name="type" class="form-control" id="lesson_type">
+                                    <div class="form-group col-md-8">
+                                        <label for="group">{{ __('activities.group') }}:</label>
+                                        <select name="group" class="form-control" id="group">
                                             <option disabled selected value="">{{ __('crud.select_a') }}
                                                 {{ __('user.speciality.psychologist') }}</option>
                                             @forelse ($psychologists as $psychologist)
-                                                <option value="{{ $psychologist->id }}">{{ $psychologist->name }}</option>
+                                                <option value="{{ $psychologist->name }}">{{ $psychologist->name }}
+                                                </option>
                                             @empty
                                             @endforelse
                                         </select>
                                     </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="date">{{ __('activities.date') }}:</label>
+                                        <input type="date" class="form-control" id="lesson_utility" name="utility">
+                                    </div>
+                                </div>
+                                <div class="form-row">
                                     <div class="form-group col-md-3">
                                         <label for="therapeutic_group_utility">{{ __('activities.utility') }}:</label>
-                                        <input type="number" class="form-control" id="therapeutic_group_utility" name="utility"
-                                            max="10" min="0">
+                                        <input type="number" class="form-control" id="therapeutic_group_utility"
+                                            name="utility" max="10" min="0">
                                     </div>
                                     <div class="form-group col-md-3">
-                                        <label for="therapeutic_group_satisfaction">{{ __('activities.satisfaction') }}:</label>
+                                        <label
+                                            for="therapeutic_group_satisfaction">{{ __('activities.satisfaction') }}:</label>
                                         <input type="number" class="form-control" id="therapeutic_group_satisfaction"
                                             name="satisfaction" max="10" min="0">
                                     </div>
@@ -102,13 +111,22 @@
                         <div class="tab-pane" id="sport">
                             <form action="{{ route('activities.store') }}" method="POST">
                                 @csrf
-                                <div class="form-group">
-                                    <label for="sportTitle">Title:</label>
-                                    <input type="text" class="form-control" id="sportTitle" name="title" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="sportDescription">Description:</label>
-                                    <textarea class="form-control" id="sportDescription" name="description" rows="3" required></textarea>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="date">{{ __('activities.date') }}:</label>
+                                        <input type="date" class="form-control" id="lesson_utility" name="utility">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="therapeutic_group_utility">{{ __('activities.utility') }}:</label>
+                                        <input type="number" class="form-control" id="therapeutic_group_utility"
+                                            name="utility" max="10" min="0">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label
+                                            for="therapeutic_group_satisfaction">{{ __('activities.satisfaction') }}:</label>
+                                        <input type="number" class="form-control" id="therapeutic_group_satisfaction"
+                                            name="satisfaction" max="10" min="0">
+                                    </div>
                                 </div>
                                 <button type="submit" class="btn float-right">{{ __('crud.create') }}</button>
                             </form>
@@ -117,13 +135,22 @@
                         <div class="tab-pane" id="walk">
                             <form action="{{ route('activities.store') }}" method="POST">
                                 @csrf
-                                <div class="form-group">
-                                    <label for="walkTitle">Title:</label>
-                                    <input type="text" class="form-control" id="walkTitle" name="title" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="walkDescription">Description:</label>
-                                    <textarea class="form-control" id="walkDescription" name="description" rows="3" required></textarea>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="date">{{ __('activities.date') }}:</label>
+                                        <input type="date" class="form-control" id="lesson_utility" name="utility">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="therapeutic_group_utility">{{ __('activities.utility') }}:</label>
+                                        <input type="number" class="form-control" id="therapeutic_group_utility"
+                                            name="utility" max="10" min="0">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label
+                                            for="therapeutic_group_satisfaction">{{ __('activities.satisfaction') }}:</label>
+                                        <input type="number" class="form-control" id="therapeutic_group_satisfaction"
+                                            name="satisfaction" max="10" min="0">
+                                    </div>
                                 </div>
                                 <button type="submit" class="btn float-right">{{ __('crud.create') }}</button>
                             </form>

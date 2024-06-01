@@ -4,6 +4,7 @@ return [
     'plural' => 'Activities',
     'date'=> 'Date',
     'type' => 'Type',
+    'group' => 'Group',
     'satisfaction' => 'Satisfaction',
     'utility' => 'Utility',
     'labels' => [
