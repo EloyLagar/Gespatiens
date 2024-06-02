@@ -12,13 +12,13 @@
         <div class="container">
             <div class="row">
                 @forelse ($residents as $patient)
-                    <div class="col-md-4">
+                    <div class="col-sm-12 col-lg-4">
                         <a href="{{ route('patients.edit', $patient) }}" class="text-decoration-none">
                             <div class="card patient-card mb-3">
                                 <div class="card-header justify-content-center align-items-center">
                                     <span>{{ $patient->number }} - {{ $patient->name }}</span>
                                 </div>
-                                <div class="card-body d-flex align-items-center">
+                                <div class="card-body col-lg-12 d-flex align-items-center">
                                     <span class="float-left mr-auto">{{ $patient->full_name }}</span>
                                     <span class="float-right ml-auto">
                                         {{__('patients.visit_code')}}: {{$patient->visit_code}}
