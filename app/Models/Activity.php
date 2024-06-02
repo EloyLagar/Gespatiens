@@ -81,8 +81,6 @@ class Activity extends Model
             return 'sport';
         } elseif ($this->walk) {
             return 'walk';
-        }else{
-            return 'unknown';
         }
     }
 }
