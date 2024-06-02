@@ -12,6 +12,8 @@ class Activity extends Model
     protected $fillable = [
         'state',
         'date',
+        'satisfaction',
+        'utility'
     ];
 
     protected $dates = ['date'];
@@ -69,5 +71,18 @@ class Activity extends Model
         return $this->hasOne(Lesson::class, 'activity_id', 'id');
     }
 
-
+    public function getTypeAttribute()
+    {
+        if ($this->lesson) {
+            return 'lesson';
+        } elseif ($this->therapeuticGroup) {
+            return 'therapeutic_group';
+        } elseif ($this->sport) {
+            return 'sport';
+        } elseif ($this->walk) {
+            return 'walk';
+        }else{
+            return 'unknown';
+        }
+    }
 }

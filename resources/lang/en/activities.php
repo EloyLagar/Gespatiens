@@ -11,6 +11,7 @@ return [
         'sport'=>'Sport',
         'walk'=>'Walk',
         'ther_groups'=>'Ther. Groups',
+        'therapeutic_group'=>'Therapeutic Groups',
         'lesson'=>'Lesson',
 
     ],

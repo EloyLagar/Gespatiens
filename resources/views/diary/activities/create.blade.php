@@ -33,12 +33,13 @@
                 <div class="card-body">
                     <div class="tab-content">
                         <div class="tab-pane active" id="lesson">
+                            {{-- Lessons --}}
                             <form action="{{ route('lessons.store') }}" method="POST">
                                 @csrf
                                 <div class="form-row">
                                     <div class="form-group col-md-8">
                                         <label for="type">{{ __('activities.lesson_type.label') }}:</label>
-                                        <select name="type" class="form-control" id="lesson_type">
+                                        <select name="type" class="form-control" id="lesson_type" required>
                                             <option disabled selected value="">{{ __('crud.select_a') }}
                                                 {{ __('activities.lesson_type.label') }}</option>
                                             @forelse ($lesson_types as $lesson_type)
@@ -50,7 +51,7 @@
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="date">{{ __('activities.date') }}:</label>
-                                        <input type="date" class="form-control" id="lesson_utility" name="utility">
+                                        <input type="date" class="form-control" name="date" required>
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -87,7 +88,7 @@
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="date">{{ __('activities.date') }}:</label>
-                                        <input type="date" class="form-control" id="lesson_utility" name="utility">
+                                        <input type="date" class="form-control" name="date" required>
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -114,7 +115,7 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="date">{{ __('activities.date') }}:</label>
-                                        <input type="date" class="form-control" id="lesson_utility" name="utility">
+                                        <input type="date" class="form-control" name="date" required>
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="therapeutic_group_utility">{{ __('activities.utility') }}:</label>
@@ -138,7 +139,7 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="date">{{ __('activities.date') }}:</label>
-                                        <input type="date" class="form-control" id="lesson_utility" name="utility">
+                                        <input type="date" class="form-control" name="date">
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="therapeutic_group_utility">{{ __('activities.utility') }}:</label>

@@ -1,0 +1,35 @@
+.card:hover{
+    cursor: pointer
+}
+
+.card:hover .card-header{
+    background-color: var(--hover-accent-color);
+}
+
+.card:hover .card-body{
+    background-color: #fafafa;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    background-color: var(--accent-color);
+    color: var(--light-text-color);
+    font-weight: 500;
+    height: 30px;
+}
+
+.card-header a{
+    text-decoration: none;
+}
+
+.card-body{
+    font-size: 0.8rem;
+    font-weight: 500;
+    height: 40px;
+}
+.card-body span{
+    color: var(--dark-text-color);
+}
+
+

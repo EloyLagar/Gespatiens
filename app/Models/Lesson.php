@@ -12,8 +12,6 @@ class Lesson extends Model
     protected $fillable = [
         'activity_id',
         'type',
-        'utility',
-        'satisfaction',
     ];
 
     public function activity()

@@ -4,20 +4,17 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('lessons', function (Blueprint $table) {
-            $table->id();
+        Schema::table('lessons', function (Blueprint $table) {
             $table->enum('type', ['life_skills', 'health_education', 'carrer_help', 'occupational_workshop', 'video_forum', 'maintenance' ]);
-            $table->unsignedBigInteger('activity_id');
-            $table->foreign('activity_id')->references('id')->on('activities')->onDelete('cascade');
-            $table->float('utility');
-            $table->float('satisfaction');
-            $table->timestamps();
+            $table->dropColumn('utility');
+            $table->dropColumn('satisfaction');
         });
     }
 
@@ -26,6 +23,10 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('lessons');
+        Schema::table('lessons', function (Blueprint $table) {
+            $table->float('utility');
+            $table->float('satisfaction');
+            $table->dropColumn('type');
+        });
     }
 };

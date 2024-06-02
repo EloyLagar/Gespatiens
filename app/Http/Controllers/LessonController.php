@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lesson;
+use App\Models\Activity;
 use Illuminate\Http\Request;
 
 class LessonController extends Controller
@@ -28,7 +29,15 @@ class LessonController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $activity = new Activity(['date' => $request->date]);
+        $activity->fill($request->all());
+        $activity->save();
+        $lesson = new Lesson();
+        $lesson->fill($request->all());
+        $lesson->activity_id = $activity->id;
+        $lesson->save();
+
+        return redirect()->route('activities.index');
     }
 
     /**

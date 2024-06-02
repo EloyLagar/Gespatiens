@@ -29,14 +29,12 @@ class WalkController extends Controller
      */
     public function store(Request $request)
     {
-        $activity = new Activity();
-        $activity->date = $request->date;
+        $activity = new Activity(['date' => $request->date]);
+        $activity->fill($request->all());
         $activity->save();
         $walk = new Walk();
-        $walk->fill($request->all());
         $walk->activity_id = $activity->id;
         $walk->save();
-
         return redirect()->route('activities.index');
     }
 

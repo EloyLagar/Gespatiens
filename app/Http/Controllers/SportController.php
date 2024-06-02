@@ -29,11 +29,10 @@ class SportController extends Controller
      */
     public function store(Request $request)
     {
-        $activity = new Activity();
-        $activity->date = $request->date;
+        $activity = new Activity(['date' => $request->date]);
+        $activity->fill($request->all());
         $activity->save();
         $sport = new Sport();
-        $sport->fill($request->all());
         $sport->activity_id = $activity->id;
         $sport->save();
 

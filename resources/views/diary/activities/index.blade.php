@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('css')
     @parent
+    <link rel="stylesheet" href="{{asset('/css/index.css')}}">
 @endsection
 @section('content')
     <div class="wrapper  d-flex flex-column">
@@ -12,9 +13,15 @@
                     <div class="col-md-4">
                         <a href="{{ route('users.edit', $activity) }}" class="text-decoration-none">
                             <div class="card activity-card">
-                                <div class="card-body d-flex justify-content-between align-items-center">
-                                    <div class="activity-name"><span>{{ $activity->name }}</span></div>
-                                    <div class="activity-speciality"><span>{{ $activity->speciality }}</span></div>
+                                <div class="card-header">
+                                    <span class="mr-auto float-left">{{ __('activities.labels.' .$activity->type) }}</span>
+                                    <span class="ml-auto float-right">{{ \Carbon\Carbon::parse($activity->date)->format('d/m/Y') }}</span>
+                                </div>
+                                <div class="card-body d-flex flex-row justify-content-center align-items-center">
+                                    <div class="row col-10">
+                                        <span class="mr-auto float-left">{{__('activities.satisfaction')}}: {{$activity->satisfaction}}</span>
+                                        <span class="ml-auto float-right">{{__('activities.utility')}}: {{$activity->utility}}</span>
+                                    </div>
                                 </div>
                             </div>
                         </a>

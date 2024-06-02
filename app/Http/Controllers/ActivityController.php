@@ -13,7 +13,7 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        $activities = Activity::orderByDesc('date')->simplePaginate();
+        $activities = Activity::orderByDesc('date')->simplePaginate(15);
         return view('diary.activities.index', compact('activities'));
     }
 

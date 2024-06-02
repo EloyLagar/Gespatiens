@@ -29,13 +29,15 @@ class Therapeutic_groupController extends Controller
      */
     public function store(Request $request)
     {
-        $activity = new Activity();
-        $activity->date = $request->date;
+        $activity = new Activity(['date' => $request->date]);
+        $activity->fill($request->all());
         $activity->save();
-        $sport = new Sport();
-        $sport->fill($request->all());
-        $sport->activity_id = $activity->id;
-        $sport->save();
+        $therapeutic_group = new Therapeutic_group();
+        $therapeutic_group->fill($request->all());
+        $therapeutic_group->activity_id = $activity->id;
+        $therapeutic_group->save();
+
+        return redirect()->route('activities.index');
     }
 
     /**
