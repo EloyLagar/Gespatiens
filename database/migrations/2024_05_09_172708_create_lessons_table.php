@@ -15,8 +15,6 @@ return new class extends Migration {
             $table->enum('type', ['life_skills', 'health_education', 'carrer_help', 'occupational_workshop', 'video_forum', 'maintenance' ]);
             $table->unsignedBigInteger('activity_id');
             $table->foreign('activity_id')->references('id')->on('activities')->onDelete('cascade');
-            $table->float('utility');
-            $table->float('satisfaction');
             $table->timestamps();
         });
     }
