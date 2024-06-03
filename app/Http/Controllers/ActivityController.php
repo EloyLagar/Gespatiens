@@ -23,7 +23,7 @@ class ActivityController extends Controller
     public function create()
     {
         $psychologists = User::where('speciality', 'psychologist')->get();
-        $lesson_types = ['life_skills', 'health_education', 'carrer_help', 'occupational_workshop', 'video_forum', 'maintenance' ];
+        $lesson_types = ['life_skills', 'health_education', 'carrer_help', 'occupational_workshop', 'video_forum', 'maintenance'];
         return view('diary.activities.create', compact('lesson_types', 'psychologists'));
     }
 
@@ -48,7 +48,12 @@ class ActivityController extends Controller
      */
     public function edit(Activity $activity)
     {
-        return view ('diary.activities.edit', compact('activity'));
+        if ($activity->state == true) {
+            return redirect()->back()->with('error', __('error.already_in_use'));
+        }
+        $activity->state = true;
+        $activity->update();
+        return view('diary.activities.edit', compact('activity'));
     }
 
     /**
@@ -57,6 +62,7 @@ class ActivityController extends Controller
     public function update(Request $request, Activity $activity)
     {
         $activity->fill($request->all());
+        $activity->state = false;
         $activity->update();
         return redirect()->route('activities.index')->with('success', 'updated');
     }
@@ -67,5 +73,61 @@ class ActivityController extends Controller
     public function destroy(Activity $activity)
     {
         //
+    }
+
+    public function edit_attendance(Activity $activity)
+    {
+        if ($activity->state == true) {
+            return redirect()->back()->with('error', __('error.already_in_use'));
+        }
+            $activity->state = true;
+            $activity->update();
+            $patients = $activity->patients()->orderBy('number', 'asc')->get();
+            return view('diary.activities.attendance', compact('patients', 'activity'));
+    }
+
+    public function updateAttendance(Request $request, Activity $activity)
+    {
+        $patientsData = $request->input('patients');
+
+        $syncData = [];
+        foreach ($patientsData as $patientId => $status) {
+            if ($status == 'reducted') {
+                $syncData[$patientId] = [
+                    'activity_id' => $activity->id,
+                    'reducted' => true,
+                    'assists' => false,
+                    'justified' => false,
+                ];
+            } elseif ($status == 'assists') {
+                $syncData[$patientId] = [
+                    'activity_id' => $activity->id,
+                    'reducted' => false,
+                    'assists' => true,
+                    'justified' => false,
+                ];
+            } elseif ($status == 'justified') {
+                $syncData[$patientId] = [
+                    'activity_id' => $activity->id,
+                    'reducted' => false,
+                    'assists' => false,
+                    'justified' => true,
+                ];
+            }else{
+                $syncData[$patientId] = [
+                    'activity_id' => $activity->id,
+                    'reducted' => false,
+                    'assists' => false,
+                    'justified' => false,
+                ];
+            }
+
+        }
+
+        $activity->patients()->sync($syncData);
+        $activity->state = false;
+        $activity->update();
+
+        return redirect()->route('activities.edit_attendance', $activity)->with('success', 'updated');
     }
 }

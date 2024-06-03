@@ -7,6 +7,11 @@ return [
     'group' => 'Group',
     'satisfaction' => 'Satisfaction',
     'utility' => 'Utility',
+    'assistants' => 'Assistants',
+    'attendance' => 'Attendance',
+    'reducted' => 'Reducted',
+    'justified' => 'Justified',
+    'no_justified' => 'No Justified',
     'labels' => [
         'sport'=>'Sport',
         'walk'=>'Walk',
