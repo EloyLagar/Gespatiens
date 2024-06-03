@@ -25,7 +25,6 @@ class User extends Authenticatable
         'speciality',
         'signature',
         'phone_number',
-        'sip',
     ];
 
     /**
