@@ -6,6 +6,7 @@
 @endsection
 
 @section('content')
+{{-- @dd($evaluationsMap[3]) --}}
     <div class="wrapper d-flex flex-column">
         <div class="container">
             <a href="{{ route('evaluations.indexForm') }}" class="goBackBtn btn"><i class='bx bx-left-arrow-alt'></i></a>
@@ -98,7 +99,7 @@
                                                 $mediasCount++;
                                             @endphp
                                         @else
-                                            <td title="Pulse para modificar la nota" data-id="{{ $resident->id }}"
+                                            <td data-id="{{ $resident->id }}"
                                                 data-fecha="{{ $fecha }}" class="clickable">
                                                 <div>
                                                     <input type="text" data-id="{{ $resident->id }}"
@@ -127,7 +128,6 @@
                                             <td></td>
                                         @endif
                                     @endif
-                                    {{-- s{{dd($resident->entry_date, $resident->exit_date, $fecha, $formattedFecha, $formattedFecha > $resident->entry_date,  $formattedFecha < $resident->exit_date)}} --}}
                                 @endforeach
                                 <td class="average total-average">
                                     @if ($weeks !== 0)

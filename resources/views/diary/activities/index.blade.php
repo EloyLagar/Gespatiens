@@ -11,7 +11,7 @@
             <div class="row">
                 @forelse ($activities as $activity)
                     <div class="col-md-4">
-                        <a href="{{ route('users.edit', $activity) }}" class="text-decoration-none">
+                        <a href="{{ route('activities.edit', $activity) }}" class="text-decoration-none">
                             <div class="card activity-card">
                                 <div class="card-header">
                                     <span class="mr-auto float-left">{{ __('activities.labels.' .$activity->type) }}</span>

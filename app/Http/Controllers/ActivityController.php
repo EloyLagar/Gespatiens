@@ -48,7 +48,7 @@ class ActivityController extends Controller
      */
     public function edit(Activity $activity)
     {
-        //
+        return view ('diary.activities.edit', compact('activity'));
     }
 
     /**
@@ -56,7 +56,9 @@ class ActivityController extends Controller
      */
     public function update(Request $request, Activity $activity)
     {
-        //
+        $activity->fill($request->all());
+        $activity->update();
+        return redirect()->route('activities.index')->with('success', 'updated');
     }
 
     /**

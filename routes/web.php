@@ -81,11 +81,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/users/create-password', [LoginController::class, 'updatePassword'])->name('updatePassword');
 
     //Actividades
-    Route::resource('activities', ActivityController::class);
-    Route::resource('lessons', LessonController::class)->only(['store', 'edit', 'update']);
-    Route::resource('sports', SportController::class)->only(['store', 'edit', 'update']);
-    Route::resource('therapeutic_groups', Therapeutic_groupController::class)->only(['store', 'edit', 'update']);
-    Route::resource('walks', WalkController::class)->only(['store', 'edit', 'update']);
+    Route::resource('activities', ActivityController::class)->only(['index', 'create', 'edit', 'update']);
+    Route::resource('lessons', LessonController::class)->only('store');
+    Route::resource('sports', SportController::class)->only('store');
+    Route::resource('therapeutic_groups', Therapeutic_groupController::class)->only('store');
+    Route::resource('walks', WalkController::class)->only('store');
 
     //Patients
     Route::get('/residents', [PatientController::class, 'indexResidents'])->name('indexResidents');

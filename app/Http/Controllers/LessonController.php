@@ -53,7 +53,7 @@ class LessonController extends Controller
      */
     public function edit(Lesson $lesson)
     {
-        //
+        return view('lessons.edit', compact('lesson'));
     }
 
     /**
@@ -61,7 +61,7 @@ class LessonController extends Controller
      */
     public function update(Request $request, Lesson $lesson)
     {
-        //
+       //
     }
 
     /**
