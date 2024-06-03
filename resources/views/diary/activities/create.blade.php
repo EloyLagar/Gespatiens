@@ -71,7 +71,7 @@
                         </div>
                         {{-- Grupos Tera. --}}
                         <div class="tab-pane" id="ther-groups">
-                            <form action="{{ route('activities.store') }}" method="POST">
+                            <form action="{{ route('therapeutic_groups.store') }}" method="POST">
                                 @csrf
                                 <div class="form-row">
                                     <div class="form-group col-md-8">
@@ -110,7 +110,7 @@
 
                         {{-- Deporte --}}
                         <div class="tab-pane" id="sport">
-                            <form action="{{ route('activities.store') }}" method="POST">
+                            <form action="{{ route('sports.store') }}" method="POST">
                                 @csrf
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
@@ -134,7 +134,7 @@
                         </div>
                         {{-- Paseos --}}
                         <div class="tab-pane" id="walk">
-                            <form action="{{ route('activities.store') }}" method="POST">
+                            <form action="{{ route('walks.store') }}" method="POST">
                                 @csrf
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
