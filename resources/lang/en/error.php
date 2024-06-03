@@ -6,5 +6,6 @@ return [
 'required' => 'This field is necessary',
 'unique' => 'The data entered is already in use',
 'in' => 'The field must be one of the select values',
-'fullPatients' => 'The center is currently full.'
+'fullPatients' => 'The center is currently full.',
+'already_in_use' => 'The file is already being modified by someone else at the moment, please wait.',
 ];

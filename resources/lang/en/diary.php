@@ -39,4 +39,6 @@ return [
         'partial' => 'Partialy Reducted (can do...)',
         'sport' => 'Only sport reducted',
     ],
+    'outings_and_arrives' => 'Outings and arrives',
+    'outing_or_arrive' => 'Outing or arrive',
 ];
