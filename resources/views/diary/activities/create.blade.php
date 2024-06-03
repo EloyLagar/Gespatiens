@@ -76,7 +76,7 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-8">
                                         <label for="group">{{ __('activities.group') }}:</label>
-                                        <select name="group" class="form-control" id="group">
+                                        <select name="group" class="form-control" id="group" required>
                                             <option disabled selected value="">{{ __('crud.select_a') }}
                                                 {{ __('user.speciality.psychologist') }}</option>
                                             @forelse ($psychologists as $psychologist)
@@ -139,7 +139,7 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="date">{{ __('activities.date') }}:</label>
-                                        <input type="date" class="form-control" name="date">
+                                        <input type="date" class="form-control" name="date" required>
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="therapeutic_group_utility">{{ __('activities.utility') }}:</label>
