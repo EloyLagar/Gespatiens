@@ -157,17 +157,16 @@ class PatientController extends Controller
 
     public function register(Patient $patient)
     {
-        $patientsWithNumber = Patient::whereNotNull('number')->orderByDesc('number')->get();
+        $patientsWithNumber = Patient::whereNotNull('number')->orderBy('number', 'asc')->get();
         if ($patientsWithNumber->count() < 32) {
             $patient->entry_date = now();
             $patient->exit_date = null;
             $assignedNumbers = $patientsWithNumber->pluck('number')->toArray();
-            for ($i = 0; $i <= 32; $i++) {
+            for ($i = 1; $i <= 32; $i++) {
                 if (!in_array($i, $assignedNumbers)) {
                     $patient->number = $i;
                     $patient->save();
-
-
+                    return redirect()->route('patients.edit', $patient)->with('success', 'registered');
                 }
             }
             return redirect()->route('patients.edit', $patient)->with('success', 'registered');

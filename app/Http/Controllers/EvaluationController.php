@@ -121,6 +121,7 @@ class EvaluationController extends Controller
 
     public function saveEvaluation(Request $request)
     {
+
         //En caso de exista se recoge una evaluacion
         $evaluation = Evaluation::where('patient_id', $request->patient_id)
             ->where('date', $request->date)
@@ -135,6 +136,7 @@ class EvaluationController extends Controller
             $evaluation->patient_id = $request->patient_id;
             $evaluation->mark = $request->mark;
             $evaluation->date = $request->date;
+            $evaluation->lesson_type = $request->lesson_type;
             $evaluation->save();
         }
 

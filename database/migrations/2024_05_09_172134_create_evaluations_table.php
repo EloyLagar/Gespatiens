@@ -15,7 +15,15 @@ return new class extends Migration {
             $table->unsignedBigInteger('patient_id');
             $table->float('mark')->nullable();
             $table->date('date')->nullable(false);
-            $table->enum('lesson_type', ['Grupos terapéuticos', 'Habilidades para la vida', 'Escuela de salud', 'Orientación e inserción laboral', 'Taller ocupacional', 'Vídeo fórum', 'Mantenimiento']);
+            $table->enum('lesson_type', [
+                'therapeutic_groups',
+                'life_skills',
+                'health_education',
+                'carrer_help',
+                'occupational_workshop',
+                'video_forum',
+                'maintenance'
+            ]);
             $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
             $table->timestamps();
         });

@@ -6,7 +6,6 @@
 @endsection
 
 @section('content')
-{{-- @dd($evaluationsMap[3]) --}}
     <div class="wrapper d-flex flex-column">
         <div class="container">
             <a href="{{ route('evaluations.indexForm') }}" class="goBackBtn btn"><i class='bx bx-left-arrow-alt'></i></a>
@@ -96,6 +95,7 @@
                                             </td>
                                             @php
                                                 $weeklyAverage = 0;
+                                                $contClases = 0;
                                                 $mediasCount++;
                                             @endphp
                                         @else
@@ -122,6 +122,7 @@
                                             </td>
                                             @php
                                                 $weeklyAverage = 0;
+                                                $contClases = 0;
                                                 $mediasCount++;
                                             @endphp
                                         @else
