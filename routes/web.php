@@ -81,11 +81,15 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/users/create-password', [LoginController::class, 'updatePassword'])->name('updatePassword');
 
     //Actividades
+    Route::get('activities/{activity}/attendance', [ActivityController::class, 'edit_attendance'])->name('activities.edit_attendance');
+    Route::put('activities/updateAttendance/{activity}', [ActivityController::class, 'updateAttendance'])->name('activities.updateAttendance');
     Route::resource('activities', ActivityController::class)->only(['index', 'create', 'edit', 'update']);
     Route::resource('lessons', LessonController::class)->only('store');
     Route::resource('sports', SportController::class)->only('store');
     Route::resource('therapeutic_groups', Therapeutic_groupController::class)->only('store');
     Route::resource('walks', WalkController::class)->only('store');
+    Route::post('/activity/close', 'App\Http\Controllers\ActivityController@setStateFalse')->name('activity.close');
+
 
     //Patients
     Route::get('/residents', [PatientController::class, 'indexResidents'])->name('indexResidents');
