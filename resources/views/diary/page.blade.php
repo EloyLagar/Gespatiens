@@ -7,17 +7,21 @@
 @section('content')
     <div class="wrapper d-flex flex-column">
         <a href="{{ route('diary.diaryForm') }}" class="goBackBtn btn mr-auto mt-2 float-left"><i
-            class='bx bx-left-arrow-alt'></i></a>
+                class='bx bx-left-arrow-alt'></i></a>
         <h1 class="mt-3 mb-3 text-center">{{ __('diary.diary_page') }} ({{ $date->format('d/m/Y') }})</h1>
         <div class="container">
-
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
             {{-- Mañana --}}
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <span>{{ __('diary.dayparts.morning') }}</span>
                     <div class="ml-auto">
-                        <a href="{{ route('shifts.edit', $morning_shift) }}" class="btn"><i class='bx bx-pencil'></i> <span
-                                class="modify-button">{{ __('crud.modify') }}</span></a>
+                        <a href="{{ route('shifts.edit', $morning_shift) }}" class="btn"><i class='bx bx-pencil'></i>
+                            <span class="modify-button">{{ __('crud.modify') }}</span></a>
                     </div>
                     <button class="btn-down  float-right" data-toggle="collapse" data-target="#collapse-morning"
                         aria-expanded="true" aria-controls="collapse-morning">
@@ -30,13 +34,13 @@
                             <div class="educators-container mb-2">
                                 <label for="">{{ __('diary.educators') }}:</label><br>
                                 @if ($morning_shift && $morning_shift->users())
-                                <ul class="list-group">
-                                    @forelse ($morning_shift->users as $employee)
-                                        <li class="list-group-item">{{ $employee->name ?? ''}}</li>
-                                    @empty
-                                    @endforelse
+                                    <ul class="list-group">
+                                        @forelse ($morning_shift->users as $employee)
+                                            <li class="list-group-item">{{ $employee->name ?? '' }}</li>
+                                        @empty
+                                        @endforelse
                                 @endif
-                            </ul>
+                                </ul>
                             </div>
                             <div class="interseting-info">
                                 <label>{{ __('diary.interesting_info') }}:</label><br>
@@ -56,54 +60,78 @@
                         <i class='bx bxs-down-arrow collapse-icon'></i>
                     </button></div>
 
-                <div id="collapse-activities" class="collapse hide">
+                <div id="collapse-activities" class="collapse">
                     <div class="card-body">
                         <div class="activities-container">
-                            @if (!empty($acitivities))
-                                <table class="table table-striped">
-                                    <thead class="thead-dark">
-                                        <tr>
-                                            <th>{{ __('diary.type') }}</th>
-                                            <th>{{ __('diary.assistants') }}</th>
-                                            <th>{{ __('diary.reducted') }}</th>
-                                            <th>{{ __('diary.justified') }}</th>
-                                            <th>{{ __('diary.no_justified') }}</th>
-                                            <th>{{ __('crud.edit') }}</th>
-                                        </tr>
-                                    </thead>
-                            @endif
-                            @forelse ($activities as $activity)
-                                <td>{{ $activity->type }}</td>
-                                <td>
-                                    @foreach ($assistants as $assitant)
-                                    @endforeach
-                                </td>
-                                <td>
-                                    @foreach ($reducteds as $reducted)
-                                    @endforeach
-                                </td>
-                                <td>
-                                    @foreach ($justifieds as $justified)
-                                    @endforeach
-                                </td>
-                                <td>
-                                    @foreach ($no_justifieds as $unjustified)
-                                    @endforeach
-                                </td>
-                            @empty
-                                {{ __('diary.no_activities') }}
-                            @endforelse
                             @if (!empty($activities))
-                                </table>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th>{{ __('activities.type') }}</th>
+                                                <th>{{ __('activities.assistants') }}</th>
+                                                <th>{{ __('activities.reducted') }}</th>
+                                                <th>{{ __('activities.justified') }}</th>
+                                                <th>{{ __('activities.no_justified') }}</th>
+                                                <th class="text-center">{{ __('crud.manage') }}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @forelse ($activities as $activity)
+                                                <tr>
+                                                    <td>{{ __('activities.labels.' . $activity->type) }}
+                                                        @if ($activity->type == 'lesson')
+                                                            ({{ __('activities.lesson_type.' . $activity->lesson->type) }})
+                                                        @endif
+                                                        @if ($activity->type == 'therapeutic_group')
+                                                            ({{ $activity->therapeuticGroup->group }})
+                                                        @endif
+                                                    </td>
+                                                    <td class="patients-cell">
+                                                        @foreach ($activity->assistants as $assistant)
+                                                            {{ $assistant->number ?? $assistant->name }},
+                                                        @endforeach
+                                                    </td>
+                                                    <td class="patients-cell">
+                                                        @foreach ($activity->reducteds as $reducted)
+                                                            {{ $reducted->number ?? $reducted->name }},
+                                                        @endforeach
+                                                    </td>
+                                                    <td class="patients-cell">
+                                                        @foreach ($activity->justifieds as $justified)
+                                                            {{ $justified->number ?? $justified->name }},
+                                                        @endforeach
+                                                    </td>
+                                                    <td class="patients-cell">
+                                                        @foreach ($activity->no_justifieds as $unjustified)
+                                                            {{ $unjustified->number ?? $unjustified->name }},
+                                                        @endforeach
+                                                    </td>
+                                                    <td class="text-center"><a class="btn col-8"
+                                                            href="{{ route('activities.edit_attendance', $activity) }}"><i class='bx bxs-pencil'></i></a>
+                                                    </td>
+                                                </tr>
+                                            @empty
+                                                <tr>
+                                                    <td colspan="6">{{ __('diary.no_activities') }}</td>
+                                                </tr>
+                                            @endforelse
+                                        </tbody>
+                                    </table>
+                                </div>
+                            @else
+                                <div>{{ __('diary.no_activities') }}</div>
                             @endif
                         </div>
                     </div>
                 </div>
             </div>
 
+
             {{-- Rebajas --}}
             <div class="card">
-                <div class="card-header  d-flex justify-content-between align-items-center">{{ __('diary.reductions') }}
+                <div class="card-header  d-flex justify-content-between align-items-center">
+                    {{ __('diary.reductions') }}
                     <button class="btn-down ml-auto float-right" data-toggle="collapse" data-target="#collapse-reductions"
                         aria-expanded="true" aria-controls="collapse-reductions">
                         <i class='bx bxs-down-arrow collapse-icon'></i>
@@ -112,7 +140,7 @@
                 <div id="collapse-reductions" class="collapse hide">
                     <div class="card-body">
                         @if (!empty($reductions))
-                            <table class="table table-striped">
+                            <table class="table table-striped table-bordered">
                                 <thead class="thead-dark">
                                     <tr>
                                         <th>{{ __('patients.singular') }}</th>
@@ -122,10 +150,10 @@
                                     </tr>
                                 </thead>
                         @endif
-                        @forelse ($reductions as $intervention)
-                            <td>{{ $intervention->patient->number ?? '' }} {{ $intervention->patient->name }}</td>
-                            <td>{{ $intervention->patient->tutors() ?? '' }}</td>
-                            <td>{{ $intervention->intervention }}</td>
+                        @forelse ($reductions as $reduction)
+                            <td>{{ $reduction->patient->number ?? '' }} {{ $reduction->patient->name }}</td>
+                            <td>{{ $reduction->patient->tutors() ?? '' }}</td>
+                            <td>{{ $reduction }}</td>
                         @empty
                         @endforelse
                         @if (!empty($reductions))
@@ -152,7 +180,7 @@
                 <div id="collapse-interventions" class="collapse hide">
                     <div class="card-body">
                         @if (!empty($interventions))
-                            <table class="table table-striped">
+                            <table class="table table-striped table-bordered">
                                 <thead class="thead-dark">
                                     <tr>
                                         <th>{{ __('patients.singular') }}</th>
@@ -166,7 +194,6 @@
                             <td>{{ $intervention->patient->tutors() ?? '' }}</td>
                             <td>{{ $intervention->intervention }}</td>
                         @empty
-                            {{ __('diary.no_interventions') }}
                         @endforelse
                         @if (!empty($interventions))
                             </table>
@@ -175,13 +202,51 @@
                 </div>
             </div>
 
+            {{-- Salidas y llegadas --}}
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <span>{{ __('diary.outings_and_arrives') }}</span>
+                    <div class="ml-auto">
+                        <a href="{{ route('home', $morning_shift) }}" class="btn"><i class='bx bx-message-alt-add'></i>
+                            <span class="modify-button">{{ __('crud.add') }}</span></a>
+                        <button class="btn-down ml-auto float-right" data-toggle="collapse"
+                            data-target="#collapse-interventions" aria-expanded="true"
+                            aria-controls="collapse-interventions">
+                            <i class='bx bxs-down-arrow collapse-icon'></i>
+                        </button>
+                    </div>
+                </div>
+                <div id="collapse-interventions" class="collapse hide">
+                    <div class="card-body">
+                        @if (!empty($outings))
+                            <table class="table table-striped table-bordered">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>{{ __('patients.singular') }}</th>
+                                        <th>{{ __('patients.outing_or_arrive') }}</th>
+                                    </tr>
+                                </thead>
+                        @endif
+                        @forelse ($outings as $outing)
+                            <td>{{ $outings->patient->number ?? '' }} {{ $outing->patient->name }}</td>
+                            <td>{{ $outing->exit_date}} {{ $outing->return_date}}</td>
+                        @empty
+                        @endforelse
+                        @if (!empty($outings))
+                            </table>
+                        @endif
+                    </div>
+                </div>
+            </div>
+
+
             {{-- Tarde --}}
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <span>{{ __('diary.dayparts.afternoon') }}</span>
                     <div class="ml-auto">
-                        <a href="{{ route('shifts.edit', $afternoon_shift) }}" class="btn"><i class='bx bx-pencil'></i> <span
-                                class="modify-button">{{ __('crud.modify') }}</span></a>
+                        <a href="{{ route('shifts.edit', $afternoon_shift) }}" class="btn"><i class='bx bx-pencil'></i>
+                            <span class="modify-button">{{ __('crud.modify') }}</span></a>
                         <button class="btn-down ml-auto float-right" data-toggle="collapse"
                             data-target="#collapse-afternoon" aria-expanded="true" aria-controls="collapse-afternoon">
                             <i class='bx bxs-down-arrow collapse-icon'></i>
@@ -196,7 +261,7 @@
                                     <label for="">{{ __('diary.educators') }}:</label><br>
                                     @if ($afternoon_shift && $afternoon_shift->users()->count() > 0)
                                         @forelse ($afternoon_shift->users as $employee)
-                                            {{ $employee->name ?? ''}}
+                                            {{ $employee->name ?? '' }}
                                         @empty
                                         @endforelse
                                     @endif
@@ -216,8 +281,8 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <span>{{ __('diary.dayparts.night') }}</span>
                     <div class="ml-auto">
-                        <a href="{{ route('shifts.edit', $night_shift) }}" class="btn"><i class='bx bx-pencil'></i> <span
-                                class="modify-button">{{ __('crud.modify') }}</span></a>
+                        <a href="{{ route('shifts.edit', $night_shift) }}" class="btn"><i class='bx bx-pencil'></i>
+                            <span class="modify-button">{{ __('crud.modify') }}</span></a>
                         <button class="btn-down ml-auto float-right" data-toggle="collapse" data-target="#collapse-night"
                             aria-expanded="true" aria-controls="collapse-night">
                             <i class='bx bxs-down-arrow collapse-icon'></i>
@@ -233,7 +298,7 @@
                                 @if ($night_shift && $night_shift->users->count() > 0)
                                     <p>
                                         @forelse ($night_shift->users() as $employee)
-                                            {{ $employee->name ?? ''}}
+                                            {{ $employee->name ?? '' }}
                                         @empty
                                         @endforelse
                                     </p>
