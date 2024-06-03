@@ -23,5 +23,20 @@ class AdminUserSeeder extends Seeder
             'signature' => 'admin_signature.png',
             'phone_number' => '1234567890',
         ]);
+
+        $specialities = ['educator', 'worker', 'medical', 'psychologis', 'admin'];
+
+        foreach ($specialities as $speciality) {
+            for ($i = 1; $i <= 2; $i++) {
+                User::create([
+                    'name' => $speciality . ' ' . $i,
+                    'email' => $speciality . $i . '@mail.com',
+                    'password' => Hash::make('password'),
+                    'speciality' => $speciality,
+                    'signature' => null,
+                    'phone_number' => '9' . rand(100000000, 999999999),
+                ]);
+            }
+        }
     }
 }
