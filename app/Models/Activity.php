@@ -29,24 +29,25 @@ class Activity extends Model
 
     public function assistants()
     {
-        return $this->alumnos()->wherePivot('assists', true);
+        return $this->belongsToMany(Patient::class, 'attend')->withPivot('assists')->wherePivot('assists', true);
     }
+
 
     public function reducteds()
     {
-        return $this->alumnos()->wherePivot('reducted', true);
+        return $this->belongsToMany(Patient::class, 'attend')->withPivot('reducted')->wherePivot('reducted', true);
     }
 
     public function justifieds()
     {
-        return $this->alumnos()->wherePivot('justified', true);
+        return $this->belongsToMany(Patient::class, 'attend')->withPivot('justified')->wherePivot('justified', true);
     }
 
     public function no_justifieds()
     {
-        return $this->alumnos()->wherePivot('reducted', false)
-                               ->wherePivot('assists', false)
-                               ->wherePivot('justified', false);
+        return $this->belongsToMany(Patient::class, 'attend')->withPivot('assists', 'reducted', 'justified')->wherePivot('reducted', false)
+            ->wherePivot('assists', false)
+            ->wherePivot('justified', false);
     }
 
 
