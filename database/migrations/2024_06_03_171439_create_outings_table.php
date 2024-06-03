@@ -10,12 +10,12 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('activities', function (Blueprint $table) {
+        Schema::create('outings', function (Blueprint $table) {
             $table->id();
-            $table->boolean('state')->default(false);
-            $table->date('date');
-            $table->decimal('utility', 4, 2)->nullable();
-            $table->decimal('satisfaction', 4, 2)->nullable();
+            $table->unsignedBigInteger('patient_id');
+            $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
+            $table->datetime('exit_date')->nullable();
+            $table->datetime('return_date')->nullable();
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('activities');
+        Schema::dropIfExists('outings');
     }
 };
