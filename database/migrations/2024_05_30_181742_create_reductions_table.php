@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->date('date');
             $table->text('partial_reduction')->nullable();
-            $table->boolean('total_reduction');
-            $table->boolean('sport_reduction');
+            $table->boolean('total_reduction')->nullable();
+            $table->boolean('sport_reduction')->nullable();
             $table->unsignedBigInteger('patient_id');
             $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
             $table->timestamps();

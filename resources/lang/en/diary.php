@@ -35,6 +35,7 @@ return [
 
     'reductions' => 'Reductions',
     'reduction' => [
+        'label' => 'Reduction',
         'total' => 'TOTALLY Reducted',
         'partial' => 'Partialy Reducted (can do...)',
         'sport' => 'Only sport reducted',

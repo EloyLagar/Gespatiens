@@ -3,6 +3,7 @@
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\Final_reportController;
 use App\Http\Controllers\LessonController;
+use App\Http\Controllers\ReductionController;
 use App\Http\Controllers\ShiftController;
 use App\Http\Controllers\SportController;
 use App\Http\Controllers\Therapeutic_groupController;
@@ -90,6 +91,9 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('walks', WalkController::class)->only('store');
     Route::post('/activity/close', 'App\Http\Controllers\ActivityController@setStateFalse')->name('activity.close');
 
+    //Rebajas
+    Route::get('reductions/create/{date}', [ReductionController::class, 'create'])->name('reductions.create');
+    Route::resource('reductions', ReductionController::class)->only(['store', 'edit', 'update']);
 
     //Patients
     Route::get('/residents', [PatientController::class, 'indexResidents'])->name('indexResidents');

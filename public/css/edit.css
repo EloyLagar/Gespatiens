@@ -168,7 +168,7 @@ label{
     font-weight: 500;
 }
 
-.card-header a.btn:hover .bx-pencil{
+.card-header a.btn:hover .bx-pencil, .card-header a.btn:hover .bx-band-aid{
     animation: shake 1s ease-in-out infinite;
 }
 
@@ -197,3 +197,6 @@ label{
     color: var(--accent-color) !important;
 }
 
+.form-check label{
+    font-weight: 700;
+}

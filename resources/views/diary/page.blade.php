@@ -132,10 +132,14 @@
             <div class="card">
                 <div class="card-header  d-flex justify-content-between align-items-center">
                     {{ __('diary.reductions') }}
-                    <button class="btn-down ml-auto float-right" data-toggle="collapse" data-target="#collapse-reductions"
-                        aria-expanded="true" aria-controls="collapse-reductions">
-                        <i class='bx bxs-down-arrow collapse-icon'></i>
-                    </button>
+                    <div class="ml-auto">
+                        <a href="{{ route('reductions.create', $date) }}" class="btn"><i class='bx bx-band-aid'></i>
+                            <span class="modify-button">{{ __('crud.create') }}</span></a>
+                            <button class="btn-down ml-auto float-right" data-toggle="collapse" data-target="#collapse-reductions"
+                                aria-expanded="true" aria-controls="collapse-reductions">
+                                <i class='bx bxs-down-arrow collapse-icon'></i>
+                            </button>
+                    </div>
                 </div>
                 <div id="collapse-reductions" class="collapse hide">
                     <div class="card-body">
@@ -203,7 +207,7 @@
             </div>
 
             {{-- Salidas y llegadas --}}
-            <div class="card">
+            {{-- <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <span>{{ __('diary.outings_and_arrives') }}</span>
                     <div class="ml-auto">
@@ -237,7 +241,7 @@
                         @endif
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
 
             {{-- Tarde --}}

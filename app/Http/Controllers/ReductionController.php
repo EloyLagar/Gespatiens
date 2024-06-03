@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reduction;
+use App\Models\Patient;
 use Illuminate\Http\Request;
 
 class ReductionController extends Controller
@@ -18,9 +19,22 @@ class ReductionController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($date)
     {
-        //
+        $residents = Patient::where(function ($query) use ($date) {
+            $query->where('entry_date', '<=', $date)
+                  ->where(function ($q) use ($date) {
+                      $q->where('exit_date', '>=', $date)
+                        ->orWhereNull('exit_date');
+                  });
+        })
+        ->orWhere(function ($query) use ($date) {
+            $query->where('entry_date', '<=', $date)
+                  ->whereNull('exit_date');
+        })
+        ->get();
+
+        return view('diary.reductions.create', compact('residents', 'date'));
     }
 
     /**
@@ -28,7 +42,11 @@ class ReductionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $reduction = new Reduction();
+        $reduction->fill($request->all());
+        $reduction->save();
+        $date = $reduction->date;
+        return redirect()->route('diary.showPage', compact('date'));
     }
 
     /**
