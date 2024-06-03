@@ -59,3 +59,9 @@ textarea.form-control{
     height: 5em;
     resize: vertical !important;
 }
+
+.patients-cell{
+    font-size: 0.8rem;
+    font-weight: 500;
+    max-width: 100px;
+}
