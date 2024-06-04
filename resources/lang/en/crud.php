@@ -24,4 +24,6 @@ return [
     'add' => 'Add',
     'select_a' => 'Select a',
     'manage' => 'Manage',
+    'no' => 'No',
+    'yes' => 'Yes',
 ];

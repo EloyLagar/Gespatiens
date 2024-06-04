@@ -19,6 +19,7 @@ return [
         'no_justified' => 'No Justified',
     ],
 
+
     'intervention' => 'Intervention',
     'interventions' => 'Interventions',
     'no_interventions' => 'No Interventions',
@@ -33,6 +34,7 @@ return [
         'night' => 'Night',
     ],
 
+    'no_reductions' => 'No reductions',
     'reductions' => 'Reductions',
     'reduction' => [
         'label' => 'Reduction',
@@ -41,5 +43,5 @@ return [
         'sport' => 'Only sport reducted',
     ],
     'outings_and_arrives' => 'Outings and arrives',
-    'outing_or_arrive' => 'Outing or arrive',
+    'outing_or_arrive' => 'Outing or arrive time',
 ];

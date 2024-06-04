@@ -7,7 +7,7 @@
 
 @section('content')
     <div class="wrapper  d-flex flex-column">
-        <a href="{{ route('users.index') }}" class="goBackBtn btn mt-2 mr-auto float-left"><i
+        <a href="{{ route('diary.showPage', $date) }}" class="goBackBtn btn mt-2 mr-auto float-left"><i
                 class='bx bx-left-arrow-alt'></i></a>
         <div class="container col-md-6">
             <div class="card">

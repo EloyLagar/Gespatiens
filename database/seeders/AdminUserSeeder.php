@@ -24,7 +24,7 @@ class AdminUserSeeder extends Seeder
         //     'phone_number' => '1234567890',
         // ]);
 
-        $specialities = [/*'educator', 'worker',*/ 'medical', 'psychologist'];
+        $specialities = ['educator', 'worker', 'medical', 'psychologist'];
 
         foreach ($specialities as $speciality) {
             for ($i = 1; $i <= 2; $i++) {

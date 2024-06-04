@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Shift;
+use App\Models\Outing;
 use App\Models\Activity;
 use App\Models\Reduction;
 use App\Models\Intervenction;
@@ -23,6 +24,8 @@ class DiaryController extends Controller
             $date = \Carbon\Carbon::parse($date);
             $request->date = $date;
         }
+
+        $outings = Outing::whereDate('date', $request->date);
 
         $morning_shift = Shift::whereDate('date', $request->date)->where('day_part', 'morning')->with('users')->first();
         if (!$morning_shift) {
@@ -60,6 +63,7 @@ class DiaryController extends Controller
         $date = \Carbon\Carbon::parse($request->date);
         return view('diary.page', [
             'date' => $date,
+            'outings' => $outings,
             'morning_shift' => $morning_shift,
             'afternoon_shift' => $afternoon_shift,
             'night_shift' => $night_shift,
