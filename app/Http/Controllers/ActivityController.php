@@ -130,4 +130,16 @@ class ActivityController extends Controller
 
         return redirect()->route('activities.edit_attendance', $activity)->with('success', 'updated');
     }
+
+    public function setStateFalse(Request $request){
+        $Activity = Activity::find($request->activity_id);
+        if ($Activity) {
+            $Activity->state = false;
+            $Activity->save();
+            return response()->json(['success' => true, 'message' => 'Activity state false now']);
+        }else{
+            return response()->json(['success' => false, 'message' => 'No Activity found']);
+
+        }
+    }
 }

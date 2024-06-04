@@ -64,8 +64,29 @@
     </div>
 
     <script>
+        const activityId = '{{ $activity->id }}';
+        console.log(activityId);
+    </script>
+
+
+    <script>
+        function setActivityStateFalse() {
+            $.ajax({
+                url: '{{ route("activity.close") }}',
+                type: 'POST',
+                data: {
+                    activity_id: activityId,
+                    _token: '{{ csrf_token() }}',
+                },
+                success: function(response) {},
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        }
+
         $(window).on('beforeunload', function() {
-            setActivtyStateFalse();
+            setActivityStateFalse();
         });
 
         //·Antes de salir de la página

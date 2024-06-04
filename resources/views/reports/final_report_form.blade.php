@@ -750,7 +750,6 @@
 
         <script>
             const reportId = '{{ $finalReport->report->id }}';
-            console.log("id del reporte " + reportId);
         </script>
 
         {{-- Boton collapse --}}

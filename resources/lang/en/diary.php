@@ -43,5 +43,10 @@ return [
         'sport' => 'Only sport reducted',
     ],
     'outings_and_arrives' => 'Outings and arrives',
-    'outing_or_arrive' => 'Outing or arrive time',
+    'outing_or_arrive' => 'Outing or arrive',
+    'outing_or_arrive_time' => 'Outing or arrive time',
+    'outing' => [
+        'exit_date' => 'Exit date and time',
+        'return_date' => 'Arrive date and time',
+    ],
 ];
