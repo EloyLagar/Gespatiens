@@ -257,3 +257,7 @@ label{
 .card-header a.btn:hover .bx-message-alt-add{
     animation: bounce 1s infinite alternate;
 }
+
+.suscribe-btn {
+    border: 1px solid var(--light-text-color);
+}

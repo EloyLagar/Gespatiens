@@ -15,14 +15,14 @@ class AdminUserSeeder extends Seeder
      */
     public function run()
     {
-        // User::create([
-        //     'name' => 'Admin',
-        //     'email' => 'admin@gespatiens.com',
-        //     'password' => Hash::make('Gespatiens.7931'),
-        //     'speciality' => 'admin',
-        //     'signature' => 'admin_signature.png',
-        //     'phone_number' => '1234567890',
-        // ]);
+        User::create([
+            'name' => 'Admin',
+            'email' => 'admin@gespatiens.com',
+            'password' => Hash::make('Gespatiens.7931'),
+            'speciality' => 'admin',
+            'signature' => 'admin_signature.png',
+            'phone_number' => '1234567890',
+        ]);
 
         $specialities = ['educator', 'worker', 'medical', 'psychologist'];
 

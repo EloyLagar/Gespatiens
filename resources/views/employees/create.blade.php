@@ -26,7 +26,7 @@
                                 value="{{ old('name') }}">
                         </div>
                         <div class="form-group ">
-                            <label for="email">{{__('user.mail')}}:</label>
+                            <label for="email">{{__('user.email')}}:</label>
                             <input type="text" name="email" class="form-control" id="email"
                                 value="{{ old('email') }}">
                         </div>
@@ -44,7 +44,7 @@
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="phone">{{__('user.phone_number')}}:</label>
+                                <label for="phone">{{__('user.phone')}}:</label>
                                 <input type="text" name="phone_number" class="form-control" id="phone"
                                     value="{{ old('phone_number') }}">
                             </div>
@@ -54,7 +54,7 @@
                             @if ($errors->any())
                                 <ul>
                                     @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
+                                        <li>{{ __('error.'.$error) }}</li>
                                     @endforeach
                                 </ul>
                             @endif
