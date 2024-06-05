@@ -31,5 +31,10 @@ return [
     'tutors' => 'Tutores',
     'tutor' => 'Tutores',
 
-    'former_residents' => 'Former Residents'
+    'unsuscribe' => 'Dar de baja',
+    'register' => 'Dar de alta',
+
+    'until' => 'Hasta',
+    'relationship' => 'Relación',
+    'visitor' => 'Visitante',
 ];

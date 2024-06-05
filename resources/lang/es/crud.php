@@ -1,0 +1,28 @@
+<?php
+
+return [
+    'repeat' => 'Repetir',
+    'create_own' => 'Crear tu propia',
+    'update' => 'Actualizar',
+    'goBack' => 'Volver',
+    'info' => 'Información',
+    'select' => 'Seleccionar',
+    'change' => 'Cambiar',
+    'submit' => 'Enviar',
+    'none' => 'Ninguno',
+    'save' => 'Guardar',
+    'general_info' => 'Información General',
+    'updated_report' => 'Informe Actualizado',
+    'preview' => 'Vista Previa',
+    'download' => 'Descargar',
+    'modify' => 'Modificar',
+    'add' => 'Agregar',
+    'select_a' => 'Seleccionar un',
+    'manage' => 'Gestionar',
+    'no' => 'No',
+    'yes' => 'Sí',
+    'goDown' => 'Ir al final de la página',
+    'delete' => 'Eliminar',
+    'delete_ask' => '¿Estás seguro?',
+    'cancel' => 'Cancelar',
+];
