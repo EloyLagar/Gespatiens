@@ -282,3 +282,59 @@ input[type="time"]{
 span.form-control{
     background-color: #ebebeb;
 }
+
+.goDown{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    height: 2em;
+    width: 2em;
+    top: 65px;
+    right: 40px;
+    z-index: 999;
+    border-radius: 70% !important;
+    background-color: var(--accent-color);
+    color: var(--light-text-color);
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.goDown i{
+    text-align: center;
+    height: 1.5rem;
+    width: 1.5rem;
+    font-size: 1.4rem;
+    padding: 0;
+    margin: 0;
+}
+
+.tooltip {
+    visibility: hidden;
+    width: 100px;
+    background-color: var(--hover-accent-color);
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    top: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    padding: 0.2em;
+  }
+
+  .goDown:hover{
+    background-color: var(--hover-accent-color);
+  }
+
+  .goDown:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+    transition: 0.3s;
+  }
