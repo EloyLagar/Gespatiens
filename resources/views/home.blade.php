@@ -9,7 +9,7 @@
     @foreach ($errors->all() as $error)
     <li>{{ $error }}</li>
     @endforeach
-    <div class="btn-container"><a href="{{ route('notices.create') }}" class="btn">{{ __('crud.create') }}
+    <div class="btn-container"><a href="{{ route('notices.create') }}" class="btn py-2">{{ __('crud.create') }}
             {{ __('notices.singular') }}</a></div>
     <div class="container">
         <div class="notices-container" id="notices-container">

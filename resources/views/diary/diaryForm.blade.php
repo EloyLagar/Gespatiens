@@ -15,7 +15,7 @@
                         @csrf
                         <div class="form-row d-flex">
                             <div class="form-group col-md-12">
-                                <label for="date-input">{{ __('diary.date') }}</label>
+                                <label for="date-input">{{ __('diary.date') }}:</label>
                                 <input type="date" id="date-input" value="{{ date('Y-m-d') }}" max="{{ date('Y-m-d') }}" name="date" class="form-control" required>
                             </div>
                         </div>

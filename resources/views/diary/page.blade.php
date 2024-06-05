@@ -19,14 +19,14 @@
         <div class="alert alert-success">
             {{ __('success.' . session('success')) }}
         </div>
-    @endif
+        @endif
         {{-- Mañana --}}
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <span>{{ __('diary.dayparts.morning') }}</span>
                 <div class="ml-auto">
                     <a href="{{ route('shifts.edit', $morning_shift) }}" class="btn"><i class='bx bx-pencil'></i>
-                        <span class="modify-button">{{ __('crud.modify') }}</span></a>
+                        <span class="modify-button">{{ __('crud.manage') }}</span></a>
                 </div>
                 <button class="btn-down  float-right" data-toggle="collapse" data-target="#collapse-morning"
                     aria-expanded="true" aria-controls="collapse-morning">
@@ -113,7 +113,8 @@
                                             @endforeach
                                         </td>
                                         <td class="text-center"><a class="btn col-8"
-                                                href="{{ route('activities.edit_attendance', $activity) }}"><i class='bx bx-pencil'></i></a>
+                                                href="{{ route('activities.edit_attendance', $activity) }}"><i
+                                                    class='bx bx-pencil'></i></a>
                                         </td>
                                     </tr>
                                     @empty
@@ -206,7 +207,8 @@
                 <div class="ml-auto">
                     @if (Auth::user()->speciality == 'admin' || Auth::user()->speciality == 'psychologist' ||
                     Auth::user()->speciality == 'educator' )
-                    <a href="{{ route('home', $morning_shift) }}" class="btn"><i class='bx bx-message-alt-add'></i>
+                    <a href="{{ route('interventions.create', $date) }}" class="btn"><i
+                            class='bx bx-message-alt-add'></i>
                         <span class="modify-button">{{ __('crud.add') }}</span></a>
                     @endif
                     <button class="btn-down ml-auto float-right" data-toggle="collapse"
@@ -222,16 +224,26 @@
                     <table class="table table-striped table-bordered">
                         <thead class="thead-dark">
                             <tr>
-                                <th>{{ __('patients.singular') }}</th>
-                                <th>{{ __('patients.tutors') }}</th>
-                                <th>{{ __('diary.intervention') }}</th>
+                                <th class="col-2">{{ __('patients.singular') }}</th>
+                                <th class="col-3">{{ __('patients.tutors') }}</th>
+                                <th class="col-7">{{ __('diary.intervention') }}</th>
                             </tr>
                         </thead>
                         @endif
                         @forelse ($interventions as $intervention)
-                        <td>{{ $intervention->patient->number ?? '' }} {{ $intervention->patient->name }}</td>
-                        <td>{{ $intervention->patient->tutors() ?? '' }}</td>
-                        <td>{{ $intervention->intervention }}</td>
+                        <td>{{ $intervention->patient->number ? $intervention->patient->number . ' - ' : '' }} {{
+                            $intervention->patient->name }}</td>
+                        <td>
+                            <ul>
+                                @forelse ($intervention->patient->is_tutored as $tutor)
+                                <li>
+                                    {{$tutor->name}} ({{__('user.speciality.' . $tutor->speciality)}})
+                                </li>
+                                @empty
+                                @endforelse
+                            </ul>
+                        </td>
+                        <td><span class="intervention-author">{{$intervention->user->name}}: </span>{{ $intervention->intervention }}</td>
                         @empty
                         @endforelse
                         @if (!empty($interventions))
@@ -268,9 +280,10 @@
                         <tbody>
                             @forelse ($outings as $outing)
                             <tr>
-                                <td>{{ $outing->patient->number ?? '' }} {{ $outing->patient->name }}</td>
-                                <td>{{ Carbon\Carbon::parse($outing->exit_date)->format('d-m-Y H:i') ?? '' }}</td>
-                                <td>{{ Carbon\Carbon::parse($outing->return_date)->format('d-m-Y H:i') ?? ''}}</td>
+                                <td>{{ $outing->patient->number ? $outing->patient->number . ' - ' : '' }} {{
+                                    $outing->patient->name }}</td>
+                                <td>{{ Carbon\Carbon::parse($outing->exit_date)->format('d/m/Y H:i') ?? '' }}</td>
+                                <td>{{ Carbon\Carbon::parse($outing->return_date)->format('d/m/Y H:i') ?? ''}}</td>
                             </tr>
                             @empty
                             <tr>
@@ -292,7 +305,7 @@
                 <span>{{ __('diary.dayparts.afternoon') }}</span>
                 <div class="ml-auto">
                     <a href="{{ route('shifts.edit', $afternoon_shift) }}" class="btn"><i class='bx bx-pencil'></i>
-                        <span class="modify-button">{{ __('crud.modify') }}</span></a>
+                        <span class="modify-button">{{ __('crud.manage') }}</span></a>
                     <button class="btn-down ml-auto float-right" data-toggle="collapse"
                         data-target="#collapse-afternoon" aria-expanded="true" aria-controls="collapse-afternoon">
                         <i class='bx bxs-down-arrow collapse-icon'></i>
@@ -328,7 +341,7 @@
                 <span>{{ __('diary.dayparts.night') }}</span>
                 <div class="ml-auto">
                     <a href="{{ route('shifts.edit', $night_shift) }}" class="btn"><i class='bx bx-pencil'></i>
-                        <span class="modify-button">{{ __('crud.modify') }}</span></a>
+                        <span class="modify-button">{{ __('crud.manage') }}</span></a>
                     <button class="btn-down ml-auto float-right" data-toggle="collapse" data-target="#collapse-night"
                         aria-expanded="true" aria-controls="collapse-night">
                         <i class='bx bxs-down-arrow collapse-icon'></i>

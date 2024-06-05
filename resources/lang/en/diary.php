@@ -23,6 +23,7 @@ return [
     'intervention' => 'Intervention',
     'interventions' => 'Interventions',
     'no_interventions' => 'No Interventions',
+    'tutored' => 'Tutored users',
 
     'educators' => 'Educators',
     'shift' => 'Shift',

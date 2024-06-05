@@ -338,3 +338,7 @@ span.form-control{
     opacity: 1;
     transition: 0.3s;
   }
+
+  .intervention-author{
+    font-weight: 600;
+  }

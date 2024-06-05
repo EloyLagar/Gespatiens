@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\Final_reportController;
+use App\Http\Controllers\InterventionController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\OutingsController;
 use App\Http\Controllers\ReductionController;
@@ -95,6 +96,11 @@ Route::middleware(['auth'])->group(function () {
     //Salidas
     Route::get('outings/create/{date}', [OutingsController::class, 'create'])->name('outings.create');
     Route::resource('outings', OutingsController::class)->only(['edit', 'update', 'store']);
+
+    //Intervenciones
+    Route::get('interventions/create/{date}', [InterventionController::class, 'create'])->name('interventions.create');
+    Route::resource('interventions', InterventionController::class)->only('store');
+
 
     //Rebajas
     Route::get('reductions/create/{date}', [ReductionController::class, 'create'])->name('reductions.create');
