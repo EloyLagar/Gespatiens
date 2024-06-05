@@ -92,13 +92,13 @@
                             <label for="">{{ __('patients.authorized_visitors') }}:</label>
                             <ul>
                                 @forelse ($patient->visitors as $visitor)
-                                <li>{{ $visitor->name }}</li>
+                                <li><a class="auth-visitor" href="{{route('visitors.edit', $visitor)}}">{{ $visitor->name }} ({{$visitor->relationship}}), {{$visitor->phone_number}}</a></li>
                                 @empty
                                 <span class="visitors info-span">{{ __('patients.noAuthPersons') }}</span>
                                 @endforelse
                             </ul>
                             <div class="col-12 d-flex justify-content-center"><a class="btn mt-2 mb-3"
-                                    href="{{route('patients.manageVisitors')}}">{{__('crud.manage')}}
+                                    href="{{route('patients.manageVisitors', $patient)}}">{{__('crud.manage')}}
                                     {{__('user.visitors')}}</a></div>
                         </div>
 

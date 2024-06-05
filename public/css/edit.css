@@ -342,3 +342,15 @@ span.form-control{
   .intervention-author{
     font-weight: 600;
   }
+
+  .auth-visitor{
+    font-weight: 500;
+    text-decoration: underline;
+    color: var(--dark-text-color);
+}
+
+.auth-visitor:hover{
+    text-decoration: underline;
+  }
+
+

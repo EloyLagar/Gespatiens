@@ -16,6 +16,7 @@ use App\Http\Controllers\DiaryController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\VisitorController;
 use App\Http\Controllers\WalkController;
 use App\Models\Therapeutic_group;
 use Illuminate\Support\Facades\Route;
@@ -101,14 +102,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('interventions/create/{date}', [InterventionController::class, 'create'])->name('interventions.create');
     Route::resource('interventions', InterventionController::class)->only('store');
 
-
     //Rebajas
     Route::get('reductions/create/{date}', [ReductionController::class, 'create'])->name('reductions.create');
     Route::resource('reductions', ReductionController::class)->only(['store', 'edit', 'update']);
 
-    //Patients
-    Route::post('/patients/update/visitors', [PatientController::class, 'updateVisitors'])->name('patients.updateVisitors');
-    Route::get('/patients/visitors', [PatientController::class, 'visitorsForm'])->name('patients.manageVisitors');
+    //Patients y Visitors
+    Route::get('/visitors/{patient}/create', [VisitorController::class, 'create'])->name('patients.manageVisitors');
+    Route::resource('/visitors', VisitorController::class)->only('update', 'store', 'edit', 'destroy');
+
     Route::get('/residents', [PatientController::class, 'indexResidents'])->name('indexResidents');
     Route::get('/patients/unsuscribe/{patient}', [PatientController::class, 'unsuscribe'])->name('patients.unsuscribe');
     Route::get('/patients/register/{patient}', [PatientController::class, 'register'])->name('patients.register');

@@ -27,4 +27,7 @@ return [
     'no' => 'No',
     'yes' => 'Yes',
     'goDown' => 'Go to the bottom of the page',
+    'delete' => 'Delete',
+    'delete_ask' => 'Are you sure?',
+    'cancel' => 'Cancel',
 ];

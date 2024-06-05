@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Visitor;
+use App\Models\Patient;
 use Illuminate\Http\Request;
 
 class VisitorController extends Controller
@@ -12,15 +13,14 @@ class VisitorController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Patient $patient)
     {
-        //
+        return view('patients.visitors.create', compact('patient'));
     }
 
     /**
@@ -28,7 +28,12 @@ class VisitorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $patient = Patient::findOrFail($request->patient_id);
+        $visitor = new Visitor();
+        $visitor->fill($request->all());
+        $visitor->save();
+
+        return redirect()->route('patients.edit', $patient)->with('success', 'visitor');
     }
 
     /**
@@ -36,7 +41,7 @@ class VisitorController extends Controller
      */
     public function show(Visitor $visitor)
     {
-        //
+       //
     }
 
     /**
@@ -44,7 +49,8 @@ class VisitorController extends Controller
      */
     public function edit(Visitor $visitor)
     {
-        //
+        $patient = $visitor->patient ;
+        return view('patients.visitors.edit', compact('visitor', 'patient'));
     }
 
     /**
@@ -52,7 +58,9 @@ class VisitorController extends Controller
      */
     public function update(Request $request, Visitor $visitor)
     {
-        //
+        $visitor->fill($request->all());
+        $visitor->update();
+        return redirect()->route('patients.edit', $visitor->patient)->with('success', 'updated');
     }
 
     /**
@@ -60,6 +68,8 @@ class VisitorController extends Controller
      */
     public function destroy(Visitor $visitor)
     {
-        //
+        $patient = $visitor->patient;
+        $visitor->delete();
+        return redirect()->route('patients.edit', $patient)->with('success', 'deleted');
     }
 }

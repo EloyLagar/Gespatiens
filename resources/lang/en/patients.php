@@ -35,5 +35,7 @@ return [
     'unsuscribe' => 'Unsuscribe',
     'register' => 'Register',
 
-    'until' => 'Until'
+    'until' => 'Until',
+    'relationship' => 'Relationship',
+    'visitor' => 'Visitor',
 ];

@@ -10,4 +10,5 @@ return [
     'intervention' => 'Intervention created successfuly.',
     'reduction' => 'Reduction created successfuly.',
     'attendance' => 'The attendance has been managed succesfuly.',
+    'visitor' => 'Visitor added successfuly.',
 ];
