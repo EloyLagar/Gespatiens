@@ -18,4 +18,5 @@ return [
         'psychologist' => 'Psychologist',
     ],
     'no_employees' => 'No employees',
+    'visitors' => 'Visitors',
 ];
