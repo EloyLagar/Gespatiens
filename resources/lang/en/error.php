@@ -8,4 +8,5 @@ return [
 'in' => 'The field must be one of the select values',
 'fullPatients' => 'The center is currently full.',
 'already_in_use' => 'The file is already being modified by someone else at the moment, please wait.',
+'date_invalid' => 'The values are wrong, try it again.'
 ];

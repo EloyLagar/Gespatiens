@@ -72,7 +72,8 @@ class ShiftController extends Controller
 
 
         return redirect()->route('diary.showPage', ['date' => $shift->date])
-            ->withMethod('GET');
+            ->withMethod('GET')
+            ->with('success', 'shift');
     }
 
     /**

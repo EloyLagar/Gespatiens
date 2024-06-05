@@ -128,8 +128,9 @@ class ActivityController extends Controller
         $activity->state = false;
         $activity->update();
 
-        return redirect()->route('activities.edit_attendance', $activity)->with('success', 'updated');
-    }
+        return redirect()->route('diary.showPage', ['date' => $activity->date])
+        ->withMethod('GET')
+        ->with('success', 'attendance');    }
 
     public function setStateFalse(Request $request){
         $Activity = Activity::find($request->activity_id);
