@@ -107,6 +107,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('reductions', ReductionController::class)->only(['store', 'edit', 'update']);
 
     //Patients
+    Route::post('/patients/update/visitors', [PatientController::class, 'updateVisitors'])->name('patients.updateVisitors');
+    Route::get('/patients/visitors', [PatientController::class, 'visitorsForm'])->name('patients.manageVisitors');
     Route::get('/residents', [PatientController::class, 'indexResidents'])->name('indexResidents');
     Route::get('/patients/unsuscribe/{patient}', [PatientController::class, 'unsuscribe'])->name('patients.unsuscribe');
     Route::get('/patients/register/{patient}', [PatientController::class, 'register'])->name('patients.register');

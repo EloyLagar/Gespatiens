@@ -97,6 +97,7 @@
                                             <span class="visitors info-span">{{ __('patients.noAuthPersons') }}</span>
                                         @endforelse
                                     </ul>
+                                    <a class="btn mb-3" href="{{route('patients.manageVisitors')}}">{{__('crud.manage')}}</a>
                                 </div>
 
                             </div>
