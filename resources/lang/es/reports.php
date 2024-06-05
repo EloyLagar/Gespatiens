@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'plural' => 'Informes',
+    'singular' => 'Informe',
     'request_number' => 'Nº de solicitud',
     'exit_reason' => 'Motivo de salida',
     'stated_objectives' => 'Objetivos planteados',
@@ -11,6 +13,8 @@ return [
     'mid_stay_report' => 'Informe de media estancia',
     'final' => 'Inf. Final Estancia',
     'mid_stay' => 'Inf. Media Estancia',
+    'mid_short' => 'Media Estancia',
+    'final_short' => 'Final',
 
     'social_intervention_area' => 'Área de intervención social',
     'social_familiar_situation' => 'Situación socio-familiar',

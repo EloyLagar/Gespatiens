@@ -25,14 +25,14 @@
                             @elseif(isset($report->midStayReport))
                                 <a href="{{ route('reports.mid_stay_report_form', $report->patient_id) }}">
                         @endif
-                        <div class="card report-card mb-3">
+                        <div class="card d-flex alig-items-center justify-content-space-between report-card mb-3">
                             <div class="card-body d-flex justify-content-between align-items-center">
                                 <div class="report-name"><span>{{ $report->patient->full_name }}</span></div>
                                 <div class="report-type">
                                     @if (isset($report->finalReport))
-                                        <span>{{ __('reports.final_report') }}</span>
+                                        <span>{{ __('reports.final_short') }}</span>
                                     @elseif(isset($report->midStayReport))
-                                        <span>{{ __('reports.mid_stay_report') }}</span>
+                                    <span>{{ __('reports.mid_short') }}</span>
                                     @endif
                                 </div>
                                 <div class="report-date">

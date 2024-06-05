@@ -11,6 +11,10 @@ return [
 
     'final_report' => 'Final report',
     'mid_stay_report' => 'Mid-stay report',
+    'mid_short' => 'Mid-stay',
+    'final_short' => 'Final',
+    'final' => 'Final report',
+    'mid_stay' => 'Mid-stay report',
 
     'social_intervention_area' => 'Social Intervention Area',
     'social_area' => 'Social Area',
