@@ -25,7 +25,9 @@ class DiaryController extends Controller
             $request->date = $date;
         }
 
-        $outings = Outing::whereDate('date', $request->date);
+        $outings = Outing::whereDate('exit_date', $request->date)
+            ->orWhereDate('return_date', $request->date)
+            ->get();
 
         $morning_shift = Shift::whereDate('date', $request->date)->where('day_part', 'morning')->with('users')->first();
         if (!$morning_shift) {
