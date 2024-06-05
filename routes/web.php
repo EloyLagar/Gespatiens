@@ -130,6 +130,6 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware(['admin'])->group(function () {
-    Route::resource('users', UserController::class)->only('create', 'store', 'index');
+    Route::resource('users', UserController::class)->only('create', 'store', 'index', 'destroy');
     Route::resource('patients', PatientController::class)->only('create', 'store', 'update');
 });

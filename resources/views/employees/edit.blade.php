@@ -63,8 +63,13 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card">
-                            <div class="card-header">
+                            <div class="card-header d-flex align-items-center">
                                 {{ __('crud.edit') }} {{ __('crud.info') }}
+                                @if (Auth::user()->speciality === 'admin')
+                                <button type="button" class="btn float-right ml-auto" data-toggle="modal" data-target="#deleteModal">
+                                    <i class='bx bxs-trash-alt'></i>
+                                </button>
+                                @endif
                             </div>
                             <div class="card-body">
                                 <form action="{{ route('users.update', $employee->id) }}" method="POST"
@@ -115,7 +120,7 @@
                                             value="{{ $employee->phone_number }}">
                                     </div>
                                     @foreach ($errors->all() as $error)
-                                        <div class="alert alert-danger">{{ $error }}</div>
+                                        <div class="alert alert-danger">{{ __('error.' . $error) }}</div>
                                     @endforeach
                                     <button type="submit" class="btn float-right">{{ __('crud.update') }}</button>
                                 </form>
@@ -125,5 +130,29 @@
                 </div>
             </div>
         @endif
+    </div>
+
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">{{ __('crud.delete') }} {{$employee->name}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('crud.close') }}">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {{ __('crud.delete_ask') }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('crud.cancel') }}</button>
+                    <form action="{{ route('users.destroy', $employee->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn">{{ __('crud.delete') }}</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

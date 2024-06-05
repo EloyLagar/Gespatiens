@@ -30,4 +30,5 @@ return [
     'delete' => 'Delete',
     'delete_ask' => 'Are you sure?',
     'cancel' => 'Cancel',
+    'login' => 'Login'
 ];

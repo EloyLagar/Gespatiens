@@ -5,7 +5,7 @@
 @endsection
 @section('content')
 <div class="wrapper d-flex flex-column">
-    <h1 class="mt-3 mb-3">{{ __('notices.plural') }}</h1>
+    <h1 class="mt-3">{{ __('notices.plural') }}</h1>
     @foreach ($errors->all() as $error)
     <li>{{ $error }}</li>
     @endforeach

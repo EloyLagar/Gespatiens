@@ -15,7 +15,7 @@
                         <a href="{{ route('users.edit', $user) }}" class="text-decoration-none">
                             <div class="card employee-card">
                                 <div class="card-header d-flex justify-content-center align-items-center">
-                                    <span>{{ $user->name }} ({{$user->speciality}})</span>
+                                    <span>{{ $user->name }} ({{__('user.speciality.' . $user->speciality)}})</span>
                                 </div>
                                 <div class="card-body d-flex flex-row justify-content-center align-items-center">
                                     <div class="employee-speciality"><span>{{ $user->email }}</span></div>

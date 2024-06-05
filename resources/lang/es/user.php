@@ -11,11 +11,11 @@ return [
     'language' => 'Idioma', //que no idiom que eso es otra cosa
     'speciality' => [
         'label' => 'Especialidad',
-        'educator' => 'Educador Social',
-        'worker' => 'Trabajador Social',
+        'educator' => 'Educador/a Social',
+        'worker' => 'Trabajador/a Social',
         'medical' => 'Personal Médico',
-        'admin' => 'Administrador',
-        'psychologist' => 'Psicólogo',
+        'admin' => 'Administrador/a',
+        'psychologist' => 'Psicólogo/a',
     ],
     'no_employees' => 'No hay empleados',
     'visitors' => 'Visitantes',

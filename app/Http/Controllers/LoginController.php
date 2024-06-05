@@ -40,7 +40,7 @@ class LoginController extends Controller
             $request->session()->regenerate();
             return redirect()->route('home');
         } else {
-            $error = 'Los datos introducidos no son correctos, vuelva a intentarlo.';
+            $error = 'login_error';
             return view('auth.login', compact('error'));
         }
     }

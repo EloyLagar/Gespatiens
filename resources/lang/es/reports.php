@@ -3,6 +3,7 @@
 return [
     'request_number' => 'Nº de solicitud',
     'exit_reason' => 'Motivo de salida',
+    'stated_objectives' => 'Objetivos planteados',
 
     'reference_center' => 'Centro de referencia',
 
@@ -26,6 +27,7 @@ return [
     'other_health_atentions' => 'Otras atenciones médico-sanitarias en programa',
     'diagnosis_third_axis' => 'Diagnóstico (Eje III en DSM IV)',
     'treatment_at_discharge' => 'Situación y tratamiento al alta',
+    'health_objectives' => 'Objetivos planteados',
 
     'psycho_area' => 'Área psicológica',
     'start_valoration' => 'Valoración inicial',
@@ -71,6 +73,9 @@ return [
     'auth_admin' => 'Sólo el personal administrativo puede modificar esta información',
     'auth_medical' => 'Sólo el personal médico puede modificar esta información',
     'no_available_data' => 'No hay datos disponibles',
+
+    'estimated_program_duration' => 'Duración estimada del programa (en meses)',
+    'program_duration_forecast' => 'Estimación de la duración del programa',
 
 
 

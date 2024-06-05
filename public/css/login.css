@@ -1,7 +1,7 @@
 @import url("colors.css");
 
 body {
-    background-color: var(--background-color);
+    background-color: var(--hover-accent-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,29 +10,36 @@ body {
     font-weight: 600;
 }
 
-h1{
+h1 {
     margin-bottom: 0.6em;
     text-align: center;
 }
-#ges {
-    color: var(--ges-dark-color);
-    font-size: 36px;
+.ges {
+    color: var(--ges-color);
+    font-size: 60px;
     font-family: "Outfit", sans-serif;
     font-optical-sizing: auto;
+    font-weight: 400;
 }
 
-label{
+h5{
+    color: var(--light-text-color);
+    font-family: "Montserrat";
+}
+
+label {
     text-align: left;
     font-family: "Montserrat", sans-serif;
     color: var(--dark-text-color);
     font-weight: 500;
 }
 
-#patiens {
-    color: var(--accent-color);
-    font-size: 36px;
+.patiens {
+    color: var(--light-text-color);
+    font-size: 60px;
     font-family: "Outfit", sans-serif;
     font-optical-sizing: auto;
+    font-weight: 400;
 }
 
 .container {
@@ -43,39 +50,54 @@ label{
     padding-bottom: 0.6em;
     background-color: var(--light-text-color);
     border-radius: 0.6em;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
 }
 
-.form-container{
+.form-container {
     padding-top: 0.6em;
     font-size: 0.8rem;
 }
 
-.form-group{
+.form-group {
     font-size: 0.8rem;
 }
 
-input{
+input {
     margin-bottom: 0.6em;
 }
 
-.btn{
+.btn {
     width: fit-content;
     padding: 0.4rem 2em;
     font-size: 0.8rem !important;
 }
 
-.form-info{
+.form-info {
     width: 100%;
     text-align: center;
     font-size: 1.1rem;
 }
 
-.form-group textarea{
+.form-group textarea {
     height: 200px;
     resize: none;
 }
 
-.user-name{
+.user-name {
     text-transform: capitalize;
+}
+
+.typing-animation span {
+    opacity: 0;
+    display: inline-block;
+    display: inline-block;
+    position: relative;
+    top: -5px;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+}
+
+.typing-animation span.visible {
+    opacity: 1;
+    top: 0;
+    transition: opacity 0.3s, top 0.3s;
 }

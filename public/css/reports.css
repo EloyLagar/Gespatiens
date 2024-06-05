@@ -43,12 +43,37 @@
 
 .pdf-options {
     position: fixed;
-    top: 80px; /* a mano porque no se puede de otra forma*/
-    right: 10px;
+    top: 80px;
+    right: 25px;
     z-index: 999;
     display: flex;
     flex-direction: column;
 }
+
+.pdf-options .btn{
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 1);
+}
+
+@media (max-width: 1100px) {
+    .pdf-options {
+        top: 185px;
+        bottom: 10px;
+        right: 5px;
+        left: auto;
+    }
+}
+
+@media (max-width: 475px) {
+    .pdf-options {
+        top: 120px;
+        bottom: 10px;
+        right: 10px;
+        left: auto;
+        display: none;
+        height: fit-content;
+    }
+}
+
 
 .form-control{
     font-weight: 500;

@@ -219,17 +219,14 @@
         <div class="employees-container">
             <p>{{ __('reports.employees_name_role_signature') }}</p>
             @forelse ($employees as $employee)
-
-            <p>- {{ $employee->name }}, {{ __('user.speciality.' .$employee->speciality) }}</p><br>
-            <img src="{{ public_path('/storage/signatures/' . $employee->signature) }}"
-                alt="{{ __('user.signature') }}">
+                <p>- {{ $employee->name }}, {{ __('user.speciality.' . $employee->speciality) }}</p><br>
+                @if ($employee->signature)
+                    <img src="{{ public_path('/storage/signatures/' . $employee->signature) }}"
+                        alt="{{ __('user.signature') }}">
+                @endif
 
             @empty
-
             @endforelse
-        </div>
-        <div class="direction-container">
-            <p>{{ __('reports.direction_date_signature') }}</p>
         </div>
     </div>
     <script type="text/php">

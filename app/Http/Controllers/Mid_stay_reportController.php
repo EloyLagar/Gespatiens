@@ -68,7 +68,7 @@ class Mid_stay_reportController extends Controller
         $employee->reports()->syncWithoutDetaching([$report->id]);//Si no existe la relacion se agrega, en caso de que exista se omite
 
         $patient = Patient::findOrFail($report->patient_id);
-        return view('reports.mid_stay_report_form', compact('patient', 'midStayReport'))->with('success', __('crud.updated_report'));
+        return redirect()->route('reports.mid_stay_report_form', $patient)->with('success', __('crud.updated'));
     }
 
     /**
