@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Outing;
 use App\Models\Patient;
+use \Carbon\Carbon;
 
 class OutingsController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      */
     public function index()
@@ -42,12 +43,34 @@ class OutingsController extends Controller
      */
     public function store(Request $request)
     {
-        $outing = new Outing();
-        $outing->fill($request->all());
-        $outing->save();
-        $date = $outing->date;
-        return redirect()->route('diary.showPage', ['date' => $outing->date])
-        ->withMethod('GET');
+        $request->validate([
+            'date' => 'required',
+        ]);
+        if (!$request->exit_time && !$request->return_time) {
+            return redirect()->back()->with('error', 'no_values');
+        }else{
+            $outing = new Outing();
+            if ($request->exit_time) {
+                $exit_datetime = Carbon::createFromFormat('d/m/Y H:i', $request->date . ' ' . $request->exit_time);
+                $outing->exit_date = $exit_datetime;
+            }
+
+            if ($request->return_time) {
+                $return_datetime = Carbon::createFromFormat('d/m/Y H:i', $request->date . ' ' . $request->return_time);
+                $outing->return_date = $return_datetime;
+            }
+
+            if ($request->return_time && $request->exit_time && $return_datetime <= $exit_datetime) {
+                return redirect()->back()->with('error', 'date_invalid');
+            }
+
+            $outing->patient_id = $request->patient_id;
+            $date = Carbon::createFromFormat('d/m/Y', $request->date);
+            $outing->save();
+            return redirect()->route('diary.showPage', ['date' => $date])
+            ->withMethod('GET')
+            ->with('success', 'outing');
+        }
     }
 
     /**
