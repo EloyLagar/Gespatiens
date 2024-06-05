@@ -26,4 +26,5 @@ return [
     'manage' => 'Manage',
     'no' => 'No',
     'yes' => 'Yes',
+    'goDown' => 'Go to the bottom of the page',
 ];

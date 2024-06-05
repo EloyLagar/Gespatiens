@@ -17,8 +17,8 @@ return [
         'reducted' => 'Reducted',
         'justified' => 'Justified',
         'no_justified' => 'No Justified',
+        'attends' => 'Attends',
     ],
-
 
     'intervention' => 'Intervention',
     'interventions' => 'Interventions',
@@ -42,9 +42,12 @@ return [
         'partial' => 'Partialy Reducted (can do...)',
         'sport' => 'Only sport reducted',
     ],
-    'outings_and_arrives' => 'Outings and arrives',
+
+    'outings_and_arrives' => 'Therapeutic outings and arrives',
     'outing_or_arrive' => 'Outing or arrive',
     'outing_or_arrive_time' => 'Outing or arrive time',
+    'return_time' => 'Arrive date and time',
+    'outing_time' => 'Outing date and time',
     'outing' => [
         'exit_date' => 'Exit date and time',
         'return_date' => 'Arrive date and time',
