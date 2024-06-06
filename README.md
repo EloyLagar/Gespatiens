@@ -35,7 +35,7 @@
 
 ## Licencia
 
-Este proyecto está licenciado bajo la licencia MIT. Para más detalles, consulta el archivo [LICENSE](LICENSE).
+Este proyecto está licenciado bajo la licencia MIT. Para más detalles, consulta el archivo [LICENSE](LICENSE.md).
 
 ## Autor
 
