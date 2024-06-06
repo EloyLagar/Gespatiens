@@ -7,6 +7,11 @@
     <div class="wrapper  d-flex flex-column">
         <h1 class="mt-3 mb-3">{{__('activities.plural')}}</h1>
         <div class="btn-container mb-3"><a href="{{ route('activities.create') }}" class="btn py-2">{{__('crud.create')}} {{__('activities.singular')}}</a></div>
+        @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+        @endif
         <div class="container">
             <div class="row">
                 @forelse ($activities as $activity)

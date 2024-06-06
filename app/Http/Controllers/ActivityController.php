@@ -49,7 +49,9 @@ class ActivityController extends Controller
     public function edit(Activity $activity)
     {
         if ($activity->state == true) {
-            return redirect()->back()->with('error', __('error.already_in_use'));
+            return redirect()->route('activities.index')
+                ->withMethod('GET')
+                ->with('error', __('error.already_in_use'));
         }
         $activity->state = true;
         $activity->update();
@@ -78,12 +80,14 @@ class ActivityController extends Controller
     public function edit_attendance(Activity $activity)
     {
         if ($activity->state == true) {
-            return redirect()->back()->with('error', __('error.already_in_use'));
+            return redirect()->route('diary.showPage', ['date' => $activity->date])
+                ->withMethod('GET')
+                ->with('error', __('error.already_in_use'));
         }
-            $activity->state = true;
-            $activity->update();
-            $patients = $activity->patients()->orderBy('number', 'asc')->get();
-            return view('diary.activities.attendance', compact('patients', 'activity'));
+        $activity->state = true;
+        $activity->update();
+        $patients = $activity->patients()->orderBy('number', 'asc')->get();
+        return view('diary.activities.attendance', compact('patients', 'activity'));
     }
 
     public function updateAttendance(Request $request, Activity $activity)
@@ -113,7 +117,7 @@ class ActivityController extends Controller
                     'assists' => false,
                     'justified' => true,
                 ];
-            }else{
+            } else {
                 $syncData[$patientId] = [
                     'activity_id' => $activity->id,
                     'reducted' => false,
@@ -129,16 +133,18 @@ class ActivityController extends Controller
         $activity->update();
 
         return redirect()->route('diary.showPage', ['date' => $activity->date])
-        ->withMethod('GET')
-        ->with('success', 'attendance');    }
+            ->withMethod('GET')
+            ->with('success', 'attendance');
+    }
 
-    public function setStateFalse(Request $request){
+    public function setStateFalse(Request $request)
+    {
         $Activity = Activity::find($request->activity_id);
         if ($Activity) {
             $Activity->state = false;
             $Activity->save();
             return response()->json(['success' => true, 'message' => 'Activity state false now']);
-        }else{
+        } else {
             return response()->json(['success' => false, 'message' => 'No Activity found']);
 
         }

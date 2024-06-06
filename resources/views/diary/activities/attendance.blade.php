@@ -69,7 +69,6 @@
 
     <script>
         const activityId = '{{ $activity->id }}';
-        console.log(activityId);
     </script>
 
 

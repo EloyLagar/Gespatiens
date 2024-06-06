@@ -156,7 +156,7 @@
                     let fecha = $(this).data('fecha');
                     console.log(fecha);
                     console.log(id);
-                    console.log('El valor ha cambiado a: ' + valor); //Esto se tendrá que pasar por ajax
+                    console.log('El valor ha cambiado a: ' + valor);
                     $.ajax({
                         url: '/evaluations/save_mark',
                         type: 'POST',
