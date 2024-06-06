@@ -1,4 +1,4 @@
-# # <span style="color: #33fdd4;">ges</span><span style="color: #fff;">patiens</span>
+# <span style="color: #33fdd4;">ges</span><span style="color: #fff;">patiens</span>
 
 ## Descripción
 
