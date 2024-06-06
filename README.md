@@ -1,66 +1,50 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# gespatiens
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Descripción
 
-## About Laravel
+Aplicación web destinada a la gestión de una comunidad terapéutica. El propósito del proyecto es agilizar y optimizar los procesos por los que se genera documentación necesaria de todos los pacientes residentes, de las actividades que estos realizan, así como de las atenciones que los profesionales les brindan. La aplicación facilita a la administración generar las fichas de los pacientes y perfiles a los empleados respectivamente. Otorga a los profesionales, además, una vía de comunicación con los otros trabajadores, además de herramientas para evaluar a los pacientes y a las actividades que organizan.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Instalación
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+1. Clonar el repositorio.
+2. Cargar las dependencias con `composer install`.
+3. Hacer link con el comando `php artisan storage:link`.
+4. Configurar el archivo `.env` (será necesario proporcionar datos para el envío de correos y el enlace a la página de trapmail).
+5. Lanzar las migraciones y los seeders con `php artisan migrate --seed`.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+> [!CAUTION] 
+> Es posible que ocurra un error al generar los usuarios con el seeder debido a una funcionalidad de la aplicación. Por ello, se  recomienda comentar parte de los tipos de usuarios del array e ir haciendo el seeder poco a poco.
 
-## Learning Laravel
+## Uso
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. Se recomienda acceder la primera vez como administrador.
+2. La página inicial permite crear avisos que podrán leer otros empleados registrados.
+3. En la barra de navegación lateral se puede acceder a los apartados de indexado de empleados, residentes, antiguos residentes, actividades, y reportes, además del diario y de las evaluaciones.
+4. Las páginas de indexado permiten ir al creador de elementos, así como ver en detalle, editarlos y borrarlos en algunos casos.
+5. Para el diario, introduzca una fecha para ver esa página del diario.
+6. Para las evaluaciones, seleccione un mes y un tipo de materia.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+> [!TIP] 
+Puedes modificar tus datos y el idioma de la aplicación en la página de perfil.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+>  [!NOTE] 
+> Al generar un perfil de empleado, llegará un correo a la cuenta de la herramienta que uses para probar correos. Desde allí podrá acceder como el empleado para crear sus credenciales de acceso (contraseñas).
 
-## Laravel Sponsors
+> [!WARNING]
+>  Es posible que si ya tienes una sesión con un empleado, debas usar una pestaña en modo incógnito para acceder desde el correo a la creación de credenciales.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Licencia
 
-### Premium Partners
+Este proyecto está licenciado bajo la licencia MIT. Para más detalles, consulta el archivo [LICENSE](LICENSE).
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## Autor
 
-## Contributing
+Eloy Lagar Jaime
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Agradecimientos a Manuel Lagar Naharro por la idea.
 
-## Code of Conduct
+## Recursos adicionales
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- [Laravel](https://laravel.com)
+- [PHP](https://www.php.net)
+- [AdminLTE](https://adminlte.io)
