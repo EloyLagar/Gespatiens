@@ -20,7 +20,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="text">{{ __('notices.text') }}:</label>
-                            <textarea class="form-control" id="text" name="text" required></textarea>
+                            <textarea class="form-control" id="text" name="text" required autofocus></textarea>
                         </div>
                         @error('text')
                             <div class="alert alert-danger">{{ $message }}</div>

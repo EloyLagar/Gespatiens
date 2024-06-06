@@ -145,7 +145,7 @@
                     {{ __('crud.delete_ask') }}
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('crud.cancel') }}</button>
+                    <button type="button" class="btn" data-dismiss="modal">{{ __('crud.cancel') }}</button>
                     <form action="{{ route('users.destroy', $employee->id) }}" method="POST">
                         @csrf
                         @method('DELETE')

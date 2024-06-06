@@ -54,11 +54,9 @@
                             <li><a class="dropdown-item" href="{{ route('notices.edit', $notice) }}">{{ __('crud.edit')
                                     }}</a></li>
                             <li>
-                                <form action="{{ route('notices.destroy', $notice) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="dropdown-item">{{ __('crud.destroy') }}</button>
-                                </form>
+                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                    data-url="{{ route('notices.destroy', $notice) }}">{{
+                                    __('crud.destroy') }}</a>
                             </li>
                         </ul>
                     </div>
@@ -84,11 +82,9 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <li>
-                                <form action="{{ route('notices.destroy', $notice) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="dropdown-item">{{ __('crud.destroy') }}</button>
-                                </form>
+                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                    data-url="{{ route('notices.destroy', $notice) }}">{{
+                                    __('crud.destroy') }}</a>
                             </li>
                         </ul>
                     </div>
@@ -113,8 +109,8 @@
                             data-bs-toggle="dropdown" aria-expanded="false">
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li><a class="dropdown-item" href="{{ route('notices.destroy', $notice) }}">{{
-                                    __('crud.destroy') }}</a>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                    data-url="{{ route('notices.destroy', $notice) }}">{{ __('crud.destroy') }}</a>
                             </li>
                         </ul>
                     </div>
@@ -129,27 +125,60 @@
             @empty
             @endforelse
             @if (!empty($notices))
-                @if ($currentDate == $noticeDate)
-                    <div class="date-container">
-                        <span class="date-span">
-                            {{ __('notices.today') }}
-                        </span>
-                    </div>
-                @else
-                    @if ($noticeDate !== null)
-                        <div class="date-container">
-                            <span class="date-span">
-                                {{ $noticeDate }}
-                            </span>
-                        </div>
-                        @endif
-                @endif
+            @if ($currentDate == $noticeDate)
+            <div class="date-container">
+                <span class="date-span">
+                    {{ __('notices.today') }}
+                </span>
+            </div>
+            @else
+            @if ($noticeDate !== null)
+            <div class="date-container">
+                <span class="date-span">
+                    {{ $noticeDate }}
+                </span>
+            </div>
+            @endif
+            @endif
             @endif
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">{{ __('crud.delete') }} {{__('notices.singular')}}</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                {{ __('crud.delete_ask') }}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" data-bs-dismiss="modal">{{ __('crud.cancel') }}</button>
+                <form id="deleteForm" action="" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn">{{ __('crud.destroy') }}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 @section('js')
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+<script>
+    var deleteModal = document.getElementById('deleteModal');
+    deleteModal.addEventListener('show.bs.modal', function (event) {
+        var button = event.relatedTarget;
+        var url = button.getAttribute('data-url');
+        var form = deleteModal.querySelector('#deleteForm');
+        form.action = url;
+    });
+</script>
 @endsection
 @endsection

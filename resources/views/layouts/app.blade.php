@@ -26,6 +26,8 @@
 <link rel="stylesheet" href="{{ asset('css/common_styles.css') }}">
 {{-- Iconos box icons --}}
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+{{-- Popper --}}
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 
 @stop
 
