@@ -11,6 +11,7 @@
 3. Crea el enlace simbólico con `php artisan storage:link`.
 4. Configura el archivo `.env` (es necesario proporcionar datos para el envío de correos y el enlace a la página de trapmail).
 5. Ejecuta las migraciones y los seeders con `php artisan migrate --seed`.
+6. 6. subnormal
 
 > [!CAUTION] 
 > Es posible que ocurra un error al generar los usuarios con el seeder debido a una funcionalidad de la aplicación. Se recomienda comentar parte de los tipos de usuarios en el array e ir ejecutando el seeder de forma incremental.
