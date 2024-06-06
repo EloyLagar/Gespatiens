@@ -1,37 +1,37 @@
-# gespatiens
+# <span style="color: #0000FF;">ges</span><span style="color: #008000;">patiens</span>
 
 ## Descripción
 
-Aplicación web destinada a la gestión de una comunidad terapéutica. El propósito del proyecto es agilizar y optimizar los procesos por los que se genera documentación necesaria de todos los pacientes residentes, de las actividades que estos realizan, así como de las atenciones que los profesionales les brindan. La aplicación facilita a la administración generar las fichas de los pacientes y perfiles a los empleados respectivamente. Otorga a los profesionales, además, una vía de comunicación con los otros trabajadores, además de herramientas para evaluar a los pacientes y a las actividades que organizan.
+**Gespatiens** es una aplicación web diseñada para la gestión de una comunidad terapéutica. Su propósito es agilizar y optimizar los procesos de generación de documentación necesaria para los pacientes residentes, las actividades que realizan y las atenciones que reciben de los profesionales. La aplicación permite a la administración crear fichas de pacientes y perfiles de empleados de manera eficiente. Además, proporciona a los profesionales una vía de comunicación con otros trabajadores, junto con herramientas para evaluar a los pacientes y las actividades que organizan.
 
 ## Instalación
 
-1. Clonar el repositorio.
-2. Cargar las dependencias con `composer install`.
-3. Hacer link con el comando `php artisan storage:link`.
-4. Configurar el archivo `.env` (será necesario proporcionar datos para el envío de correos y el enlace a la página de trapmail).
-5. Lanzar las migraciones y los seeders con `php artisan migrate --seed`.
+1. Clona el repositorio.
+2. Instala las dependencias con `composer install`.
+3. Crea el enlace simbólico con `php artisan storage:link`.
+4. Configura el archivo `.env` (es necesario proporcionar datos para el envío de correos y el enlace a la página de trapmail).
+5. Ejecuta las migraciones y los seeders con `php artisan migrate --seed`.
 
 > [!CAUTION] 
-> Es posible que ocurra un error al generar los usuarios con el seeder debido a una funcionalidad de la aplicación. Por ello, se  recomienda comentar parte de los tipos de usuarios del array e ir haciendo el seeder poco a poco.
+> Es posible que ocurra un error al generar los usuarios con el seeder debido a una funcionalidad de la aplicación. Se recomienda comentar parte de los tipos de usuarios en el array e ir ejecutando el seeder de forma incremental.
 
 ## Uso
 
-1. Se recomienda acceder la primera vez como administrador.
-2. La página inicial permite crear avisos que podrán leer otros empleados registrados.
-3. En la barra de navegación lateral se puede acceder a los apartados de indexado de empleados, residentes, antiguos residentes, actividades, y reportes, además del diario y de las evaluaciones.
-4. Las páginas de indexado permiten ir al creador de elementos, así como ver en detalle, editarlos y borrarlos en algunos casos.
-5. Para el diario, introduzca una fecha para ver esa página del diario.
-6. Para las evaluaciones, seleccione un mes y un tipo de materia.
+1. Se recomienda acceder por primera vez como administrador.
+2. La página inicial permite crear avisos visibles para otros empleados registrados.
+3. En la barra de navegación lateral, se puede acceder a las secciones de empleados, residentes, antiguos residentes, actividades, reportes, diario y evaluaciones.
+4. Las páginas de indexado permiten crear nuevos elementos, ver detalles, editar y eliminar en algunos casos.
+5. Para consultar el diario, introduce una fecha específica.
+6. Para las evaluaciones, selecciona un mes y un tipo de materia.
 
 > [!TIP] 
-Puedes modificar tus datos y el idioma de la aplicación en la página de perfil.
+> Puedes modificar tus datos y el idioma de la aplicación en la página de perfil.
 
->  [!NOTE] 
-> Al generar un perfil de empleado, llegará un correo a la cuenta de la herramienta que uses para probar correos. Desde allí podrá acceder como el empleado para crear sus credenciales de acceso (contraseñas).
+> [!NOTE] 
+> Al generar un perfil de empleado, llegará un correo a la cuenta de prueba de correos configurada. Desde allí, el empleado podrá crear sus credenciales de acceso (contraseña).
 
 > [!WARNING]
->  Es posible que si ya tienes una sesión con un empleado, debas usar una pestaña en modo incógnito para acceder desde el correo a la creación de credenciales.
+> Si ya tienes una sesión iniciada como empleado, es posible que debas usar una ventana de incógnito para acceder a la creación de credenciales desde el correo.
 
 ## Licencia
 
@@ -39,7 +39,7 @@ Este proyecto está licenciado bajo la licencia MIT. Para más detalles, consult
 
 ## Autor
 
-Eloy Lagar Jaime
+**Eloy Lagar Jaime**
 
 Agradecimientos a Manuel Lagar Naharro por la idea.
 
