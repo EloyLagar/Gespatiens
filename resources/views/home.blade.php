@@ -11,7 +11,7 @@
     @endforeach
     <div class="btn-container"><a href="{{ route('notices.create') }}" class="btn py-2">{{ __('crud.create') }}
             {{ __('notices.singular') }}</a></div>
-    <div class="container">
+    <div class="container d-flex justify-content-center">
         <div class="notices-container" id="notices-container">
             @php
             $currentDate = \Carbon\Carbon::now()->format('d-m-Y');
@@ -168,6 +168,8 @@
     </div>
 </div>
 
+
+@endsection
 @section('js')
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
@@ -180,5 +182,6 @@
         form.action = url;
     });
 </script>
-@endsection
+
+
 @endsection
