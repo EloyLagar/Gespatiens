@@ -1,4 +1,9 @@
-# gespatiens
+# # <span style="color: #33fdd4;">ges</span><span style="color: #fff;">patiens</span>
+
+## Descripción
+
+Aplicación web destinada a la gestión de una comunidad terapéutica. El propósito del proyecto es agilizar y optimizar los procesos por los que se genera documentación necesaria de
+
 
 ## Descripción
 
