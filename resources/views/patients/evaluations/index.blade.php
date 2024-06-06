@@ -76,7 +76,7 @@
                                             }
                                         @endphp
                                         @if ($fecha->format('w') == 0)
-                                            <td title="Pulse para modificar la nota" data-id="{{ $resident->id }}"
+                                            <td data-id="{{ $resident->id }}"
                                                 data-fecha="{{ $fecha }}" class="clickable">
                                                 <div>
                                                     <input type="text" data-id="{{ $resident->id }}"
