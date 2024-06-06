@@ -11,7 +11,7 @@
             <a href="{{ route('evaluations.indexForm') }}" class="goBackBtn btn"><i class='bx bx-left-arrow-alt'></i></a>
             <h1 class="mt-3 mb-3"> {{ __('evaluations.lesson_type.' . $lesson_type) }}</h1>
             <div class="table-container">
-                <table class="table marks-table">
+                <table class="table table-stripe">
                     <thead class="thead-dark">
                         <tr>
                             <th></th>
@@ -84,7 +84,7 @@
                                                         value="{{ $mark }}">
                                                 </div>
                                             </td>
-                                            <td class="average">
+                                            <td class="average align-middle text-center">
                                                 @if ($contClases !== 0)
                                                     @php
                                                         $totalWeeklyAverage += $weeklyAverage / $contClases;
@@ -130,7 +130,7 @@
                                         @endif
                                     @endif
                                 @endforeach
-                                <td class="average total-average">
+                                <td class="average total-average align-middle">
                                     @if ($weeks !== 0)
                                         {{ number_format($totalWeeklyAverage / $weeks, 2) }}
                                     @endif

@@ -14,12 +14,14 @@
     flex-direction: column-reverse;
     padding: 1.5em;
     padding-right: 1.8em;
-    overflow-y: auto;
+    overflow-y: overlay;
+    scrollbar-gutter: stable;
 }
 
 
 .notices-container::-webkit-scrollbar-track {
-    background-color: transparent;
+    background-color: #e8e8e8;
+    border-radius: 0.5em;
 }
 
 .notices-container::-webkit-scrollbar-thumb {
