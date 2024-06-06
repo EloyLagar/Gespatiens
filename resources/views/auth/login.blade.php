@@ -27,22 +27,24 @@
                 class="patiens">s</span>
         </h1>
         <div class="container align-items-center">
-            <form class="form-signin" action="{{ route('login') }}" method="post">
-                @csrf
-                <div class="form-group">
-                    <label for="inputEmail">{{ __('user.email') }}:</label>
-                    <input type="email" name="email" id="email" class="form-control" value="{{ old('email') }}"
-                        required autofocus>
-                </div>
-                <div class="form-group">
-                    <label for="inputPassword">{{ __('user.password') }}:</label>
-                    <input type="password" name="password" id="password" class="form-control" required>
-                    @isset($error)
+            <div id="form-container">
+                <form id="login-form" class="form-login" action="{{ route('login') }}" method="post">
+                    @csrf
+                    <div class="form-group">
+                        <label for="inputEmail">{{ __('user.email') }}:</label>
+                        <input type="email" name="email" id="email" class="form-control" value="{{ old('email') }}" required
+                            autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword">{{ __('user.password') }}:</label>
+                        <input type="password" name="password" id="password" class="form-control" required>
+                        @isset($error)
                         <div class="alert">{{ __('error.' . $error) }}</div>
-                    @endisset
-                </div>
-                <button class="btn flot-right ml-auto btn-block" type="submit">{{ __('crud.login') }}</button>
-            </form>
+                        @endisset
+                    </div>
+                    <button class="btn flot-right ml-auto btn-block" type="submit">{{ __('crud.login') }}</button>
+                </form>
+            </div>
         </div>
     </div>
 
@@ -50,7 +52,7 @@
         //Animación para el titulo
         document.addEventListener("DOMContentLoaded", function() {
             const spans = document.querySelectorAll('#title span');
-            let speed = 130;
+            let speed = 90;
             setTimeout(() => {
                 spans.forEach((span, index) => {
                     setTimeout(() => {
@@ -59,8 +61,10 @@
                     speed -= 2;
                 });
             }, 100);
+
         });
     </script>
+
 </body>
 
 </html>

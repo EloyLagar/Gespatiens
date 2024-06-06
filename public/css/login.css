@@ -14,6 +14,7 @@ h1 {
     margin-bottom: 0.6em;
     text-align: center;
 }
+
 .ges {
     color: var(--ges-color);
     font-size: 60px;
@@ -22,7 +23,7 @@ h1 {
     font-weight: 400;
 }
 
-h5{
+h5 {
     color: var(--light-text-color);
     font-family: "Montserrat";
 }
@@ -43,19 +44,35 @@ label {
 }
 
 .container {
-    max-width: 400px;
-    width: 90%;
+    max-width: 450px;
     padding: 0 1.4em;
-    padding-top: 1.2em;
     padding-bottom: 0.6em;
-    background-color: var(--light-text-color);
-    border-radius: 0.6em;
     /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
 }
 
-.form-container {
-    padding-top: 0.6em;
+
+#form-container{
+    background-color: var(--light-text-color);
+    border-radius: 0.6em;
+    padding: 1.2em;
     font-size: 0.8rem;
+    height: 100%;
+    width: 100%;
+    animation: goUp 0.5s ease forwards;
+}
+
+.form-group label{
+    font-weight: 500;
+}
+
+@keyframes goUp {
+    from {
+        transform: translateY(70%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
 }
 
 .form-group {
@@ -92,7 +109,7 @@ input {
     display: inline-block;
     display: inline-block;
     position: relative;
-    top: -5px;
+    top: -40px;
     text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
 }
 
