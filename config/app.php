@@ -85,6 +85,14 @@ return [
 
     'locale' => 'es',
 
+    //Idiomas soportados
+
+    'locales' => [
+        'en' => 'English',
+        'es' => 'Spanish',
+    ],
+
+
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale
