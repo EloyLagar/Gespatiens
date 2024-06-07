@@ -20,7 +20,7 @@ class UpdateUserRequest extends FormRequest
             'name' => 'sometimes|string|max:50',
             'speciality' => 'nullable|string|in:none,educator,worker,medical,psychologist,admin',
             'signature' => 'nullable|image|mimes:jpeg,png,jpg',
-            'phone_number' => 'sometimes|integer|unique:users,phone_number,' . $this->user,
+            'phone_number' => 'sometimes|string|unique:users,phone_number,' . $this->user,
             'password' => 'sometimes|string|confirmed|min:8|nullable'
         ];
     }
@@ -33,21 +33,18 @@ class UpdateUserRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'name.required',
-            'name.string' => 'name.string',
-            'name.max' => 'name.max',
+            'name.required' => 'required',
+            'name.string' => 'string',
+            'name.max' => 'max',
             'phone_number.required' => 'required',
-            'phone_number.integer' => 'integer',
+            'phone_number.string' => 'string',
             'phone_number.unique' => 'unique',
-            'speciality.required' => 'required',
             'speciality.string' => 'string',
             'speciality.in' => 'in',
             'password.required' => 'required',
             'password.string' => 'string',
-            'password.confirmed' => 'password_confirmed',
+            'password.confirmed' => 'confirmed',
             'password.min' => 'min',
         ];
     }
-
-
 }

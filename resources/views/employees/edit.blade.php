@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="">{{ __('user.speciality.label') }}:</label>
-                                    <p>{{ $employee->speciality }}</p>
+                                    <p>{{ __('user.speciality.' . $employee->speciality) }}</p>
                                 </div>
                                 <div class="mb-3">
                                     <label for="">{{ __('user.signature') }}:</label>
@@ -66,12 +66,18 @@
                             <div class="card-header d-flex align-items-center">
                                 {{ __('crud.edit') }} {{ __('crud.info') }}
                                 @if (Auth::user()->speciality === 'admin')
-                                <button type="button" class="btn float-right ml-auto" data-toggle="modal" data-target="#deleteModal">
-                                    <i class='bx bxs-trash-alt'></i>
-                                </button>
+                                    <button type="button" class="btn float-right ml-auto" data-toggle="modal"
+                                        data-target="#deleteModal">
+                                        <i class='bx bxs-trash-alt'></i>
+                                    </button>
                                 @endif
                             </div>
                             <div class="card-body">
+                                @if (session('success'))
+                                    <div class="alert alert-success">
+                                        {{ __('success.' . session('success')) }}
+                                    </div>
+                                @endif
                                 <form action="{{ route('users.update', $employee->id) }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
@@ -80,12 +86,20 @@
                                         <label for="name">{{ __('user.name') }}:</label>
                                         <input type="text" class="form-control" id="name" name="name"
                                             value="{{ $employee->name }}">
+                                        @if ($errors->has('name'))
+                                            <div class="alert alert-danger">{{ __('error.' . $errors->first('name')) }}
+                                            </div>
+                                        @endif
                                     </div>
                                     @if (Auth::user()->id === $employee->id)
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="password">{{ __('user.password') }}:</label>
                                                 <input type="password" class="form-control" id="password" name="password">
+                                                @if ($errors->has('password'))
+                                                    <div class="alert alert-danger">
+                                                        {{ __('error.' . $errors->first('password')) }}</div>
+                                                @endif
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="password_confirmation">{{ __('crud.repeat') }}
@@ -102,13 +116,14 @@
                                                 <option value="none">{{ __('crud.select') }}</option>
                                                 @foreach ($enum as $speciality)
                                                     <option value="{{ $speciality }}"
-                                                    @if ($speciality == $employee->speciality)
-                                                        selected
-                                                    @endif
-                                                    >
+                                                        @if ($speciality == $employee->speciality) selected @endif>
                                                         {{ __('user.speciality.' . $speciality) }}</option>
                                                 @endforeach
                                             </select>
+                                            @if ($errors->has('speciality'))
+                                                <div class="alert alert-danger">
+                                                    {{ __('error.' . $errors->first('speciality')) }}</div>
+                                            @endif
                                         </div>
                                     @endif
 
@@ -116,16 +131,21 @@
                                         <div class="form-group">
                                             <label for="signature">{{ __('user.signature') }}:</label>
                                             <input type="file" class="form-control-file" id="signature" name="signature">
+                                            @if ($errors->has('signature'))
+                                                <div class="alert alert-danger">
+                                                    {{ __('error.' . $errors->first('signature')) }}</div>
+                                            @endif
                                         </div>
                                     @endif
                                     <div class="form-group">
                                         <label for="phone_number">{{ __('user.phone') }}:</label>
                                         <input type="text" class="form-control" id="phone_number" name="phone_number"
                                             value="{{ $employee->phone_number }}">
+                                        @if ($errors->has('phone_number'))
+                                            <div class="alert alert-danger">
+                                                {{ __('error.' . $errors->first('phone_number')) }}</div>
+                                        @endif
                                     </div>
-                                    @foreach ($errors->all() as $error)
-                                        <div class="alert alert-danger">{{ __('error.' . $error) }}</div>
-                                    @endforeach
                                     <button type="submit" class="btn float-right">{{ __('crud.update') }}</button>
                                 </form>
                             </div>
@@ -136,11 +156,12 @@
         @endif
     </div>
 
-    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">{{ __('crud.delete') }} {{$employee->name}}</h5>
+                    <h5 class="modal-title" id="deleteModalLabel">{{ __('crud.delete') }} {{ $employee->name }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('crud.close') }}">
                         <span aria-hidden="true">&times;</span>
                     </button>
