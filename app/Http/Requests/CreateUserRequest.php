@@ -26,7 +26,7 @@ class CreateUserRequest extends FormRequest
             'email' => 'required|string|email|max:256|unique:users,email,' . $this->user,
             'speciality' => 'required|string|in:educator,worker,medical,psychologist,admin',
             'signature' => 'nullable',
-            'phone_number' => 'required|integer|unique:users,phone_number,' . $this->user,
+            'phone_number' => 'required|integer|min:6|unique:users,phone_number,' . $this->user,
         ];
     }
 
@@ -52,6 +52,7 @@ class CreateUserRequest extends FormRequest
             'phone_number.required' => 'required',
             'phone_number.integer' => 'integer',
             'phone_number.unique' => 'unique',
+            'phone_number.min' => 'min',
         ];
     }
 }

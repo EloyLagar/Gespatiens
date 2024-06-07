@@ -20,8 +20,8 @@ class UpdateUserRequest extends FormRequest
             'name' => 'sometimes|string|max:50',
             'speciality' => 'nullable|string|in:none,educator,worker,medical,psychologist,admin',
             'signature' => 'nullable|image|mimes:jpeg,png,jpg',
-            'phone_number' => 'sometimes|string|unique:users,phone_number,' . $this->user,
-            'password' => 'sometimes|string|confirmed|min:8|nullable'
+            'phone_number' => 'sometimes|string|min:6|unique:users,phone_number,' . $this->user,
+            'password' => 'sometimes|string|min:6|confirmed|min:8|nullable'
         ];
     }
 
@@ -39,6 +39,7 @@ class UpdateUserRequest extends FormRequest
             'phone_number.required' => 'required',
             'phone_number.string' => 'string',
             'phone_number.unique' => 'unique',
+            'phone_number.min' => 'min',
             'speciality.string' => 'string',
             'speciality.in' => 'in',
             'password.required' => 'required',
