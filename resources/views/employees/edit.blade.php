@@ -101,7 +101,11 @@
                                             <select name="speciality" id="speciality" class="form-control">
                                                 <option value="none">{{ __('crud.select') }}</option>
                                                 @foreach ($enum as $speciality)
-                                                    <option value="{{ $speciality }}">
+                                                    <option value="{{ $speciality }}"
+                                                    @if ($speciality == $employee->speciality)
+                                                        selected
+                                                    @endif
+                                                    >
                                                         {{ __('user.speciality.' . $speciality) }}</option>
                                                 @endforeach
                                             </select>

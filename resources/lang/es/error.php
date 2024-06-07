@@ -3,6 +3,7 @@ return [
     'string' => 'El campo debe ser una cadena de texto',
     'number' => 'El campo debe ser un número',
     'max' => 'Se ha excedido la longitud del campo',
+    'min' => 'No se ha llegado a la longitud mínima en este campo',
     'required' => 'Este campo es necesario',
     'unique' => 'Los datos ingresados ya están en uso',
     'in' => 'El campo debe ser uno de los dados en las opciones',

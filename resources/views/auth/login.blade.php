@@ -30,6 +30,7 @@
             <div id="form-container">
                 <form id="login-form" class="form-login" action="{{ route('login') }}" method="post">
                     @csrf
+                    @method('POST')
                     <div class="form-group">
                         <label for="inputEmail">{{ __('user.email') }}:</label>
                         <input type="email" name="email" id="email" class="form-control" value="{{ old('email') }}" required
