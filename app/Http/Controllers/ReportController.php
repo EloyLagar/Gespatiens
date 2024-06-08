@@ -117,9 +117,9 @@ class ReportController extends Controller
         if ($report) {
             $report->state = false;
             $report->save();
-            return response()->json(['success' => true, 'message' => 'Report state false now']);
+            return response()->json(['success' => true, 'message' => 'Estado del informe: ya no se está modificando']);
         }else{
-            return response()->json(['success' => false, 'message' => 'No report found']);
+            return response()->json(['success' => false, 'message' => 'No se ha encontrado el informe']);
 
         }
     }

@@ -17,12 +17,14 @@ return [
     'final_short' => 'Final',
 
     'social_intervention_area' => 'Área de intervención social',
+    'social_area' => 'Área de intervención social',
     'social_familiar_situation' => 'Situación socio-familiar',
     'professional_situation' => 'Situación laboral, formativa',
     'jury_situation' => 'Situación judicial',
     'evo_and_objectives' => 'Evolución y objetivos alcanzados',
     'social_diagnosis' => 'Diagnóstico social (Eje IV en DSM IV-R)',
 
+    'health_intervention_area' => 'Área de intervención sanitaria',
     'health_area' => 'Área de intervención sanitaria',
     'toxic_summary' => 'Resumen historia toxicológica',
     'health_situation_at_entry' => 'Situación sanitaria al ingreso',
@@ -32,8 +34,9 @@ return [
     'diagnosis_third_axis' => 'Diagnóstico (Eje III en DSM IV)',
     'treatment_at_discharge' => 'Situación y tratamiento al alta',
     'health_objectives' => 'Objetivos planteados',
+    'health_situation_at_discharge' => 'Situación al alta',
 
-    'psycho_area' => 'Área psicológica',
+    'psycho_area' => 'Área de intervención psicológica',
     'start_valoration' => 'Valoración inicial',
     'psycho_valoration' => 'Evaluación psicológica: instrumentos, pruebas exploratorias, diagnóstico dual. Conclusiones de la evaluación',
     'diagnosis_first_and_second_axis' => 'Diagnóstico (Eje I y II en DSM-IV)',
@@ -55,6 +58,7 @@ return [
     'familiar_intervention_area' => 'Área de intervención familiar',
     'reference_familiars_and_impication_degree' => 'Familiares de referencia en el programa y grado de implicación de los mismos',
     'familiar_relation_and_evo' => 'Relación con la familia y evolución',
+    'familiar_situation_at_discharge' => 'Situación familiar al alta',
 
     'guidance_for_follow_up' => 'Orientación de seguimiento para la unidad de referencia',
     'rationale_for_departure' => 'Fundamento de la salida',

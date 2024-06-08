@@ -25,6 +25,7 @@ return [
     'social_diagnosis' => 'Social Diagnosis (Axis IV in DSM IV-R)',
 
     'health_area' => 'Health intervention area',
+    'health_intervention_area' => 'Health intervention area',
     'toxic_summary' => 'Toxicological History Summary',
     'health_situation_at_entry' => 'Health Situation at Entry',
     'phisical_health_evo' => 'Evolution of Physical Health during the Program',
@@ -32,6 +33,7 @@ return [
     'other_health_atentions' => 'Other Medical and Health Attentions in the Program',
     'diagnosis_third_axis' => 'Diagnosis (Axis III in DSM IV)',
     'treatment_at_discharge' => 'Situation and Treatment at Discharge',
+    'health_situation_at_discharge' => 'Situation at Discharge',
 
     'psycho_area' => 'Psychological intervention Area',
     'start_valoration' => 'Initial Assessment',

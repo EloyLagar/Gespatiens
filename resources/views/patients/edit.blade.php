@@ -237,7 +237,7 @@
         </div>
     </div>
     @else
-    @include('patients.show')
+        @include('patients.show')
     @endif
 </div>
 @endsection
