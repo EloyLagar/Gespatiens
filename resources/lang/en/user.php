@@ -8,7 +8,7 @@ return [
     'email' => 'Email',
     'phone' => 'Phone number',
     'signature' => 'Signature',
-    'language' => 'Language',//que no idiom que eso es otra cosa
+    'language' => 'Language',
     'speciality' => [
         'label' => 'Speciality',
         'educator' => 'Social Educator',
